@@ -1,0 +1,15 @@
+.NavBar {
+	margin-top: 90px;
+}
+.navContainer {
+	padding: 0 25px;
+}
+.navList {
+	display: flex;
+	justify-content: left;
+	gap: 25px;
+}
+.listItem {
+	font-size: 18px;
+	font-weight: 600;
+}

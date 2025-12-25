@@ -1,0 +1,54 @@
+.header {
+	height: 290px;
+	color: #e8e9dd;
+	max-height: 400px;
+	position: relative;
+}
+.backgroundImage {
+	opacity: 70%;
+	position: absolute;
+	object-fit: cover;
+	height: 100%;
+	width: 100%;
+	z-index: -20;
+	object-position: center;
+}
+.backgroundElement {
+	position: absolute;
+	background-color: #545245;
+	height: 100%;
+	width: 100%;
+	opacity: 70%;
+	z-index: -10;
+}
+.phoneBlock {
+	font-size: 18px;
+	font-weight: 600;
+	cursor: pointer;
+	z-index: 5;
+	max-width: 30%;
+}
+.textLogo {
+	font-size: 26px;
+	max-width: 40%;
+	object-position: center;
+	margin: 0;
+	z-index: 5;
+}
+.logoUnderLine {
+	height: 8px;
+	background-color: #e8e9dd;
+}
+.headerInfo {
+	font-size: 18px;
+	font-weight: 600;
+	white-space: normal;
+	max-width: 30%;
+}
+.headerContainer {
+	padding: 30px 25px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 30;
+}
