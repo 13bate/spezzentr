@@ -37,3 +37,17 @@ img {
 	max-width: 100%;
 	height: auto;
 }
+
+a {
+	color: inherit; /* Makes the link inherit the parent element's text color */
+	text-decoration: none; /* Removes the underline */
+}
+
+/* For full control, define styles for all link states */
+a:link,
+a:visited,
+a:hover,
+a:active {
+	color: inherit; /* Ensures all states use the same inherited color */
+	text-decoration: none; /* Ensures no state has an underline */
+}

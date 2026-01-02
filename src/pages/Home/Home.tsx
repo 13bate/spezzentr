@@ -1,3 +1,9 @@
+import { SideBar } from '../../components/NewsSideBar'
+
 export const Home: React.FC = () => {
-	return <div></div>
+	return (
+		<div>
+			<SideBar />
+		</div>
+	)
 }

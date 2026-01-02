@@ -22,15 +22,17 @@
 	z-index: -10;
 }
 .phoneBlock {
-	font-size: 18px;
+	color: #e8e9dd;
+	opacity: 70%;
+	flex: 0 0 300px;
+	font-size: 21px;
 	font-weight: 600;
 	cursor: pointer;
 	z-index: 5;
-	max-width: 30%;
 }
 .textLogo {
 	font-size: 26px;
-	max-width: 40%;
+	flex: 1 1 350px;
 	object-position: center;
 	margin: 0;
 	z-index: 5;
@@ -40,15 +42,19 @@
 	background-color: #e8e9dd;
 }
 .headerInfo {
-	font-size: 18px;
+	color: #e8e9dd;
+	opacity: 70%;
+	flex: 0 0 300px;
+	min-width: 0;
+	word-break: break-word;
+	font-size: 21px;
 	font-weight: 600;
-	white-space: normal;
-	max-width: 30%;
 }
 .headerContainer {
 	padding: 30px 25px;
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
+	cursor: pointer;
+	justify-content: space-between;
 	z-index: 30;
 }
