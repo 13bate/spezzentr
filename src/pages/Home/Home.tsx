@@ -1,9 +1,8 @@
-import { SideBar } from '../../components/NewsSideBar'
-
+import { TrainnigCenterOverview } from "../../components/TrainnigCenterOverview/index.ts"
 export const Home: React.FC = () => {
 	return (
 		<div>
-			<SideBar />
+			<TrainnigCenterOverview />
 		</div>
 	)
 }

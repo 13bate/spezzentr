@@ -4,7 +4,7 @@ import clsx from 'clsx'
 import { useState } from 'react'
 import { Link } from 'react-router'
 import style from './NavBar.module.scss'
-import { shootingRange, trainingCenter } from './model/index'
+import { shootingRange, trainingCenter } from '../../utils/model/'
 interface Props {
 	className?: string
 }
