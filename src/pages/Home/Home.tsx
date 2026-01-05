@@ -1,8 +1,16 @@
+import clsx from "clsx"
 import { TrainnigCenterOverview } from "../../components/TrainnigCenterOverview/index.ts"
-export const Home: React.FC = () => {
+import styles from "./Home.module.scss"
+interface Props {
+	className?: string
+}
+
+export const Home: React.FC<Props> = ({ className }) => {
 	return (
-		<div>
-			<TrainnigCenterOverview />
+		<div className={clsx(className, styles.homeContainer)}>
+			<div className={styles.contentContainer}>
+				<TrainnigCenterOverview />
+			</div>
 		</div>
 	)
 }

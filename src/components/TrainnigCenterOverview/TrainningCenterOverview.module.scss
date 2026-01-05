@@ -1,20 +1,31 @@
-.container{
- width: 100%;
-  margin: 0 30px;
-
+.container {
+  width: 100%;
+  max-width: 1280px !important; /* или любая другая максимальная ширина */
+  margin: 0 auto;
+  padding: 0 30px;
+  box-sizing: border-box;
 }
 .titleContainer{
-  margin: 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 26px 0;
 
 }
 .titleLine{
-
+  display: block;
+  width: 45px;
+  height: 2px;
+  background-color: #B7B6AC
 }
 .title{
-
+  color: #B7B6AC;
+  font-size: 21px;
+  font-weight: bold;
 }
 .blocksContainer{
   display: flex;
+  gap: 30px;
   justify-content: space-between;
 
 }
@@ -50,6 +61,8 @@
   object-fit: cover;
   display: block;
   padding-bottom: 20px;
+    border: 2px;
+  border-radius: 10px;
 }
 .CardBottomPartContainer{
   display: flex;

@@ -25,7 +25,7 @@ export const TrainnigCenterOverview: React.FC<Props> = ({ className }) => {
     <div className={clsx(className, style.container)}>
       <div className={style.titleContainer}>
         <span className={style.titleLine}></span>
-        <h2 className={style.title}>Услуги учебного центра</h2>
+        <h2 className={style.title}>Учебный центр</h2>
       </div>
       <div className={style.blocksContainer}>
         {trainingCenterCardsData.map(tccItem => (
@@ -60,6 +60,7 @@ export const TrainnigCenterOverview: React.FC<Props> = ({ className }) => {
           </div>
         ))}
       </div>
+
     </div>
   )
 }
