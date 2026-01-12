@@ -1,0 +1,18 @@
+.titleContainer{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 26px 0;
+
+}
+.titleLine{
+  display: block;
+  width: 45px;
+  height: 2px;
+  background-color: #B7B6AC
+}
+.title{
+  color: #B7B6AC;
+  font-size: 21px;
+  font-weight: bold;
+}

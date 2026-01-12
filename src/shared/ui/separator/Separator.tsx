@@ -8,7 +8,7 @@ interface Props {
 
 export const Separator: React.FC<Props> = ({ className }) => {
   return (
-    <div className={clsx(className, style.container)}>
+    <div className={clsx(className, style.separator)}>
     </div>
   )
 }

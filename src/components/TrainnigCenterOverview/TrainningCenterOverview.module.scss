@@ -5,24 +5,7 @@
   padding: 0 30px;
   box-sizing: border-box;
 }
-.titleContainer{
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 26px 0;
 
-}
-.titleLine{
-  display: block;
-  width: 45px;
-  height: 2px;
-  background-color: #B7B6AC
-}
-.title{
-  color: #B7B6AC;
-  font-size: 21px;
-  font-weight: bold;
-}
 .blocksContainer{
   display: flex;
   gap: 30px;
@@ -88,11 +71,11 @@
   font-size: 17px;
    font-weight: 300;
   color: #545245; 
-  transition: all 1s ease;
+  transition: all 0.3s ease;
 }
 .blocksItem.isHovered .bottomPartButton{
-  color: #58574e;
-  transform: scale(1.03)
+  color: #FE3B15 ;
+
 }
 .bottomPartChevron{
  font-size: 14px;
