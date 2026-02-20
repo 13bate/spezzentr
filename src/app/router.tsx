@@ -1,11 +1,13 @@
 import { createBrowserRouter } from 'react-router'
 import { Home } from '../pages/Home'
-import { RootLayout } from './layouts'
+import { HomeLayout } from './HomeLayout'
+import { InfoPagesLayout } from './InfoPagesLayout/InfoPagesLayout'
+import { WeaponSafety } from '../pages/WeaponSafety'
 
 export const router = createBrowserRouter([
 	{
 		path: '/',
-		element: <RootLayout />,
+		element: <HomeLayout />,
 		children: [
 			{
 				index: true,
@@ -13,4 +15,22 @@ export const router = createBrowserRouter([
 			},
 		],
 	},
-])
+	{
+		path: "/",
+		element: <InfoPagesLayout />,
+		children: [{
+			path: "/training/safety/",
+			element: <WeaponSafety />
+
+		},],
+	},
+	{
+		path: "/",
+		element: <InfoPagesLayout />,
+		children: [{
+			path: "/shooting/intro/",
+			element: <WeaponSafety />
+
+		},],
+	},
+],)

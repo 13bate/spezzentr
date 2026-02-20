@@ -5,12 +5,12 @@ import toast, { Toaster } from 'react-hot-toast'
 import { Link } from 'react-router'
 import backgroundImage from '../../assets/spezzenter/freepik__the-style-is-candid-image-photography-with-natural__44605.jpg'
 import { NavBar } from '../NavBar'
-import styles from './Header.module.scss'
+import styles from './HomeHeader.module.scss'
 interface Props {
 	className?: string
 }
 
-export const Header: React.FC<Props> = ({ className }) => {
+export const HomeHeader: React.FC<Props> = ({ className }) => {
 	const phoneNumber = '(4832)320201'
 	const address = 'г. Брянск, ул. Институтская, д. 15 корп. 3'
 

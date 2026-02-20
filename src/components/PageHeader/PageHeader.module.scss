@@ -1,0 +1,68 @@
+.header{
+  height: 80px;
+  display: flex;
+  align-items: center;
+  color: #3C3C4C;
+  background-color: #dcddd2;
+  padding: 30px;
+}
+
+
+
+
+.logo{
+  width: 180px;
+}
+.lowerSide{
+  color:#B7B6AC;
+  display:flex;
+  justify-content: space-around;
+  font-size: 13px;
+  font-weight: 600;
+  background-color: #545245;
+  padding: 10px 60px;
+}
+.lowerSideLeft{
+  display: flex;
+  gap: 10px;
+}
+
+.lowerSideRight{
+  display:flex;
+  gap: 10px;
+}
+
+.phoneSection{
+  width: 35%;
+
+}
+
+.addressLink{
+  cursor: pointer;
+
+}
+
+.contactButton{
+  background-color: #FE3B15;
+  color: #f0f1e5;
+  font-size: 13px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30pd;
+  padding: 15px;
+  border-radius: 12px;
+  border: none
+}
+
+.contactButton:hover{
+  opacity: 70%
+}
+
+.contactButton a:hover {
+  color: #f0f1e5;
+}
+
+
+

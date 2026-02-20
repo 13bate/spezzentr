@@ -17,6 +17,7 @@ export const shootingRange = [
 	{ label: 'Подарочные сертификаты', href: '/shooting/gift-cards' },
 ]
 
+
 export const eduOrgInfo = [
 	{ label: 'Основные сведения', href: '/education/basic-info' },
 	{ label: 'Структура и органы управления', href: '/education/structure' },
@@ -37,3 +38,38 @@ export const eduOrgInfo = [
 		href: '/education/scholarships',
 	},
 ]
+
+export const eduOrgInfoShort = [
+	{ label: 'Основные сведения', href: '/education/basic-info' },
+	{ label: 'Структура и органы управления', href: '/education/structure' },
+	{ label: 'Документы', href: '/education/documents' },
+	{ label: 'Образование', href: '/education/programs' },
+	{ label: 'Образовательные стандарты', href: '/education/standards' },
+	{ label: 'Руководство', href: '/education/management' },
+	{
+		label:
+			'Материально-техническое обеспечение и оснащенность образовательного процесса. Доступная среда',
+		href: '/education/resources',
+	},
+	{ label: 'Платные образовательные услуги', href: '/education/paid-services' },
+	{ label: 'Финансово-хозяйственная деятельность', href: '/education/finance' },
+	{ label: 'Вакантные места для приема', href: '/education/vacancies' },
+	{
+		label: 'Стипендии и иные виды материальной поддержки',
+		href: '/education/scholarships',
+	},
+]
+
+export const trainingCenterShort = [
+	{
+		label: 'Безопасное обращение',
+		href: '/training/safety',
+	},
+	{ label: 'Обучение охранников', href: '/training/security-guards' },
+	{
+		label: 'Периодическая проверка',
+		href: '/training/periodic-checks',
+	},
+	{ label: 'БПЛА', href: '/training/drones' },
+]
+

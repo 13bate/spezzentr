@@ -1,1 +1,1 @@
-export { eduOrgInfo, shootingRange, trainingCenter } from './navbarMenuItems'
+export { eduOrgInfo, shootingRange, trainingCenter, trainingCenterShort } from './navbarMenuItems'

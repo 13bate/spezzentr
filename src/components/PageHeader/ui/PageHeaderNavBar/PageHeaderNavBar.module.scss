@@ -1,0 +1,27 @@
+.pageHeaderNavBar{
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: 500;
+  margin: 0 35px;
+  align-items: center;
+  gap: 44px;
+
+}
+
+.navBarElement{
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  width: 125px;
+  color: #545245;
+}
+
+.NavBarElementChevron{
+  position: absolute;
+  right: 10px;
+  font-size: 12px
+  // padding: 8px;
+  // border-radius: 8px;
+}
