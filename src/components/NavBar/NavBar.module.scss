@@ -1,5 +1,4 @@
 .NavBar {
-	margin-top: 90px;
 }
 .navContainer {
 	padding: 0 25px;
@@ -7,41 +6,39 @@
 .navList {
 	display: flex;
 	justify-content: space-between;
-	gap: 25px;
+	gap: 15px;
 }
 .listItem {
-	color: #B7B6AC;
+	color: #545245;
 	cursor: pointer;
-	font-size: 18px;
-	font-weight: 700;
-	transition: all ease-in-out 0.3s;
+	font-size: 14px;
+	font-weight: 500;
+	transition: all ease 0.1s;
 }
 .listItem:hover {
 	color: #fe3b15;
-	transform: scale(1.01);
+	transform: scale(1.001);
 }
 
 .arrowIcon {
-	font-size: medium;
+	font-size: 11px;
 }
 .navLeftSide {
 	display: flex;
 	flex-direction: row;
-	gap: 40px;
+	gap: 20px;
 }
-.DropDownList {
-	background-color: #545245;
-}
+
 .DropDownListItem {
-	color: #e8e9dd;
+	color: #39382f;
 	opacity: 80%;
-	font-size: 18px;
-	font-weight: 500;
+	font-size: 14px;
+	font-weight: 400;
 	padding-top: 10px;
-	min-width: 200px;
-	width: 300px;
+	min-width: 100px;
+	width: 150px;
 	position: relative;
-	transition: all ease-in-out 0.2s;
+	transition: all ease 0.1s;
 }
 .DropDownListItem:hover {
 	color: #fe3b15;
@@ -49,7 +46,7 @@
 .DropDownListContainer {
 	left: -20px;
 	padding: 10px 20px;
-	background-color: #545245;
+	background-color: #b7b6ac;
 	position: absolute;
 	border: 2px;
 	border-radius: 10px;
