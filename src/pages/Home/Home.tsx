@@ -1,9 +1,11 @@
 import clsx from "clsx"
-import { TrainnigCenterOverview } from "../../components/TrainnigCenterOverview/index.ts"
 import style from "./Home.module.scss"
 import { Separator } from "../../shared/ui/separator/"
-import { ShootingClub } from "../../components/ShootingClub/ShootingClub.tsx"
-import { Footer } from "../../components/Footer/Footer.tsx"
+import { ShootingClubSection } from "../../features/ShootingClubSection"
+import { Footer } from "../../features/Footer"
+import { HeroSection } from "../../features/HeroSection"
+import { TrainnigCenterSection } from "../../features/TrainnigCenterSection"
+import { ContactsSection } from "../../features/contacts"
 
 interface Props {
 	className?: string
@@ -11,12 +13,15 @@ interface Props {
 export const Home: React.FC<Props> = ({ className }) => {
 	return (
 		<div className={clsx(className, style.homeContainer)}>
-			<TrainnigCenterOverview />
-			<div className={style.separatorWrapper}>
-				<Separator />
+			<HeroSection />
+			<div className={style.contentContainer}>
+				<ShootingClubSection />
+				<div className={style.separatorWrapper}>
+					<Separator />
+					<TrainnigCenterSection />
+				</div>
 			</div>
-			<ShootingClub />
-			<div className={style.marginBlock}></div>
+			<ContactsSection />
 			<Footer />
 		</div>
 	)

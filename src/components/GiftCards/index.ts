@@ -1,1 +1,0 @@
-export { GiftCards } from "./GiftCards";

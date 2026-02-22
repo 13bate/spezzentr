@@ -1,0 +1,448 @@
+.introShootingPage {
+  width: 100%;
+  max-width: 1280px;
+  margin: 100px auto 80px;
+  padding: 0 30px;
+  
+  @media (max-width: 768px) {
+    padding: 0 20px;
+    margin: 80px auto 40px;
+  }
+}
+
+// Hero секция
+.hero {
+  margin-bottom: 40px;
+  text-align: center;
+  
+  .title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+    margin: 0 0 20px;
+    position: relative;
+    display: inline-block;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: #FE3B15;
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 36px;
+    }
+  }
+  
+  .description {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #666;
+    max-width: 800px;
+    margin: 30px auto 40px;
+    
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
+  }
+}
+
+// Статистика
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  margin: 40px 0;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+  
+  .statItem {
+    text-align: center;
+    
+    .statValue {
+      font-family: 'Oswald', sans-serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: #FE3B15;
+      display: block;
+      line-height: 1.2;
+    }
+    
+    .statLabel {
+      font-family: 'PT Sans', sans-serif;
+      font-size: 14px;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  }
+}
+
+// Фильтры
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 40px 0;
+  flex-wrap: wrap;
+  
+  .filterButton {
+    padding: 12px 30px;
+    border: 2px solid #FE3B15;
+    background: transparent;
+    color: #333;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: #FE3B15;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(254, 59, 21, 0.3);
+    }
+    
+    &.active {
+      background: #FE3B15;
+      color: white;
+    }
+  }
+}
+
+// Сетка оружия
+.weaponsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  margin: 40px 0;
+  
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.weaponCard {
+  background: #f8f8f8;
+  border-radius: 20px;
+  padding: 25px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  border: 2px solid transparent;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(254, 59, 21, 0.15);
+    border-color: #FE3B15;
+  }
+  
+  &.selected {
+    border-color: #FE3B15;
+    background: white;
+    box-shadow: 0 10px 25px rgba(254, 59, 21, 0.2);
+  }
+  
+  .weaponHeader {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+    
+    .weaponCategory {
+      font-family: 'PT Sans', sans-serif;
+      font-size: 12px;
+      color: #FE3B15;
+      background: rgba(254, 59, 21, 0.1);
+      padding: 4px 12px;
+      border-radius: 15px;
+    }
+  }
+  
+  .weaponImage {
+    font-size: 64px;
+    text-align: center;
+    margin: 10px 0;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.2));
+  }
+  
+  .weaponName {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+    min-height: 60px;
+  }
+  
+  .weaponDetails {
+    margin: 20px 0;
+    
+    > div {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      font-family: 'PT Sans', sans-serif;
+      font-size: 14px;
+      color: #666;
+      
+      strong {
+        color: #333;
+        font-weight: 600;
+      }
+    }
+  }
+  
+  .selectButton {
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: 2px solid #FE3B15;
+    color: #333;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: #FE3B15;
+      color: white;
+    }
+  }
+}
+
+// Секция пакетов
+.packagesSection {
+  margin: 60px 0;
+}
+
+.sectionTitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin: 0 0 40px;
+  
+  @media (max-width: 768px) {
+    font-size: 26px;
+  }
+}
+
+.packagesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.packageCard {
+  background: #f8f8f8;
+  border-radius: 20px;
+  padding: 35px 25px;
+  text-align: center;
+  position: relative;
+  transition: all 0.3s ease;
+  
+  &.popular {
+    background: linear-gradient(135deg, #f8f8f8, #f0f0f0);
+    border: 2px solid #FE3B15;
+    transform: scale(1.05);
+    
+    @media (max-width: 576px) {
+      transform: scale(1);
+    }
+  }
+  
+  .popularBadge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #FE3B15;
+    color: white;
+    padding: 5px 20px;
+    border-radius: 30px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  
+  h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 25px;
+    
+    li {
+      font-family: 'PT Sans', sans-serif;
+      font-size: 16px;
+      color: #666;
+      padding: 8px 0;
+      border-bottom: 1px dashed rgba(0,0,0,0.1);
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      &::before {
+        content: '✓';
+        color: #FE3B15;
+        margin-right: 10px;
+      }
+    }
+  }
+  
+  .packagePrice {
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #FE3B15;
+    
+    &::after {
+      content: '₽';
+      font-size: 20px;
+      margin-left: 5px;
+      color: #666;
+    }
+  }
+}
+
+// Информационная секция
+.infoSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin: 60px 0;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.infoCard {
+  background: #f8f8f8;
+  border-radius: 20px;
+  padding: 30px;
+  
+  h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: #FE3B15;
+    margin-bottom: 20px;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    li {
+      font-family: 'PT Sans', sans-serif;
+      font-size: 16px;
+      color: #555;
+      padding: 8px 0;
+      border-bottom: 1px dashed rgba(0,0,0,0.1);
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      &::before {
+        content: '•';
+        color: #FE3B15;
+        font-size: 20px;
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+// Контакты
+.contactsSection {
+  margin: 60px 0;
+  background: #f8f8f8;
+  border-radius: 20px;
+  padding: 40px;
+  
+  .contacts {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 25px;
+      align-items: center;
+    }
+  }
+  
+  .contactItem {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    
+    .contactIcon {
+      font-size: 32px;
+    }
+    
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      
+      a, p {
+        font-family: 'PT Sans', sans-serif;
+        font-size: 18px;
+        color: #333;
+        text-decoration: none;
+        
+        @media (max-width: 768px) {
+          font-size: 16px;
+        }
+      }
+      
+      a:hover {
+        color: #FE3B15;
+      }
+    }
+  }
+}

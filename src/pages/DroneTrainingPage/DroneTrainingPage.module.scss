@@ -1,0 +1,360 @@
+.droneTrainingPage {
+  width: 100%;
+  max-width: 1280px;
+  margin: 100px auto 80px;
+  padding: 0 30px;
+  
+  @media (max-width: 768px) {
+    padding: 0 20px;
+    margin: 80px auto 40px;
+  }
+}
+
+// Hero секция
+.hero {
+  margin-bottom: 40px;
+  
+  .title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+    margin: 0 0 20px;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: #FE3B15;
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 36px;
+    }
+  }
+  
+  .description {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 20px;
+    line-height: 1.6;
+    color: #FE3B15;
+    font-weight: 500;
+    
+    @media (max-width: 768px) {
+      font-size: 18px;
+    }
+  }
+}
+
+// Основной текст
+.mainText {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #555;
+  margin: 30px 0 40px;
+  padding: 20px;
+  background: #f8f8f8;
+  border-radius: 10px;
+  border-left: 4px solid #FE3B15;
+}
+
+// Общие заголовки секций
+.sectionTitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 30px;
+  
+  @media (max-width: 768px) {
+    font-size: 26px;
+  }
+}
+
+// Программы обучения
+.programsSection {
+  margin: 50px 0;
+}
+
+.programsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.programCard {
+  background: #f8f8f8;
+  border-radius: 20px;
+  padding: 30px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
+  
+  &:hover {
+    border-color: #FE3B15;
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(254, 59, 21, 0.1);
+  }
+  
+  .programHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    
+    .programBadge {
+      background: #FE3B15;
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    
+    .programHours {
+      font-family: 'PT Sans', sans-serif;
+      font-size: 14px;
+      color: #666;
+      background: white;
+      padding: 4px 10px;
+      border-radius: 15px;
+    }
+  }
+  
+  .programTitle {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+  
+  .programType {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 14px;
+    color: #FE3B15;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .programDescription {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 15px;
+    color: #666;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    flex: 1;
+  }
+  
+  .programFooter {
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    
+    .programPrice {
+      font-family: 'Oswald', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #FE3B15;
+      
+      &::after {
+        content: '₽';
+        font-size: 18px;
+        margin-left: 3px;
+        color: #666;
+      }
+    }
+  }
+}
+
+// Правовая информация
+.legalSection {
+  background: linear-gradient(135deg, #f8f8f8, #f0f0f0);
+  border-radius: 20px;
+  padding: 35px;
+  margin: 50px 0;
+  display: flex;
+  gap: 25px;
+  align-items: flex-start;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .legalIcon {
+    font-size: 48px;
+    flex-shrink: 0;
+  }
+  
+  .legalContent {
+    flex: 1;
+    
+    .legalText {
+      font-family: 'PT Sans', sans-serif;
+      font-size: 16px;
+      color: #333;
+      line-height: 1.6;
+      margin-bottom: 10px;
+      font-weight: 500;
+    }
+    
+    .legalDocument {
+      font-family: 'PT Sans', sans-serif;
+      font-size: 14px;
+      color: #666;
+      font-style: italic;
+    }
+  }
+}
+
+// Информация о реестре
+.registrySection {
+  background: #f8f8f8;
+  border-radius: 20px;
+  padding: 30px;
+  margin: 40px 0;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  border: 1px solid rgba(254, 59, 21, 0.2);
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+  
+  .registryIcon {
+    font-size: 40px;
+    flex-shrink: 0;
+  }
+  
+  .registryText {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    font-weight: 500;
+  }
+}
+
+// Преимущества
+.advantagesSection {
+  margin: 50px 0;
+}
+
+.advantagesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.advantageItem {
+  background: #f8f8f8;
+  border-radius: 15px;
+  padding: 25px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(254, 59, 21, 0.1);
+    
+    .advantageIcon {
+      background: #FE3B15;
+      color: white;
+    }
+  }
+  
+  .advantageIcon {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: #FE3B15;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+    border: 2px solid #FE3B15;
+  }
+  
+  .advantageText {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+  }
+}
+
+// Контакты
+.contactsSection {
+  margin: 50px 0;
+  background: #f8f8f8;
+  border-radius: 20px;
+  padding: 35px;
+  
+  .contacts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: 25px;
+    }
+  }
+  
+  .contactItem {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    
+    .contactIcon {
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+    
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      
+      a, p {
+        font-family: 'PT Sans', sans-serif;
+        font-size: 18px;
+        color: #333;
+        text-decoration: none;
+        
+        @media (max-width: 768px) {
+          font-size: 16px;
+        }
+      }
+      
+      a:hover {
+        color: #FE3B15;
+      }
+    }
+  }
+}

@@ -1,0 +1,1 @@
+export { IntroShootingPage } from './IntroShootingPage';

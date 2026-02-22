@@ -1,1 +1,449 @@
-.layout{}
+.safetyTrainingPage {
+  width: 100%;
+  max-width: 1280px;
+  margin: 100px auto 80px;
+  padding: 0 30px;
+  
+  @media (max-width: 768px) {
+    padding: 0 20px;
+    margin: 80px auto 40px;
+  }
+}
+
+// Секция героя
+.hero {
+  margin-bottom: 60px;
+  
+  .title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+    margin: 0 0 20px;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: #FE3B15;
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 32px;
+    }
+  }
+  
+  .description {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #666;
+    max-width: 800px;
+    
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
+  }
+}
+
+// Секция
+.section {
+  margin: 60px 0;
+  
+  .sectionTitle {
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #333;
+    margin: 0 0 15px;
+    
+    @media (max-width: 768px) {
+      font-size: 26px;
+    }
+  }
+  
+  .sectionSubtitle {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 18px;
+    color: #FE3B15;
+    margin-bottom: 30px;
+    
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
+  }
+}
+
+// Грид для двух колонок
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+// Карточка
+.card {
+  background: #f8f8f8;
+  border-radius: 20px;
+  padding: 35px;
+  height: 100%;
+  
+  @media (max-width: 768px) {
+    padding: 25px;
+  }
+  
+  .cardTitle {
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #FE3B15;
+  }
+}
+
+// Список документов
+.documentsList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px;
+  
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+    
+    &::before {
+      content: '📄';
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+  }
+}
+
+// Программа
+.programList {
+  margin: 20px 0;
+  
+  .programItem {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(0,0,0,0.1);
+    font-family: 'PT Sans', sans-serif;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    .programName {
+      color: #333;
+    }
+    
+    .programHours {
+      color: #FE3B15;
+      font-weight: 600;
+    }
+  }
+}
+
+// Цена
+.price {
+  font-family: 'Oswald', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #FE3B15;
+  margin: 20px 0 0;
+  
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
+}
+
+// Ценовые карточки
+.pricesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin: 40px 0;
+}
+
+.priceCard {
+  background: #f8f8f8;
+  border-radius: 15px;
+  padding: 25px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  
+  &:hover {
+    border-color: #FE3B15;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(254, 59, 21, 0.1);
+  }
+  
+  .priceCardTitle {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+  }
+  
+  .priceCardDesc {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 15px;
+  }
+  
+  .priceCardValue {
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #FE3B15;
+  }
+}
+
+// Дополнительные услуги
+.servicesList {
+  background: #f8f8f8;
+  border-radius: 15px;
+  padding: 25px;
+  
+  .serviceItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    
+    &:last-child {
+      border-bottom: none;
+    }
+    
+    .serviceName {
+      font-family: 'PT Sans', sans-serif;
+      font-size: 16px;
+      color: #333;
+    }
+    
+    .servicePrice {
+      font-family: 'Oswald', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: #FE3B15;
+    }
+  }
+}
+
+// Расписание
+.scheduleList {
+  background: #f8f8f8;
+  border-radius: 15px;
+  padding: 25px;
+  
+  .scheduleItem {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    color: #555;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+// Информация об экзамене
+.examSection {
+  background: #f8f8f8;
+  border-radius: 20px;
+  padding: 35px;
+  margin: 40px 0;
+  
+  .examTitle {
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 30px;
+  }
+}
+
+.examGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .examBlock {
+    h4 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: #FE3B15;
+      margin-bottom: 20px;
+    }
+    
+    p {
+      font-family: 'PT Sans', sans-serif;
+      font-size: 16px;
+      color: #555;
+      margin-bottom: 15px;
+    }
+    
+    ul {
+      list-style: none;
+      padding: 0;
+      
+      li {
+        margin-bottom: 10px;
+        padding-left: 20px;
+        position: relative;
+        font-family: 'PT Sans', sans-serif;
+        font-size: 15px;
+        color: #555;
+        
+        &::before {
+          content: '•';
+          color: #FE3B15;
+          font-size: 18px;
+          position: absolute;
+          left: 0;
+        }
+      }
+    }
+  }
+}
+
+.mistakesList {
+  margin-top: 20px;
+  
+  li {
+    &::before {
+      content: '⚠️' !important;
+      color: #FE3B15;
+    }
+  }
+}
+
+.warning {
+  margin-top: 20px;
+  padding: 15px;
+  background: rgba(254, 59, 21, 0.1);
+  border-left: 4px solid #FE3B15;
+  border-radius: 8px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500;
+  color: #333;
+}
+
+// Результат
+.resultBlock {
+  background: linear-gradient(135deg, #f8f8f8, #f0f0f0);
+  border-radius: 20px;
+  padding: 35px;
+  margin: 40px 0;
+  text-align: center;
+  
+  p {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 18px;
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    
+    &:last-child {
+      margin-bottom: 0;
+      font-weight: 600;
+      color: #FE3B15;
+    }
+  }
+}
+
+// Контакты
+.contactsBlock {
+  background: #f8f8f8;
+  border-radius: 20px;
+  padding: 35px;
+  margin: 40px 0;
+  
+  h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+  }
+  
+  p {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 25px;
+  }
+}
+
+.contactMethods {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .contactMethod {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    
+    .methodIcon {
+      font-size: 24px;
+    }
+    
+    .methodContent {
+      h4 {
+        font-family: 'Oswald', sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 10px;
+      }
+      
+      p, a {
+        font-family: 'PT Sans', sans-serif;
+        font-size: 16px;
+        color: #555;
+        text-decoration: none;
+        line-height: 1.5;
+      }
+      
+      a:hover {
+        color: #FE3B15;
+      }
+    }
+  }
+}

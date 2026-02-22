@@ -1,0 +1,322 @@
+.periodicCheckPage {
+  width: 100%;
+  max-width: 1280px;
+  margin: 100px auto 80px;
+  padding: 0 30px;
+  
+  @media (max-width: 768px) {
+    padding: 0 20px;
+    margin: 80px auto 40px;
+  }
+}
+
+// Hero секция
+.hero {
+  margin-bottom: 60px;
+  
+  .title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: #333;
+    text-transform: uppercase;
+    margin: 0 0 20px;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: #FE3B15;
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 32px;
+    }
+  }
+  
+  .description {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #666;
+    max-width: 800px;
+    
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
+  }
+}
+
+// Общие заголовки секций
+.sectionTitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 30px;
+  
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
+}
+
+// График
+.scheduleSection {
+  margin: 50px 0;
+  background: #f8f8f8;
+  border-radius: 20px;
+  padding: 35px;
+}
+
+.scheduleList {
+  display: grid;
+  gap: 15px;
+}
+
+.scheduleItem {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: white;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateX(5px);
+    box-shadow: 0 5px 15px rgba(254, 59, 21, 0.1);
+  }
+  
+  .dateIcon {
+    font-size: 24px;
+  }
+  
+  .dateText {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 18px;
+    color: #333;
+    
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
+  }
+}
+
+// Документы
+.documentsSection {
+  margin: 50px 0;
+  background: #f8f8f8;
+  border-radius: 20px;
+  padding: 35px;
+}
+
+.documentsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+  li {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 18px;
+    color: #555;
+    
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
+    
+    .docIcon {
+      font-size: 20px;
+    }
+  }
+}
+
+// PDF секция
+.pdfSection {
+  margin: 50px 0;
+  
+  .pdfDescription {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+  }
+}
+
+.pdfCard {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  background: linear-gradient(135deg, #f8f8f8, #f0f0f0);
+  border-radius: 20px;
+  padding: 30px;
+  border: 1px solid rgba(254, 59, 21, 0.2);
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+    padding: 25px;
+  }
+  
+  .pdfIcon {
+    font-size: 64px;
+    color: #FE3B15;
+    
+    @media (max-width: 768px) {
+      font-size: 48px;
+    }
+  }
+  
+  .pdfContent {
+    flex: 1;
+    
+    h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 24px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+    }
+    
+    p {
+      font-family: 'PT Sans', sans-serif;
+      font-size: 16px;
+      color: #666;
+    }
+  }
+}
+
+.downloadButton {
+  background: #FE3B15;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 10px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  
+  &:hover {
+    background: #FE3B15;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(254, 59, 21, 0.3);
+  }
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 12px 20px;
+  }
+}
+
+// Информационные карточки
+.infoSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin: 50px 0;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.infoCard {
+  background: #f8f8f8;
+  border-radius: 15px;
+  padding: 25px;
+  
+  h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #FE3B15;
+    margin-bottom: 15px;
+  }
+  
+  p {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+  }
+}
+
+// Контакты
+.contactsSection {
+  margin: 50px 0;
+  background: #f8f8f8;
+  border-radius: 20px;
+  padding: 35px;
+  text-align: center;
+  
+  .contacts {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin: 25px 0;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 15px;
+    }
+  }
+  
+  .phone {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    
+    &:hover {
+      color: #FE3B15;
+    }
+    
+    .phoneIcon {
+      font-size: 24px;
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 20px;
+      justify-content: center;
+    }
+  }
+  
+  .address {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 18px;
+    color: #555;
+    margin-top: 20px;
+    
+    .addressIcon {
+      font-size: 20px;
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 16px;
+      flex-wrap: wrap;
+    }
+  }
+}

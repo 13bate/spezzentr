@@ -1,0 +1,1 @@
+export { SecurityTrainingPage } from './SecurityTrainingPage';
