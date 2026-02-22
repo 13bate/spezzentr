@@ -1,21 +1,24 @@
-import securityGuardImg from "../../assets/spezzenter/security-person.jpeg"
-import safetyImg from "../../assets/spezzenter/person-take-aim.jpg"
-import periodCheckImg from "../../assets/spezzenter/period-check.jpeg"
-import dronesImg from "../../assets/spezzenter/drone.jpg"
+
 
 export const trainingCenterCardsData = [
   {
-    id: "1",
     label: 'Обучение безопасному обращению с оружием',
     href: '/training/safety',
-    imageHref: safetyImg,
+    description: 'Научитесь правильно и безопасно обращаться с оружием. Курс включает теорию, практику в тире под руководством опытных инструкторов.',
   },
-  { id: "2", label: 'Обучение охранников', href: '/training/security-guards', imageHref: securityGuardImg },
   {
-    id: "3",
+    label: 'Обучение частных охранников',
+    href: '/training/security-guards',
+    description: 'Профессиональная подготовка частных охранников 4-6 разрядов. Полный курс теории, огневой подготовки и практических навыков для работы в охране.',
+  },
+  {
     label: 'Периодическая проверка охранников 4–6 разрядов',
     href: '/training/periodic-checks',
-    imageHref: periodCheckImg,
+    description: 'Официальная периодическая проверка для охранников 4, 5 и 6 разрядов. Тестирование теоретических знаний и практических навыков согласно нормативам.',
   },
-  { id: "4", label: 'БПЛА', href: '/training/drones', imageHref: dronesImg },
-]
+  {
+    label: 'БПЛА',
+    href: '/training/drones',
+    description: 'Обучение управлению беспилотными летательными аппаратами. Теория, работа на симуляторах.',
+  },
+];

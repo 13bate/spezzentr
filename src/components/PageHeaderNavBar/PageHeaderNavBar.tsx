@@ -6,14 +6,24 @@ import { faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router";
 import type { INavBarItems } from "../../shared/types";
 import { NavBar } from "../NavBar";
+
 interface Props {
   className?: string;
   currentSection: string;
   pathname: string;
   isHomepage?: boolean;
+  mobile?: boolean; // добавили проп для мобильной версии
+  onItemClick?: () => void; // для закрытия меню после клика
 }
 
-export const PageHeaderNavBar: React.FC<Props> = ({ className, currentSection, pathname, isHomepage }) => {
+export const PageHeaderNavBar: React.FC<Props> = ({
+  className,
+  currentSection,
+  pathname,
+  isHomepage,
+  mobile = false,
+  onItemClick
+}) => {
 
   let links: INavBarItems[] = [];
 
@@ -23,21 +33,29 @@ export const PageHeaderNavBar: React.FC<Props> = ({ className, currentSection, p
   if (isHomepage == true) return <NavBar />
   else
     return (
-      <ul className={clsx(className, style.pageHeaderNavBar)}>
-
+      <ul className={clsx(
+        className,
+        style.pageHeaderNavBar,
+        mobile && style.mobile
+      )}>
         {links.map((item) => (
-          item.href == pathname ?
-            <li key={item.href} className={clsx(style.navBarElement, style.navBarActiveElement)}>
-              <Link to={item.href}>{item.label}
-              </Link>
-              <FontAwesomeIcon className={style.NavBarElementChevron} icon={faChevronUp} />
-
-            </li>
-            :
-            <li key={item.href} className={clsx(style.navBarElement)}>
-              <Link to={item.href}>{item.label}
-              </Link>
-            </li>
+          <li
+            key={item.href}
+            className={clsx(
+              style.navBarElement,
+              item.href === pathname && style.navBarActiveElement
+            )}
+          >
+            <Link to={item.href} onClick={onItemClick}>
+              {item.label}
+            </Link>
+            {item.href === pathname && (
+              <FontAwesomeIcon
+                className={style.NavBarElementChevron}
+                icon={faChevronUp}
+              />
+            )}
+          </li>
         ))}
       </ul>
     );

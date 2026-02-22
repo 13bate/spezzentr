@@ -1,82 +1,235 @@
-.container {
+// Сброс ссылок
+a:hover {
+  color: inherit !important;
+}
+
+.cardsOverview {
   width: 100%;
-  max-width: 1280px !important; /* или любая другая максимальная ширина */
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 60px 30px;
   box-sizing: border-box;
+  background: #f8f8f8;
 }
 
-.blocksContainer{
+.cardsContainer {
+  margin: 40px 0 0 0;
   display: flex;
-  gap: 30px;
   justify-content: space-between;
-
-}
-.blocksItem{
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: column;
-  background-color: #B7B6AC;
-  width: 280px;
-  border: 2px;
-  border-radius: 10px;
-  color:#3C3C4C;
-  font-weight: 800;
-  font-size: 18px;
-}
-.blocksItem > a {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.3s ease-in-out
-}
-.blocksItem:hover{
-  transform: scale(1.03);
+  gap: 30px;
+  
+  @media (max-width: 992px) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 }
 
-.blocksItemPhoto{
-  width: 100% !important;
-  height: 260px;
-  object-fit: cover;
-  display: block;
-  padding-bottom: 20px;
-    border: 2px;
-  border-radius: 10px;
+.cardItem {
+  position: relative;
+  width: 30%;
+  min-height: 320px;
+  background: linear-gradient(145deg, #ffffff, #dcddd2);
+  border-radius: 20px;
+  padding: 30px 25px 80px 25px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  
+  // Градиентная граница при наведении
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    padding: 2px;
+    background: linear-gradient(135deg, #FE3B15, transparent);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(254, 59, 21, 0.15);
+    
+    &::before {
+      opacity: 1;
+    }
+    
+    .cardLabel {
+      color: #FE3B15;
+    }
+    
+    .cardIcon {
+      transform: scale(1.1);
+      color: #FE3B15;
+    }
+    
+    .cardButton {
+      background: #FE3B15;
+      color: white;
+      padding-right: 35px;
+      
+      svg {
+        transform: translateX(5px);
+      }
+    }
+  }
+  
+  @media (max-width: 992px) {
+    width: 45%;
+    min-width: 280px;
+  }
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    max-width: 400px;
+  }
 }
-.CardBottomPartContainer{
+
+.cardItemLink {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  text-decoration: none;
+  height: 100%;
   width: 100%;
-  padding: 5px 5px 20px 5px;
-  box-sizing: border-box;
 }
-.blocksItemLabel{
-  text-align: center;
-  width: 100%;
-  height: 120px;
-  font-size: 20px;
-  font-weight: bold;
-}
-.bottomPartButton{
-  display: flex;
-  align-items: center;
-  border: none;
-  background-color: #B7B6AC;
-  font-size: 17px;
-   font-weight: 300;
-  color: #545245; 
+
+// Добавляем иконку для каждой карточки
+.cardIcon {
+  font-size: 48px;
+  color: #545245;
+  margin-bottom: 20px;
   transition: all 0.3s ease;
 }
-.blocksItem.isHovered .bottomPartButton{
-  color: #FE3B15 ;
 
+.cardLabel {
+  text-align: center;
+  width: 100%;
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 15px;
+  transition: color 0.3s ease;
+  position: relative;
+  
+  // Декоративная линия под заголовком
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: #FE3B15;
+    border-radius: 2px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
 }
-.bottomPartChevron{
- font-size: 14px;
+
+.cardItem:hover .cardLabel::after {
+  opacity: 1;
+}
+
+.cardDescription {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #666;
+  text-align: center;
+  margin: 15px 0 0 0;
+  padding: 0 10px;
+}
+
+.cardButton {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: transparent;
+  border: 2px solid #FE3B15;
+  border-radius: 30px;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #FE3B15;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  white-space: nowrap;
+  
+  &:hover {
+    background: #FE3B15;
+    color: white;
+    padding-right: 35px;
+    
+    svg {
+      transform: translateX(5px);
+    }
+  }
+  
+  svg {
+    transition: transform 0.3s ease;
+    font-size: 14px;
+  }
+}
+
+.cardChevron {
+  transition: transform 0.3s ease;
+}
+
+// Анимация появления карточек
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cardItem {
+  animation: fadeInUp 0.6s ease forwards;
+  
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.1}s;
+    }
+  }
+}
+
+// Альтернативный стиль карточки (можно переключать)
+.cardItemModern {
+  background: white;
+  border: 1px solid rgba(254, 59, 21, 0.1);
+  
+  .cardLabel {
+    font-size: 22px;
+  }
+  
+  .cardIcon {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(254, 59, 21, 0.1);
+    border-radius: 50%;
+    padding: 20px;
+  }
+}
+
+// Стили для пустого состояния
+.noCards {
+  text-align: center;
+  padding: 60px;
+  color: #999;
+  font-size: 18px;
 }

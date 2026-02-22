@@ -1,8 +1,7 @@
 export interface ICard {
-  id: string;
   label: string;
   href: string;
-  imageHref: string;
+  description: string;
 };
 
 export type ICardList = ICard[];

@@ -1,3 +1,5 @@
+
+
 .container {
   width: 100%;
   max-width: 1280px !important; /* или любая другая максимальная ширина */
@@ -73,10 +75,7 @@
   color: #545245; 
   transition: all 0.3s ease;
 }
-.blocksItem.isHovered .bottomPartButton{
-  color: #FE3B15 ;
 
-}
 .bottomPartChevron{
  font-size: 14px;
 }
