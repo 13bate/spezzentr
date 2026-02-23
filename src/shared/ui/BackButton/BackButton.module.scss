@@ -1,0 +1,23 @@
+// BackButton.module.scss
+.backButton {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 25px;
+  background: #f8f8f8;
+  border-radius: 40px;
+  color: #333;
+  text-decoration: none;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(254, 59, 21, 0.1);
+  margin-top: 80px;
+  
+  &:hover {
+    background: #FE3B15;
+    color: white !important;
+    transform: translateX(-5px);
+    border-color: #FE3B15;
+  }
+}

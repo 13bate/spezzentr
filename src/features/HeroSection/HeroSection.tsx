@@ -1,8 +1,8 @@
 import style from "./HeroSection.module.scss"
-import heroBackground from "../../assets/spezzenter/hero.jpg"
 import patternImg from "../../assets/spezzenter/ab6c22b1-562f-4bc9-a9f2-97dfbe6b05bf.png"
 import clsx from "clsx";
-import { Button } from "../../shared/ui/Button";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 import { Link } from "react-router";
 import { heroContent } from "./model";
@@ -14,6 +14,10 @@ interface Props {
 export const HeroSection: React.FC<Props> = ({ className }) => {
   return (
     <div className={clsx(className, style.heroSection)}>
+      {/* Акцентные линии */}
+      <div className={`${style.accentLine} ${style.vertical}`} />
+      <div className={`${style.accentLine} ${style.horizontal}`} />
+
       {/* Левая колонка с паттерном */}
       <div className={style.patternContainer}>
         <img className={style.patternImg} src={patternImg} alt="pattern" />
@@ -22,9 +26,24 @@ export const HeroSection: React.FC<Props> = ({ className }) => {
         </div>
       </div>
 
-      {/* Правая колонка с фоном и контентом */}
+      {/* Правая колонка с CSS-фоном */}
       <div className={style.bgContainer}>
-        <img className={style.heroBackground} src={heroBackground} alt="background" />
+        <div className={style.heroBackground} />
+
+        {/* Динамические световые линии */}
+        <div className={style.lightLines}>
+          {[...Array(8)].map((_, i) => (
+            <span key={i} />
+          ))}
+        </div>
+
+        {/* Парящие частицы */}
+        <div className={style.particles}>
+          {[...Array(30)].map((_, i) => (
+            <span key={i} />
+          ))}
+        </div>
+
         <div className={style.heroContent}>
           <h1 className={style.heroTitle}>
             {heroContent.title.main}
@@ -35,11 +54,11 @@ export const HeroSection: React.FC<Props> = ({ className }) => {
             {heroContent.description}
           </p>
 
-          <div className={style.buttons}>
-            <Link to={heroContent.buttons.primary.link}>
-              <Button>
-                {heroContent.buttons.primary.text}
-              </Button>
+          {/* Кнопка справа */}
+          <div className={style.buttonContainer}>
+            <Link to={heroContent.buttons.primary.link} className={style.glassButton}>
+              <span>{heroContent.buttons.primary.text}</span>
+              <FontAwesomeIcon icon={faArrowRight} className={style.buttonArrow} />
             </Link>
           </div>
         </div>

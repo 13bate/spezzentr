@@ -1,0 +1,159 @@
+.basicInfoPage {
+  width: 100%;
+  max-width: 1280px;
+  margin: 100px auto 80px;
+  padding: 0 30px;
+  
+  @media (max-width: 768px) {
+    padding: 0 20px;
+    margin: 80px auto 40px;
+  }
+}
+
+// Контейнер для кнопки с отступом слева
+.buttonWrapper {
+  margin-left: 20px;
+  margin-bottom: 20px;
+  
+  @media (max-width: 768px) {
+    margin-left: 10px;
+  }
+}
+
+.categorySection {
+  scroll-margin-top: 150px;
+  margin-left: 20px;
+  
+  @media (max-width: 768px) {
+    margin-left: 10px;
+  }
+}
+
+.categoryHeader {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  margin-left: 0; // Убеждаемся что заголовок тоже с отступом
+  
+  .categoryIcon {
+    width: 60px;
+    height: 60px;
+    background: rgba(254, 59, 21, 0.1);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #FE3B15;
+    flex-shrink: 0;
+  }
+  
+  .categoryTitle {
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+    
+    @media (max-width: 768px) {
+      font-size: 24px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+}
+
+.contentContainer {
+  background: #f8f8f8;
+  border-radius: 30px;
+  padding: 40px;
+  
+  @media (max-width: 768px) {
+    padding: 25px;
+  }
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 25px;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.infoCard {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(254, 59, 21, 0.08);
+    border-color: rgba(254, 59, 21, 0.2);
+  }
+  
+  .infoLabel {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 13px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    display: block;
+  }
+  
+  .infoValue {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    color: #333;
+    line-height: 1.5;
+    
+    &.large {
+      font-size: 24px;
+      color: #FE3B15;
+      font-weight: 600;
+    }
+    
+    a {
+      color: #333;
+      text-decoration: none;
+      transition: color 0.3s ease;
+      border-bottom: 1px dashed transparent;
+      
+      &:hover {
+        color: #FE3B15;
+        border-bottom-color: #FE3B15;
+      }
+    }
+  }
+  
+  .infoList {
+    margin-top: 5px;
+    
+    div {
+      padding: 5px 0;
+      font-family: 'PT Sans', sans-serif;
+      font-size: 16px;
+      color: #555;
+      
+      a {
+        color: #333;
+        text-decoration: none;
+        
+        &:hover {
+          color: #FE3B15;
+        }
+      }
+    }
+  }
+}

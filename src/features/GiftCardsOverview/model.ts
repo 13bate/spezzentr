@@ -8,7 +8,7 @@ export const giftCardsContent = {
   ],
 
   buttonText: 'Выбрать сертификат',
-  buttonLink: '/gift-cards',
+  buttonLink: 'shooting/gift-cards',
 
   price: 'от 1 000 ₽',
 };

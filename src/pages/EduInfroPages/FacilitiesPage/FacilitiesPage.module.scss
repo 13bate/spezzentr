@@ -1,0 +1,364 @@
+.facilitiesPage {
+  width: 100%;
+  max-width: 1280px;
+  margin: 100px auto 80px;
+  padding: 0 30px;
+  
+  @media (max-width: 768px) {
+    padding: 0 20px;
+    margin: 80px auto 40px;
+  }
+}
+
+.pageNavigation {
+  margin-left: 20px;
+  margin-bottom: 20px;
+  
+  @media (max-width: 768px) {
+    margin-left: 10px;
+  }
+}
+
+.section {
+  scroll-margin-top: 150px;
+  margin-left: 20px;
+  
+  @media (max-width: 768px) {
+    margin-left: 10px;
+  }
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  
+  .sectionIcon {
+    width: 60px;
+    height: 60px;
+    background: rgba(254, 59, 21, 0.1);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #FE3B15;
+    flex-shrink: 0;
+  }
+  
+  .sectionTitle {
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+    
+    @media (max-width: 768px) {
+      font-size: 24px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+}
+
+.contentContainer {
+  background: #f8f8f8;
+  border-radius: 30px;
+  padding: 40px;
+  
+  @media (max-width: 768px) {
+    padding: 25px;
+  }
+}
+
+.sectionSubtitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin: 40px 0 25px;
+  position: relative;
+  
+  &:first-of-type {
+    margin-top: 0;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: #FE3B15;
+  }
+}
+
+.infoCard {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 25px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(254, 59, 21, 0.1);
+    border-color: #FE3B15;
+    
+    .cardIcon {
+      background: #FE3B15;
+      color: white;
+    }
+  }
+  
+  .cardHeader {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    
+    .cardIcon {
+      width: 48px;
+      height: 48px;
+      background: rgba(254, 59, 21, 0.05);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: #FE3B15;
+      transition: all 0.3s ease;
+    }
+    
+    .cardTitle {
+      font-family: 'Oswald', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: #333;
+      margin: 0;
+    }
+  }
+  
+  .cardAddress {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    color: #FE3B15;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed rgba(254, 59, 21, 0.2);
+  }
+  
+  .cardDescription {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+.shootingRangeCard {
+  background: linear-gradient(135deg, #fff, #f8f8f8);
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 25px;
+  transition: all 0.3s ease;
+  border: 2px solid #FE3B15;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(254, 59, 21, 0.15);
+    
+    .cardIcon {
+      background: #FE3B15;
+      color: white;
+    }
+  }
+  
+  .cardHeader {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    
+    .cardIcon {
+      width: 48px;
+      height: 48px;
+      background: rgba(254, 59, 21, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: #FE3B15;
+      transition: all 0.3s ease;
+    }
+    
+    .cardTitle {
+      font-family: 'Oswald', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: #333;
+      margin: 0;
+    }
+  }
+  
+  .cardAddress {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    color: #FE3B15;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+  
+  .cardDescription {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+}
+
+.featuresList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+  
+  .featureItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: rgba(254, 59, 21, 0.03);
+    border-radius: 8px;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 14px;
+    color: #555;
+    
+    .featureIcon {
+      color: #FE3B15;
+      font-weight: bold;
+    }
+  }
+}
+
+.accessibilityCard {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 25px;
+  border: 2px dashed #FE3B15;
+  
+  .cardHeader {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    
+    .cardIcon {
+      width: 48px;
+      height: 48px;
+      background: rgba(254, 59, 21, 0.05);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: #FE3B15;
+    }
+    
+    .cardTitle {
+      font-family: 'Oswald', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: #333;
+      margin: 0;
+    }
+  }
+  
+  .cardDescription {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 15px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  
+  .statusBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    background: rgba(255, 193, 7, 0.1);
+    border-radius: 30px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    color: #ffc107;
+    
+    .statusDot {
+      width: 8px;
+      height: 8px;
+      background: #ffc107;
+      border-radius: 50%;
+      animation: pulse 1.5s ease infinite;
+    }
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1);
+  }
+}
+
+.additionalInfo {
+  margin-top: 30px;
+  padding: 20px;
+  background: rgba(254, 59, 21, 0.03);
+  border-radius: 12px;
+  
+  .additionalText {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+    font-style: italic;
+    text-align: center;
+  }
+}
+
+// Анимация появления
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.infoCard,
+.shootingRangeCard,
+.accessibilityCard {
+  animation: fadeInUp 0.4s ease forwards;
+}

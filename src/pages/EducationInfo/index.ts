@@ -1,0 +1,2 @@
+export { EducationInfoHubPage } from './EducationInfoHubPage';
+

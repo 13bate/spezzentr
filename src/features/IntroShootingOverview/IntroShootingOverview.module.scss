@@ -1,56 +1,148 @@
 .introShooting {
   width: 100%;
-  margin: 130px auto;
+  max-width: 1280px;
+  margin: 100px auto 80px;
+  padding: 0 30px;
+  
+  @media (max-width: 768px) {
+    padding: 0 20px;
+    margin: 60px auto;
+  }
+}
+
+// Карточка-контейнер с WOW эффектами
+.cardContainer {
+  background: linear-gradient(135deg, #ffffff, #f5f5f7);
+  border-radius: 40px;
+  padding: 60px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.8) inset,
+    0 0 30px rgba(254, 59, 21, 0.1);
+  
+  // Основной градиентный фон
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: 
+      radial-gradient(circle at 30% 30%, rgba(254, 59, 21, 0.03) 0%, transparent 30%),
+      radial-gradient(circle at 70% 70%, rgba(254, 59, 21, 0.02) 0%, transparent 40%),
+      radial-gradient(circle at 10% 80%, rgba(100, 100, 255, 0.02) 0%, transparent 35%),
+      radial-gradient(circle at 90% 20%, rgba(255, 200, 100, 0.02) 0%, transparent 45%);
+    animation: rotate 50s linear infinite;
+    z-index: 0;
+  }
+  
+  // Стеклянная верхняя подсветка
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background: linear-gradient(180deg, 
+      rgba(255, 255, 255, 0.5) 0%, 
+      rgba(255, 255, 255, 0.2) 30%,
+      transparent 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  @media (max-width: 992px) {
+    padding: 40px;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 30px 20px;
+  }
+}
+
+// Сетка внутри карточки
+.cardGrid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 60px;
   align-items: center;
   position: relative;
+  z-index: 3;
   
   @media (max-width: 992px) {
     grid-template-columns: 1fr;
     gap: 40px;
-    margin: 60px auto;
-  }
-  
-  @media (max-width: 768px) {
-    padding: 0 20px;
-    margin: 40px auto;
   }
 }
 
+// Контент со стеклянным эффектом
 .content {
+  color: #333;
   position: relative;
-  z-index: 2;
+  z-index: 3;
+  
+  // Стеклянная подложка для текста
+  &::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    right: -20px;
+    bottom: -20px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(20px);
+    border-radius: 50px;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  
+  &:hover::before {
+    opacity: 1;
+  }
   
   .title {
-    font-size: 42px;
-    font-weight: 800;
-    color: #333;
-    margin-bottom: 20px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 52px;
+    font-weight: 700;
+    margin: 0 0 20px;
+    line-height: 1.2;
+    color: #1a1a1a;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05);
     position: relative;
+    display: inline-block;
     
     &::after {
       content: '';
       position: absolute;
-      bottom: -10px;
+      bottom: -5px;
       left: 0;
       width: 80px;
       height: 4px;
-      background: #FE3B15;
+      background: linear-gradient(90deg, #FE3B15, #ff8c42, #FE3B15);
       border-radius: 2px;
+      animation: gradientShift 3s ease infinite;
+      background-size: 200% 100%;
     }
     
     @media (max-width: 768px) {
-      font-size: 32px;
+      font-size: 40px;
     }
   }
   
   .description {
+    font-family: 'PT Sans', sans-serif;
     font-size: 18px;
-    line-height: 1.6;
-    color: #666;
-    margin: 30px 0 20px;
+    color: #444;
+    line-height: 1.7;
+    margin: 0 0 35px;
+    position: relative;
+    padding-left: 15px;
+    border-left: 3px solid rgba(254, 59, 21, 0.3);
     
     @media (max-width: 768px) {
       font-size: 16px;
@@ -60,142 +152,382 @@
   .highlightsList {
     list-style: none;
     padding: 0;
-    margin: 30px 0;
+    margin: 0 0 35px;
     
     li {
       display: flex;
       align-items: center;
-      gap: 12px;
-      font-size: 18px;
-      color: #555;
+      gap: 15px;
       margin-bottom: 15px;
-      padding-left: 0;
+      font-family: 'PT Sans', sans-serif;
+      font-size: 16px;
+      color: #333;
+      padding: 14px 20px;
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(10px);
+      border-radius: 60px;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+      transition: all 0.3s ease;
+      
+      &:hover {
+        transform: translateX(5px);
+        background: rgba(255, 255, 255, 0.8);
+        box-shadow: 0 8px 25px rgba(254, 59, 21, 0.1);
+        border-color: rgba(254, 59, 21, 0.3);
+      }
       
       &::before {
         content: '✓';
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 24px;
-        height: 24px;
-        background: #FE3B15;
+        width: 28px;
+        height: 28px;
+        background: linear-gradient(135deg, #FE3B15, #ff8c42);
         color: white;
         border-radius: 50%;
         font-size: 14px;
         font-weight: bold;
         flex-shrink: 0;
+        box-shadow: 0 5px 10px rgba(254, 59, 21, 0.3);
       }
       
       @media (max-width: 768px) {
-        font-size: 16px;
+        font-size: 14px;
+        padding: 12px 16px;
       }
     }
   }
   
   .buttonWrapper {
-    margin-top: 20px;
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: -5px;
+      left: -5px;
+      right: -5px;
+      bottom: -5px;
+      background: linear-gradient(135deg, #FE3B15, #ff8c42, #FE3B15);
+      border-radius: 60px;
+      opacity: 0.3;
+      filter: blur(10px);
+      animation: glow 2s ease infinite;
+      z-index: -1;
+    }
     
     button {
-      background: #FE3B15;
+      background: linear-gradient(135deg, #FE3B15, #ff5722);
       border: none;
-      padding: 16px 40px;
-      border-radius: 8px;
-      font-weight: 600;
+      padding: 18px 45px;
+      border-radius: 60px;
+      font-family: 'Oswald', sans-serif;
       font-size: 18px;
+      font-weight: 600;
+      color: white;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 
+        0 10px 30px rgba(254, 59, 21, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        transition: left 0.5s ease;
+      }
       
       &:hover {
-        background: darken(#FE3B15, 10%);
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(254, 59, 21, 0.3);
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 
+          0 20px 40px rgba(254, 59, 21, 0.4),
+          0 0 0 2px rgba(255, 255, 255, 0.8) inset;
+        
+        &::before {
+          left: 100%;
+        }
       }
       
       a {
         color: white;
         text-decoration: none;
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        
-        &::after {
-          content: '→';
-          font-size: 20px;
-          transition: transform 0.3s ease;
-        }
-      }
-      
-      &:hover a::after {
-        transform: translateX(5px);
+        letter-spacing: 1px;
       }
     }
   }
 }
 
+// Медиа контейнер с WOW эффектами
 .mediaContainer {
   position: relative;
-  height: 500px;
+  perspective: 1500px;
   
-  @media (max-width: 992px) {
-    height: 400px;
+  // Основное свечение
+  &::before {
+    content: '';
+    position: absolute;
+    width: 120%;
+    height: 120%;
+    top: -10%;
+    left: -10%;
+    background: radial-gradient(circle at 50% 50%, 
+      rgba(254, 59, 21, 0.2) 0%, 
+      rgba(254, 59, 21, 0.1) 30%,
+      transparent 70%);
+    filter: blur(40px);
+    z-index: 1;
+    animation: pulse 4s ease infinite;
+  }
+  
+  // Парящие стеклянные сферы
+  .glassSphere1, .glassSphere2, .glassSphere3 {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, 
+      rgba(255, 255, 255, 0.8), 
+      rgba(254, 59, 21, 0.1));
+    backdrop-filter: blur(5px);
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  .glassSphere1 {
+    width: 150px;
+    height: 150px;
+    top: -20px;
+    right: -20px;
+    background: radial-gradient(circle at 30% 30%, 
+      rgba(255, 255, 255, 0.6), 
+      rgba(254, 59, 21, 0.05));
+    animation: float 8s ease infinite;
+  }
+  
+  .glassSphere2 {
+    width: 100px;
+    height: 100px;
+    bottom: -10px;
+    left: 10px;
+    background: radial-gradient(circle at 30% 30%, 
+      rgba(255, 255, 255, 0.5), 
+      rgba(100, 100, 255, 0.05));
+    animation: float 6s ease infinite reverse;
+  }
+  
+  .glassSphere3 {
+    width: 80px;
+    height: 80px;
+    top: 40%;
+    right: 10%;
+    background: radial-gradient(circle at 30% 30%, 
+      rgba(255, 255, 255, 0.4), 
+      rgba(255, 200, 100, 0.05));
+    animation: float 7s ease infinite 1s;
+  }
+  
+  // Вращающийся паттерн (улучшенный)
+  .patternImage {
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 350px;
+    height: 350px;
+    background: 
+      repeating-linear-gradient(
+        45deg,
+        transparent 0px,
+        transparent 20px,
+        rgba(254, 59, 21, 0.03) 20px,
+        rgba(254, 59, 21, 0.03) 40px
+      ),
+      repeating-radial-gradient(
+        circle at 50% 50%,
+        rgba(254, 59, 21, 0.02) 0px,
+        transparent 20px
+      ),
+      linear-gradient(135deg, 
+        rgba(254, 59, 21, 0.02) 0%, 
+        transparent 30%, 
+        rgba(254, 59, 21, 0.02) 70%);
+    border-radius: 63% 37% 54% 46% / 37% 53% 47% 63%;
+    animation: rotate 30s linear infinite;
+    z-index: 2;
+    opacity: 0.6;
+    mix-blend-mode: overlay;
+    
+    @media (max-width: 768px) {
+      width: 250px;
+      height: 250px;
+      top: -30px;
+      left: -30px;
+    }
+  }
+  
+  // Основное изображение с улучшенными эффектами
+  .mainImage {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    height: auto;
+    border-radius: 35px;
+    box-shadow: 
+      0 30px 50px rgba(0, 0, 0, 0.15),
+      0 0 0 2px rgba(255, 255, 255, 0.9),
+      0 0 0 5px rgba(255, 255, 255, 0.3),
+      0 20px 40px rgba(254, 59, 21, 0.2);
+    transform: rotateY(-7deg) rotateX(3deg) scale(0.98);
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: floatImage 7s ease infinite;
+    
+    &:hover {
+      transform: rotateY(0deg) rotateX(0deg) scale(1.02);
+      box-shadow: 
+        0 40px 70px rgba(254, 59, 21, 0.3),
+        0 0 0 3px rgba(255, 255, 255, 1),
+        0 0 0 8px rgba(255, 255, 255, 0.4);
+    }
+  }
+}
+
+// Дополнительные декоративные элементы
+.floatingParticles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  
+  span {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(254, 59, 21, 0.2);
+    border-radius: 50%;
+    animation: particleFloat 10s linear infinite;
+    
+    @for $i from 1 through 10 {
+      &:nth-child(#{$i}) {
+        top: random(100) + '%';
+        left: random(100) + '%';
+        animation-delay: $i * 0.5s;
+        width: random(8) + 2px;
+        height: random(8) + 2px;
+      }
+    }
+  }
+}
+
+// Анимации
+@keyframes floatImage {
+  0%, 100% {
+    transform: translateY(0) rotateY(-7deg) rotateX(3deg);
+  }
+  50% {
+    transform: translateY(-15px) rotateY(-7deg) rotateX(3deg);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(15px, -15px) scale(1.1);
+  }
+  66% {
+    transform: translate(-10px, 10px) scale(0.9);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes particleFloat {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    opacity: 0.3;
+    filter: blur(10px);
+  }
+  50% {
+    opacity: 0.5;
+    filter: blur(15px);
+  }
+}
+
+// Медиа запросы
+@media (max-width: 768px) {
+  .mediaContainer {
     order: -1;
   }
   
-  @media (max-width: 768px) {
-    height: 300px;
-  }
-  
-  .mainImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-    position: relative;
-    z-index: 2;
-    transition: transform 0.3s ease;
-    
-    &:hover {
-      transform: scale(1.02);
-    }
-  }
-  
-  .patternImage {
-    position: absolute;
-    top: -20px;
-    right: -30px;
-    width: 250px;
-    height: 100%;
-    z-index: 1;
-    border-radius: 14px;
-    opacity: 70%;
-    
-    @media (max-width: 768px) {
-      width: 150px;
-      height: 150px;
-      top: -15px;
-      left: -15px;
-    }
-  }
-  
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -20px;
-    right: -20px;
+  .glassSphere1 {
     width: 100px;
     height: 100px;
-    border: 2px solid #FE3B15;
-    border-radius: 10px;
-    z-index: 1;
-    opacity: 0.2;
-    pointer-events: none;
-    
-    @media (max-width: 768px) {
-      width: 60px;
-      height: 60px;
-      bottom: -10px;
-      right: -10px;
-    }
+  }
+  
+  .glassSphere2 {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .glassSphere3 {
+    width: 50px;
+    height: 50px;
   }
 }

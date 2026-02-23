@@ -19,41 +19,46 @@ export const shootingRange = [
 
 
 export const eduOrgInfo = [
+	{ label: "Сведения об образовательной организации", href: "/education" },
 	{ label: 'Основные сведения', href: '/education/basic-info' },
 	{ label: 'Структура и органы управления', href: '/education/structure' },
 	{ label: 'Документы', href: '/education/documents' },
-	{ label: 'Образование', href: '/education/programs' },
+	{ label: 'Образование', href: '/education/education' },
 	{ label: 'Образовательные стандарты', href: '/education/standards' },
 	{ label: 'Руководство', href: '/education/management' },
+	{ label: 'Педагогический состав', href: '/education/teachers' },
 	{
-		label:
-			'Материально-техническое обеспечение и оснащенность образовательного процесса. Доступная среда',
-		href: '/education/resources',
+		label: 'Материально-техническое обеспечение и оснащенность образовательного процесса. Доступная среда',
+		href: '/education/facilities',
 	},
-	{ label: 'Платные образовательные услуги', href: '/education/paid-services' },
+	{ label: 'Платные образовательные услуги', href: '/education/paidServices' },
 	{ label: 'Финансово-хозяйственная деятельность', href: '/education/finance' },
 	{ label: 'Вакантные места для приема', href: '/education/vacancies' },
 	{
 		label: 'Стипендии и иные виды материальной поддержки',
 		href: '/education/scholarships',
 	},
+	{ label: 'Доступная среда', href: '/education/accessibility' },
+	{ label: 'Международное сотрудничество', href: '/education/international' },
 ]
 
 export const eduOrgInfoShort = [
-	{ label: 'Основные сведения', href: '/education/basic-info' },
-	{ label: 'Структура и органы управления', href: '/education/structure' },
-	{ label: 'Документы', href: '/education/documents' },
-	{ label: 'Образование', href: '/education/programs' },
-	{ label: 'Образовательные стандарты', href: '/education/standards' },
+	{ label: 'Основные сведения', href: '/educationInfo/basic-info' },
+	{ label: 'Структура и органы управления', href: '/educationInfo/structure' },
+	{ label: 'Документы', href: '/educationInfo/documents' },
+	{ label: 'Образование', href: '/educationInfo/education' },
+	{ label: 'Образовательные стандарты', href: '/educationInfo/standards' },
 	{ label: 'Руководство', href: '/education/management' },
+	{ label: "Педогогический соства", href: "/education/teachers" },
 	{
 		label:
 			'Материально-техническое обеспечение и оснащенность образовательного процесса. Доступная среда',
-		href: '/education/resources',
+		href: '/educationInfo/facilities',
 	},
-	{ label: 'Платные образовательные услуги', href: '/education/paid-services' },
-	{ label: 'Финансово-хозяйственная деятельность', href: '/education/finance' },
-	{ label: 'Вакантные места для приема', href: '/education/vacancies' },
+	{ label: "Доступная среда", href: "accesability" },
+	{ label: 'Платные образовательные услуги', href: '/educationInfo/paidServices' },
+	{ label: 'Финансово-хозяйственная деятельность', href: '/educationInfo/finance' },
+	{ label: 'Вакантные места для приема', href: '/educationInfo/vacancies' },
 	{
 		label: 'Стипендии и иные виды материальной поддержки',
 		href: '/education/scholarships',

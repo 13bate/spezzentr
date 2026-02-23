@@ -1,54 +1,151 @@
 .NavBar {
+  position: relative;
+  z-index: 100;
 }
+
 .navContainer {
-	padding: 0 25px;
+  width: 100%;
 }
+
 .navList {
-	display: flex;
-	justify-content: space-between;
-	gap: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
+
+.navLeftSide {
+  display: flex;
+  gap: 20px;
+}
+
 .listItem {
-	color: #545245;
-	cursor: pointer;
-	font-size: 17px;
-	font-weight: 500;
-	transition: all ease 0.1s;
-}
-.listItem:hover {
-	color: #fe3b15;
-	transform: scale(1.001);
+  position: relative;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #333;
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  
+  // Активное состояние
+  &.active {
+    color: #FE3B15;
+    font-weight: 600;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #FE3B15;
+      animation: slideIn 0.3s ease;
+    }
+  }
+  
+  &:hover {
+    color: #FE3B15;
+  }
 }
 
 .arrowIcon {
-	font-size: 11px;
+  font-size: 12px;
+  transition: transform 0.3s ease;
 }
-.navLeftSide {
-	display: flex;
-	flex-direction: row;
-	gap: 20px;
+
+// Выпадающее меню
+.DropDownListContainer {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 280px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  padding: 10px 0;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+  margin-top: 5px;
 }
 
 .DropDownListItem {
-	color: #39382f;
-	opacity: 80%;
-	font-size: 16px;
-	font-weight: 400;
-	padding-top: 10px;
-	min-width: 100px;
-	width: 150px;
-	position: relative;
-	transition: all ease 0.1s;
+  width: 100%;
 }
-.DropDownListItem:hover {
-	color: #fe3b15;
+
+.DropDownListItemLink {
+  display: block;
+  padding: 12px 20px;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 14px;
+  
+  &:hover {
+    background: rgba(254, 59, 21, 0.1);
+    color: #FE3B15;
+    padding-left: 25px;
+  }
+  
+  &.activeLink {
+    background: #FE3B15;
+    color: white;
+    font-weight: 500;
+    
+    &:hover {
+      background: darken(#FE3B15, 10%);
+      color: white;
+    }
+  }
 }
-.DropDownListContainer {
-	left: -20px;
-	padding: 10px 20px;
-	background-color: white;
-	position: absolute;
-	z-index: 100;
-	border: 2px;
-	border-radius: 10px;
+
+// Анимации
+@keyframes slideIn {
+  from {
+    width: 0;
+    opacity: 0;
+  }
+  to {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Медиа запросы для мобильных
+@media (max-width: 768px) {
+  .navList {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .navLeftSide {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .DropDownListContainer {
+    position: static;
+    box-shadow: none;
+    padding: 5px 0 5px 20px;
+  }
 }

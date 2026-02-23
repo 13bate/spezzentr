@@ -3,55 +3,56 @@
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 1000;
+  padding: 20px 0;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+  &.scrolled {
+    padding: 12px 0;
+    color: black !important;
+    backdrop-filter: blur(12px) saturate(180%);
+    -webkit-backdrop-filter: blur(12px) saturate(180%);
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  }
+}
+
+.headerContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 60px;
-  background: white;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  z-index: 1000;
-  box-sizing: border-box; // Важно!
-  
-  @media (max-width: 1200px) {
-    padding: 16px 40px;
-  }
-  
-  @media (max-width: 992px) {
-    padding: 12px 30px;
-  }
   
   @media (max-width: 768px) {
-    padding: 12px 20px;
+    padding: 0 20px;
   }
 }
 
+// Логотип
 .logo {
   font-family: 'Oswald', sans-serif;
-  font-size: 28px;
-  font-weight: 700;
-  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: 600;
   text-decoration: none;
-  color: #3C3C4C;
-  letter-spacing: 2px;
-  transition: color 0.3s ease;
-  white-space: nowrap;
+  color: #1d1d1f;
+  letter-spacing: -0.5px;
+  transition: all 0.3s ease;
+  position: relative;
   z-index: 1001;
   
-  &:hover {
+  span {
     color: #FE3B15;
+    font-weight: 700;
   }
   
-  @media (max-width: 768px) {
-    font-size: 22px;
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 18px;
+  &:hover {
+    opacity: 0.8;
   }
 }
 
-// Десктопная навигация
+// Десктоп навигация
 .desktopNav {
   flex: 1;
   margin: 0 40px;
@@ -65,7 +66,7 @@
   }
 }
 
-// Контактный блок (десктоп)
+// Десктоп контакты
 .desktopContacts {
   display: flex;
   align-items: center;
@@ -85,59 +86,23 @@
   align-items: center;
   gap: 8px;
   text-decoration: none;
-  color: #333;
+  color: #1d1d1f;
   font-family: 'Oswald', sans-serif;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   transition: color 0.3s ease;
-  white-space: nowrap;
+  padding: 8px 12px;
+  border-radius: 100px;
+  background: rgba(0, 0, 0, 0.02);
+  backdrop-filter: blur(4px);
   
   &:hover {
     color: #FE3B15;
+    background: rgba(254, 59, 21, 0.05);
   }
   
-  @media (max-width: 1200px) {
-    font-size: 16px;
-  }
-  
-  @media (max-width: 992px) {
-    span {
-      display: none;
-    }
-  }
-}
-
-.phoneIcon {
-  color: #FE3B15;
-  font-size: 18px;
-}
-
-.contactButton {
-  background: #FE3B15;
-  border: none;
-  padding: 10px 24px;
-  border-radius: 6px;
-  font-family: 'Oswald', sans-serif;
-  font-weight: 500;
-  font-size: 16px;
-  letter-spacing: 1px;
-  color: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  
-  &:hover {
-    background: darken(#FE3B15, 10%);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(254, 59, 21, 0.3);
-  }
-  
-  @media (max-width: 1200px) {
-    padding: 8px 18px;
+  .phoneIcon {
+    color: #FE3B15;
     font-size: 14px;
   }
   
@@ -148,7 +113,41 @@
   }
 }
 
-// Бургер-меню
+.contactButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #FE3B15;
+  border: none;
+  border-radius: 100px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: white !important;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  letter-spacing: 0.3px;
+  
+  &:hover {
+    background: darken(#FE3B15, 8%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(254, 59, 21, 0.3);
+    gap: 12px;
+  }
+  
+  svg {
+    font-size: 12px;
+    transition: transform 0.3s ease;
+  }
+  
+  &:hover svg {
+    transform: translateX(4px);
+  }
+}
+
+// Бургер-кнопка
 .burgerButton {
   display: none;
   flex-direction: column;
@@ -160,14 +159,13 @@
   cursor: pointer;
   padding: 0;
   z-index: 1001;
-  margin-left: 15px; // Отступ от контента
-  flex-shrink: 0; // Не сжимается
   
   span {
     width: 100%;
     height: 2px;
-    background: #333;
-    transition: all 0.3s ease;
+    background: #1d1d1f;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    border-radius: 2px;
   }
   
   @media (max-width: 768px) {
@@ -182,6 +180,7 @@
     
     span:nth-child(2) {
       opacity: 0;
+      transform: translateX(-10px);
     }
     
     span:last-child {
@@ -197,16 +196,16 @@
   top: 0;
   right: -100%;
   width: 100%;
+  max-width: 400px;
   height: 100vh;
-  background: white;
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   z-index: 999;
-  transition: right 0.3s ease;
+  transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
-  padding: 80px 30px 30px;
-  box-sizing: border-box;
-  overflow-y: auto; // Скролл внутри меню если нужно
+  box-shadow: -5px 0 30px rgba(0, 0, 0, 0.05);
   
   @media (min-width: 769px) {
     display: none;
@@ -215,59 +214,126 @@
   &.open {
     right: 0;
   }
-}
-
-.mobileNav {
-  flex: 1;
   
-  :global(.pageHeaderNavBar) {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0;
-    width: 100%;
+  .mobileMenuHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px 30px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     
-    li {
-      width: 100%;
+    .mobileLogo {
+      font-family: 'Oswald', sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: #1d1d1f;
+      text-decoration: none;
+    }
+    
+    .closeButton {
+      width: 40px;
+      height: 40px;
+      border: none;
+      background: rgba(0, 0, 0, 0.02);
+      border-radius: 50%;
+      font-size: 18px;
+      color: #666;
+      cursor: pointer;
+      transition: all 0.3s ease;
       
-      a {
-        display: block;
-        padding: 15px 0;
-        font-size: 20px;
-        border-bottom: 1px solid rgba(0,0,0,0.1);
-        
-        &::after {
-          display: none;
-        }
+      &:hover {
+        background: rgba(254, 59, 21, 0.1);
+        color: #FE3B15;
       }
     }
   }
-}
-
-.mobileContacts {
-  margin-top: 30px;
-  padding-top: 30px;
-  border-top: 1px solid rgba(0,0,0,0.1);
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
   
-  .phoneLink {
-    font-size: 20px;
-    justify-content: center;
-    
-    span {
-      display: inline;
-    }
+  .mobileNav {
+    flex: 1;
+    padding: 20px 0;
+    overflow-y: auto;
   }
   
-  .contactButton {
-    width: 100%;
-    justify-content: center;
-    padding: 15px;
-    font-size: 18px;
+  .mobileContacts {
+    padding: 30px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    background: rgba(255, 255, 255, 0.5);
     
-    span {
-      display: inline;
+    .mobilePhone {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 15px;
+      background: white;
+      border-radius: 20px;
+      text-decoration: none;
+      margin-bottom: 15px;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(254, 59, 21, 0.1);
+      }
+      
+      .mobilePhoneIcon {
+        width: 48px;
+        height: 48px;
+        background: rgba(254, 59, 21, 0.1);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #FE3B15;
+        font-size: 20px;
+      }
+      
+      .mobilePhoneText {
+        display: flex;
+        flex-direction: column;
+        
+        .mobilePhoneLabel {
+          font-family: 'PT Sans', sans-serif;
+          font-size: 13px;
+          color: #999;
+          margin-bottom: 2px;
+        }
+        
+        .mobilePhoneNumber {
+          font-family: 'Oswald', sans-serif;
+          font-size: 18px;
+          font-weight: 600;
+          color: #1d1d1f;
+        }
+      }
+    }
+    
+    .mobileContactButton {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: #FE3B15;
+      border-radius: 20px;
+      text-decoration: none;
+      color: white;
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        background: darken(#FE3B15, 8%);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(254, 59, 21, 0.3);
+      }
+      
+      svg {
+        transition: transform 0.3s ease;
+      }
+      
+      &:hover svg {
+        transform: translateX(4px);
+      }
     }
   }
 }
@@ -279,25 +345,25 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
   z-index: 998;
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  
-  &.visible {
-    opacity: 1;
-    visibility: visible;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
   }
-  
-  @media (min-width: 769px) {
-    display: none;
+  to {
+    opacity: 1;
   }
 }
 
-// Глобальный сброс для body при открытом меню
-:global(body.menuOpen) {
-  overflow: hidden;
-  position: fixed;
-  width: 100%;
+// Адаптив
+@media (max-width: 480px) {
+  .mobileMenu {
+    max-width: 100%;
+  }
 }

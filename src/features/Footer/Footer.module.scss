@@ -1,53 +1,275 @@
-.footer{
-  width: 100%;
+.footer {
+  background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+  padding: 60px 0 30px;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #FE3B15, transparent);
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle at 100% 100%, rgba(254, 59, 21, 0.1), transparent 70%);
+    pointer-events: none;
+  }
+}
+
+.contentContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 30px;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1.5fr;
+  gap: 40px;
+  position: relative;
+  z-index: 2;
+  
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center;
+  }
+}
+
+// Логотип текстом
+.logo {
+  font-family: 'Oswald', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  text-decoration: none;
+  color: white;
+  letter-spacing: 1px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: #535146;
-  padding: 30px 0 10px 0;
+  
+  span {
+    color: #FE3B15;
+    font-size: 24px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    margin-top: 5px;
+  }
+  
+  @media (max-width: 992px) {
+    align-items: center;
+  }
+}
+
+.InfoArea {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 30px;
-  color: #B7B6AC
+  
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    li {
+      margin-bottom: 12px;
+      
+      h4 {
+        font-family: 'Oswald', sans-serif;
+        font-size: 18px;
+        font-weight: 600;
+        color: #FE3B15;
+        margin: 0 0 15px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        position: relative;
+        display: inline-block;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          width: 30px;
+          height: 2px;
+          background: #FE3B15;
+          
+          @media (max-width: 992px) {
+            left: 50%;
+            transform: translateX(-50%);
+          }
+        }
+      }
+      
+      a {
+        font-family: 'PT Sans', sans-serif;
+        font-size: 15px;
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        position: relative;
+        display: inline-block;
+        
+        &:hover {
+          color: #FE3B15;
+          transform: translateX(5px);
+          
+          @media (max-width: 992px) {
+            transform: translateY(-2px);
+          }
+        }
+      }
+    }
+  }
 }
 
-a{
-  transition: color 0.3s
+.contactsArea {
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    
+    li {
+      margin-bottom: 20px;
+      font-family: 'PT Sans', sans-serif;
+      color: rgba(255, 255, 255, 0.9);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      
+      @media (max-width: 992px) {
+        justify-content: center;
+      }
+      
+      &::before {
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        color: #FE3B15;
+        width: 20px;
+        text-align: center;
+      }
+    }
+  }
 }
 
-a:hover{
-  color: #FE3B15;
-  cursor: pointer;
+.contactsAreaPhone {
+  &::before {
+    content: '\f095'; // телефон
+    font-size: 16px;
+  }
 }
 
-h4{
-  font-weight: 600
+.contactsAreaAdress {
+  &::before {
+    content: '\f3c5'; // метка
+    font-size: 16px;
+  }
 }
 
-.contentContainer{
-  display: flex;
-  gap: 20%;
-  justify-content: space-between; 
+.email {
+  &::before {
+    content: '\f0e0'; // envelope
+    font-size: 14px;
+  }
+  
+  a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    
+    &:hover {
+      color: #FE3B15;
+    }
+  }
 }
 
-.logoImage{
- height: 70px; 
-  width: 300px
+.socialNetworks {
+  margin-top: 10px;
+  
+  .vkLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 25px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: #FE3B15;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(254, 59, 21, 0.3);
+      
+      .vkImage {
+        filter: brightness(0) invert(1);
+      }
+    }
+    
+    .vkImage {
+      width: 20px;
+      height: 20px;
+      transition: filter 0.3s ease;
+    }
+  }
 }
 
-.InfoArea{
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-
+.companyInfo {
+  max-width: 1280px;
+  margin: 40px auto 0;
+  padding: 20px 30px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-family: 'PT Sans', sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
-
-.vkLink{
-  display: flex;
-  align-items: center;
-  gap: 5px
+// Декоративные элементы
+.glassCard {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 20px;
 }
-.vkImage{
-  width: 20px;
-  margin-bottom: 6px;
+
+// Анимация для ссылок
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.InfoArea ul li,
+.contactsArea ul li {
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
+  
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.1}s;
+    }
+  }
 }

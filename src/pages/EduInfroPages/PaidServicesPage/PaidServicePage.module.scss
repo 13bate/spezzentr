@@ -1,0 +1,209 @@
+.paidServicesPage {
+  width: 100%;
+  max-width: 1280px;
+  margin: 100px auto 80px;
+  padding: 0 30px;
+  
+  @media (max-width: 768px) {
+    padding: 0 20px;
+    margin: 80px auto 40px;
+  }
+}
+
+.pageNavigation {
+  margin-left: 20px;
+  margin-bottom: 20px;
+  
+  @media (max-width: 768px) {
+    margin-left: 10px;
+  }
+}
+
+.section {
+  scroll-margin-top: 150px;
+  margin-left: 20px;
+  
+  @media (max-width: 768px) {
+    margin-left: 10px;
+  }
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+  
+  .sectionIcon {
+    width: 60px;
+    height: 60px;
+    background: rgba(254, 59, 21, 0.1);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    color: #FE3B15;
+    flex-shrink: 0;
+  }
+  
+  .sectionTitle {
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+    
+    @media (max-width: 768px) {
+      font-size: 24px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+}
+
+.contentContainer {
+  background: #f8f8f8;
+  border-radius: 30px;
+  padding: 40px;
+  
+  @media (max-width: 768px) {
+    padding: 25px;
+  }
+}
+
+.sectionSubtitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 25px;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: #FE3B15;
+  }
+}
+
+.documentsList {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.documentLink {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 25px;
+  background: white;
+  border-radius: 16px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  
+  &:hover {
+    transform: translateX(5px);
+    box-shadow: 0 8px 20px rgba(254, 59, 21, 0.1);
+    border-color: #FE3B15;
+    
+    .documentIcon {
+      background: #FE3B15;
+      color: white;
+    }
+    
+    .downloadButton {
+      background: #FE3B15;
+      color: white;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+}
+
+.documentIcon {
+  width: 48px;
+  height: 48px;
+  background: rgba(254, 59, 21, 0.05);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #FE3B15;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.documentTitle {
+  flex: 1;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  line-height: 1.5;
+  
+  @media (max-width: 768px) {
+    font-size: 15px;
+  }
+}
+
+.downloadButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: transparent;
+  border: 2px solid #FE3B15;
+  border-radius: 30px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  
+  svg {
+    font-size: 14px;
+  }
+  
+  &:hover {
+    background: #FE3B15;
+    color: white;
+  }
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+// Анимация появления
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.documentLink {
+  animation: fadeInUp 0.4s ease forwards;
+}

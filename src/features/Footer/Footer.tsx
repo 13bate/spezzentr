@@ -1,5 +1,4 @@
 import style from "./Footer.module.scss"
-import LogoImg from "../../assets/spezzenter/logo.png"
 import clsx from "clsx";
 import { Link } from "react-router-dom"
 import vkLogo from "../../assets/spezzenter/vkLogo.png"
@@ -9,12 +8,15 @@ interface Props {
   className?: string;
 }
 
-
 export const Footer: React.FC<Props> = ({ className }) => {
   return (
     <footer className={clsx(className, style.footer)}>
       <div className={style.contentContainer}>
-        <img src={LogoImg} alt="logo" className={style.logoImage} />
+        {/* Логотип текстом */}
+        <div className={style.logo}>
+          СПЕЦЦЕНТР
+          <span>ЧОУ ДПО</span>
+        </div>
 
         <div className={style.InfoArea}>
           <ul>
@@ -39,17 +41,27 @@ export const Footer: React.FC<Props> = ({ className }) => {
             ))}
           </ul>
         </div>
+
         <div className={style.contactsArea}>
           <ul>
-            <li className={style.contactsAreaPhone}>(4832)32-02-01</li>
+            <li className={style.contactsAreaPhone}>(4832) 32-02-01</li>
             <li className={style.contactsAreaAdress}>г. Брянск, ул. Институтская, д. 15 корп. 3</li>
-            <li className={style.email}>spezzentr@bk.ru</li>
-            <li className={style.socialNetworks}><Link className={style.vkLink} to="https://vk.com/spezzentr"><img className={style.vkImage} src={vkLogo} />СПЕЦЦЕНТР</Link></li>
+            <li className={style.email}>
+              <a href="mailto:spezzentr@bk.ru">spezzentr@bk.ru</a>
+            </li>
+            <li className={style.socialNetworks}>
+              <Link className={style.vkLink} to="https://vk.com/spezzentr" target="_blank">
+                <img className={style.vkImage} src={vkLogo} alt="VK" />
+                СПЕЦЦЕНТР
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
-      {/* <Separator /> */}
-      <div className={style.companyInfo}> ЧОУ ДПО "СПЕЦЦЕНТР"  ИНН 3257001611, ОГРН 1133256002670</div>
+
+      <div className={style.companyInfo}>
+        ЧОУ ДПО "СПЕЦЦЕНТР"  ИНН 3257001611, ОГРН 1133256002670
+      </div>
     </footer>
-  )
-}
+  );
+};

@@ -1,0 +1,135 @@
+.standardsPage {
+  width: 100%;
+  max-width: 1280px;
+  margin: 100px auto 80px;
+  padding: 0 30px;
+  
+  @media (max-width: 768px) {
+    padding: 0 20px;
+    margin: 80px auto 40px;
+  }
+}
+
+.pageNavigation {
+  margin-left: 20px;
+  margin-bottom: 20px;
+  
+  @media (max-width: 768px) {
+    margin-left: 10px;
+  }
+}
+
+.section {
+  scroll-margin-top: 150px;
+  margin-left: 20px;
+  
+  @media (max-width: 768px) {
+    margin-left: 10px;
+  }
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+
+  
+  .sectionTitle {
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+    
+    @media (max-width: 768px) {
+      font-size: 24px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+}
+
+.contentContainer {
+  background: #f8f8f8;
+  border-radius: 30px;
+  padding: 40px;
+  
+  @media (max-width: 768px) {
+    padding: 25px;
+  }
+}
+
+.infoCard {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  
+  .text {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    margin: 0 0 25px;
+  }
+}
+
+.linkCard {
+  background: rgba(254, 59, 21, 0.03);
+  border-radius: 16px;
+  padding: 25px;
+  border: 1px solid rgba(254, 59, 21, 0.1);
+  
+  .linkText {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 15px;
+  }
+  
+  .externalLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 25px;
+    background: #FE3B15;
+    color: white;
+    text-decoration: none;
+    border-radius: 40px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: darken(#FE3B15, 10%);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(254, 59, 21, 0.3);
+      gap: 15px;
+    }
+    
+    .linkIcon {
+      font-size: 14px;
+    }
+  }
+}
+
+// Анимация появления
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.infoCard {
+  animation: fadeInUp 0.4s ease forwards;
+}

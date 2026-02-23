@@ -1,6 +1,7 @@
 import { Outlet } from "react-router"
 import { Container } from "../../features/Container"
 import { Header } from "../../features/Header"
+import { Footer } from "../../features/Footer"
 
 
 export const InfoPagesLayout: React.FC = () => {
@@ -10,6 +11,7 @@ export const InfoPagesLayout: React.FC = () => {
       <Container>
         <Outlet />
       </Container>
+      <Footer />
     </div>
   )
 }

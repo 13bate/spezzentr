@@ -1,0 +1,753 @@
+.giftCardsPage {
+  width: 100%;
+  max-width: 1280px;
+  margin: 100px auto 80px;
+  padding: 0 30px;
+  
+  @media (max-width: 768px) {
+    padding: 0 20px;
+    margin: 80px auto 40px;
+  }
+}
+
+.pageNavigation {
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+// Hero секция с картой
+.heroSection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 60px;
+  
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+.heroContent {
+  .heroTitle {
+    font-family: 'Oswald', sans-serif;
+    font-size: 56px;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 15px;
+    line-height: 1.2;
+    
+    span {
+      display: block;
+      color: #FE3B15;
+      font-size: 72px;
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 42px;
+      
+      span {
+        font-size: 54px;
+      }
+    }
+  }
+  
+  .heroSubtitle {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 20px;
+    color: #666;
+    line-height: 1.6;
+  }
+}
+
+// Дебетовая карта с WOW эффектами
+.cardContainer {
+  perspective: 2000px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 30%, rgba(254, 59, 21, 0.3), transparent 70%);
+    filter: blur(40px);
+    animation: pulse 3s ease-in-out infinite;
+    z-index: 1;
+  }
+}
+
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+  aspect-ratio: 1.586;
+  background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
+  border-radius: 28px;
+  padding: 30px;
+  box-shadow: 
+    0 40px 80px rgba(0, 0, 0, 0.6),
+    0 0 0 2px rgba(255, 255, 255, 0.1),
+    inset 0 0 40px rgba(254, 59, 21, 0.3);
+  transform: rotateY(10deg) rotateX(5deg);
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 2;
+  overflow: hidden;
+  
+  &:hover {
+    transform: rotateY(5deg) rotateX(2deg) scale(1.02);
+    box-shadow: 
+      0 50px 100px rgba(254, 59, 21, 0.4),
+      0 0 0 3px rgba(254, 59, 21, 0.3),
+      inset 0 0 50px rgba(254, 59, 21, 0.4);
+  }
+  
+  // Блики на карте
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.2), transparent 50%);
+    pointer-events: none;
+    z-index: 3;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(
+      from 0deg at 50% 50%,
+      transparent 0deg,
+      rgba(254, 59, 21, 0.1) 60deg,
+      transparent 120deg,
+      rgba(254, 59, 21, 0.1) 180deg,
+      transparent 240deg,
+      rgba(254, 59, 21, 0.1) 300deg,
+      transparent 360deg
+    );
+    animation: rotate 20s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+}
+
+.cardGoldStripe {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(90deg, 
+    transparent,
+    rgba(255, 215, 0, 0.3),
+    rgba(255, 215, 0, 0.5),
+    rgba(255, 215, 0, 0.3),
+    transparent
+  );
+  filter: blur(5px);
+  z-index: 4;
+}
+
+.cardChip {
+  width: 60px;
+  height: 45px;
+  background: linear-gradient(145deg, #d4af37, #b8860b);
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  z-index: 5;
+  
+  .chipLines {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    background: repeating-linear-gradient(45deg, #333, #333 2px, transparent 2px, transparent 4px);
+    border-radius: 4px;
+    opacity: 0.7;
+  }
+}
+
+.cardContactless {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 28px;
+  transform: rotate(90deg);
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.5));
+  z-index: 5;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.cardAmount {
+  font-family: 'Oswald', sans-serif;
+  font-size: 56px;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  margin: 20px 0 10px;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: baseline;
+  position: relative;
+  z-index: 5;
+  
+  .currency {
+    font-size: 28px;
+    margin-right: 5px;
+    color: #FE3B15;
+    text-shadow: 0 0 20px rgba(254, 59, 21, 0.5);
+  }
+  
+  .amount {
+    line-height: 1;
+  }
+  
+  .decimal {
+    font-size: 28px;
+    margin-left: 2px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+}
+
+.cardInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+  z-index: 5;
+  
+  .cardHolder {
+    .label {
+      font-family: 'PT Sans', sans-serif;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    
+    .name {
+      font-family: 'Oswald', sans-serif;
+      font-size: 20px;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    }
+  }
+  
+  .cardExpiry {
+    text-align: right;
+    
+    .label {
+      font-family: 'PT Sans', sans-serif;
+      font-size: 11px;
+      color: rgba(255, 255, 255, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 4px;
+    }
+    
+    .date {
+      font-family: 'Oswald', sans-serif;
+      font-size: 20px;
+      color: #FE3B15;
+      letter-spacing: 1px;
+      text-shadow: 0 0 15px rgba(254, 59, 21, 0.5);
+    }
+  }
+}
+
+.hologram {
+  position: absolute;
+  bottom: 25px;
+  left: 25px;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, 
+    rgba(255, 215, 0, 0.4),
+    rgba(254, 59, 21, 0.4),
+    rgba(0, 255, 255, 0.4)
+  );
+  border-radius: 50%;
+  filter: blur(8px);
+  animation: hologram 5s ease-in-out infinite;
+  z-index: 4;
+}
+
+.cardLogo {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  z-index: 5;
+}
+
+.glowEffect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(254, 59, 21, 0.2), transparent 70%);
+  animation: glow 3s ease-in-out infinite;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.sparkle1, .sparkle2 {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 70%);
+  border-radius: 50%;
+  filter: blur(20px);
+  animation: sparkle 4s ease-in-out infinite;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.sparkle1 {
+  top: -20px;
+  right: -20px;
+  animation-delay: 1s;
+}
+
+.sparkle2 {
+  bottom: -20px;
+  left: -20px;
+  animation-delay: 2s;
+}
+
+// Остальные секции
+.featuresSection, .nominalsSection, .occasionsSection, .howItWorksSection, .faqSection, .contactsSection {
+  margin: 80px 0;
+}
+
+.sectionTitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: #333;
+  text-align: center;
+  margin: 0 0 40px;
+  
+  @media (max-width: 768px) {
+    font-size: 28px;
+  }
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.featureCard {
+  background: white;
+  border-radius: 20px;
+  padding: 30px 25px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(254, 59, 21, 0.15);
+  }
+  
+  .featureIconWrapper {
+    width: 70px;
+    height: 70px;
+    background: rgba(254, 59, 21, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 30px;
+    color: #FE3B15;
+  }
+  
+  h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+  }
+}
+
+.nominalsGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  @media (max-width: 576px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.nominalCard {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  text-align: center;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    border-color: #FE3B15;
+    transform: scale(1.05);
+    box-shadow: 0 20px 40px rgba(254, 59, 21, 0.15);
+  }
+  
+  .nominalAmount {
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 15px;
+    
+    .nominalCurrency {
+      color: #FE3B15;
+      margin-right: 2px;
+    }
+  }
+  
+  .nominalButton {
+    width: 100%;
+    padding: 10px;
+    background: transparent;
+    border: 2px solid #FE3B15;
+    border-radius: 30px;
+    font-family: 'Oswald', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      background: #FE3B15;
+      color: white;
+    }
+  }
+}
+
+.occasionsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.occasionCard {
+  background: #f8f8f8;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: #FE3B15;
+    transform: translateY(-5px);
+    
+    .occasionIcon, .occasionText {
+      color: white;
+    }
+  }
+  
+  .occasionIcon {
+    font-size: 32px;
+    display: block;
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+  }
+  
+  .occasionText {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    color: #333;
+    transition: color 0.3s ease;
+  }
+}
+
+.stepsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stepCard {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  
+  .stepNumber {
+    width: 50px;
+    height: 50px;
+    background: #FE3B15;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Oswald', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 auto 20px;
+  }
+  
+  h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.5;
+  }
+}
+
+.faqGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.faqCard {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  
+  .faqQuestion {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    
+    svg {
+      color: #FE3B15;
+      font-size: 20px;
+    }
+    
+    h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+      margin: 0;
+    }
+  }
+  
+  p {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    margin: 0;
+  }
+}
+
+.contactsSection {
+  background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+  border-radius: 30px;
+  padding: 60px;
+  
+  .sectionTitle {
+    color: white;
+  }
+  
+  .contactNote {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    margin-bottom: 40px;
+  }
+}
+
+.contactsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contactCard {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: #FE3B15;
+    transform: translateY(-5px);
+    
+    .contactIcon {
+      background: white;
+      color: #FE3B15;
+    }
+  }
+  
+  .contactIcon {
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: white;
+    transition: all 0.3s ease;
+  }
+  
+  .contactInfo {
+    display: flex;
+    flex-direction: column;
+    
+    .contactLabel {
+      font-family: 'PT Sans', sans-serif;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 3px;
+    }
+    
+    .contactValue {
+      font-family: 'Oswald', sans-serif;
+      font-size: 16px;
+      color: white;
+    }
+  }
+}
+
+// Анимации
+@keyframes pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes hologram {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.2);
+  }
+}
