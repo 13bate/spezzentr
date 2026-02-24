@@ -1,29 +1,21 @@
 import { faAngleDown, faChevronRight } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import clsx from 'clsx'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { Link, useLocation } from 'react-router'
 import style from './NavBar.module.scss'
 import { shootingRange, trainingCenter } from '../../shared/utils/model'
 
 interface Props {
 	className?: string
+	onItemClick?: () => void // Добавляем проп для закрытия меню
 }
 
-export const NavBar: React.FC<Props> = ({ className }) => {
+export const NavBar: React.FC<Props> = ({ className, onItemClick }) => {
 	const [cardHoveredTc, setCardHoveredTc] = useState(false)
 	const [cardHoveredSr, setCardHoveredSr] = useState(false)
 	const location = useLocation()
 
-	// Принудительно обновляем компонент при изменении пути
-	useEffect(() => {
-		console.log('NavBar location changed:', location.pathname)
-		// Закрываем выпадающие меню
-		setCardHoveredTc(false)
-		setCardHoveredSr(false)
-	}, [location.pathname])
-
-	// Функции для проверки активных пунктов
 	const isTcActive = () => {
 		return trainingCenter.some(item => location.pathname === item.href)
 	}
@@ -34,6 +26,13 @@ export const NavBar: React.FC<Props> = ({ className }) => {
 
 	const isEducationActive = () => {
 		return location.pathname.startsWith('/education')
+	}
+
+	// Функция для обработки клика по ссылке
+	const handleLinkClick = () => {
+		if (onItemClick) {
+			onItemClick()
+		}
 	}
 
 	return (
@@ -61,7 +60,7 @@ export const NavBar: React.FC<Props> = ({ className }) => {
 													location.pathname === tcItem.href && style.activeLink
 												)}
 												to={tcItem.href}
-												onClick={() => setCardHoveredTc(false)}
+												onClick={handleLinkClick} // Добавляем обработчик
 											>
 												{tcItem.label}
 											</Link>
@@ -91,7 +90,7 @@ export const NavBar: React.FC<Props> = ({ className }) => {
 													location.pathname === srItem.href && style.activeLink
 												)}
 												to={srItem.href}
-												onClick={() => setCardHoveredSr(false)}
+												onClick={handleLinkClick} // Добавляем обработчик
 											>
 												{srItem.label}
 											</Link>
@@ -102,7 +101,7 @@ export const NavBar: React.FC<Props> = ({ className }) => {
 						</li>
 					</div>
 
-					<Link to="/education/" className={style.link}>
+					<Link to="/education/" className={style.link} onClick={handleLinkClick}> {/* Добавляем обработчик */}
 						<li className={clsx(
 							style.listItem,
 							isEducationActive() && style.active
