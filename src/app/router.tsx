@@ -154,4 +154,4 @@ export const router = createBrowserRouter([
 			}
 		],
 	},
-])
+], { basename: '/spezzentr' })
