@@ -11,27 +11,7 @@ interface Props {
 }
 
 export const HomeHeader: React.FC<Props> = ({ className }) => {
-	const phoneNumber = '(4832)320201'
-	const address = 'г. Брянск, ул. Институтская, д. 15 корп. 3'
 
-	const handlePhoneCopy = async () => {
-		try {
-			await navigator.clipboard.writeText(phoneNumber)
-			toast.success('Номер скопирован')
-		} catch (err) {
-			toast.error('Ошибка копирования')
-			console.log(err)
-		}
-	}
-	const handleAddressCopy = async () => {
-		try {
-			await navigator.clipboard.writeText(address)
-			toast.success('Адрес скопирован')
-		} catch (err) {
-			toast.error('Ошибка копирования')
-			console.log(err)
-		}
-	}
 	return (
 		<header className={clsx(`${styles.header}`, className)}>
 			<img src={backgroundImage} alt='' className={styles.backgroundImage} />
@@ -47,7 +27,7 @@ export const HomeHeader: React.FC<Props> = ({ className }) => {
 				}}
 			/>
 			<div className={styles.headerContainer}>
-				<div className={styles.phoneBlock} onClick={handlePhoneCopy}>
+				<div className={styles.phoneBlock}>
 					<FontAwesomeIcon icon={faPhone} />
 					<span>(4832) 32-02-01</span>
 				</div>
@@ -57,7 +37,7 @@ export const HomeHeader: React.FC<Props> = ({ className }) => {
 					</h1>
 					<div className={styles.logoUnderLine}></div>
 				</div>
-				<div className={styles.headerInfo} onClick={handleAddressCopy}>
+				<div className={styles.headerInfo}>
 					г. Брянск, ул. Институтская, д. 15 корп. 3
 				</div>
 			</div>

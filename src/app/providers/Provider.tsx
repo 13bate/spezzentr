@@ -1,6 +1,7 @@
 import { RouterProvider } from 'react-router'
 import { router } from '../router'
 import styles from "./Provider.module.scss"
+
 interface Props {
 	children?: React.ReactNode
 }

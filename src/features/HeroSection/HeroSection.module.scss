@@ -5,7 +5,7 @@
   min-height: 800px;
   position: relative;
   overflow: hidden;
-  
+  justify-content: flex-start;
   @media (max-width: 768px) {
     flex-direction: column;
     height: auto;
@@ -224,7 +224,7 @@
   align-items: flex-start;
   padding: 140px 100px 80px;
   color: white;
-  max-width: 700px;
+  max-width: 900px;
   
   @media (max-width: 1200px) {
     padding: 120px 60px 60px;
@@ -256,7 +256,7 @@
   
   .heroTitle {
     font-family: 'Oswald', sans-serif;
-    font-size: 56px;
+    font-size: 44px;
     font-weight: 600;
     line-height: 1.2;
     margin-bottom: 25px;
@@ -296,7 +296,7 @@
   
   .heroParagraph {
     font-family: 'PT Sans', sans-serif;
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.7;
     color: rgba(255, 255, 255, 0.9);
     margin-bottom: 35px;
@@ -344,6 +344,7 @@
     overflow: hidden;
     display: inline-flex;
     align-items: center;
+  
     gap: 12px;
     text-transform: uppercase;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);

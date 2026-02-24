@@ -1,12 +1,10 @@
-import React from 'react';
 import { Link } from 'react-router';
 import clsx from 'clsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCreditCard, faWifi } from '@fortawesome/free-solid-svg-icons';
+import { faWifi, faGift, faClock } from '@fortawesome/free-solid-svg-icons'; // удалил faCreditCard
 
 import style from './GiftCardsOverview.module.scss';
 
-import giftCardImg from '../../assets/spezzenter/gift-cards.jpg';
 import { giftCardsContent } from './model';
 import { Button } from '../../shared/ui/Button';
 
@@ -15,40 +13,72 @@ interface Props {
 }
 
 export const GiftCardsOverview: React.FC<Props> = ({ className }) => {
+  const features = [
+    { icon: faGift, text: 'Любой номинал' },
+    { icon: faClock, text: '12 месяцев' },
+    { icon: faWifi, text: 'Мгновенно' }
+  ];
+
   return (
     <section className={clsx(className, style.giftCards)}>
-      <div className={style.content}>
-        <span className={style.badge}>🎁 Идеальный подарок</span>
+      <div className={style.cardContainer}>
+        <div className={style.cardGrid}>
+          {/* Контент */}
+          <div className={style.content}>
+            <h2 className={style.title}>
+              Подарочные
+              <span>сертификаты</span>
+            </h2>
 
-        <h2 className={style.title}>{giftCardsContent.title}</h2>
+            <p className={style.description}>
+              {giftCardsContent.description}
+            </p>
 
-        <p className={style.description}>{giftCardsContent.description}</p>
+            <div className={style.features}>
+              {features.map((feature, index) => (
+                <div key={index} className={style.feature}>
+                  <FontAwesomeIcon icon={feature.icon} className={style.featureIcon} />
+                  <span>{feature.text}</span>
+                </div>
+              ))}
+            </div>
 
-        <div className={style.buttonWrapper}>
-          <Link to={giftCardsContent.buttonLink}>
-            <Button>
-              {giftCardsContent.buttonText}
-            </Button>
-          </Link>
+            <div className={style.buttonWrapper}>
+              <Link to={giftCardsContent.buttonLink}>
+                <Button>
+                  {giftCardsContent.buttonText}
+                </Button>
+              </Link>
+            </div>
+          </div>
+
+          {/* Платежная карта */}
+          <div className={style.cardVisual}>
+            <div className={style.card}>
+              <div className={style.cardChip}></div>
+              <div className={style.cardContactless}>
+                <FontAwesomeIcon icon={faWifi} />
+              </div>
+
+              <div className={style.cardNumber}>
+                1234 <span>****</span> **** <span>5678</span>
+              </div>
+
+              <div className={style.cardInfo}>
+                <div className={style.cardHolder}>
+                  <div className={style.label}>Card Holder</div>
+                  <div className={style.name}>SPEZZENTER</div>
+                </div>
+                <div className={style.cardExpiry}>
+                  <div className={style.label}>Valid Thru</div>
+                  <div className={style.date}>12/26</div>
+                </div>
+              </div>
+
+              <div className={style.cardLogo}>СПЕЦЦЕНТР</div>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div className={style.mediaContainer}>
-        {/* Декоративные элементы карты */}
-        <div className={style.decorChip}></div>
-        <div className={style.decorNumber}>
-          **** <span>****</span> **** <span>1234</span>
-        </div>
-        <div className={style.decorContactless}>
-          <FontAwesomeIcon icon={faWifi} />
-        </div>
-
-        {/* Основное изображение */}
-        <img
-          src={giftCardImg}
-          alt="Подарочный сертификат"
-          className={style.mainImage}
-        />
       </div>
     </section>
   );

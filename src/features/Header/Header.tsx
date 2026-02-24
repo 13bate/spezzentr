@@ -82,9 +82,9 @@ export const Header: React.FC<Props> = ({ className, isHomeHeader = false }) => 
           </div>
 
           <div className={style.desktopContacts}>
-            <a href="tel:+74832327545" className={style.phoneLink}>
+            <a href="tel:+748320201" className={style.phoneLink}>
               <FontAwesomeIcon icon={faPhone} className={style.phoneIcon} />
-              <span>+7 (4832) 32-75-45</span>
+              <span>+7 (4832) 32-02-01</span>
             </a>
 
             <a
@@ -124,22 +124,22 @@ export const Header: React.FC<Props> = ({ className, isHomeHeader = false }) => 
         </div>
 
         <div className={style.mobileContacts}>
-          <a href="tel:+74832327545" className={style.mobilePhone} onClick={closeMobileMenu}>
+          <a href="tel:+74832320201" className={style.mobilePhone} onClick={closeMobileMenu}>
             <span className={style.mobilePhoneIcon}>📞</span>
             <div className={style.mobilePhoneText}>
               <span className={style.mobilePhoneLabel}>Позвоните нам</span>
-              <span className={style.mobilePhoneNumber}>+7 (4832) 32-75-45</span>
+              <span className={style.mobilePhoneNumber}>+7 (4832) 32-02-01</span>
             </div>
           </a>
 
-          <a
-            href="/#contacts"
+          <Link
+            to="/#contacts"
             className={style.mobileContactButton}
             onClick={scrollToContacts}
           >
             <span>Контакты</span>
             <FontAwesomeIcon icon={faChevronRight} />
-          </a>
+          </Link>
         </div>
       </div>
 

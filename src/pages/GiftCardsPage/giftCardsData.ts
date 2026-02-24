@@ -82,7 +82,7 @@ export const giftCardsData = {
   contacts: {
     phone: '+7 (4832) 32-75-45',
     email: 'spezzentr@bk.ru',
-    address: 'г. Брянск, ул. Институтская д. 15 к. 3 офис 232',
+    address: 'г. Брянск, ул. Институтская д. 15 к. 3',
     orderNote: 'Для корпоративных заказов свяжитесь с нами'
   }
 };

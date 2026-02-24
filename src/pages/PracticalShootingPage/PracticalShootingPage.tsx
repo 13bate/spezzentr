@@ -2,7 +2,7 @@ import React from 'react';
 import { PageTitle } from '../../shared/ui/PageTitle';
 
 import style from './PracticalShootingPage.module.scss';
-import { practicalShootingData } from './PracticalShootingData';
+import { practicalShootingData } from './practicalShootingData.ts';
 
 export const PracticalShootingPage: React.FC = () => {
   return (
@@ -161,3 +161,4 @@ export const PracticalShootingPage: React.FC = () => {
     </>
   );
 };
+

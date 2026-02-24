@@ -54,7 +54,7 @@ export const HeroSection: React.FC<Props> = ({ className }) => {
             {heroContent.description}
           </p>
 
-          {/* Кнопка справа */}
+
           <div className={style.buttonContainer}>
             <Link to={heroContent.buttons.primary.link} className={style.glassButton}>
               <span>{heroContent.buttons.primary.text}</span>
