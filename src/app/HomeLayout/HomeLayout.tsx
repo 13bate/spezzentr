@@ -8,7 +8,7 @@ export const HomeLayout: React.FC = () => {
 	return (
 		<div className={styles.container}>
 			<ScrollToTop />
-			<Header isHomeHeader={true} />
+			<Header />
 			<Container>
 				<Outlet />
 			</Container>

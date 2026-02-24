@@ -14,7 +14,7 @@ export const ShootingClubSection: React.FC<Props> = ({ className }) => {
   return (
     <div className={className}>
       <HomeCards
-        title={"Стрелковый клуб"} cardsData={shootingRangeCardsData} />
+        cardsData={shootingRangeCardsData} />
       <IntroShootingOverview />
       <Separator />
       <GiftCardsOverview />

@@ -12,7 +12,7 @@ interface Props {
 export const TrainnigCenterSection: React.FC<Props> = ({ className }) => {
   return (
     <div className={className}>
-      <HomeCards title={"Учебный центр"} cardsData={trainingCenterCardsData} />
+      <HomeCards cardsData={trainingCenterCardsData} />
       <SecurityTrainingOverview />
       <SafetyTrainingOverview />
     </div>
