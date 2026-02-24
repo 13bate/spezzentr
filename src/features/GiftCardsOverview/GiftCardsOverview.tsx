@@ -1,14 +1,14 @@
-import { Link } fromimport React from 'react';
-import { Link } from 'react-router';
+
 import clsx from 'clsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCreditCard, faWifi } from '@fortawesome/free-solid-svg-icons';
+import { faWifi } from '@fortawesome/free-solid-svg-icons';
 
 import style from './GiftCardsOverview.module.scss';
 
 import giftCardImg from '../../assets/spezzenter/gift-cards.jpg';
 import { giftCardsContent } from './model';
 import { Button } from '../../shared/ui/Button';
+import { Link } from 'react-router';
 
 interface Props {
   className?: string;
