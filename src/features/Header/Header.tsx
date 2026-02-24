@@ -8,10 +8,9 @@ import { NavBar } from '../NavBar';
 
 interface Props {
   className?: string;
-  isHomeHeader?: boolean;
 }
 
-export const Header: React.FC<Props> = ({ className, isHomeHeader = false }) => {
+export const Header: React.FC<Props> = ({ className }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();

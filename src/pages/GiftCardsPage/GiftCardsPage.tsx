@@ -10,7 +10,6 @@ import {
   faPhone,
   faEnvelope,
   faMapMarkerAlt,
-  faChevronRight,
   faQuestionCircle
 } from '@fortawesome/free-solid-svg-icons';
 import { giftCardsData } from './giftCardsData.ts';

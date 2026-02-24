@@ -1,10 +1,95 @@
 import React from 'react';
 import { PageTitle } from '../../shared/ui/PageTitle';
-
 import style from './PracticalShootingPage.module.scss';
-import { practicalShootingData } from './practicalShootingData.ts';
+
+// Данные перенесены наверх
+export const practicalShootingData = {
+  page: {
+    title: 'Практическая стрельба',
+    subtitle: 'IPSC • Пистолет',
+  },
+
+  hero: {
+    title: 'Практическая стрельба',
+    subtitle: 'IPSC • Пистолет',
+    description: 'Еженедельные групповые тренировки проводятся по утверждённому расписанию как с опытными стрелками — членами ФПСР (IPSC), так и с начинающими стрелками, прошедшими Начальный курс по практической стрельбе, с целью совершенствования навыков владения оружием и подготовке к участию в официальных соревнованиях проводимых Федерацией практической стрельбы России.',
+    badge: 'Члены ФПСР (IPSC)'
+  },
+
+  courses: [
+    {
+      id: 'regular',
+      title: 'Базовая тренировка',
+      badge: 'Еженедельно',
+      description: 'Регулярные тренировки для поддержания и совершенствования навыков практической стрельбы.',
+      features: [
+        'Групповые занятия по расписанию',
+        'Отработка упражнений IPSC',
+        'Работа с опытными инструкторами',
+        'Подготовка к соревнованиям'
+      ],
+      schedule: 'Еженедельно по расписанию',
+      price: '2 500 ₽ / тренировка',
+      type: 'regular'
+    },
+    {
+      id: 'beginner',
+      title: 'Начальный курс по практической стрельбе',
+      badge: 'Стартовый курс',
+      description: 'Одним из условий для вступления в Общероссийскую спортивную общественную организацию «Федерация практической стрельбы России» (ОСОО «ФПСР»), является прохождение курса «Безопасного и квалифицированного обращения с оружием» (БЕКОСО) и положительная сдача теоретического экзамена.',
+      details: {
+        duration: '4 занятия (индивидуально)',
+        weapons: ['CZ 75 SHADOW', 'Glock 17', 'Викинг M'],
+        shots: '250 выстрелов',
+        price: '18 000 ₽'
+      },
+      includes: [
+        'Курс «Безопасного и квалифицированного обращения с оружием» (БЕКОСО)',
+        'Подготовка к теоретическому экзамену',
+        'Практические занятия на стрельбище',
+        'Работа с разными видами оружия'
+      ],
+      metaNote: 'Включает подготовку к экзамену ФПСР',
+      type: 'course'
+    }
+  ],
+
+  schedule: {
+    title: 'Расписание тренировок',
+    days: [
+      { day: 'Понедельник', time: '18:00 - 20:00', icon: '📌' },
+      { day: 'Среда', time: '18:00 - 20:00', icon: '📌' },
+      { day: 'Пятница', time: '16:00 - 18:00', icon: '📌' },
+      { day: 'Суббота', time: '11:00 - 13:00, 14:00 - 16:00', icon: '📌' }
+    ],
+    note: 'Возможно индивидуальное расписание по согласованию'
+  },
+
+  federation: {
+    title: 'Федерация практической стрельбы России',
+    description: 'Наши тренировки проводятся в соответствии с правилами и стандартами Федерации практической стрельбы России (ФПСР/IPSC).',
+    link: {
+      url: 'https://www.ipsc.ru',
+      text: 'ipsc.ru'
+    }
+  },
+
+  contacts: {
+    title: 'Запись на тренировки',
+    note: 'Запись на тренировки и курсы по телефону',
+    phones: [
+      { number: '+7 (4832) 32-05-10', display: '+7 (4832) 32-05-10' },
+      { number: '+7 (930) 732-05-10', display: '+7 (930) 732-05-10' }
+    ]
+  }
+};
 
 export const PracticalShootingPage: React.FC = () => {
+  // Сохраняем данные в переменные для удобства
+  const courses = practicalShootingData.courses;
+  const regularCourse = courses[0];
+  const beginnerCourse = courses[1];
+
   return (
     <>
       <PageTitle title={`${practicalShootingData.page.title} | СПЕЦЦЕНТР`} />
@@ -33,67 +118,77 @@ export const PracticalShootingPage: React.FC = () => {
 
           <div className={style.coursesGrid}>
             {/* Базовая тренировка */}
-            <div className={`${style.courseCard} ${style.regularCard}`}>
-              <div className={style.courseBadge}>{practicalShootingData.courses[0].badge}</div>
-              <h3 className={style.courseTitle}>{practicalShootingData.courses[0].title}</h3>
-              <p className={style.courseDescription}>{practicalShootingData.courses[0].description}</p>
+            {regularCourse && (
+              <div className={`${style.courseCard} ${style.regularCard}`}>
+                <div className={style.courseBadge}>{regularCourse.badge}</div>
+                <h3 className={style.courseTitle}>{regularCourse.title}</h3>
+                <p className={style.courseDescription}>{regularCourse.description}</p>
 
-              <div className={style.featuresList}>
-                {practicalShootingData.courses[0].features.map((feature, idx) => (
-                  <div key={idx} className={style.featureItem}>
-                    <span className={style.featureIcon}>✓</span>
-                    <span>{feature}</span>
+                {regularCourse.features && (
+                  <div className={style.featuresList}>
+                    {regularCourse.features.map((feature, idx) => (
+                      <div key={idx} className={style.featureItem}>
+                        <span className={style.featureIcon}>✓</span>
+                        <span>{feature}</span>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                )}
 
-              <div className={style.courseFooter}>
-                <div className={style.courseMeta}>
-                  <span className={style.metaIcon}>📅</span>
-                  <span>{practicalShootingData.courses[0].schedule}</span>
+                <div className={style.courseFooter}>
+                  <div className={style.courseMeta}>
+                    <span className={style.metaIcon}>📅</span>
+                    <span>{regularCourse.schedule}</span>
+                  </div>
+                  <div className={style.coursePrice}>{regularCourse.price}</div>
                 </div>
-                <div className={style.coursePrice}>{practicalShootingData.courses[0].price}</div>
               </div>
-            </div>
+            )}
 
             {/* Начальный курс */}
-            <div className={`${style.courseCard} ${style.courseCardHighlight}`}>
-              <div className={style.courseBadgePrimary}>{practicalShootingData.courses[1].badge}</div>
-              <h3 className={style.courseTitle}>{practicalShootingData.courses[1].title}</h3>
-              <p className={style.courseDescription}>{practicalShootingData.courses[1].description}</p>
+            {beginnerCourse && (
+              <div className={`${style.courseCard} ${style.courseCardHighlight}`}>
+                <div className={style.courseBadgePrimary}>{beginnerCourse.badge}</div>
+                <h3 className={style.courseTitle}>{beginnerCourse.title}</h3>
+                <p className={style.courseDescription}>{beginnerCourse.description}</p>
 
-              <div className={style.courseDetails}>
-                <div className={style.detailItem}>
-                  <span className={style.detailIcon}>⏱</span>
-                  <span>{practicalShootingData.courses[1].details.duration}</span>
-                </div>
-                <div className={style.detailItem}>
-                  <span className={style.detailIcon}>🔫</span>
-                  <span>{practicalShootingData.courses[1].details.weapons.join(' • ')}</span>
-                </div>
-                <div className={style.detailItem}>
-                  <span className={style.detailIcon}>🎯</span>
-                  <span>{practicalShootingData.courses[1].details.shots}</span>
-                </div>
-              </div>
-
-              <div className={style.featuresList}>
-                {practicalShootingData.courses[1].includes.map((item, idx) => (
-                  <div key={idx} className={style.featureItem}>
-                    <span className={style.featureIcon}>✓</span>
-                    <span>{item}</span>
+                {beginnerCourse.details && (
+                  <div className={style.courseDetails}>
+                    <div className={style.detailItem}>
+                      <span className={style.detailIcon}>⏱</span>
+                      <span>{beginnerCourse.details.duration}</span>
+                    </div>
+                    <div className={style.detailItem}>
+                      <span className={style.detailIcon}>🔫</span>
+                      <span>{beginnerCourse.details.weapons?.join(' • ')}</span>
+                    </div>
+                    <div className={style.detailItem}>
+                      <span className={style.detailIcon}>🎯</span>
+                      <span>{beginnerCourse.details.shots}</span>
+                    </div>
                   </div>
-                ))}
-              </div>
+                )}
 
-              <div className={style.courseFooter}>
-                <div className={style.courseMeta}>
-                  <span className={style.metaIcon}>📋</span>
-                  <span>{practicalShootingData.courses[1].metaNote}</span>
+                {beginnerCourse.includes && (
+                  <div className={style.featuresList}>
+                    {beginnerCourse.includes.map((item, idx) => (
+                      <div key={idx} className={style.featureItem}>
+                        <span className={style.featureIcon}>✓</span>
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+
+                <div className={style.courseFooter}>
+                  <div className={style.courseMeta}>
+                    <span className={style.metaIcon}>📋</span>
+                    <span>{beginnerCourse.metaNote}</span>
+                  </div>
+                  <div className={style.coursePriceLarge}>{beginnerCourse.details?.price}</div>
                 </div>
-                <div className={style.coursePriceLarge}>{practicalShootingData.courses[1].details.price}</div>
               </div>
-            </div>
+            )}
           </div>
         </section>
 
@@ -161,4 +256,3 @@ export const PracticalShootingPage: React.FC = () => {
     </>
   );
 };
-

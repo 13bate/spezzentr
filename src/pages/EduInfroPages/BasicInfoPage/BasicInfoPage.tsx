@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { PageTitle } from '../../../shared/ui/PageTitle';
 import style from './BasicInfoPage.module.scss';
 import { BackButton } from '../../../shared/ui/BackButton';

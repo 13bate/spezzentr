@@ -20,11 +20,11 @@ import {
 
 interface Props {
   className?: string;
-  title: string;
+
   cardsData: ICardList;
 }
 
-export const HomeCards: React.FC<Props> = ({ className, title, cardsData }) => {
+export const HomeCards: React.FC<Props> = ({ className, cardsData }) => {
   const [activeCardId, setActiveCardId] = useState<string | null>(null);
 
 
