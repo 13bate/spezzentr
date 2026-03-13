@@ -3,21 +3,45 @@ import style from "./Home.module.scss"
 import { Separator } from "../../shared/ui/separator/"
 import { ShootingClubSection } from "../../features/ShootingClubSection"
 import { HeroSection } from "../../features/HeroSection"
-import { TrainnigCenterSection } from "../../features/TrainnigCenterSection"
+import { TrainigCenterSection } from "../../features/TrainigCenterSection/"
 import { ContactsSection } from "../../features/contacts"
+import { SafetyTrainingOverview } from "../../features/SafetyTrainingOverview"
+import { IntroShootingOverview } from "../../features/IntroShootingOverview"
+import { useEffect } from "react"
+import { GiftCardsOverview } from "../../features/GiftCardsOverview"
 
 interface Props {
 	className?: string
 }
 export const Home: React.FC<Props> = ({ className }) => {
+	useEffect(() => {
+		if (location.hash === "#contacts") {
+			const el = document.getElementById("contacts");
+
+			if (el) {
+				const headerHeight = 80;
+
+				const y =
+					el.getBoundingClientRect().top + window.scrollY - headerHeight;
+
+				window.scrollTo({
+					top: y,
+					behavior: "smooth",
+				});
+			}
+		}
+	}, [location]);
 	return (
 		<div className={clsx(className, style.homeContainer)}>
 			<HeroSection />
 			<div className={style.contentContainer}>
 				<ShootingClubSection />
+				<IntroShootingOverview />
+				<GiftCardsOverview />
 				<div className={style.separatorWrapper}>
 					<Separator />
-					<TrainnigCenterSection />
+					<TrainigCenterSection />
+					<SafetyTrainingOverview />
 				</div>
 			</div>
 			<ContactsSection />

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import clsx from 'clsx';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight, faPhone } from '@fortawesome/free-solid-svg-icons';
-import style from './Header.module.scss';
-import { NavBar } from '../NavBar';
+import React, { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import clsx from "clsx";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import style from "./Header.module.scss";
+import { NavBar } from "../NavBar";
 
 interface Props {
   className?: string;
@@ -13,25 +13,30 @@ interface Props {
 export const Header: React.FC<Props> = ({ className }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener("scroll", handleScroll);
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
     if (mobileMenuOpen) {
-      document.body.classList.add('menuOpen');
+      document.body.classList.add("menuOpen");
     } else {
-      document.body.classList.remove('menuOpen');
+      document.body.classList.remove("menuOpen");
     }
+
     return () => {
-      document.body.classList.remove('menuOpen');
+      document.body.classList.remove("menuOpen");
     };
   }, [mobileMenuOpen]);
 
@@ -47,30 +52,38 @@ export const Header: React.FC<Props> = ({ className }) => {
     e.preventDefault();
     setMobileMenuOpen(false);
 
-    if (location.pathname !== '/') {
-      window.location.href = '/#contacts';
+    // If NOT on home page → navigate
+    if (location.pathname !== "/") {
+      navigate("/#contacts");
       return;
     }
 
-    const contactsSection = document.getElementById('contacts');
+    // Already on home → scroll
+    const contactsSection = document.getElementById("contacts");
+
     if (contactsSection) {
       const headerHeight = 80;
-      const elementPosition = contactsSection.getBoundingClientRect().top + window.scrollY;
+
+      const elementPosition =
+        contactsSection.getBoundingClientRect().top + window.scrollY;
+
       window.scrollTo({
         top: elementPosition - headerHeight,
-        behavior: 'smooth'
+        behavior: "smooth",
       });
     }
   };
 
   return (
     <>
-      <header className={clsx(
-        style.header,
-        className,
-        scrolled && style.scrolled,
-        mobileMenuOpen && style.menuOpen
-      )}>
+      <header
+        className={clsx(
+          style.header,
+          className,
+          scrolled && style.scrolled,
+          mobileMenuOpen && style.menuOpen
+        )}
+      >
         <div className={style.headerContainer}>
           <Link to="/" className={style.logo} onClick={closeMobileMenu}>
             СПЕЦ<span>ЦЕНТР</span>
@@ -81,11 +94,6 @@ export const Header: React.FC<Props> = ({ className }) => {
           </div>
 
           <div className={style.desktopContacts}>
-            <a href="tel:+748320201" className={style.phoneLink}>
-              <FontAwesomeIcon icon={faPhone} className={style.phoneIcon} />
-              <span>+7 (4832) 32-02-01</span>
-            </a>
-
             <a
               href="/#contacts"
               className={style.contactButton}
@@ -113,32 +121,40 @@ export const Header: React.FC<Props> = ({ className }) => {
           <Link to="/" className={style.mobileLogo} onClick={closeMobileMenu}>
             СПЕЦЦЕНТР
           </Link>
+
           <button className={style.closeButton} onClick={closeMobileMenu}>
             ✕
           </button>
         </div>
 
         <div className={style.mobileNav}>
-          <NavBar />
+          <NavBar onItemClick={closeMobileMenu} />
         </div>
 
         <div className={style.mobileContacts}>
-          <a href="tel:+74832320201" className={style.mobilePhone} onClick={closeMobileMenu}>
+          <a
+            href="tel:+74832320201"
+            className={style.mobilePhone}
+            onClick={closeMobileMenu}
+          >
             <span className={style.mobilePhoneIcon}>📞</span>
+
             <div className={style.mobilePhoneText}>
               <span className={style.mobilePhoneLabel}>Позвоните нам</span>
-              <span className={style.mobilePhoneNumber}>+7 (4832) 32-02-01</span>
+              <span className={style.mobilePhoneNumber}>
+                +7 (4832) 32-02-01
+              </span>
             </div>
           </a>
 
-          <Link
-            to="/#contacts"
+          <a
+            href="/#contacts"
             className={style.mobileContactButton}
             onClick={scrollToContacts}
           >
             <span>Контакты</span>
             <FontAwesomeIcon icon={faChevronRight} />
-          </Link>
+          </a>
         </div>
       </div>
 

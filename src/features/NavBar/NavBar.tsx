@@ -1,4 +1,4 @@
-import { faAngleDown, faChevronRight } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import clsx from 'clsx'
 import { useState } from 'react'
@@ -8,7 +8,7 @@ import { shootingRange, trainingCenter } from '../../shared/utils/model'
 
 interface Props {
 	className?: string
-	onItemClick?: () => void // Добавляем проп для закрытия меню
+	onItemClick?: () => void
 }
 
 export const NavBar: React.FC<Props> = ({ className, onItemClick }) => {
@@ -16,103 +16,108 @@ export const NavBar: React.FC<Props> = ({ className, onItemClick }) => {
 	const [cardHoveredSr, setCardHoveredSr] = useState(false)
 	const location = useLocation()
 
-	const isTcActive = () => {
-		return trainingCenter.some(item => location.pathname === item.href)
-	}
+	const isTcActive = () => trainingCenter.some(item => location.pathname === item.href)
+	const isSrActive = () => shootingRange.some(item => location.pathname === item.href)
+	const isActive = (path: string) => location.pathname.startsWith(path)
 
-	const isSrActive = () => {
-		return shootingRange.some(item => location.pathname === item.href)
-	}
-
-	const isEducationActive = () => {
-		return location.pathname.startsWith('/education')
-	}
-
-	// Функция для обработки клика по ссылке
-	const handleLinkClick = () => {
-		if (onItemClick) {
-			onItemClick()
-		}
-	}
+	const handleLinkClick = () => onItemClick?.()
 
 	return (
 		<div className={clsx(className, style.NavBar)}>
 			<nav className={style.navContainer}>
 				<ul className={style.navList}>
-					<div className={style.navLeftSide}>
-						<li
-							className={clsx(
-								style.listItem,
-								isTcActive() && style.active
-							)}
-							onMouseEnter={() => setCardHoveredTc(true)}
-							onMouseLeave={() => setCardHoveredTc(false)}
-						>
+
+					{/* Dropdown: Учебный центр */}
+					<li
+						className={clsx(style.listItem, isTcActive() && style.active)}
+						onMouseEnter={() => setCardHoveredTc(true)}
+						onMouseLeave={() => setCardHoveredTc(false)}
+					>
+						<span className={style.itemInner}>
 							Учебный центр
-							<FontAwesomeIcon icon={faAngleDown} className={style.arrowIcon} />
-							{cardHoveredTc && (
-								<div className={style.DropDownListContainer}>
-									{trainingCenter.map(tcItem => (
-										<div key={tcItem.label} className={style.DropDownListItem}>
-											<Link
-												className={clsx(
-													style.DropDownListItemLink,
-													location.pathname === tcItem.href && style.activeLink
-												)}
-												to={tcItem.href}
-												onClick={handleLinkClick} // Добавляем обработчик
-											>
-												{tcItem.label}
-											</Link>
-										</div>
-									))}
-								</div>
-							)}
-						</li>
-
-						<li
-							className={clsx(
-								style.listItem,
-								isSrActive() && style.active
-							)}
-							onMouseEnter={() => setCardHoveredSr(true)}
-							onMouseLeave={() => setCardHoveredSr(false)}
-						>
-							Стрелковый клуб
-							<FontAwesomeIcon icon={faAngleDown} className={style.arrowIcon} />
-							{cardHoveredSr && (
-								<div className={style.DropDownListContainer}>
-									{shootingRange.map(srItem => (
-										<div key={srItem.label} className={style.DropDownListItem}>
-											<Link
-												className={clsx(
-													style.DropDownListItemLink,
-													location.pathname === srItem.href && style.activeLink
-												)}
-												to={srItem.href}
-												onClick={handleLinkClick} // Добавляем обработчик
-											>
-												{srItem.label}
-											</Link>
-										</div>
-									))}
-								</div>
-							)}
-						</li>
-					</div>
-
-					<Link to="/education/" className={style.link} onClick={handleLinkClick}> {/* Добавляем обработчик */}
-						<li className={clsx(
-							style.listItem,
-							isEducationActive() && style.active
-						)}>
-							Сведения об образовательной организации
 							<FontAwesomeIcon
-								icon={faChevronRight}
-								className={style.arrowIcon}
+								icon={faAngleDown}
+								className={clsx(style.arrowIcon, cardHoveredTc && style.arrowOpen)}
 							/>
-						</li>
-					</Link>
+						</span>
+						{cardHoveredTc && (
+							<div className={style.DropDownListContainer}>
+								<div className={style.dropdownAccent} />
+								{trainingCenter.map(tcItem => (
+									<div key={tcItem.label} className={style.DropDownListItem}>
+										<Link
+											className={clsx(
+												style.DropDownListItemLink,
+												location.pathname === tcItem.href && style.activeLink
+											)}
+											to={tcItem.href}
+											onClick={handleLinkClick}
+										>
+											<span className={style.dropdownDot} />
+											{tcItem.label}
+										</Link>
+									</div>
+								))}
+							</div>
+						)}
+					</li>
+
+					{/* Dropdown: Стрелковый клуб */}
+					<li
+						className={clsx(style.listItem, isSrActive() && style.active)}
+						onMouseEnter={() => setCardHoveredSr(true)}
+						onMouseLeave={() => setCardHoveredSr(false)}
+					>
+						<span className={style.itemInner}>
+							Стрелковый клуб
+							<FontAwesomeIcon
+								icon={faAngleDown}
+								className={clsx(style.arrowIcon, cardHoveredSr && style.arrowOpen)}
+							/>
+						</span>
+						{cardHoveredSr && (
+							<div className={style.DropDownListContainer}>
+								<div className={style.dropdownAccent} />
+								{shootingRange.map(srItem => (
+									<div key={srItem.label} className={style.DropDownListItem}>
+										<Link
+											className={clsx(
+												style.DropDownListItemLink,
+												location.pathname === srItem.href && style.activeLink
+											)}
+											to={srItem.href}
+											onClick={handleLinkClick}
+										>
+											<span className={style.dropdownDot} />
+											{srItem.label}
+										</Link>
+									</div>
+								))}
+							</div>
+						)}
+					</li>
+
+					<li className={style.divider} aria-hidden="true" />
+
+					{/* Direct links */}
+					<li className={clsx(style.listItem, isActive('/trainning/drones') && style.active)}>
+						<Link to="/training/drones" className={style.plainLink} onClick={handleLinkClick}>
+							<span className={style.itemInner}>Центр БПЛА</span>
+						</Link>
+					</li>
+
+					<li className={clsx(style.listItem, isActive('/trainning/labor-safety') && style.active)}>
+						<Link to="/training/labor-safety/" className={style.plainLink} onClick={handleLinkClick}>
+							<span className={style.itemInner}>Охрана труда</span>
+						</Link>
+					</li>
+
+					<li className={clsx(style.listItem, style.listItemWide, isActive('/education') && style.active)}>
+						<Link to="/education/" className={style.plainLink} onClick={handleLinkClick}>
+							<span className={style.itemInner}>Сведения об организации</span>
+						</Link>
+					</li>
+
 				</ul>
 			</nav>
 		</div>

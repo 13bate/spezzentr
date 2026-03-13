@@ -12,7 +12,7 @@ import colt1911Img from '../../assets/weapons/Colt1911.jpg'; // COLT 1911
 import ttImg from '../../assets/weapons/TT.jpg'; // TT
 
 // Импорты для карабинов
-import vityazImg from '../../assets/weapons/ВикингМ.jpg'; // ПП ВИТЯЗЬ
+import vityazImg from '../../assets/weapons/Сайга9.jpg'; // ПП ВИТЯЗЬ
 import ppshImg from '../../assets/weapons/ППШ.jpg'; // ППШ
 import ak103Img from '../../assets/weapons/АК103.jpg'; // АК-103
 import rossiImg from '../../assets/weapons/Rossi.jpg'; // ROSSI 92
@@ -157,6 +157,14 @@ export const weaponsData = {
       minShots: 5,
       image: svdImg,
       description: 'Снайперская винтовка Драгунова.'
+    },
+    {
+      name: 'СВТ',
+      caliber: '7,62х54R',
+      price: 200,
+      minShots: 5,
+      image: null,
+      description: 'Самозарядный карабин СВТ. Калибр 7,62х54R.'
     }
 
   ],

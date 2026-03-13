@@ -1,6 +1,8 @@
+import { href } from "react-router"
+
 export const trainingCenter = [
 	{
-		label: 'Обучение безопасному обращению с оружием',
+		label: 'Обучение на гражданское оружие',
 		href: '/training/safety',
 	},
 	{ label: 'Обучение частных охранников', href: '/training/security-guards' },
@@ -9,6 +11,8 @@ export const trainingCenter = [
 		href: '/training/periodic-checks',
 	},
 	{ label: 'БПЛА', href: '/training/drones' },
+	{ label: "Охрана труда", href: "/training/labor-safety" },
+	{ label: "Обучение рабочим специальностям", href: '/training/professions' }
 ]
 
 export const shootingRange = [
@@ -67,7 +71,7 @@ export const eduOrgInfoShort = [
 
 export const trainingCenterShort = [
 	{
-		label: 'Безопасное обращение',
+		label: 'Гражданское оружие',
 		href: '/training/safety',
 	},
 	{ label: 'Обучение охранников', href: '/training/security-guards' },

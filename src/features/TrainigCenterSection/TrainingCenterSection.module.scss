@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+// ─── Section ─────────────────────────────────────────────────
+.section {
+  width: 100%;
+  max-width: 1320px;
+  margin: 100px auto;
+  padding: 56px 48px;
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+
+  @media (max-width: 768px) {
+    padding: 40px 20px;
+    margin: 60px auto;
+  }
+}
+
+// ─── Header ──────────────────────────────────────────────────
+.eyebrow {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #FE3B15;
+  margin-bottom: 10px;
+}
+
+.sectionTitle {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 600;
+  color: #111;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 44px;
+
+  em {
+    font-style: normal;
+    color: #FE3B15;
+  }
+}
+
+// ─── Grid ────────────────────────────────────────────────────
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: #ebebeb;
+  border: 1px solid #ebebeb;
+  border-radius: 14px;
+  overflow: hidden;
+
+  @media (max-width: 1100px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 580px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// ─── Card ────────────────────────────────────────────────────
+.card {
+  height: 100%;
+  background: #fff;
+  padding: 28px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background 0.15s ease;
+  cursor: pointer;
+  animation: cardReveal 0.4s ease both;
+  animation-delay: calc(var(--index) * 0.06s);
+
+  &:hover {
+    background: #fafafa;
+
+    .cardBtn {
+      border-color: #FE3B15;
+      color: #FE3B15;
+    }
+  }
+}
+
+// ─── Index number ────────────────────────────────────────────
+.indexNum {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: #d0d0d0;
+  margin-bottom: 18px;
+}
+
+// ─── Title ───────────────────────────────────────────────────
+.cardTitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #111;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+// ─── Highlights ──────────────────────────────────────────────
+.cardHighlights {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  li {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #777;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-weight: 400;
+  }
+}
+
+.checkIcon {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #FE3B15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+// ─── Divider — margin-top: auto pins everything below it ─────
+.divider {
+  height: 1px;
+  background: #f2f2f2;
+  margin-top: auto;
+  margin-bottom: 18px;
+}
+
+// ─── Meta ────────────────────────────────────────────────────
+.cardMeta {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.metaLabel {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #bbb;
+}
+
+.metaValue {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #111;
+  letter-spacing: -0.01em;
+}
+
+// ─── Button ──────────────────────────────────────────────────
+.cardBtn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border: 1px solid #e4e4e4;
+  border-radius: 8px;
+  background: #fff;
+  color: #111;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.15s ease, color 0.15s ease;
+
+  span {
+    color: inherit;
+  }
+}
+
+// ─── Animation ───────────────────────────────────────────────
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ─── Mobile ──────────────────────────────────────────────────
+@media (max-width: 640px) {
+  .cardMeta {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
+
+

@@ -1,0 +1,501 @@
+// ─── Tokens ──────────────────────────────────────────────────
+$red:     #FE3B15;
+$black:   #111;
+$mid:     #555;
+$muted:   #999;
+$border:  #ebebeb;
+$bg:      #fff;
+$bgsoft:  #fafafa;
+
+$sans: 'Inter', sans-serif;
+
+// ─── Page shell ──────────────────────────────────────────────
+.page {
+  background: $bg;
+  font-family: $sans;
+  -webkit-font-smoothing: antialiased;
+  color: $black;
+}
+
+// ─── Shared ──────────────────────────────────────────────────
+.eyebrow {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: $red;
+  margin-bottom: 10px;
+}
+
+.sectionTitle {
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 600;
+  color: $black;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+.sectionHead {
+  margin-bottom: 40px;
+}
+
+.section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 48px;
+  border-bottom: 1px solid $border;
+
+  @media (max-width: 768px) {
+    padding: 56px 20px;
+  }
+}
+
+// ─── Buttons ─────────────────────────────────────────────────
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  padding: 13px 28px;
+  background: $red;
+  color: #fff;
+  font-family: $sans;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+
+  &:hover { opacity: 0.88; }
+}
+
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  padding: 13px 28px;
+  background: transparent;
+  color: $black;
+  font-family: $sans;
+  font-size: 13px;
+  font-weight: 500;
+  border: 1px solid $border;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: border-color 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    border-color: #ccc;
+  }
+}
+
+// ─── Hero ─────────────────────────────────────────────────────
+.hero {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 96px 48px 80px;
+  border-bottom: 1px solid $border;
+
+  @media (max-width: 768px) {
+    padding: 64px 20px 56px;
+  }
+}
+
+.heroInner {
+  max-width: 680px;
+  margin-bottom: 64px;
+}
+
+.heroTitle {
+  font-size: clamp(36px, 5vw, 58px);
+  font-weight: 600;
+  color: $black;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+
+  em {
+    font-style: normal;
+    color: $red;
+  }
+}
+
+.heroSub {
+  font-size: 16px;
+  line-height: 1.65;
+  color: $muted;
+  font-weight: 400;
+  margin-bottom: 36px;
+}
+
+.heroActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.heroStats {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding-top: 40px;
+  border-top: 1px solid $border;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-right: 48px;
+}
+
+.statNum {
+  font-size: 28px;
+  font-weight: 600;
+  color: $black;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+.statLabel {
+  font-size: 12px;
+  color: $muted;
+  font-weight: 400;
+}
+
+.statDivider {
+  width: 1px;
+  height: 36px;
+  background: $border;
+  margin-right: 48px;
+  flex-shrink: 0;
+}
+
+// ─── Basis ───────────────────────────────────────────────────
+.basis {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 56px 48px;
+  border-bottom: 1px solid $border;
+
+  @media (max-width: 768px) {
+    padding: 40px 20px;
+  }
+}
+
+.basisCard {
+  background: $bgsoft;
+  border: 1px solid $border;
+  border-left: 3px solid $red;
+  border-radius: 8px;
+  padding: 24px 28px;
+  display: flex;
+  align-items: baseline;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.basisLabel {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: $red;
+  flex-shrink: 0;
+}
+
+.basisText {
+  font-size: 14px;
+  line-height: 1.7;
+  color: $mid;
+  font-weight: 400;
+
+  strong {
+    color: $black;
+    font-weight: 600;
+  }
+}
+
+// ─── Programs ────────────────────────────────────────────────
+.programGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: $border;
+  border: 1px solid $border;
+  border-radius: 12px;
+  overflow: hidden;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.programCard {
+  background: $bg;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  animation: fadeUp 0.4s ease both;
+  animation-delay: calc(var(--index) * 0.07s);
+  transition: background 0.15s;
+
+  &:hover {
+    background: $bgsoft;
+  }
+}
+
+.programId {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: $red;
+  margin-bottom: 10px;
+}
+
+.programTitle {
+  font-size: 17px;
+  font-weight: 600;
+  color: $black;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+
+.programWho {
+  font-size: 13px;
+  line-height: 1.6;
+  color: $muted;
+  font-weight: 400;
+  margin-bottom: 20px;
+  flex: 1;
+}
+
+.programMeta {
+  display: flex;
+  gap: 20px;
+  padding-top: 16px;
+  border-top: 1px solid $border;
+}
+
+.pmItem {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.pmLabel {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ccc;
+}
+
+.pmValue {
+  font-size: 14px;
+  font-weight: 600;
+  color: $black;
+  letter-spacing: -0.01em;
+}
+
+// ─── What's included ─────────────────────────────────────────
+.includeGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  background: $border;
+  border: 1px solid $border;
+  border-radius: 12px;
+  overflow: hidden;
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 560px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.includeItem {
+  background: $bg;
+  padding: 24px 22px;
+  transition: background 0.15s;
+
+  &:hover {
+    background: $bgsoft;
+  }
+}
+
+.includeNum {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: #d0d0d0;
+  margin-bottom: 12px;
+}
+
+.includeTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: $black;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.includeDesc {
+  font-size: 12px;
+  line-height: 1.65;
+  color: $muted;
+  font-weight: 400;
+}
+
+// ─── Steps ───────────────────────────────────────────────────
+.stepsSection {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 80px 48px;
+  border-bottom: 1px solid $border;
+  background: $bgsoft;
+
+  @media (max-width: 768px) {
+    padding: 56px 20px;
+  }
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  position: relative;
+
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.step {
+  position: relative;
+  padding-right: 32px;
+
+  @media (max-width: 800px) {
+    padding-right: 0;
+  }
+}
+
+.stepNum {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: $red;
+  margin-bottom: 12px;
+}
+
+.stepTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: $black;
+  letter-spacing: -0.015em;
+  margin-bottom: 8px;
+}
+
+.stepDesc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: $muted;
+  font-weight: 400;
+}
+
+.stepArrow {
+  position: absolute;
+  top: 0;
+  right: 6px;
+  font-size: 16px;
+  color: #ddd;
+
+  @media (max-width: 800px) {
+    display: none;
+  }
+}
+
+// ─── FAQ ─────────────────────────────────────────────────────
+.faqList {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  background: $border;
+  border: 1px solid $border;
+  border-radius: 12px;
+  overflow: hidden;
+
+  @media (max-width: 700px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.faqItem {
+  background: $bg;
+  padding: 28px 24px;
+  transition: background 0.15s;
+
+  &:hover {
+    background: $bgsoft;
+  }
+}
+
+.faqQ {
+  font-size: 14px;
+  font-weight: 600;
+  color: $black;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+}
+
+.faqA {
+  font-size: 13px;
+  line-height: 1.7;
+  color: $muted;
+  font-weight: 400;
+}
+
+// ─── CTA ─────────────────────────────────────────────────────
+.cta {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 96px 48px;
+
+  @media (max-width: 768px) {
+    padding: 64px 20px;
+  }
+}
+
+.ctaInner {
+  max-width: 480px;
+}
+
+.ctaTitle {
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 600;
+  color: $black;
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+  line-height: 1.1;
+}
+
+.ctaSub {
+  font-size: 15px;
+  color: $muted;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+// ─── Animation ───────────────────────────────────────────────
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

@@ -55,12 +55,12 @@ export const HeroSection: React.FC<Props> = ({ className }) => {
           </p>
 
 
-          <div className={style.buttonContainer}>
-            <Link to={heroContent.buttons.primary.link} className={style.glassButton}>
-              <span>{heroContent.buttons.primary.text}</span>
-              <FontAwesomeIcon icon={faArrowRight} className={style.buttonArrow} />
-            </Link>
-          </div>
+          {/* <div className={style.buttonContainer}> */}
+          {/*   <Link to={heroContent.buttons.primary.link} className={style.glassButton}> */}
+          {/*     <span>{heroContent.buttons.primary.text}</span> */}
+          {/*     <FontAwesomeIcon icon={faArrowRight} className={style.buttonArrow} /> */}
+          {/*   </Link> */}
+          {/* </div> */}
         </div>
       </div>
     </div>

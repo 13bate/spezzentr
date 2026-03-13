@@ -105,7 +105,11 @@ export const IntroShootingPage: React.FC = () => {
               </div>
               
               <div className={style.weaponImage}>
+              {weapon.image ?                 
                 <img src={weapon.image} alt={weapon.name} />
+          :   <div className={style.weaponSkeleton}>
+                <span>{weapon.name}</span>
+              </div>}
               </div>
               
               <h3 className={style.weaponName}>{weapon.name}</h3>

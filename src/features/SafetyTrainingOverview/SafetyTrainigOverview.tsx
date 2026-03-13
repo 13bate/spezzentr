@@ -1,69 +1,136 @@
-import React from 'react';
-import { Link } from 'react-router';
-import clsx from 'clsx';
+import React from 'react'
+import { Link } from 'react-router'
+import style from './SafetyTrainigOverview.module.scss'
 
-import style from './SafetyTrainigOverview.module.scss';
+export const safetyTrainingContent = {
+  title: 'Обучение на гражданское оружие',
+  highlights: ['Правовая подготовка', 'Огневая подготовка', 'Итоговая аттестация'],
+  buttonText: 'Записаться на курс',
+  buttonLink: '/training/safety',
+  duration: '6 часов',
+  price: '6 000 ₽',
+  format: 'Теория + практика',
+}
 
-import gunImage from "../../assets/spezzenter/scale_1200.jpg"
-import patternImg from '../../assets/spezzenter/ab6c22b1-562f-4bc9-a9f2-97dfbe6b05bf.png';
-import { safetyTrainingContent } from './model';
-import { Button } from '../../shared/ui/Button';
+const CheckIcon = () => (
+  <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
+    <path d="M1 3l2 2 4-4" stroke="#fff" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+)
+
+const SceneVisual = () => (
+  <div className={style.visual}>
+    <div className={style.lane} />
+
+    {/* Safety badge */}
+    <div className={style.badge}>
+      <div className={style.shield}>
+        <div className={style.shieldCheck} />
+      </div>
+      <div className={style.badgeLabel}>Сертификат</div>
+    </div>
+
+    {/* Paper target on stand */}
+    <div className={style.targetWrap}>
+      <div className={style.paper}>
+        <div className={style.zoneD} />
+        <div className={style.zoneC} />
+        <div className={style.silHead} />
+        <div className={style.silBody}>
+          <div className={style.zoneA} />
+        </div>
+        <div className={`${style.hole} ${style.hA1}`} />
+        <div className={`${style.hole} ${style.hA2}`} />
+        <div className={`${style.hole} ${style.hA3}`} />
+        <div className={`${style.hole} ${style.hB1}`} />
+        <div className={`${style.hole} ${style.hB2}`} />
+        <div className={style.score}>A·ZONE</div>
+      </div>
+      <div className={style.crossbar} />
+      <div className={style.pole} />
+    </div>
+
+    {/* Scope reticle */}
+    <div className={style.scope}>
+      <div className={style.scopeInner} />
+      <div className={style.scopeDot} />
+    </div>
+
+    {/* Brass shells */}
+    <div className={style.shells}>
+      <div className={`${style.shell} ${style.sh1}`} />
+      <div className={`${style.shell} ${style.sh2}`} />
+      <div className={`${style.shell} ${style.sh3}`} />
+      <div className={`${style.shell} ${style.sh4}`} />
+    </div>
+
+    <div className={style.distLine} />
+    <div className={style.distLabel}>25 м</div>
+
+    <div className={style.markers}>
+      <span className={style.marker}>0</span>
+      <span className={style.marker}>10м</span>
+      <span className={style.marker}>25м</span>
+    </div>
+  </div>
+)
 
 interface Props {
-  className?: string;
+  className?: string
 }
 
 export const SafetyTrainingOverview: React.FC<Props> = ({ className }) => {
   return (
-    <section className={clsx(className, style.safetyTraining)}>
-      <div className={style.content}>
-        <span className={style.badge}>🛡️ Для начинающих</span>
+    <section className={`${className ?? ''} ${style.section}`}>
+      {/* Background */}
+      <div className={style.bg}>
+        <div className={style.bgGrid} />
+        <div className={style.b1} />
+        <div className={style.b2} />
+      </div>
 
-        <h2 className={style.title}>{safetyTrainingContent.title}</h2>
+      <div className={style.inner}>
+        {/* Left: content */}
+        <div className={style.content}>
+          <div className={style.eyebrow}>Учебный центр</div>
+          <h2 className={style.title}>
+            Обучение на гражданское оружие
+          </h2>
 
-        <p className={style.description}>{safetyTrainingContent.description}</p>
 
-        <ul className={style.highlightsList}>
-          {safetyTrainingContent.highlights.map((highlight, index) => (
-            <li key={index}>{highlight}</li>
-          ))}
-        </ul>
+          <ul className={style.list}>
+            {safetyTrainingContent.highlights.map((item, i) => (
+              <li key={i}>
+                <span className={style.tick}><CheckIcon /></span>
+                {item}
+              </li>
+            ))}
+          </ul>
 
-        <div className={style.infoRow}>
-          <div className={style.price}>
-            {safetyTrainingContent.price}
-            <span>/курс</span>
+          <div className={style.meta}>
+            <div className={style.mi}>
+              <span className={style.ml}>Стоимость</span>
+              <span className={`${style.mv} ${style.mvRed}`}>{safetyTrainingContent.price}</span>
+            </div>
+            <div className={style.mi}>
+              <span className={style.ml}>Длительность</span>
+              <span className={style.mv}>{safetyTrainingContent.duration}</span>
+            </div>
+            <div className={style.mi}>
+              <span className={style.ml}>Формат</span>
+              <span className={style.mv}>{safetyTrainingContent.format}</span>
+            </div>
           </div>
-          <div className={style.duration}>
-            {safetyTrainingContent.duration}
-          </div>
-          <div className={style.format}>
-            {safetyTrainingContent.format}
-          </div>
-        </div>
 
-        <div className={style.buttonWrapper}>
-          <Link to={safetyTrainingContent.buttonLink}>
-            <Button>
-              {safetyTrainingContent.buttonText}
-            </Button>
+          <Link to={safetyTrainingContent.buttonLink} className={style.btn}>
+            {safetyTrainingContent.buttonText}
+            <span className={style.arr}>→</span>
           </Link>
         </div>
-      </div>
 
-      <div className={style.mediaContainer}>
-        <img
-          src={gunImage}
-          alt="Безопасное обращение с оружием"
-          className={style.mainImage}
-        />
-        <img
-          src={patternImg}
-          alt=""
-          className={style.patternImage}
-          aria-hidden="true"
-        />
+        {/* Right: visual scene */}
+        <SceneVisual />
       </div>
     </section>
-  );
-};
+  )
+}

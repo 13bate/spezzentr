@@ -51,13 +51,7 @@ export const ContactsSection: React.FC<Props> = ({ className }) => {
           </div>
 
           {/* Карта справа */}
-          <div className={style.mapWrapper}>
-            <ContactsMap
-              address={'г. Брянск, ул. Институтская, д. 15 корп. 3'}
-              coordinates={{ lat: 53.304506, lng: 34.302618 }}
-              zoom={16}
-            />
-          </div>
+          <iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=1874339268" width="560" height="400" frameborder="0"></iframe>
         </div>
       </div>
     </section>

@@ -101,7 +101,6 @@ export const GiftCardsPage: React.FC = () => {
                   <FontAwesomeIcon icon={feature.icon} />
                 </div>
                 <h3>{feature.text}</h3>
-                <p>Подарочный сертификат с возможностью выбора</p>
               </div>
             ))}
           </div>

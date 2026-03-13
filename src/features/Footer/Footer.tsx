@@ -1,7 +1,13 @@
-import style from "./Footer.module.scss"
+import style from "./Footer.module.scss";
 import clsx from "clsx";
-import { Link } from "react-router-dom"
-import vkLogo from "../../assets/spezzenter/vkLogo.png"
+import { Link } from "react-router-dom";
+import vkLogo from "../../assets/spezzenter/vkLogo.png";
+
+// Banner imports
+import eaisBanner from "../../assets/spezzenter/weapons_cluster.png";
+import minobrBanner from "../../assets/spezzenter/min_obr_nauki_logo.jpeg";
+import minprosvBanner from "../../assets/spezzenter/min_prosv.jpeg";
+
 import { trainingCenter, shootingRange } from "../../shared/utils/model";
 
 interface Props {
@@ -55,13 +61,37 @@ export const Footer: React.FC<Props> = ({ className }) => {
                 СПЕЦЦЕНТР
               </Link>
             </li>
+            <li >
+              <iframe
+                src="https://yandex.ru/sprav/widget/rating-badge/67934832673?type=rating&theme=dark"
+                width="150"
+                height="50"
+                frameBorder="0"
+                className={style.ratingBadge}
+                title="Yandex Rating Badge"
+              ></iframe>
+            </li>
+
           </ul>
         </div>
+      </div>
+
+      {/* Banners section */}
+      <div className={style.footerBanners}>
+        <a href="https://eais-ok.ru/" target="_blank" rel="noopener noreferrer" className="footerBanners-banner">
+          <img src={eaisBanner} alt="ЕАИС-ОК" className="footerBanners-banner-img" />
+        </a>
+        <a href="https://minobr.ru/" target="_blank" rel="noopener noreferrer" className="footerBanners-banner">
+          <img src={minobrBanner} alt="Министерство науки и образования РФ" className="footerBanners-banner-img" />
+        </a>
+        <a href="https://minprosv.ru/" target="_blank" rel="noopener noreferrer" className="footerBanners-banner">
+          <img src={minprosvBanner} alt="Министерство просвещения РФ" className="footerBanners-banner-img" />
+        </a>
       </div>
 
       <div className={style.companyInfo}>
         ЧОУ ДПО "СПЕЦЦЕНТР"  ИНН 3257001611, ОГРН 1133256002670
       </div>
-    </footer>
+    </footer >
   );
 };

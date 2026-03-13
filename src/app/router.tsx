@@ -24,6 +24,9 @@ import { ScholarshipsPage } from '../pages/EduInfroPages/ScholarshipsPage'
 import { TeachersPage } from '../pages/EduInfroPages/TeachersPage'
 import { AccessibilityPage } from '../pages/EduInfroPages/AccessibilityPage'
 import { InternationalPage } from '../pages/EduInfroPages/InternationalPage'
+import { LaborSafety } from '../pages/LaborSafety'
+import { WorkingProfessions } from '../pages/WorkingProfessions'
+import { NotFoundPage } from '../pages/NotFoundPage'
 
 // Массив для навигации (можно использовать где угодно)
 export const eduOrgInfo = [
@@ -49,6 +52,11 @@ export const eduOrgInfo = [
 
 export const router = createBrowserRouter([
 	{
+		path: "*",
+		element: <NotFoundPage />,
+	},
+	{
+
 		path: '/',
 		element: <HomeLayout />,
 		children: [
@@ -77,6 +85,14 @@ export const router = createBrowserRouter([
 			{
 				path: "training/drones",
 				element: <DroneTrainingPage />
+			},
+			{
+				path: "/training/labor-safety",
+				element: <LaborSafety />
+			},
+			{
+				path: '/training/professions',
+				element: <WorkingProfessions />
 			},
 			{
 				path: "shooting/intro",
@@ -151,7 +167,7 @@ export const router = createBrowserRouter([
 			{
 				path: '/education/international',
 				element: <InternationalPage />
-			}
+			},
 		],
 	},
 ], { basename: '/spezzentr' })
