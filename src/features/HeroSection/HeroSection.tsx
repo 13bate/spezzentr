@@ -1,68 +1,82 @@
-import style from "./HeroSection.module.scss"
-import patternImg from "../../assets/spezzenter/ab6c22b1-562f-4bc9-a9f2-97dfbe6b05bf.png"
+import React, { useEffect } from "react";
 import clsx from "clsx";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
-
-import { Link } from "react-router";
-import { heroContent } from "./model";
+import style from "./HeroSection.module.scss";
 
 interface Props {
   className?: string;
 }
 
 export const HeroSection: React.FC<Props> = ({ className }) => {
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const x = (e.clientX / window.innerWidth) * 100;
+      const y = (e.clientY / window.innerHeight) * 100;
+
+      document.documentElement.style.setProperty("--mouse-x", `${x}%`);
+      document.documentElement.style.setProperty("--mouse-y", `${y}%`);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
   return (
-    <div className={clsx(className, style.heroSection)}>
-      {/* Акцентные линии */}
-      <div className={`${style.accentLine} ${style.vertical}`} />
-      <div className={`${style.accentLine} ${style.horizontal}`} />
+    <section className={clsx(style.hero, className)}>
+      <div className={style.background} />
+      <div className={style.grid} />
+      <div className={style.bulletTrail} />
 
-      {/* Левая колонка с паттерном */}
-      <div className={style.patternContainer}>
-        <img className={style.patternImg} src={patternImg} alt="pattern" />
-        <div className={style.patternOverlay}>
-          <span>{heroContent.patternText}</span>
-        </div>
+      <div className={style.crosshair}>
+        <span />
+        <span />
+        <span />
+        <span />
       </div>
 
-      {/* Правая колонка с CSS-фоном */}
-      <div className={style.bgContainer}>
-        <div className={style.heroBackground} />
+      <div className={style.content}>
+        <div className={style.tag}>LIVE FIRE EXPERIENCE</div>
 
-        {/* Динамические световые линии */}
-        <div className={style.lightLines}>
-          {[...Array(8)].map((_, i) => (
-            <span key={i} />
-          ))}
+        <h1 className={style.title}>
+          TRAIN LIKE
+          <span>A PROFESSIONAL</span>
+        </h1>
+
+        <p className={style.description}>
+          Elite shooting range designed for serious shooters.
+          Military-grade equipment, certified instructors,
+          precision training, and an unforgettable experience.
+        </p>
+
+        <div className={style.actions}>
+          <button className={style.primaryBtn}>
+            BOOK SESSION
+          </button>
+
+          <button className={style.secondaryBtn}>
+            WATCH VIDEO
+          </button>
         </div>
 
-        {/* Парящие частицы */}
-        <div className={style.particles}>
-          {[...Array(30)].map((_, i) => (
-            <span key={i} />
-          ))}
-        </div>
+        <div className={style.stats}>
+          <div className={style.statCard}>
+            <strong>12</strong>
+            <span>LANES</span>
+          </div>
 
-        <div className={style.heroContent}>
-          <h1 className={style.heroTitle}>
-            {heroContent.title.main}
-            <span>{heroContent.title.highlighted}</span>
-          </h1>
+          <div className={style.statCard}>
+            <strong>1500+</strong>
+            <span>CLIENTS</span>
+          </div>
 
-          <p className={style.heroParagraph}>
-            {heroContent.description}
-          </p>
-
-
-          {/* <div className={style.buttonContainer}> */}
-          {/*   <Link to={heroContent.buttons.primary.link} className={style.glassButton}> */}
-          {/*     <span>{heroContent.buttons.primary.text}</span> */}
-          {/*     <FontAwesomeIcon icon={faArrowRight} className={style.buttonArrow} /> */}
-          {/*   </Link> */}
-          {/* </div> */}
+          <div className={style.statCard}>
+            <strong>24/7</strong>
+            <span>ACCESS</span>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

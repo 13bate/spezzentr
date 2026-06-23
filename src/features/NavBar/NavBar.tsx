@@ -106,9 +106,9 @@ export const NavBar: React.FC<Props> = ({ className, onItemClick }) => {
 						</Link>
 					</li>
 
-					<li className={clsx(style.listItem, isActive('/trainning/labor-safety') && style.active)}>
-						<Link to="/training/labor-safety/" className={style.plainLink} onClick={handleLinkClick}>
-							<span className={style.itemInner}>Охрана труда</span>
+					<li className={clsx(style.listItem, isActive('/trainning/tacmed') && style.active)}>
+						<Link to="/training/tacmed/" className={style.plainLink} onClick={handleLinkClick}>
+							<span className={style.itemInner}>Тактическая медицина</span>
 						</Link>
 					</li>
 
@@ -117,7 +117,6 @@ export const NavBar: React.FC<Props> = ({ className, onItemClick }) => {
 							<span className={style.itemInner}>Сведения об организации</span>
 						</Link>
 					</li>
-
 				</ul>
 			</nav>
 		</div>

@@ -1,8 +1,8 @@
 // ─── Section ─────────────────────────────────────────────────
 .section {
-  max-width: 1200px;
+  min-width: 100%;
   margin: 0 auto;
-  padding: 72px 48px;
+  padding: 48px 0;
   position: relative;
   overflow: hidden;
 
@@ -10,7 +10,21 @@
     padding: 48px 20px;
   }
 }
-
+.title {
+  font-size: clamp(34px, 4.5vw, 60px);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 24px;
+  letter-spacing: -0.03em;
+}
+.sectionTitle {   
+  background: linear-gradient(135deg, #0b1220, #FE3B15, #0b1220);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shine 5s linear infinite;
+}
 // ─── Background ──────────────────────────────────────────────
 .bg {
   position: absolute;
@@ -71,6 +85,7 @@
   margin-bottom: 24px;
   position: relative;
   z-index: 1;
+  align-items: stretch; // Ensure all grid items stretch to same height
 
   @media (max-width: 1024px) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -87,19 +102,28 @@
   perspective: 900px;
   cursor: pointer;
   text-decoration: none;
+  height: 100%; // Take full height of grid cell
+  display: flex;
+  flex-direction: column;
 }
 
 .cardInner {
   position: relative;
   border-radius: 16px;
   padding: 24px 20px 20px;
-  min-height: 220px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
   transform: rotateY(-4deg) rotateX(3deg);
   transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.45s ease;
+  height: 100%; // Take full height of parent
+  min-height: 320px; // Set minimum height for consistency
+  
+  // Allow content to flex properly
+  > * {
+    flex-shrink: 0;
+  }
 
   // Top gloss streak
   &::before {
@@ -202,6 +226,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  margin-bottom: 16px; // Consistent spacing
 }
 
 .cardNum {
@@ -226,7 +251,10 @@
 .cardBody {
   position: relative;
   z-index: 3;
-  margin-top: 16px;
+  margin-top: 0;
+  flex: 1; // Take remaining space
+  display: flex;
+  flex-direction: column;
 }
 
 .cardLabel {
@@ -244,6 +272,33 @@
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.42);
   font-weight: 400;
+  margin-bottom: 16px;
+  flex-shrink: 0;
+}
+
+// Add features container for dynamic content
+.cardFeatures {
+  margin-top: auto;
+  padding-top: 12px;
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 8px;
+  
+  i {
+    font-size: 10px;
+    color: currentColor;
+    opacity: 0.7;
+  }
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .cardFooter {
@@ -254,6 +309,8 @@
   justify-content: space-between;
   padding-top: 14px;
   border-top: 1px solid rgba(255, 255, 255, 0.07);
+  margin-top: 16px; // Ensure spacing from content
+  flex-shrink: 0;
 }
 
 .cardLink {

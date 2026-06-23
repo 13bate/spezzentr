@@ -1,4 +1,4 @@
-import { ContactsMap } from './ContactsMap';
+
 import style from './ContactsSection.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons';
@@ -51,7 +51,7 @@ export const ContactsSection: React.FC<Props> = ({ className }) => {
           </div>
 
           {/* Карта справа */}
-          <iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=1874339268" width="560" height="400" frameborder="0"></iframe>
+          <iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=1874339268" width="560" height="400"></iframe>
         </div>
       </div>
     </section>

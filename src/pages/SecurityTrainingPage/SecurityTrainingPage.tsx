@@ -4,6 +4,7 @@ import { securityTrainingData } from '../../features/SecurityTraining/data/secur
 import style from './SecurityTrainingPage.module.scss';
 import studyQeuestionsPdf from "../../../public/Методичка-ОХРАННИКИ-2023-4-6-разряд.pdf";
 import periodicCheckQuestionsPdf from "../../../public/ПЕРИОДИЧЕСКАЯ-ПРОВЕРКА-2023-4-6-разряд.pdf";
+import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle';
 
 export const SecurityTrainingPage: React.FC = () => {
   return (
@@ -13,8 +14,7 @@ export const SecurityTrainingPage: React.FC = () => {
       <main className={style.securityTrainingPage}>
         {/* Hero секция */}
         <section className={style.hero}>
-          <h1 className={style.title}>{securityTrainingData.hero.title}</h1>
-          <p className={style.description}>{securityTrainingData.hero.description}</p>
+          <InfoPagesTitle title={securityTrainingData.hero.title} description={securityTrainingData.hero.description} />
         </section>
 
         {/* Полное описание */}

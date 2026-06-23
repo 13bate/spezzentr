@@ -4,17 +4,13 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  padding: 20px 0;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
-  &.scrolled {
-    padding: 12px 0;
+    padding: 8px 0;
     color: black !important;
     backdrop-filter: blur(12px) saturate(180%);
     -webkit-backdrop-filter: blur(12px) saturate(180%);
     background: rgba(255, 255, 255, 0.8);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
     border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-  }
 }
 
 .headerContainer {
@@ -188,6 +184,21 @@
       background: #FE3B15;
     }
   }
+}
+
+.headerInfoSection{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.headerInfoSectionPhone{
+  transition: color 0.3s ease;
+}
+
+.headerInfoSectionPhone:hover{
+  color:  #FE3B15;
+
 }
 
 // Мобильное меню

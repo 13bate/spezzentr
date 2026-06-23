@@ -1,6 +1,7 @@
 import clsx from "clsx"
 import style from "./Home.module.scss"
 import { Separator } from "../../shared/ui/separator/"
+import { SectionTitle } from "../../shared/ui/SectionTitle/"
 import { ShootingClubSection } from "../../features/ShootingClubSection"
 import { HeroSection } from "../../features/HeroSection"
 import { TrainigCenterSection } from "../../features/TrainigCenterSection/"
@@ -9,6 +10,7 @@ import { SafetyTrainingOverview } from "../../features/SafetyTrainingOverview"
 import { IntroShootingOverview } from "../../features/IntroShootingOverview"
 import { useEffect } from "react"
 import { GiftCardsOverview } from "../../features/GiftCardsOverview"
+import { ProgrammsSection } from "../../features/ProgrammsSection"
 
 interface Props {
 	className?: string
@@ -35,16 +37,18 @@ export const Home: React.FC<Props> = ({ className }) => {
 		<div className={clsx(className, style.homeContainer)}>
 			<HeroSection />
 			<div className={style.contentContainer}>
+			  <SectionTitle title={"СТРЕЛКОВЫЙ КЛУБ"} />
 				<ShootingClubSection />
+				<ProgrammsSection />
 				<IntroShootingOverview />
 				<GiftCardsOverview />
-				<div className={style.separatorWrapper}>
-					<Separator />
-					<TrainigCenterSection />
-					<SafetyTrainingOverview />
+				<Separator />
+				<SectionTitle title={"УЧЕБНЫЙ ЦЕНТР"} />
+				<TrainigCenterSection />
+				<SafetyTrainingOverview />
+				<ContactsSection />
 				</div>
 			</div>
-			<ContactsSection />
-		</div>
+
 	)
 }

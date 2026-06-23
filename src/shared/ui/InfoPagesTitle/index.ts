@@ -1,0 +1,1 @@
+export { InfoPagesTitle } from "./InfoPagesTitle";

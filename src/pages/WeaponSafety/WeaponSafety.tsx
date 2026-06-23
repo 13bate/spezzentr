@@ -3,6 +3,7 @@ import React from 'react';
 import style from './WeaponSafety.module.scss';
 import { safetyTrainingData } from './safetyTrainingData';
 import { PageTitle } from '../../shared/ui/PageTitle';
+import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle';
 
 export const WeaponSafety: React.FC = () => {
   return (
@@ -15,6 +16,7 @@ export const WeaponSafety: React.FC = () => {
           description="Обучение безопасному обращению с оружием для получения лицензии на приобретение гражданского оружия."
           keywords="обучение оружию, лицензия на оружие, безопасное обращение"
         />
+        <InfoPagesTitle title='Обучение безопасному обращению с оружием' description='Обучение безопасному обращению с оружием для получения лицензии на приобретение гражданского оружия.' />
         {/* Первоначальное обучение и Периодическая проверка */}
         <div className={style.grid2}>
           {/* Первоначальное обучение */}

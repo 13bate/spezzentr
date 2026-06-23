@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router'
-import { Container } from '../../features/Container'
+import { Container } from '../../shared/ui/Container'
 import styles from "./HomeLayout.module.scss"
 import { Header } from '../../features/Header'
 import { Footer } from '../../features/Footer'

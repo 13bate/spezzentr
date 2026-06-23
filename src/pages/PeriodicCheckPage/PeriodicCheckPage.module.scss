@@ -14,29 +14,7 @@
 .hero {
   margin-bottom: 60px;
   
-  .title {
-    font-family: 'Oswald', sans-serif;
-    font-size: 48px;
-    font-weight: 700;
-    color: #333;
-    text-transform: uppercase;
-    margin: 0 0 20px;
-    position: relative;
-    
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 80px;
-      height: 4px;
-      background: #FE3B15;
-    }
-    
-    @media (max-width: 768px) {
-      font-size: 32px;
-    }
-  }
+
   
   .description {
     font-family: 'PT Sans', sans-serif;

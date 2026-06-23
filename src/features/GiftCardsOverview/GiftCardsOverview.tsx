@@ -26,9 +26,9 @@ export const GiftCardsOverview: React.FC<Props> = ({ className }) => {
 
         <div className={style.buttonWrapper}>
           <Link to={giftCardsContent.buttonLink}>
-            <Button>
+            <button className={style.button}>
               {giftCardsContent.buttonText}
-            </Button>
+            </button>
           </Link>
         </div>
       </div>
@@ -45,11 +45,10 @@ export const GiftCardsOverview: React.FC<Props> = ({ className }) => {
 
         {/* Основное изображение */}
         <img
-          src={giftCardImg}
-          alt="Подарочный сертификат"
           className={style.mainImage}
         />
       </div>
     </section>
   );
 };
+

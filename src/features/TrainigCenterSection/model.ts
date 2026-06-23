@@ -7,7 +7,7 @@ export interface CourseItem {
   price: string
   duration: string
 
-  buttonText: string
+
   buttonLink: string
   accent: string // per-card accent color
 }
@@ -21,7 +21,7 @@ export const courses: CourseItem[] = [
     highlights: ['Правовая подготовка', 'Огневая подготовка', 'Итоговая аттестация'],
     price: '6 000 ₽',
     duration: '6 часов',
-    buttonText: 'Записаться',
+
     buttonLink: '/training/civil-weapon',
     accent: '#FE3B15',
   },
@@ -33,7 +33,7 @@ export const courses: CourseItem[] = [
     highlights: ['Правовой минимум', 'Тактическая подготовка', 'Квалификационный экзамен'],
     price: '12 000 ₽',
     duration: '2 недели',
-    buttonText: 'Записаться',
+
     buttonLink: '/training/security-guard',
     accent: '#1A1A2E',
   },
@@ -45,7 +45,7 @@ export const courses: CourseItem[] = [
     highlights: ['Правовая часть', 'Огневая подготовка', 'Физическая подготовка'],
     price: '4 500 ₽',
     duration: '1 день',
-    buttonText: 'Записаться',
+
     buttonLink: '/training/guard-check',
     accent: '#FE3B15',
   },
@@ -57,7 +57,7 @@ export const courses: CourseItem[] = [
     highlights: ['Теория полётов', 'Симулятор и практика', 'Сертификат оператора'],
     price: '18 000 ₽',
     duration: '3 дня',
-    buttonText: 'Записаться',
+
     buttonLink: '/trainning/drones',
     accent: '#0A2540',
   },
@@ -69,7 +69,7 @@ export const courses: CourseItem[] = [
     highlights: ['Нормативная база', 'Производственный контроль', 'Удостоверение'],
     price: '3 500 ₽',
     duration: '40 часов',
-    buttonText: 'Записаться',
+
     buttonLink: '/training/labor-safety',
     accent: '#FE3B15',
   },
@@ -81,9 +81,40 @@ export const courses: CourseItem[] = [
     highlights: ['Теоретический курс', 'Производственная практика', 'Диплом / свидетельство'],
     price: 'от 5 000 ₽',
     duration: 'от 1 месяца',
-    buttonText: 'Записаться',
+
     buttonLink: '/training/professions',
     accent: '#1A1A2E',
   },
+  {
+
+    id: 'psc-managers',
+
+    tag: 'Руководители ЧОП',
+
+    title: 'Подготовка руководителей охранных организаций',
+
+    description: 'Программа для руководящего состава ЧОП: правовое регулирование, управление персоналом и организация охранной деятельности.',
+
+    highlights: [
+
+      'Лицензионные требования и законодательство',
+
+      'Организация охраны объектов',
+
+      'Управление сменами и персоналом',
+
+      'Взаимодействие с МВД и заказчиками'
+
+    ],
+
+    price: 'от 12 000 ₽',
+
+    duration: '2–3 месяца',
+
+    buttonLink: '/training/psc-managers',
+
+    accent: '#1A1A2E',
+
+  }
 ]
 

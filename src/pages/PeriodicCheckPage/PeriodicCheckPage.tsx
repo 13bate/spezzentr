@@ -1,6 +1,7 @@
 import { PageTitle } from '../../shared/ui/PageTitle';
 import style from './PeriodicCheckPage.module.scss';
 import periodicCheckQuestions from "../../../public/ПЕРИОДИЧЕСКАЯ-ПРОВЕРКА-2023-4-6-разряд.pdf"
+import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle';
 
 export const PeriodicCheckPage: React.FC = () => {
   // Данные для страницы
@@ -41,8 +42,7 @@ export const PeriodicCheckPage: React.FC = () => {
       <main className={style.periodicCheckPage}>
         {/* Hero секция */}
         <section className={style.hero}>
-          <h1 className={style.title}>{pageData.title}</h1>
-          <p className={style.description}>{pageData.description}</p>
+          <InfoPagesTitle title={pageData.title} description={pageData.description} />
         </section>
 
         {/* График */}

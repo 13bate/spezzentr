@@ -4,6 +4,7 @@ import clsx from 'clsx'
 import style from './TrainingCenterSection.module.scss'
 import type { CourseItem } from './model.ts'
 import { courses } from "./model.ts"
+import { SectionTitle } from '../../shared/ui/SectionTitle/SectionTitle.tsx'
 
 interface Props {
   className?: string
@@ -41,7 +42,6 @@ const CourseCard: React.FC<{ course: CourseItem; index: number }> = ({ course, i
     setHovered(false)
   }
 
-  const isLight = course.accent === '#FE3B15'
 
   return (
     <div
@@ -58,6 +58,7 @@ const CourseCard: React.FC<{ course: CourseItem; index: number }> = ({ course, i
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={resetTilt}
     >
+
       {/* Glossy shimmer layer */}
       <div
         className={style.shimmer}
@@ -101,7 +102,7 @@ const CourseCard: React.FC<{ course: CourseItem; index: number }> = ({ course, i
       </div>
 
       <Link to={course.buttonLink} className={style.cardBtn}>
-        <span>{course.buttonText}</span>
+        <span>{"Подробнее"}</span>
         <ArrowIcon />
       </Link>
     </div>
@@ -116,7 +117,7 @@ export const TrainigCenterSection: React.FC<Props> = ({ className }) => {
           <span className={style.eyebrow}>Наши программы</span>
           <h2 className={style.sectionTitle}>
             Обучение &<br />
-            <em>сертификация</em>
+            <em>аттестация</em>
           </h2>
         </div>
         <p className={style.headerDesc}>

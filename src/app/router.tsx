@@ -27,6 +27,7 @@ import { InternationalPage } from '../pages/EduInfroPages/InternationalPage'
 import { LaborSafety } from '../pages/LaborSafety'
 import { WorkingProfessions } from '../pages/WorkingProfessions'
 import { NotFoundPage } from '../pages/NotFoundPage'
+import { PscManagersTraining } from '../pages/PscManagersTraining'
 
 // Массив для навигации (можно использовать где угодно)
 export const eduOrgInfo = [
@@ -93,6 +94,10 @@ export const router = createBrowserRouter([
 			{
 				path: '/training/professions',
 				element: <WorkingProfessions />
+			},
+			{
+				path: "training/psc-managers",
+				element: <PscManagersTraining />
 			},
 			{
 				path: "shooting/intro",

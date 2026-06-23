@@ -1,258 +1,223 @@
-import React from 'react';
-import { PageTitle } from '../../shared/ui/PageTitle';
-import style from './PracticalShootingPage.module.scss';
+import React from 'react'
+import { Link } from 'react-router'
+import style from './PracticalShootingPage.module.scss'
 
-// Данные перенесены наверх
-export const practicalShootingData = {
-  page: {
-    title: 'Практическая стрельба',
-    subtitle: 'IPSC • Пистолет',
-  },
-
-  hero: {
-    title: 'Практическая стрельба',
-    subtitle: 'IPSC • Пистолет',
-    description: 'Еженедельные групповые тренировки проводятся по утверждённому расписанию как с опытными стрелками — членами ФПСР (IPSC), так и с начинающими стрелками, прошедшими Начальный курс по практической стрельбе, с целью совершенствования навыков владения оружием и подготовке к участию в официальных соревнованиях проводимых Федерацией практической стрельбы России.',
-    badge: 'Члены ФПСР (IPSC)'
-  },
-
-  courses: [
-    {
-      id: 'regular',
-      title: 'Базовая тренировка',
-      badge: 'Еженедельно',
-      description: 'Регулярные тренировки для поддержания и совершенствования навыков практической стрельбы.',
-      features: [
-        'Групповые занятия по расписанию',
-        'Отработка упражнений IPSC',
-        'Работа с опытными инструкторами',
-        'Подготовка к соревнованиям'
-      ],
-      schedule: 'Еженедельно по расписанию',
-      price: '2 500 ₽ / тренировка',
-      type: 'regular'
-    },
-    {
-      id: 'beginner',
-      title: 'Начальный курс по практической стрельбе',
-      badge: 'Стартовый курс',
-      description: 'Одним из условий для вступления в Общероссийскую спортивную общественную организацию «Федерация практической стрельбы России» (ОСОО «ФПСР»), является прохождение курса «Безопасного и квалифицированного обращения с оружием» (БЕКОСО) и положительная сдача теоретического экзамена.',
-      details: {
-        duration: '4 занятия (индивидуально)',
-        weapons: ['CZ 75 SHADOW', 'Glock 17', 'Викинг M'],
-        shots: '250 выстрелов',
-        price: '18 000 ₽'
-      },
-      includes: [
-        'Курс «Безопасного и квалифицированного обращения с оружием» (БЕКОСО)',
-        'Подготовка к теоретическому экзамену',
-        'Практические занятия на стрельбище',
-        'Работа с разными видами оружия'
-      ],
-      metaNote: 'Включает подготовку к экзамену ФПСР',
-      type: 'course'
-    }
-  ],
-
-  schedule: {
-    title: 'Расписание тренировок',
-    days: [
-      { day: 'Понедельник', time: '18:00 - 20:00', icon: '📌' },
-      { day: 'Среда', time: '18:00 - 20:00', icon: '📌' },
-      { day: 'Пятница', time: '16:00 - 18:00', icon: '📌' },
-      { day: 'Суббота', time: '11:00 - 13:00, 14:00 - 16:00', icon: '📌' }
+// ─── Data ─────────────────────────────────────────────────────
+export const practicalShootingCards = [
+  {
+    id: 'bikoso',
+    num: '01',
+    tag: 'БИКОСО',
+    title: 'Курс БИКОСО',
+    route: '/training/safety',
+    description:
+      'Обязательное условие вступления в Федерацию практической стрельбы России (ФПСР). Направлен на изучение правил обращения с короткоствольным и длинноствольным оружием.',
+    details:
+      'Курс состоит из практических занятий в тире по отработке правил безопасности, манипуляций и двигательных навыков, а также из теоретических занятий по изучению правил этого вида спорта.',
+    features: [
+      'Практические занятия в тире',
+      'Работа с разными видами оружия',
+      'Теоретическая подготовка',
+      'Подготовка к экзамену ФПСР',
     ],
-    note: 'Возможно индивидуальное расписание по согласованию'
+    price: '18 000 ₽',
+    accent: '#FE3B15',
+    featured: true,
   },
-
-  federation: {
-    title: 'Федерация практической стрельбы России',
-    description: 'Наши тренировки проводятся в соответствии с правилами и стандартами Федерации практической стрельбы России (ФПСР/IPSC).',
-    link: {
-      url: 'https://www.ipsc.ru',
-      text: 'ipsc.ru'
-    }
+  {
+    id: 'individual',
+    num: '02',
+    tag: 'Персонально',
+    title: 'Индивидуальные тренировки',
+    route: '/shooting/individual',
+    description:
+      'Персональные тренировки под руководством инструкторов клуба. Тренировочный процесс формируется исходя из уровня подготовки и целей спортсмена.',
+    details: null,
+    features: [
+      'Индивидуальный план тренировок',
+      'Отработка технических элементов',
+      'Анализ и разбор ошибок',
+      'Гибкий график занятий',
+    ],
+    price: '5 600 ₽',
+    accent: '#4a8fff',
+    featured: false,
   },
+  {
+    id: 'group',
+    num: '03',
+    tag: 'Группа',
+    title: 'Групповые тренировки',
+    route: '/shooting/group',
+    description:
+      'Командный формат тренировок для развития навыков взаимодействия и соревновательного духа в кругу единомышленников.',
+    details: null,
+    features: [
+      'Командные упражнения и разбор',
+      'Обратная связь тренера по технике',
+      'Соревновательная практика',
+      'Мотивирующая атмосфера',
+    ],
+    price: '3 500 ₽',
+    accent: '#2dc653',
+    featured: false,
+  },
+  {
+    id: 'matches',
+    num: '04',
+    tag: 'Матчи',
+    title: 'Мини-матчи',
+    route: '/shooting/matches',
+    description:
+      'Регулярные соревнования внутри клуба. Почувствуйте спортивный азарт практической стрельбы без выезда за пределы региона.',
+    details:
+      'Подходит для стрелков, прошедших курс БИКОСО, имеющих членство в Федерации и обладающих необходимыми навыками.',
+    features: [
+      'Соревновательный опыт',
+      'Различные сценарии IPSC',
+      'Оценка результатов',
+      'Призы и награды',
+    ],
+    price: '2 500 ₽',
+    accent: '#d4a017',
+    featured: false,
+  },
+]
 
-  contacts: {
-    title: 'Запись на тренировки',
-    note: 'Запись на тренировки и курсы по телефону',
-    phones: [
-      { number: '+7 (4832) 32-05-10', display: '+7 (4832) 32-05-10' },
-      { number: '+7 (930) 732-05-10', display: '+7 (930) 732-05-10' }
-    ]
-  }
-};
+// ─── Icon components ──────────────────────────────────────────
+const IconTarget = () => (
+  <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+    <circle cx="11" cy="11" r="10" stroke="#FE3B15" strokeWidth="1.5" strokeOpacity=".7" />
+    <circle cx="11" cy="11" r="5.5" stroke="#FE3B15" strokeWidth="1.5" strokeOpacity=".5" />
+    <circle cx="11" cy="11" r="2" fill="#FE3B15" />
+  </svg>
+)
 
+const IconPerson = () => (
+  <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+    <circle cx="11" cy="7" r="3.5" stroke="#4a8fff" strokeWidth="1.5" />
+    <path d="M4 19c0-3.866 3.134-7 7-7h0c3.866 0 7 3.134 7 7" stroke="#4a8fff" strokeWidth="1.5" strokeLinecap="round" />
+  </svg>
+)
+
+const IconGroup = () => (
+  <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+    <circle cx="8" cy="7" r="3" stroke="#2dc653" strokeWidth="1.5" />
+    <circle cx="15" cy="8" r="2.5" stroke="#2dc653" strokeWidth="1.5" strokeOpacity=".6" />
+    <path d="M2 19c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="#2dc653" strokeWidth="1.5" strokeLinecap="round" />
+    <path d="M15 13c2.209 0 4 1.791 4 4v1" stroke="#2dc653" strokeWidth="1.5" strokeLinecap="round" strokeOpacity=".6" />
+  </svg>
+)
+
+const IconTrophy = () => (
+  <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+    <path d="M7 3h8v7a4 4 0 01-8 0V3z" stroke="#d4a017" strokeWidth="1.5" />
+    <path d="M7 6H4a2 2 0 000 4h3" stroke="#d4a017" strokeWidth="1.5" />
+    <path d="M15 6h3a2 2 0 010 4h-3" stroke="#d4a017" strokeWidth="1.5" />
+    <path d="M11 14v3M8 19h6" stroke="#d4a017" strokeWidth="1.5" strokeLinecap="round" />
+  </svg>
+)
+
+const icons: Record<string, React.ReactNode> = {
+  bikoso: <IconTarget />,
+  individual: <IconPerson />,
+  group: <IconGroup />,
+  matches: <IconTrophy />,
+}
+
+// ─── Check icon ───────────────────────────────────────────────
+const Check = () => (
+  <svg width="8" height="6" viewBox="0 0 8 6" fill="none">
+    <path d="M1 3l2 2 4-4" stroke="#fff" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+)
+
+// ─── Page ─────────────────────────────────────────────────────
 export const PracticalShootingPage: React.FC = () => {
-  // Сохраняем данные в переменные для удобства
-  const courses = practicalShootingData.courses;
-  const regularCourse = courses[0];
-  const beginnerCourse = courses[1];
-
   return (
-    <>
-      <PageTitle title={`${practicalShootingData.page.title} | СПЕЦЦЕНТР`} />
+    <main className={style.page}>
 
-      <main className={style.practicalShootingPage}>
-        {/* Hero секция */}
-        <section className={style.hero}>
-          <div className={style.heroContent}>
-            <h1 className={style.title}>
-              {practicalShootingData.hero.title}
-              <span className={style.subtitle}>{practicalShootingData.hero.subtitle}</span>
+      {/* ── Section ── */}
+      <section className={style.section}>
+
+        {/* bg effects */}
+        <div className={style.bg}>
+          <div className={style.bgGrid} />
+          <div className={style.blob1} />
+          <div className={style.blob2} />
+        </div>
+
+        {/* head */}
+        <div className={style.head}>
+          <div className={style.headLeft}>
+            <div className={style.eyebrow}>Практическая стрельба · IPSC</div>
+            <h1 className={style.h1}>
+              Программы и <em>тренировки</em>
             </h1>
-            <p className={style.description}>{practicalShootingData.hero.description}</p>
-
-            <div className={style.federationBadge}>
-              <span className={style.federationIcon}>🏆</span>
-              <span>{practicalShootingData.hero.badge}</span>
-            </div>
           </div>
-          <div className={style.heroPattern}></div>
-        </section>
+          <div className={style.headRight}>
+            Все программы сертифицированы<br />ОСОО «ФПСР» · IPSC
+          </div>
+        </div>
 
-        {/* Курсы и тренировки */}
-        <section className={style.coursesSection}>
-          <h2 className={style.sectionTitle}>Программы обучения</h2>
+        {/* grid */}
+        <div className={style.grid}>
+          {practicalShootingCards.map((card) => (
+            <div
+              key={card.id}
+              className={`${style.card} ${card.featured ? style.cardFeatured : ''}`}
+              style={{ '--accent': card.accent } as React.CSSProperties}
+            >
+              {/* corner brackets */}
+              <div className={style.cTL} />
+              <div className={style.cBR} />
 
-          <div className={style.coursesGrid}>
-            {/* Базовая тренировка */}
-            {regularCourse && (
-              <div className={`${style.courseCard} ${style.regularCard}`}>
-                <div className={style.courseBadge}>{regularCourse.badge}</div>
-                <h3 className={style.courseTitle}>{regularCourse.title}</h3>
-                <p className={style.courseDescription}>{regularCourse.description}</p>
-
-                {regularCourse.features && (
-                  <div className={style.featuresList}>
-                    {regularCourse.features.map((feature, idx) => (
-                      <div key={idx} className={style.featureItem}>
-                        <span className={style.featureIcon}>✓</span>
-                        <span>{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                <div className={style.courseFooter}>
-                  <div className={style.courseMeta}>
-                    <span className={style.metaIcon}>📅</span>
-                    <span>{regularCourse.schedule}</span>
-                  </div>
-                  <div className={style.coursePrice}>{regularCourse.price}</div>
-                </div>
+              {/* top */}
+              <div className={style.cardTop}>
+                <span className={style.cardNum}>{card.num}</span>
+                <span className={style.cardTag}>{card.tag}</span>
               </div>
-            )}
 
-            {/* Начальный курс */}
-            {beginnerCourse && (
-              <div className={`${style.courseCard} ${style.courseCardHighlight}`}>
-                <div className={style.courseBadgePrimary}>{beginnerCourse.badge}</div>
-                <h3 className={style.courseTitle}>{beginnerCourse.title}</h3>
-                <p className={style.courseDescription}>{beginnerCourse.description}</p>
-
-                {beginnerCourse.details && (
-                  <div className={style.courseDetails}>
-                    <div className={style.detailItem}>
-                      <span className={style.detailIcon}>⏱</span>
-                      <span>{beginnerCourse.details.duration}</span>
-                    </div>
-                    <div className={style.detailItem}>
-                      <span className={style.detailIcon}>🔫</span>
-                      <span>{beginnerCourse.details.weapons?.join(' • ')}</span>
-                    </div>
-                    <div className={style.detailItem}>
-                      <span className={style.detailIcon}>🎯</span>
-                      <span>{beginnerCourse.details.shots}</span>
-                    </div>
-                  </div>
-                )}
-
-                {beginnerCourse.includes && (
-                  <div className={style.featuresList}>
-                    {beginnerCourse.includes.map((item, idx) => (
-                      <div key={idx} className={style.featureItem}>
-                        <span className={style.featureIcon}>✓</span>
-                        <span>{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-
-                <div className={style.courseFooter}>
-                  <div className={style.courseMeta}>
-                    <span className={style.metaIcon}>📋</span>
-                    <span>{beginnerCourse.metaNote}</span>
-                  </div>
-                  <div className={style.coursePriceLarge}>{beginnerCourse.details?.price}</div>
-                </div>
+              {/* icon */}
+              <div className={style.iconWrap}>
+                {icons[card.id]}
               </div>
-            )}
-          </div>
-        </section>
 
-        {/* Расписание */}
-        <section className={style.scheduleSection}>
-          <div className={style.scheduleContent}>
-            <h2 className={style.sectionTitleLight}>{practicalShootingData.schedule.title}</h2>
+              {/* title */}
+              <div className={style.cardTitle}>{card.title}</div>
 
-            <div className={style.scheduleGrid}>
-              {practicalShootingData.schedule.days.map((day, idx) => (
-                <div key={idx} className={style.scheduleDay}>
-                  <span className={style.dayIcon}>{day.icon}</span>
-                  <span>{day.day}: {day.time}</span>
+              {/* desc */}
+              <p className={style.cardDesc}>{card.description}</p>
+
+              {/* features */}
+              <ul className={style.features}>
+                {card.features.map((f, i) => (
+                  <li key={i} className={style.feat}>
+                    <span className={style.featTick}><Check /></span>
+                    {f}
+                  </li>
+                ))}
+              </ul>
+
+              {/* divider */}
+              <div className={style.divider} />
+
+              {/* bottom */}
+              <div className={style.cardBottom}>
+                <div className={style.priceBlock}>
+                  <span className={style.priceLabel}>Стоимость</span>
+                  <span className={style.priceVal}>{card.price}</span>
                 </div>
-              ))}
-            </div>
-
-            <p className={style.scheduleNote}>{practicalShootingData.schedule.note}</p>
-          </div>
-        </section>
-
-        {/* Информация о федерации */}
-        <section className={style.federationSection}>
-          <div className={style.federationContainer}>
-            <div className={style.federationLogo}>
-              <span className={style.logoIcon}>🏛️</span>
-            </div>
-            <div className={style.federationInfo}>
-              <h3 className={style.federationTitle}>{practicalShootingData.federation.title}</h3>
-              <p className={style.federationDescription}>{practicalShootingData.federation.description}</p>
-              <div className={style.federationLinks}>
-                <a
-                  href={practicalShootingData.federation.link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={style.federationLink}
-                >
-                  {practicalShootingData.federation.link.text}
-                  <span className={style.linkArrow}>→</span>
-                </a>
+                <Link to={card.route} className={style.cardBtn}>
+                  <span>Подробнее</span>
+                  <span className={style.btnArr}>→</span>
+                </Link>
               </div>
             </div>
-          </div>
-        </section>
+          ))}
+        </div>
 
-        {/* Контакты для записи */}
-        <section className={style.contactSection}>
-          <h2 className={style.sectionTitle}>{practicalShootingData.contacts.title}</h2>
-          <p className={style.contactNote}>{practicalShootingData.contacts.note}</p>
-
-          <div className={style.phoneGrid}>
-            {practicalShootingData.contacts.phones.map((phone, idx) => (
-              <a
-                key={idx}
-                href={`tel:${phone.number.replace(/[^0-9+]/g, '')}`}
-                className={style.phoneCard}
-              >
-                <span className={style.phoneIcon}>📞</span>
-                <span className={style.phoneNumber}>{phone.display}</span>
-              </a>
-            ))}
-          </div>
-        </section>
-      </main>
-    </>
-  );
-};
+      </section>
+    </main>
+  )
+}

@@ -1,4 +1,4 @@
-import { href } from "react-router"
+
 
 export const trainingCenter = [
 	{
@@ -12,7 +12,8 @@ export const trainingCenter = [
 	},
 	{ label: 'БПЛА', href: '/training/drones' },
 	{ label: "Охрана труда", href: "/training/labor-safety" },
-	{ label: "Обучение рабочим специальностям", href: '/training/professions' }
+	{ label: "Обучение рабочим специальностям", href: '/training/professions' },
+	{ label: "Обучение руководителей ЧОП", href: "/training/psc-managers" }
 ]
 
 export const shootingRange = [

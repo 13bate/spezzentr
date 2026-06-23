@@ -17,11 +17,7 @@ const courses = [
   { tag: 'Карабин', title: 'Тактическая стрельба', hours: '4 ч', price: 'от 3 200 ₽', z: 'cc3' },
 ]
 
-const skills = [
-  { label: 'Пистолет', pct: 85 },
-  { label: 'Карабин', pct: 70 },
-  { label: 'Ружьё', pct: 92 },
-]
+
 
 const CheckIcon = () => (
   <svg width="8" height="6" viewBox="0 0 8 6" fill="none">

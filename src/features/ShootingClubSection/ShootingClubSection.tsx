@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router'
 import style from './ShootingClubSection.module.scss'
+import {SectionTitle} from "../../shared/ui/SectionTitle"
 
 export const shootingRangeCardsData = [
   {
     id: 't1',
-    label: 'Практическая стрельба',
+    label: 'IPSC /Пистолет/Карабин',
     href: '/shooting/practice',
-    description: 'Тренировки для новичков и опытных стрелков. Форматы IPSC и МКПС.',
+    description: 'Еженедельные групповые и индивидуальные тренировки проводятся по утверждённому расписанию',
   },
   {
     id: 't2',

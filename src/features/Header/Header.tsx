@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import style from "./Header.module.scss";
 import { NavBar } from "../NavBar";
+import { scrollToContacts } from "../../shared/utils/ScrollToContacts";
 
 interface Props {
   className?: string;
@@ -12,21 +13,6 @@ interface Props {
 
 export const Header: React.FC<Props> = ({ className }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    handleScroll();
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -48,31 +34,6 @@ export const Header: React.FC<Props> = ({ className }) => {
     setMobileMenuOpen(false);
   };
 
-  const scrollToContacts = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    setMobileMenuOpen(false);
-
-    // If NOT on home page → navigate
-    if (location.pathname !== "/") {
-      navigate("/#contacts");
-      return;
-    }
-
-    // Already on home → scroll
-    const contactsSection = document.getElementById("contacts");
-
-    if (contactsSection) {
-      const headerHeight = 80;
-
-      const elementPosition =
-        contactsSection.getBoundingClientRect().top + window.scrollY;
-
-      window.scrollTo({
-        top: elementPosition - headerHeight,
-        behavior: "smooth",
-      });
-    }
-  };
 
   return (
     <>
@@ -80,7 +41,6 @@ export const Header: React.FC<Props> = ({ className }) => {
         className={clsx(
           style.header,
           className,
-          scrolled && style.scrolled,
           mobileMenuOpen && style.menuOpen
         )}
       >
@@ -93,15 +53,22 @@ export const Header: React.FC<Props> = ({ className }) => {
             <NavBar />
           </div>
 
-          <div className={style.desktopContacts}>
-            <a
-              href="/#contacts"
-              className={style.contactButton}
-              onClick={scrollToContacts}
-            >
-              <span>Контакты</span>
-              <FontAwesomeIcon icon={faChevronRight} />
-            </a>
+          <div className={style.headerInfoSection}>
+            <div className={style.headerInfoSectionPhone}>
+              <a href="tel:+74832320201">(4832) 32-02-01</a>
+            </div>
+
+            <div className={style.desktopContacts}>
+              <a
+                href="/#contacts"
+                className={style.contactButton}
+                onClick={() => scrollToContacts}
+              >
+                <span>Контакты</span>
+                <FontAwesomeIcon icon={faChevronRight} />
+              </a>
+            </div>
+
           </div>
 
           <button
