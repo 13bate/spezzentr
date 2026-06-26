@@ -1,0 +1,206 @@
+@use '../../shared/styles/variables' as *;
+
+.page {
+	background: $color-bg-light-menu;
+	color: $color-text-dark-main;
+	min-height: 100vh;
+	margin: 60px 0;
+}
+
+/* ───────────────────────── HERO ───────────────────────── */
+
+.hero {
+	background: $color-bg-light-header;
+	backdrop-filter: blur(14px);
+	border-bottom: 1px solid $color-border-dark-alpha;
+	padding: 70px 40px;
+}
+
+.heroContent {
+	margin: 0 auto;
+}
+
+.title {
+	font-size: 36px;
+	font-weight: 800;
+	letter-spacing: -0.5px;
+	color: $color-text-dark-main;
+}
+
+.subtitle {
+	margin-top: 10px;
+	font-size: 16px;
+	color: $color-text-dark-muted;
+}
+
+.badges {
+	margin-top: 18px;
+	display: flex;
+	gap: 10px;
+
+	span {
+		font-size: 12px;
+		padding: 6px 10px;
+		border-radius: 999px;
+		background: $color-glass-primary-alpha;
+		border: 1px solid $color-border-primary-alpha;
+		color: $color-brand-primary;
+	}
+}
+
+/* ───────────────────────── SECTIONS ───────────────────────── */
+
+.section {
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 40px;
+}
+
+.sectionTitle {
+	font-size: 22px;
+	font-weight: 700;
+	margin-bottom: 20px;
+	color: $color-text-dark-main;
+}
+
+.text {
+	color: $color-text-dark-muted;
+	line-height: 1.6;
+}
+
+/* ───────────────────────── COMPETITIONS ───────────────────────── */
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 18px;
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background: $color-bg-light-card;
+	border: 1px solid $color-border-dark-alpha;
+	border-radius: $radius-card-medium;
+	padding: 18px;
+	box-shadow: 0 6px 18px $color-shadow-light;
+	transition: 0.2s ease;
+
+	&:hover {
+		transform: translateY(-2px);
+		border-color: $color-border-primary-alpha;
+		box-shadow: 0 10px 24px $color-shadow-primary-light;
+	}
+}
+
+.cardTop {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+
+.level {
+	font-size: 11px;
+	padding: 4px 8px;
+	border-radius: 999px;
+	background: $color-glass-primary-alpha;
+	color: $color-brand-primary;
+}
+
+.status {
+	font-size: 11px;
+	color: $color-text-dark-dimmed;
+}
+
+.cardTitle {
+	font-size: 16px;
+	font-weight: 700;
+	margin-bottom: 8px;
+}
+
+.date {
+	font-size: 13px;
+	color: $color-text-dark-muted;
+}
+
+.button {
+	margin-top: 14px;
+	width: 100%;
+	padding: 10px;
+	border-radius: $radius-card-medium;
+	border: 1px solid $color-border-primary-alpha;
+	background: $color-brand-primary;
+	color: $color-text-pure-white;
+	cursor: pointer;
+	font-weight: 600;
+
+	&:hover {
+		background: $color-brand-primary-hover;
+		box-shadow: 0 0 0 4px $color-shadow-primary-light;
+	}
+}
+
+/* ───────────────────────── NEWS ───────────────────────── */
+
+.newsList {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.newsItem {
+	padding: 16px;
+	border-radius: $radius-card-medium;
+	background: $color-bg-light-card;
+	border: 1px solid $color-border-dark-alpha;
+}
+
+.newsTitle {
+	font-size: 15px;
+	font-weight: 700;
+	margin-bottom: 6px;
+}
+
+.newsText {
+	font-size: 13px;
+	color: $color-text-dark-muted;
+	line-height: 1.5;
+}
+
+/* ───────────────────────── SAFETY ───────────────────────── */
+
+.safety {
+	max-width: 1100px;
+	margin: 0 auto;
+	padding: 40px;
+	background: $color-glass-dark-alpha;
+	border-top: 1px solid $color-border-dark-alpha;
+}
+
+.list {
+	margin-top: 12px;
+	padding-left: 18px;
+
+	li {
+		margin-bottom: 8px;
+		color: $color-text-dark-muted;
+		font-size: 13px;
+	}
+}
+
+/* ───────────────────────── RESPONSIVE ───────────────────────── */
+
+@media (max-width: 900px) {
+	.grid {
+		grid-template-columns: 1fr;
+	}
+
+	.hero {
+		padding: 50px 20px;
+	}
+
+	.section {
+		padding: 20px;
+	}
+}

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import clsx from 'clsx'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { scrollToContacts } from '../../shared/utils/ScrollToContacts'
+import { useScrollToContacts } from '../../shared/utils/ScrollToContacts'
 import { NavBar } from '../NavBar'
 import style from './Header.module.scss'
 
@@ -61,7 +61,7 @@ export const Header: React.FC<Props> = ({ className }) => {
 							<a
 								href='/#contacts'
 								className={style.contactButton}
-								onClick={() => scrollToContacts}
+								onClick={() => useScrollToContacts}
 							>
 								<span>Контакты</span>
 								<FontAwesomeIcon icon={faChevronRight} />
@@ -115,7 +115,7 @@ export const Header: React.FC<Props> = ({ className }) => {
 					<a
 						href='/#contacts'
 						className={style.mobileContactButton}
-						onClick={scrollToContacts}
+						onClick={useScrollToContacts}
 					>
 						<span>Контакты</span>
 						<FontAwesomeIcon icon={faChevronRight} />

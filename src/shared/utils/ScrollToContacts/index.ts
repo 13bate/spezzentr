@@ -1,1 +1,1 @@
-export { scrollToContacts } from "./ScrollToContacts.tsx"
+export { useScrollToContacts } from './ScrollToContacts.tsx'

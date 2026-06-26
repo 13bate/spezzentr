@@ -28,6 +28,7 @@ import { LaborSafety } from '../pages/LaborSafety'
 import { WorkingProfessions } from '../pages/WorkingProfessions'
 import { NotFoundPage } from '../pages/NotFoundPage'
 import { PscManagersTraining } from '../pages/PscManagersTraining'
+import { CompetitionPage } from '../pages/Competitions'
 
 // Массив для навигации (можно использовать где угодно)
 export const eduOrgInfo = [
@@ -111,6 +112,11 @@ export const router = createBrowserRouter([
 				path: "shooting/gift-cards",
 				element: <GiftCardsPage />
 			},
+			{
+				path: "shooting/competitions",
+				element: <CompetitionPage />
+			},
+
 			// Главная страница раздела
 			{
 				path: "education",
