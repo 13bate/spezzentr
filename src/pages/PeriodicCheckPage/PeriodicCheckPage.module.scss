@@ -1,26 +1,29 @@
+@use '../../shared/styles/variables' as *;
+
+// ==========================================================================
+// ─── MAIN PAGE SHELL CONTROLLER ───────────────────────────────────────────
+// ==========================================================================
 .periodicCheckPage {
   width: 100%;
-  max-width: 1280px;
-  margin: 100px auto 80px;
-  padding: 0 30px;
+  margin: 100px 0 80px;
+
   
   @media (max-width: 768px) {
-    padding: 0 20px;
-    margin: 80px auto 40px;
+    margin: 80px 0 40px;
   }
 }
 
-// Hero секция
+// ==========================================================================
+// ─── HERO INTRODUCTORY ELEMENT ────────────────────────────────────────────
+// ==========================================================================
 .hero {
   margin-bottom: 60px;
-  
-
   
   .description {
     font-family: 'PT Sans', sans-serif;
     font-size: 18px;
     line-height: 1.6;
-    color: #666;
+    color: $color-text-dark-dimmed;
     max-width: 800px;
     
     @media (max-width: 768px) {
@@ -29,12 +32,12 @@
   }
 }
 
-// Общие заголовки секций
+// ─── Global Reusable Section Titles ───────────────────────────────────────
 .sectionTitle {
   font-family: 'Oswald', sans-serif;
   font-size: 28px;
   font-weight: 600;
-  color: #333;
+  color: $color-text-light-main;
   margin: 0 0 30px;
   
   @media (max-width: 768px) {
@@ -42,12 +45,16 @@
   }
 }
 
-// График
+// ==========================================================================
+// ─── TIME INTERVAL GRID / SCHEDULE SECTIONS ───────────────────────────────
+// ==========================================================================
 .scheduleSection {
   margin: 50px 0;
-  background: #f8f8f8;
-  border-radius: 20px;
+  background: linear-gradient(135deg, $color-bg-dark-card-from 0%, $color-bg-dark-card-to 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: $radius-card-large;
   padding: 35px;
+  box-shadow: 0 15px 35px $color-shadow-black-medium;
 }
 
 .scheduleList {
@@ -60,23 +67,27 @@
   align-items: center;
   gap: 15px;
   padding: 15px;
-  background: white;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: 10px;
   transition: all 0.3s ease;
   
   &:hover {
     transform: translateX(5px);
-    box-shadow: 0 5px 15px rgba(254, 59, 21, 0.1);
+    background: $color-glass-primary-alpha;
+    border-color: $color-border-primary-alpha;
+    box-shadow: 0 5px 15px $color-shadow-primary-light;
   }
   
   .dateIcon {
     font-size: 24px;
+    color: $color-brand-primary;
   }
   
   .dateText {
     font-family: 'PT Sans', sans-serif;
     font-size: 18px;
-    color: #333;
+    color: $color-text-pure-white;
     
     @media (max-width: 768px) {
       font-size: 16px;
@@ -84,12 +95,16 @@
   }
 }
 
-// Документы
+// ==========================================================================
+// ─── DOCUMENT STORAGE PLATFORM ────────────────────────────────────────────
+// ==========================================================================
 .documentsSection {
   margin: 50px 0;
-  background: #f8f8f8;
-  border-radius: 20px;
+  background: linear-gradient(135deg, $color-bg-dark-card-from 0%, $color-bg-dark-card-to 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: $radius-card-large;
   padding: 35px;
+  box-shadow: 0 15px 35px $color-shadow-black-medium;
 }
 
 .documentsList {
@@ -102,12 +117,13 @@
     align-items: center;
     gap: 15px;
     margin-bottom: 15px;
-    padding: 10px;
-    background: white;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.04);
     border-radius: 8px;
     font-family: 'PT Sans', sans-serif;
     font-size: 18px;
-    color: #555;
+    color: $color-text-light-main;
     
     @media (max-width: 768px) {
       font-size: 16px;
@@ -115,18 +131,21 @@
     
     .docIcon {
       font-size: 20px;
+      color: $color-brand-primary;
     }
   }
 }
 
-// PDF секция
+// ==========================================================================
+// ─── PREMIUM RESOURCE DOWNLOAD PIPELINE (PDF) ─────────────────────────────
+// ==========================================================================
 .pdfSection {
   margin: 50px 0;
   
   .pdfDescription {
     font-family: 'PT Sans', sans-serif;
     font-size: 18px;
-    color: #666;
+    color: $color-text-dark-dimmed;
     margin-bottom: 30px;
   }
 }
@@ -135,10 +154,12 @@
   display: flex;
   align-items: center;
   gap: 25px;
-  background: linear-gradient(135deg, #f8f8f8, #f0f0f0);
-  border-radius: 20px;
+  background: linear-gradient(135deg, $color-bg-dark-card-from 0%, $color-bg-dark-card-to 100%);
+  border-radius: $radius-card-large;
   padding: 30px;
-  border: 1px solid rgba(254, 59, 21, 0.2);
+  border: 1px solid $color-border-primary-alpha;
+  box-shadow: 0 20px 40px $color-shadow-black-hard;
+  backdrop-filter: blur(10px);
   
   @media (max-width: 768px) {
     flex-direction: column;
@@ -148,7 +169,8 @@
   
   .pdfIcon {
     font-size: 64px;
-    color: #FE3B15;
+    color: $color-brand-primary;
+    filter: drop-shadow(0 4px 10px $color-shadow-primary-deep);
     
     @media (max-width: 768px) {
       font-size: 48px;
@@ -162,21 +184,21 @@
       font-family: 'Oswald', sans-serif;
       font-size: 24px;
       font-weight: 600;
-      color: #333;
+      color: $color-text-pure-white;
       margin-bottom: 8px;
     }
     
     p {
       font-family: 'PT Sans', sans-serif;
       font-size: 16px;
-      color: #666;
+      color: $color-text-dark-dimmed;
     }
   }
 }
 
 .downloadButton {
-  background: #FE3B15;
-  color: white;
+  background: linear-gradient(135deg, $color-brand-primary 0%, $color-brand-primary-hover 100%);
+  color: $color-text-pure-white;
   border: none;
   padding: 15px 30px;
   border-radius: 10px;
@@ -184,13 +206,13 @@
   font-weight: 600;
   font-size: 16px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
+  box-shadow: 0 4px 15px $color-shadow-primary-deep;
   
   &:hover {
-    background: #FE3B15;
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(254, 59, 21, 0.3);
+    box-shadow: 0 10px 25px $color-shadow-primary-pulse;
   }
   
   @media (max-width: 768px) {
@@ -199,7 +221,9 @@
   }
 }
 
-// Информационные карточки
+// ==========================================================================
+// ─── AMBIENT GLASS BENTO INFO CARDS ───────────────────────────────────────
+// ==========================================================================
 .infoSection {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -213,33 +237,41 @@
 }
 
 .infoCard {
-  background: #f8f8f8;
-  border-radius: 15px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.005) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: $radius-card-medium;
   padding: 25px;
+  box-shadow: 0 10px 30px $color-shadow-black-medium;
+  backdrop-filter: blur(10px);
   
   h3 {
     font-family: 'Oswald', sans-serif;
     font-size: 20px;
     font-weight: 600;
-    color: #FE3B15;
+    color: $color-brand-primary;
     margin-bottom: 15px;
+    text-shadow: 0 0 15px $color-shadow-primary-light;
   }
   
   p {
     font-family: 'PT Sans', sans-serif;
     font-size: 16px;
-    color: #555;
+    color: $color-text-dark-dimmed;
     line-height: 1.6;
   }
 }
 
-// Контакты
+// ==========================================================================
+// ─── INTEGRATED FOOTER CONTACT HUB ────────────────────────────────────────
+// ==========================================================================
 .contactsSection {
   margin: 50px 0;
-  background: #f8f8f8;
-  border-radius: 20px;
+  background: linear-gradient(135deg, $color-bg-dark-card-from 0%, $color-bg-dark-card-to 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: $radius-card-large;
   padding: 35px;
   text-align: center;
+  box-shadow: 0 30px 60px $color-shadow-black-hard;
   
   .contacts {
     display: flex;
@@ -260,16 +292,23 @@
     font-family: 'Oswald', sans-serif;
     font-size: 24px;
     font-weight: 600;
-    color: #333;
+    color: $color-text-pure-white;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
     
     &:hover {
-      color: #FE3B15;
+      color: $color-brand-primary;
+      text-shadow: 0 0 15px $color-shadow-primary-glow;
+      
+      .phoneIcon {
+        transform: scale(1.1);
+      }
     }
     
     .phoneIcon {
       font-size: 24px;
+      color: $color-brand-primary;
+      transition: transform 0.3s ease;
     }
     
     @media (max-width: 768px) {
@@ -285,11 +324,12 @@
     gap: 10px;
     font-family: 'PT Sans', sans-serif;
     font-size: 18px;
-    color: #555;
+    color: $color-text-dark-dimmed;
     margin-top: 20px;
     
     .addressIcon {
       font-size: 20px;
+      color: $color-brand-primary;
     }
     
     @media (max-width: 768px) {

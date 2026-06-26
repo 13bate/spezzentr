@@ -3,8 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import clsx from 'clsx'
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router'
-import style from './NavBar.module.scss'
 import { shootingRange, trainingCenter } from '../../shared/utils/model'
+import style from './NavBar.module.scss'
 
 interface Props {
 	className?: string
@@ -16,8 +16,10 @@ export const NavBar: React.FC<Props> = ({ className, onItemClick }) => {
 	const [cardHoveredSr, setCardHoveredSr] = useState(false)
 	const location = useLocation()
 
-	const isTcActive = () => trainingCenter.some(item => location.pathname === item.href)
-	const isSrActive = () => shootingRange.some(item => location.pathname === item.href)
+	const isTcActive = () =>
+		trainingCenter.some(item => location.pathname === item.href)
+	const isSrActive = () =>
+		shootingRange.some(item => location.pathname === item.href)
 	const isActive = (path: string) => location.pathname.startsWith(path)
 
 	const handleLinkClick = () => onItemClick?.()
@@ -26,7 +28,6 @@ export const NavBar: React.FC<Props> = ({ className, onItemClick }) => {
 		<div className={clsx(className, style.NavBar)}>
 			<nav className={style.navContainer}>
 				<ul className={style.navList}>
-
 					{/* Dropdown: Учебный центр */}
 					<li
 						className={clsx(style.listItem, isTcActive() && style.active)}
@@ -37,7 +38,10 @@ export const NavBar: React.FC<Props> = ({ className, onItemClick }) => {
 							Учебный центр
 							<FontAwesomeIcon
 								icon={faAngleDown}
-								className={clsx(style.arrowIcon, cardHoveredTc && style.arrowOpen)}
+								className={clsx(
+									style.arrowIcon,
+									cardHoveredTc && style.arrowOpen,
+								)}
 							/>
 						</span>
 						{cardHoveredTc && (
@@ -48,7 +52,7 @@ export const NavBar: React.FC<Props> = ({ className, onItemClick }) => {
 										<Link
 											className={clsx(
 												style.DropDownListItemLink,
-												location.pathname === tcItem.href && style.activeLink
+												location.pathname === tcItem.href && style.activeLink,
 											)}
 											to={tcItem.href}
 											onClick={handleLinkClick}
@@ -72,7 +76,10 @@ export const NavBar: React.FC<Props> = ({ className, onItemClick }) => {
 							Стрелковый клуб
 							<FontAwesomeIcon
 								icon={faAngleDown}
-								className={clsx(style.arrowIcon, cardHoveredSr && style.arrowOpen)}
+								className={clsx(
+									style.arrowIcon,
+									cardHoveredSr && style.arrowOpen,
+								)}
 							/>
 						</span>
 						{cardHoveredSr && (
@@ -83,7 +90,7 @@ export const NavBar: React.FC<Props> = ({ className, onItemClick }) => {
 										<Link
 											className={clsx(
 												style.DropDownListItemLink,
-												location.pathname === srItem.href && style.activeLink
+												location.pathname === srItem.href && style.activeLink,
 											)}
 											to={srItem.href}
 											onClick={handleLinkClick}
@@ -97,23 +104,51 @@ export const NavBar: React.FC<Props> = ({ className, onItemClick }) => {
 						)}
 					</li>
 
-					<li className={style.divider} aria-hidden="true" />
+					<li className={style.divider} aria-hidden='true' />
 
 					{/* Direct links */}
-					<li className={clsx(style.listItem, isActive('/trainning/drones') && style.active)}>
-						<Link to="/training/drones" className={style.plainLink} onClick={handleLinkClick}>
-							<span className={style.itemInner}>Центр БПЛА</span>
+					<li
+						className={clsx(
+							style.listItem,
+							isActive('/trainning/drones') && style.active,
+						)}
+					>
+						<Link
+							to='/training/drones'
+							className={style.plainLink}
+							onClick={handleLinkClick}
+						>
+							<span className={style.itemInner}>Центр беспилотной авиации</span>
 						</Link>
 					</li>
 
-					<li className={clsx(style.listItem, isActive('/trainning/tacmed') && style.active)}>
-						<Link to="/training/tacmed/" className={style.plainLink} onClick={handleLinkClick}>
+					<li
+						className={clsx(
+							style.listItem,
+							isActive('/trainning/tacmed') && style.active,
+						)}
+					>
+						<Link
+							to='/training/tacmed/'
+							className={style.plainLink}
+							onClick={handleLinkClick}
+						>
 							<span className={style.itemInner}>Тактическая медицина</span>
 						</Link>
 					</li>
 
-					<li className={clsx(style.listItem, style.listItemWide, isActive('/education') && style.active)}>
-						<Link to="/education/" className={style.plainLink} onClick={handleLinkClick}>
+					<li
+						className={clsx(
+							style.listItem,
+							style.listItemWide,
+							isActive('/education') && style.active,
+						)}
+					>
+						<Link
+							to='/education/'
+							className={style.plainLink}
+							onClick={handleLinkClick}
+						>
 							<span className={style.itemInner}>Сведения об организации</span>
 						</Link>
 					</li>

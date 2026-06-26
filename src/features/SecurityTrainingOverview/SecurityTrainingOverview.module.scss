@@ -1,8 +1,9 @@
+@use '../../shared/styles/variables' as *;
+
 .securityTraining {
   width: 100%;
   margin: 80px;
 
-  
   @media (max-width: 768px) {
     padding: 0 20px;
     margin: 40px auto;
@@ -19,10 +20,10 @@
     font-family: 'Oswald', sans-serif;
     font-size: 16px;
     font-weight: 500;
-    color: #FE3B15;
+    color: $color-brand-primary;
     text-transform: uppercase;
     letter-spacing: 2px;
-    background: rgba(254, 59, 21, 0.1);
+    background: rgba($color-brand-primary, 0.1);
     padding: 8px 16px;
     border-radius: 30px;
     margin-bottom: 20px;
@@ -32,7 +33,7 @@
     font-family: 'Oswald', sans-serif;
     font-size: 48px;
     font-weight: 700;
-    color: #333;
+    color: $color-text-dark-main;
     text-transform: uppercase;
     margin: 0 0 25px;
     letter-spacing: 1px;
@@ -63,7 +64,7 @@
   padding: 25px;
   background: #f8f8f8;
   border-radius: 15px;
-  border-left: 4px solid #FE3B15;
+  border-left: 4px solid $color-brand-primary;
 }
 
 // Стоимость
@@ -74,7 +75,7 @@
     font-family: 'Oswald', sans-serif;
     font-size: 28px;
     font-weight: 600;
-    color: #333;
+    color: $color-text-dark-main;
     margin-bottom: 30px;
     text-align: center;
   }
@@ -103,16 +104,16 @@
   border: 1px solid transparent;
   
   &:hover {
-    border-color: #FE3B15;
+    border-color: $color-brand-primary;
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(254, 59, 21, 0.1);
+    box-shadow: 0 15px 30px rgba($color-brand-primary, 0.1);
   }
   
   .priceLevel {
     font-family: 'Oswald', sans-serif;
     font-size: 24px;
     font-weight: 700;
-    color: #FE3B15;
+    color: $color-brand-primary;
     margin-bottom: 5px;
   }
   
@@ -127,11 +128,11 @@
     font-family: 'Oswald', sans-serif;
     font-size: 32px;
     font-weight: 700;
-    color: #333;
+    color: $color-text-dark-main;
     margin-bottom: 10px;
     
     &::after {
-      content: '₽';
+      content: 'Ref. ₽';
       font-size: 20px;
       margin-left: 3px;
       color: #666;
@@ -145,9 +146,6 @@
     line-height: 1.5;
   }
 }
-
-
-
 
 // Расписание
 .scheduleSection {
@@ -174,14 +172,14 @@
       font-family: 'Oswald', sans-serif;
       font-size: 18px;
       font-weight: 500;
-      color: #333;
+      color: $color-text-dark-main;
       margin: 0 0 5px;
     }
     
     .scheduleDetails {
       font-family: 'PT Sans', sans-serif;
       font-size: 16px;
-      color: #FE3B15;
+      color: $color-brand-primary;
       font-weight: 600;
     }
   }
@@ -207,13 +205,11 @@
     
     &:first-child {
       font-weight: 500;
-      color: #333;
+      color: $color-text-dark-main;
       font-size: 17px;
     }
   }
 }
-
-
 
 // Контакты
 .contactsSection {
@@ -238,14 +234,14 @@
     .contactText {
       font-family: 'PT Sans', sans-serif;
       font-size: 16px;
-      color: #333;
+      color: $color-text-dark-main;
       
       a {
-        color: #333;
+        color: $color-text-dark-main;
         text-decoration: none;
         
         &:hover {
-          color: #FE3B15;
+          color: $color-brand-primary;
         }
       }
     }
@@ -258,7 +254,7 @@
   margin: 40px 0 20px;
   
   button {
-    background: #FE3B15;
+    background: $color-brand-primary;
     border: none;
     padding: 18px 50px;
     border-radius: 8px;
@@ -266,18 +262,18 @@
     font-weight: 600;
     font-size: 20px;
     letter-spacing: 1px;
-    color: white;
+    color: $color-text-pure-white;
     cursor: pointer;
     transition: all 0.3s ease;
     
     &:hover {
-      background: darken(#FE3B15, 10%);
+      background: darken($color-brand-primary, 10%);
       transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(254, 59, 21, 0.3);
+      box-shadow: 0 10px 25px rgba($color-brand-primary, 0.3);
     }
     
     a {
-      color: white;
+      color: $color-text-pure-white;
       text-decoration: none;
       display: flex;
       align-items: center;

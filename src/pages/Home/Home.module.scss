@@ -1,7 +1,9 @@
-.homeContainer{
-  background-color: #f8f8f8;
+@use '../../shared/styles/variables' as *;
+
+.homeContainer {
+  background-color: $color-bg-light-card;
 }
 
-.contentContainer{
-  padding: 0 20px;
+.contentContainer {
+  padding: 0;
 }

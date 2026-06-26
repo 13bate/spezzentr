@@ -1,3 +1,5 @@
+@use '../../shared/styles/variables' as *;
+
 .page {
   min-height: 100vh;
   display: flex;
@@ -13,7 +15,7 @@
   position: absolute;
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(254,59,21,0.25), transparent);
+  background: radial-gradient(circle, rgba($color-brand-primary, 0.25), transparent);
   filter: blur(120px);
   animation: float 6s ease-in-out infinite alternate;
 }
@@ -26,15 +28,15 @@
 .card {
   position: relative;
   backdrop-filter: blur(18px);
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba($color-text-pure-white, 0.05);
+  border: 1px solid rgba($color-text-pure-white, 0.1);
   padding: 60px 70px;
   border-radius: 20px;
   text-align: center;
   max-width: 520px;
   box-shadow:
-    0 10px 40px rgba(0,0,0,0.6),
-    inset 0 1px 0 rgba(255,255,255,0.05);
+    0 10px 40px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba($color-text-pure-white, 0.05);
 }
 
 .code {
@@ -42,7 +44,7 @@
   font-weight: 700;
   font-family: 'Oswald', sans-serif;
   margin: 0;
-  background: linear-gradient(45deg,#FE3B15,#ff7a5c);
+  background: linear-gradient(45deg, $color-brand-primary, #ff7a5c);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -50,7 +52,7 @@
 .title {
   margin-top: 10px;
   font-size: 26px;
-  color: #fff;
+  color: $color-text-pure-white;
 }
 
 .text {
@@ -70,8 +72,8 @@
 .primary {
   padding: 12px 24px;
   border-radius: 10px;
-  background: linear-gradient(45deg,#FE3B15,#ff7a5c);
-  color: #fff;
+  background: linear-gradient(45deg, $color-brand-primary, #ff7a5c);
+  color: $color-text-pure-white;
   text-decoration: none;
   font-weight: 600;
   transition: transform .2s ease, box-shadow .2s ease;
@@ -79,18 +81,18 @@
 
 .primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(254,59,21,0.4);
+  box-shadow: 0 8px 20px rgba($color-brand-primary, 0.4);
 }
 
 .secondary {
   padding: 12px 24px;
   border-radius: 10px;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba($color-text-pure-white, 0.2);
   color: #ddd;
   text-decoration: none;
   transition: background .2s ease;
 }
 
 .secondary:hover {
-  background: rgba(255,255,255,0.05);
+  background: rgba($color-text-pure-white, 0.05);
 }

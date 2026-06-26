@@ -1,12 +1,11 @@
+@use '../../shared/styles/variables' as *;
+
 .educationInfoPage {
   width: 100%;
-  max-width: 1280px;
-  margin: 100px auto 80px;
-  padding: 0 30px;
+  margin: 100px 0;
   
   @media (max-width: 768px) {
-    padding: 0 20px;
-    margin: 80px auto 40px;
+    margin: 80px 0 40px;
   }
 }
 
@@ -19,12 +18,12 @@
     font-family: 'Oswald', sans-serif;
     font-size: 48px;
     font-weight: 700;
-    color: #333;
+    color: $color-text-dark-main;
     text-transform: uppercase;
     margin: 0 0 20px;
     
     span {
-      color: #FE3B15;
+      color: $color-brand-primary;
     }
     
     @media (max-width: 768px) {
@@ -35,7 +34,7 @@
   .description {
     font-family: 'PT Sans', sans-serif;
     font-size: 18px;
-    color: #666;
+    color: $color-text-dark-muted;
     max-width: 800px;
     margin: 0 auto;
     line-height: 1.6;
@@ -64,7 +63,7 @@
 // Карточка
 .card {
   display: block;
-  background: white;
+  background: $color-text-pure-white;
   border-radius: 20px;
   padding: 30px 25px;
   text-decoration: none;
@@ -73,16 +72,16 @@
   
   &:hover {
     transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(254, 59, 21, 0.15);
-    border-color: #FE3B15;
+    box-shadow: 0 15px 30px rgba($color-brand-primary, 0.15);
+    border-color: $color-brand-primary;
     
     .cardIcon {
-      background: #FE3B15;
-      color: white;
+      background: $color-brand-primary;
+      color: $color-text-pure-white;
     }
     
     .cardArrow {
-      color: #FE3B15;
+      color: $color-brand-primary;
       
       &::after {
         transform: translateX(5px);
@@ -99,7 +98,7 @@
     align-items: center;
     justify-content: center;
     font-size: 24px;
-    color: #FE3B15;
+    color: $color-brand-primary;
     margin-bottom: 20px;
     transition: all 0.3s ease;
   }
@@ -108,7 +107,7 @@
     font-family: 'Oswald', sans-serif;
     font-size: 20px;
     font-weight: 600;
-    color: #333;
+    color: $color-text-dark-main;
     margin: 0 0 10px;
     line-height: 1.4;
   }
@@ -116,7 +115,7 @@
   .cardSubtitle {
     font-family: 'PT Sans', sans-serif;
     font-size: 14px;
-    color: #666;
+    color: $color-text-dark-muted;
     line-height: 1.5;
     margin: 0 0 20px;
   }
@@ -125,7 +124,7 @@
     font-family: 'Oswald', sans-serif;
     font-size: 14px;
     font-weight: 500;
-    color: #333;
+    color: $color-text-dark-main;
     display: inline-flex;
     align-items: center;
     transition: color 0.3s ease;

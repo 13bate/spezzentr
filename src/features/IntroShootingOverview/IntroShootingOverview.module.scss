@@ -1,532 +1,612 @@
-// ─── Section ─────────────────────────────────────────────────
-.section {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 80px 0;
-  position: relative;
-  overflow: hidden;
+@use '../../shared/styles/variables' as *;
 
-  @media (max-width: 768px) {
-    padding: 56px 20px;
-  }
+// ─── Section ─────────────────────────────────────────────────
+
+.section {
+	padding: 80px 0;
+	position: relative;
+	overflow: hidden;
+
+	@media (max-width: 768px) {
+		padding: 56px 20px;
+	}
 }
 
-// ─── Background ──────────────────────────────────────────────
 .bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	z-index: 0;
 }
 
 .bgGrid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.022) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.022) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 20%, transparent 100%);
+	position: absolute;
+	inset: 0;
+	background-image:
+		linear-gradient(rgba(0, 0, 0, 0.022) 1px, transparent 1px),
+		linear-gradient(90deg, rgba(0, 0, 0, 0.022) 1px, transparent 1px);
+	background-size: 48px 48px;
+	mask-image: radial-gradient(
+		ellipse 90% 90% at 50% 50%,
+		black 20%,
+		transparent 100%
+	);
 }
 
 .b1 {
-  position: absolute;
-  top: -80px;
-  left: -80px;
-  width: 460px;
-  height: 460px;
-  background: radial-gradient(circle, rgba(254, 59, 21, 0.055) 0%, transparent 65%);
-  border-radius: 50%;
-  animation: d1 13s ease-in-out infinite;
+	position: absolute;
+	top: -80px;
+	left: -80px;
+	width: 460px;
+	height: 460px;
+	background: radial-gradient(
+		circle,
+		rgba($color-brand-primary, 0.055) 0%,
+		transparent 65%
+	);
+	border-radius: 50%;
+	animation: d1 13s ease-in-out infinite;
 }
 
 .b2 {
-  position: absolute;
-  bottom: -60px;
-  right: -40px;
-  width: 380px;
-  height: 380px;
-  background: radial-gradient(circle, rgba(254, 59, 21, 0.04) 0%, transparent 65%);
-  border-radius: 50%;
-  animation: d2 16s ease-in-out infinite;
+	position: absolute;
+	bottom: -60px;
+	right: -40px;
+	width: 380px;
+	height: 380px;
+	background: radial-gradient(
+		circle,
+		rgba($color-brand-primary, 0.04) 0%,
+		transparent 65%
+	);
+	border-radius: 50%;
+	animation: d2 16s ease-in-out infinite;
 }
 
-// ─── Layout ──────────────────────────────────────────────────
 .inner {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
+	position: relative;
+	z-index: 1;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 80px;
+	align-items: center;
 
-  @media (max-width: 900px) {
-    grid-template-columns: 1fr;
-    gap: 48px;
-  }
+	@media (max-width: 900px) {
+		grid-template-columns: 1fr;
+		gap: 48px;
+	}
 }
 
-// ─── Content ─────────────────────────────────────────────────
 .eyebrow {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: #FE3B15;
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+	font-size: 11px;
+	font-weight: 500;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	color: $color-brand-primary;
+	margin-bottom: 12px;
+	display: flex;
+	align-items: center;
+	gap: 10px;
 
-  &::after {
-    content: '';
-    width: 28px;
-    height: 1px;
-    background: #FE3B15;
-    opacity: 0.5;
-  }
+	&::after {
+		content: '';
+		width: 28px;
+		height: 1px;
+		background: $color-brand-primary;
+		opacity: 0.5;
+	}
 }
 
 .title {
-  font-family: 'Oswald', sans-serif;
-  font-size: clamp(28px, 3.5vw, 42px);
-  font-weight: 600;
-  color: #111;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  margin-bottom: 16px;
+	font-family: 'Oswald', sans-serif;
+	font-size: clamp(28px, 3.5vw, 42px);
+	font-weight: 600;
+	color: $color-text-dark-main;
+	line-height: 1.1;
+	letter-spacing: -0.02em;
+	margin-bottom: 16px;
 
-  em {
-    font-style: normal;
-    color: #FE3B15;
-  }
+	em {
+		font-style: normal;
+		color: $color-brand-primary;
+	}
 }
 
 .desc {
-  font-size: 14px;
-  line-height: 1.75;
-  color: #999;
-  margin-bottom: 28px;
+	font-size: 14px;
+	line-height: 1.75;
+	color: $color-text-light-muted;
+	margin-bottom: 28px;
 }
 
 .list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+	list-style: none;
+	padding: 0;
+	margin: 0 0 32px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
 
-  li {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 13px;
-    color: #444;
-    font-weight: 500;
-  }
+	li {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		font-size: 13px;
+		color: $color-text-dark-muted;
+		font-weight: 500;
+	}
 }
 
 .tick {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: #FE3B15;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	background: $color-brand-primary;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
 }
 
-// ─── Button ──────────────────────────────────────────────────
 .btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 13px 26px;
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  border-radius: 8px;
-  text-decoration: none;
-  color: #111;
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(12px) saturate(1.6);
-  -webkit-backdrop-filter: blur(12px) saturate(1.6);
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  transition: box-shadow 0.25s ease, border-color 0.25s ease, color 0.25s ease;
-  white-space: nowrap;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 13px 26px;
+	font-family: 'Inter', sans-serif;
+	font-size: 13px;
+	font-weight: 500;
+	border-radius: 8px;
+	text-decoration: none;
+	color: $color-text-dark-main;
+	position: relative;
+	overflow: hidden;
+	isolation: isolate;
+	background: rgba($color-text-pure-white, 0.6);
+	backdrop-filter: blur(12px) saturate(1.6);
+	-webkit-backdrop-filter: blur(12px) saturate(1.6);
+	border: 1px solid $color-border-primary-alpha;
+	box-shadow:
+		0 2px 8px rgba(0, 0, 0, 0.08),
+		inset 0 1px 0 rgba($color-text-pure-white, 0.9);
+	transition:
+		box-shadow 0.25s ease,
+		border-color 0.25s ease,
+		color 0.25s ease;
+	white-space: nowrap;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 15%;
-    width: 70%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent);
-    pointer-events: none;
-  }
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 15%;
+		width: 70%;
+		height: 1px;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			rgba($color-text-pure-white, 0.9),
+			transparent
+		);
+		pointer-events: none;
+	}
 
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.45) 50%, transparent 70%);
-    transform: translateX(-100%);
-    transition: transform 0.5s ease;
-    z-index: -1;
-  }
+	&::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(
+			105deg,
+			transparent 30%,
+			rgba($color-text-pure-white, 0.45) 50%,
+			transparent 70%
+		);
+		transform: translateX(-100%);
+		transition: transform 0.5s ease;
+		z-index: -1;
+	}
 
-  &:hover {
-    color: #FE3B15;
-    border-color: rgba(254, 59, 21, 0.3);
-    box-shadow: 0 4px 16px rgba(254, 59, 21, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+	&:hover {
+		color: $color-brand-primary;
+		border-color: rgba($color-brand-primary, 0.3);
+		box-shadow:
+			0 4px 16px rgba($color-brand-primary, 0.12),
+			inset 0 1px 0 rgba($color-text-pure-white, 0.9);
 
-    &::after { transform: translateX(100%); }
-    .arr { transform: translateX(4px); }
-  }
+		&::after {
+			transform: translateX(100%);
+		}
+		.arr {
+			transform: translateX(4px);
+		}
+	}
 }
 
 .arr {
-  display: inline-block;
-  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+	display: inline-block;
+	transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-// ─── Visual scene ────────────────────────────────────────────
 .visual {
-  position: relative;
-  height: 360px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+	position: relative;
+	height: 360px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-// ─── Stacked course cards ─────────────────────────────────────
 .cardStack {
-  position: absolute;
-  top: 24px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 200px;
+	position: absolute;
+	top: 24px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 200px;
 }
 
 .courseCard {
-  width: 190px;
-  padding: 14px 16px;
-  background: #fff;
-  border: 1px solid #ebebeb;
-  border-radius: 10px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
-  position: absolute;
-  left: 0;
+	width: 190px;
+	padding: 14px 16px;
+	background: $color-text-pure-white;
+	border: 1px solid $color-chip-white;
+	border-radius: 10px;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.07);
+	position: absolute;
+	left: 0;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 15%;
-    width: 70%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent);
-  }
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 15%;
+		width: 70%;
+		height: 1px;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			rgba($color-text-pure-white, 0.9),
+			transparent
+		);
+	}
 }
 
 .cc1 {
-  top: 0;
-  left: 0;
-  z-index: 3;
-  animation: float3 5s ease-in-out infinite;
+	top: 0;
+	left: 0;
+	z-index: 3;
+	animation: float3 5s ease-in-out infinite;
 }
 
 .cc2 {
-  top: 18px;
-  left: 10px;
-  z-index: 2;
-  opacity: 0.85;
-  transform: scale(0.97);
-  animation: float3 5s ease-in-out infinite 0.3s;
+	top: 18px;
+	left: 10px;
+	z-index: 2;
+	opacity: 0.85;
+	transform: scale(0.97);
+	animation: float3 5s ease-in-out infinite 0.3s;
 }
 
 .cc3 {
-  top: 34px;
-  left: 18px;
-  z-index: 1;
-  opacity: 0.65;
-  transform: scale(0.94);
-  animation: float3 5s ease-in-out infinite 0.6s;
+	top: 34px;
+	left: 18px;
+	z-index: 1;
+	opacity: 0.65;
+	transform: scale(0.94);
+	animation: float3 5s ease-in-out infinite 0.6s;
 }
 
 .ccTag {
-  font-size: 9px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: #FE3B15;
-  margin-bottom: 6px;
+	font-size: 9px;
+	font-weight: 600;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: $color-brand-primary;
+	margin-bottom: 6px;
 }
 
 .ccTitle {
-  font-size: 12px;
-  font-weight: 600;
-  color: #111;
-  letter-spacing: -0.01em;
-  margin-bottom: 6px;
+	font-size: 12px;
+	font-weight: 600;
+	color: $color-text-dark-main;
+	letter-spacing: -0.01em;
+	margin-bottom: 6px;
 }
 
 .ccMeta {
-  display: flex;
-  gap: 8px;
+	display: flex;
+	gap: 8px;
 }
 
 .ccPill {
-  font-size: 10px;
-  font-weight: 500;
-  color: #888;
-  background: #f5f5f5;
-  padding: 3px 8px;
-  border-radius: 20px;
+	font-size: 10px;
+	font-weight: 500;
+	color: $color-text-light-muted;
+	background: $color-bg-light-header;
+	padding: 3px 8px;
+	border-radius: 20px;
 }
 
-// ─── Medal ───────────────────────────────────────────────────
 .medal {
-  position: absolute;
-  top: 20px;
-  right: 16px;
-  animation: float2 4s ease-in-out infinite;
+	position: absolute;
+	top: 20px;
+	right: 16px;
+	animation: float2 4s ease-in-out infinite;
 }
 
 .medalRibbon {
-  width: 14px;
-  height: 20px;
-  background: linear-gradient(180deg, #FE3B15, #c42d10);
-  margin: 0 auto;
-  border-radius: 0 0 3px 3px;
-  position: relative;
+	width: 14px;
+	height: 20px;
+	background: linear-gradient(
+		180deg,
+		$color-brand-primary,
+		$color-brand-primary-hover
+	);
+	margin: 0 auto;
+	border-radius: 0 0 3px 3px;
+	position: relative;
 
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 6px;
-    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.1));
-  }
+	&::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 6px;
+		background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.1));
+	}
 }
 
 .medalCircle {
-  width: 48px;
-  height: 48px;
-  border-radius: 50%;
-  background: linear-gradient(145deg, #f5f5f5, #e8e8e8);
-  border: 1.5px solid #ddd;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  overflow: hidden;
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	background: linear-gradient(
+		145deg,
+		$color-bg-light-header,
+		$color-chip-white
+	);
+	border: 1.5px solid $color-border-primary-alpha;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	overflow: hidden;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 20%;
-    width: 60%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent);
-  }
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 20%;
+		width: 60%;
+		height: 1px;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			rgba($color-text-pure-white, 0.9),
+			transparent
+		);
+	}
 }
 
 .star {
-  width: 20px;
-  height: 20px;
-  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-  background: linear-gradient(145deg, #FE3B15, #c42d10);
+	width: 20px;
+	height: 20px;
+	clip-path: polygon(
+		50% 0%,
+		61% 35%,
+		98% 35%,
+		68% 57%,
+		79% 91%,
+		50% 70%,
+		21% 91%,
+		32% 57%,
+		2% 35%,
+		39% 35%
+	);
+	background: linear-gradient(
+		145deg,
+		$color-brand-primary,
+		$color-brand-primary-hover
+	);
 }
 
 .medalLabel {
-  font-size: 8px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #bbb;
-  text-align: center;
-  margin-top: 3px;
+	font-size: 8px;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: $color-text-light-muted;
+	text-align: center;
+	margin-top: 3px;
 }
 
-
-// ─── Weapon silhouettes ───────────────────────────────────────
 .weapons {
-  position: absolute;
-  bottom: 16px;
-  right: 16px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: flex-end;
-  opacity: 0.18;
+	position: absolute;
+	bottom: 16px;
+	right: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	align-items: flex-end;
+	opacity: 0.18;
 }
 
 .wpistol {
-  width: 52px;
-  height: 14px;
-  position: relative;
+	width: 52px;
+	height: 14px;
+	position: relative;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 2px;
-    left: 0;
-    width: 36px;
-    height: 8px;
-    border: 1.5px solid #111;
-    border-radius: 1px 3px 1px 1px;
-  }
+	&::before {
+		content: '';
+		position: absolute;
+		top: 2px;
+		left: 0;
+		width: 36px;
+		height: 8px;
+		border: 1.5px solid $color-text-dark-main;
+		border-radius: 1px 3px 1px 1px;
+	}
 
-  &::after {
-    content: '';
-    position: absolute;
-    top: 8px;
-    left: 16px;
-    width: 14px;
-    height: 8px;
-    border: 1.5px solid #111;
-    border-bottom: none;
-    border-radius: 0 0 3px 3px;
-  }
+	&::after {
+		content: '';
+		position: absolute;
+		top: 8px;
+		left: 16px;
+		width: 14px;
+		height: 8px;
+		border: 1.5px solid $color-text-dark-main;
+		border-bottom: none;
+		border-radius: 0 0 3px 3px;
+	}
 }
 
 .wrifle {
-  width: 72px;
-  height: 10px;
-  position: relative;
+	width: 72px;
+	height: 10px;
+	position: relative;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 1px;
-    left: 8px;
-    width: 60px;
-    height: 7px;
-    border: 1.5px solid #111;
-    border-radius: 1px 3px 1px 1px;
-  }
+	&::before {
+		content: '';
+		position: absolute;
+		top: 1px;
+		left: 8px;
+		width: 60px;
+		height: 7px;
+		border: 1.5px solid $color-text-dark-main;
+		border-radius: 1px 3px 1px 1px;
+	}
 
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 12px;
-    height: 5px;
-    border: 1.5px solid #111;
-    border-right: none;
-    border-radius: 1px 0 0 1px;
-  }
+	&::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 12px;
+		height: 5px;
+		border: 1.5px solid $color-text-dark-main;
+		border-right: none;
+		border-radius: 1px 0 0 1px;
+	}
 }
 
 .wshotgun {
-  width: 62px;
-  height: 10px;
-  position: relative;
+	width: 62px;
+	height: 10px;
+	position: relative;
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 1px;
-    left: 6px;
-    width: 52px;
-    height: 8px;
-    border: 1.5px solid #111;
-    border-radius: 1px 4px 4px 1px;
-  }
+	&::before {
+		content: '';
+		position: absolute;
+		top: 1px;
+		left: 6px;
+		width: 52px;
+		height: 8px;
+		border: 1.5px solid $color-text-dark-main;
+		border-radius: 1px 4px 4px 1px;
+	}
 
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 10px;
-    height: 6px;
-    border: 1.5px solid #111;
-    border-right: none;
-    border-radius: 1px 0 0 1px;
-  }
+	&::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 10px;
+		height: 6px;
+		border: 1.5px solid $color-text-dark-main;
+		border-right: none;
+		border-radius: 1px 0 0 1px;
+	}
 }
 
-// ─── Instructor badge ─────────────────────────────────────────
 .instrBadge {
-  position: absolute;
-  bottom: 22px;
-  right: 20px;
-  background: #fff;
-  border: 1px solid #ebebeb;
-  border-radius: 8px;
-  padding: 8px 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  animation: float2 6s ease-in-out infinite reverse;
+	position: absolute;
+	bottom: 22px;
+	right: 20px;
+	background: $color-text-pure-white;
+	border: 1px solid $color-chip-white;
+	border-radius: 8px;
+	padding: 8px 12px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+	animation: float2 6s ease-in-out infinite reverse;
 }
 
 .instrAvatar {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: linear-gradient(145deg, #f0f0f0, #e0e0e0);
-  border: 1.5px solid #ddd;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 10px;
-  color: #999;
-  font-weight: 600;
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	background: linear-gradient(
+		145deg,
+		$color-bg-light-header,
+		$color-chip-white
+	);
+	border: 1.5px solid $color-border-primary-alpha;
+	flex-shrink: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 10px;
+	color: $color-text-light-muted;
+	font-weight: 600;
 }
 
 .instrInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
+	display: flex;
+	flex-direction: column;
+	gap: 1px;
 }
 
 .instrName {
-  font-size: 10px;
-  font-weight: 600;
-  color: #111;
-  letter-spacing: -0.01em;
+	font-size: 10px;
+	font-weight: 600;
+	color: $color-text-dark-main;
+	letter-spacing: -0.01em;
 }
 
 .instrRole {
-  font-size: 9px;
-  color: #bbb;
-  font-weight: 400;
+	font-size: 9px;
+	color: $color-text-light-muted;
+	font-weight: 400;
 }
 
-// ─── Animations ──────────────────────────────────────────────
 @keyframes d1 {
-  0%, 100% { transform: translate(0, 0); }
-  50%       { transform: translate(20px, 16px); }
+	0%,
+	100% {
+		transform: translate(0, 0);
+	}
+	50% {
+		transform: translate(20px, 16px);
+	}
 }
 
 @keyframes d2 {
-  0%, 100% { transform: translate(0, 0); }
-  50%       { transform: translate(-16px, -20px); }
+	0%,
+	100% {
+		transform: translate(0, 0);
+	}
+	50% {
+		transform: translate(-16px, -20px);
+	}
 }
 
 @keyframes float2 {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-5px); }
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-5px);
+	}
 }
 
 @keyframes float3 {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-4px); }
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-4px);
+	}
 }

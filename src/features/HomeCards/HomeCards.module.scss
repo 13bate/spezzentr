@@ -1,3 +1,5 @@
+@use '../../shared/styles/variables' as *;
+
 // Сброс ссылок
 a:hover {
   color: inherit !important;
@@ -8,7 +10,7 @@ a:hover {
   margin: 0 auto;
   padding: 60px 30px;
   box-sizing: border-box;
-  background: #f8f8f8;
+  background: $color-bg-light-header; // Заменили #f8f8f8
 }
 
 .cardsContainer {
@@ -27,20 +29,20 @@ a:hover {
   position: relative;
   width: 30%;
   min-height: 320px;
-  background: linear-gradient(145deg, #ffffff, #dcddd2);
-  border-radius: 20px;
+  background: linear-gradient(145deg, $color-text-pure-white, $color-bg-light-card); // Заменили #ffffff, #dcddd2
+  border-radius: $radius-card-medium; // Заменили 20px
   padding: 30px 25px 80px 25px;
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px $color-shadow-primary-light; // Заменили rgba(0,0,0,0.05)
   
   // Градиентная граница при наведении
   &::before {
     content: '';
     position: absolute;
     inset: 0;
-    border-radius: 20px;
+    border-radius: $radius-card-medium;
     padding: 2px;
-    background: linear-gradient(135deg, #FE3B15, transparent);
+    background: linear-gradient(135deg, $color-brand-primary, transparent); // Заменили #FE3B15
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -50,24 +52,24 @@ a:hover {
   
   &:hover {
     transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(254, 59, 21, 0.15);
+    box-shadow: 0 20px 40px $color-shadow-primary-deep; // Заменили rgba(254, 59, 21, 0.15)
     
     &::before {
       opacity: 1;
     }
     
     .cardLabel {
-      color: #FE3B15;
+      color: $color-brand-primary; // Заменили #FE3B15
     }
     
     .cardIcon {
       transform: scale(1.1);
-      color: #FE3B15;
+      color: $color-brand-primary; // Заменили #FE3B15
     }
     
     .cardButton {
-      background: #FE3B15;
-      color: white;
+      background: $color-brand-primary; // Заменили #FE3B15
+      color: $color-text-pure-white;
       padding-right: 35px;
       
       svg {
@@ -100,7 +102,7 @@ a:hover {
 // Добавляем иконку для каждой карточки
 .cardIcon {
   font-size: 48px;
-  color: #545245;
+  color: $color-text-dark-muted; // Заменили #545245
   margin-bottom: 20px;
   transition: all 0.3s ease;
 }
@@ -110,7 +112,7 @@ a:hover {
   width: 100%;
   font-size: 24px;
   font-weight: 700;
-  color: #333;
+  color: $color-text-dark-main; // Заменили #333
   margin-bottom: 15px;
   transition: color 0.3s ease;
   position: relative;
@@ -124,7 +126,7 @@ a:hover {
     transform: translateX(-50%);
     width: 40px;
     height: 3px;
-    background: #FE3B15;
+    background: $color-brand-primary; // Заменили #FE3B15
     border-radius: 2px;
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -138,7 +140,7 @@ a:hover {
 .cardDescription {
   font-size: 16px;
   line-height: 1.6;
-  color: #666;
+  color: $color-text-dark-muted; // Заменили #666
   text-align: center;
   margin: 15px 0 0 0;
   padding: 0 10px;
@@ -150,12 +152,12 @@ a:hover {
   left: 50%;
   transform: translateX(-50%);
   background: transparent;
-  border: 2px solid #FE3B15;
+  border: 2px solid $color-brand-primary; // Заменили #FE3B15
   border-radius: 30px;
   padding: 12px 30px;
   font-size: 16px;
   font-weight: 600;
-  color: #FE3B15;
+  color: $color-brand-primary; // Заменили #FE3B15
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
@@ -164,8 +166,8 @@ a:hover {
   white-space: nowrap;
   
   &:hover {
-    background: #FE3B15;
-    color: white;
+    background: $color-brand-primary; // Заменили #FE3B15
+    color: $color-text-pure-white;
     padding-right: 35px;
     
     svg {
@@ -207,8 +209,8 @@ a:hover {
 
 // Альтернативный стиль карточки (можно переключать)
 .cardItemModern {
-  background: white;
-  border: 1px solid rgba(254, 59, 21, 0.1);
+  background: $color-text-pure-white; // Заменили white
+  border: 1px solid $color-chip-white; // Заменили rgba(254, 59, 21, 0.1)
   
   .cardLabel {
     font-size: 22px;
@@ -220,7 +222,7 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(254, 59, 21, 0.1);
+    background: $color-gloss-white-2; // Заменили полупрозрачный фон
     border-radius: 50%;
     padding: 20px;
   }
@@ -230,6 +232,6 @@ a:hover {
 .noCards {
   text-align: center;
   padding: 60px;
-  color: #999;
+  color: $color-text-light-muted; // Заменили #999
   font-size: 18px;
 }

@@ -1,31 +1,22 @@
-// ─── Tokens ──────────────────────────────────────────────────
-$red:    #FE3B15;
-$black:  #111;
-$mid:    #555;
-$muted:  #999;
-$border: #ebebeb;
-$bg:     #fff;
-$bgsoft: #fafafa;
-$sans:   'Inter', sans-serif;
+@use '../../shared/styles/variables' as *;
 
 // ─── Page ─────────────────────────────────────────────────────
 .page {
-  background: $bg;
-  font-family: $sans;
+  background: $color-bg-light-card;
+  font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
   min-height: 100vh;
 }
 
 // ─── Section ─────────────────────────────────────────────────
 .section {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 80px 48px 96px;
+  margin: 0;
+  padding: 80px 0 96px;
   position: relative;
   overflow: hidden;
 
   @media (max-width: 768px) {
-    padding: 56px 20px 72px;
+    padding: 56px 0 72px;
   }
 }
 
@@ -86,7 +77,7 @@ $sans:   'Inter', sans-serif;
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: $red;
+  color: $color-brand-primary;
   margin-bottom: 10px;
   display: flex;
   align-items: center;
@@ -96,7 +87,7 @@ $sans:   'Inter', sans-serif;
     content: '';
     width: 24px;
     height: 1px;
-    background: $red;
+    background: $color-brand-primary;
     opacity: 0.6;
     flex-shrink: 0;
   }
@@ -106,19 +97,19 @@ $sans:   'Inter', sans-serif;
   font-family: 'Oswald', sans-serif;
   font-size: clamp(28px, 3.5vw, 40px);
   font-weight: 600;
-  color: $black;
+  color: $color-text-dark-main;
   letter-spacing: -0.025em;
   line-height: 1.1;
 
   em {
     font-style: normal;
-    color: $red;
+    color: $color-brand-primary;
   }
 }
 
 .headRight {
   font-size: 12px;
-  color: $muted;
+  color: $color-text-dark-dimmed;
   text-align: right;
   line-height: 1.7;
 
@@ -134,8 +125,8 @@ $sans:   'Inter', sans-serif;
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 1px;
-  background: $border;
-  border: 1px solid $border;
+  background: rgba($color-text-pure-black, 0.08);
+  border: 1px solid rgba($color-text-pure-black, 0.08);
   border-radius: 2px;
 
   @media (max-width: 1100px) {
@@ -149,7 +140,7 @@ $sans:   'Inter', sans-serif;
 
 // ─── Card ─────────────────────────────────────────────────────
 .card {
-  background: $bg;
+  background: $color-bg-light-card;
   padding: 28px 24px 24px;
   display: flex;
   flex-direction: column;
@@ -171,7 +162,7 @@ $sans:   'Inter', sans-serif;
   }
 
   &:hover {
-    background: $bgsoft;
+    background: rgba($color-text-pure-black, 0.02);
 
     &::before { opacity: 1; }
 
@@ -202,15 +193,15 @@ $sans:   'Inter', sans-serif;
 .cTL {
   top: 10px;
   left: 10px;
-  border-top: 1px solid $black;
-  border-left: 1px solid $black;
+  border-top: 1px solid $color-text-dark-main;
+  border-left: 1px solid $color-text-dark-main;
 }
 
 .cBR {
   bottom: 10px;
   right: 10px;
-  border-bottom: 1px solid $black;
-  border-right: 1px solid $black;
+  border-bottom: 1px solid $color-text-dark-main;
+  border-right: 1px solid $color-text-dark-main;
 }
 
 // ─── Card top row ─────────────────────────────────────────────
@@ -249,13 +240,13 @@ $sans:   'Inter', sans-serif;
 .iconWrap {
   width: 44px;
   height: 44px;
-  border: 1px solid $border;
+  border: 1px solid rgba($color-text-pure-black, 0.08);
   border-radius: 6px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 18px;
-  background: $bg;
+  background: $color-bg-light-card;
   transition: border-color 0.25s, background 0.25s;
   flex-shrink: 0;
 }
@@ -265,7 +256,7 @@ $sans:   'Inter', sans-serif;
   font-family: 'Oswald', sans-serif;
   font-size: 17px;
   font-weight: 600;
-  color: $black;
+  color: $color-text-dark-main;
   letter-spacing: -0.015em;
   line-height: 1.2;
   margin-bottom: 10px;
@@ -274,7 +265,7 @@ $sans:   'Inter', sans-serif;
 .cardDesc {
   font-size: 12px;
   line-height: 1.7;
-  color: $muted;
+  color: $color-text-dark-dimmed;
   font-weight: 400;
   margin-bottom: 20px;
   flex: 1;
@@ -315,7 +306,7 @@ $sans:   'Inter', sans-serif;
 // ─── Divider ──────────────────────────────────────────────────
 .divider {
   height: 1px;
-  background: $border;
+  background: rgba($color-text-pure-black, 0.08);
   margin-bottom: 18px;
   margin-top: auto;
 }
@@ -346,12 +337,12 @@ $sans:   'Inter', sans-serif;
   font-family: 'Oswald', sans-serif;
   font-size: 20px;
   font-weight: 600;
-  color: $black;
+  color: $color-text-dark-main;
   letter-spacing: -0.02em;
   line-height: 1;
 }
 
-.card:nth-child(1) .priceVal { color: $red; }
+.card:nth-child(1) .priceVal { color: $color-brand-primary; }
 
 // ─── Card button ─────────────────────────────────────────────
 .cardBtn {
@@ -362,13 +353,13 @@ $sans:   'Inter', sans-serif;
   font-size: 11px;
   font-weight: 500;
   letter-spacing: 0.04em;
-  color: $mid;
-  border: 1px solid $border;
+  color: $color-text-dark-muted;
+  border: 1px solid rgba($color-text-pure-black, 0.08);
   border-radius: 6px;
   text-decoration: none;
   white-space: nowrap;
   transition: border-color 0.2s, color 0.2s;
-  background: $bg;
+  background: $color-bg-light-card;
   flex-shrink: 0;
 }
 

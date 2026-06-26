@@ -1,12 +1,11 @@
+@use '../../shared/styles/variables' as *;
+
 .safetyTrainingPage {
   width: 100%;
-  max-width: 1280px;
-  margin: 100px auto 80px;
-  padding: 0 30px;
+  margin: 100px 0 80px;
   
   @media (max-width: 768px) {
-    padding: 0 20px;
-    margin: 80px auto 40px;
+    margin: 80px 0 40px;
   }
 }
 
@@ -18,7 +17,7 @@
     font-family: 'Oswald', sans-serif;
     font-size: 48px;
     font-weight: 700;
-    color: #333;
+    color: $color-text-dark-main;
     text-transform: uppercase;
     margin: 0 0 20px;
     position: relative;
@@ -30,7 +29,7 @@
       left: 0;
       width: 80px;
       height: 4px;
-      background: #FE3B15;
+      background: $color-brand-primary;
     }
     
     @media (max-width: 768px) {
@@ -42,7 +41,7 @@
     font-family: 'PT Sans', sans-serif;
     font-size: 18px;
     line-height: 1.6;
-    color: #666;
+    color: $color-text-dark-muted;
     max-width: 800px;
     
     @media (max-width: 768px) {
@@ -59,7 +58,7 @@
     font-family: 'Oswald', sans-serif;
     font-size: 32px;
     font-weight: 600;
-    color: #333;
+    color: $color-text-dark-main;
     margin: 0 0 15px;
     
     @media (max-width: 768px) {
@@ -70,7 +69,7 @@
   .sectionSubtitle {
     font-family: 'PT Sans', sans-serif;
     font-size: 18px;
-    color: #FE3B15;
+    color: $color-brand-primary;
     margin-bottom: 30px;
     
     @media (max-width: 768px) {
@@ -93,7 +92,7 @@
 
 // Карточка
 .card {
-  background: #f8f8f8;
+  background: rgba($color-text-pure-black, 0.03);
   border-radius: 20px;
   padding: 35px;
   height: 100%;
@@ -106,10 +105,10 @@
     font-family: 'Oswald', sans-serif;
     font-size: 24px;
     font-weight: 600;
-    color: #333;
+    color: $color-text-dark-main;
     margin-bottom: 20px;
     padding-bottom: 10px;
-    border-bottom: 2px solid #FE3B15;
+    border-bottom: 2px solid $color-brand-primary;
   }
 }
 
@@ -126,7 +125,7 @@
     margin-bottom: 12px;
     font-family: 'PT Sans', sans-serif;
     font-size: 16px;
-    color: #555;
+    color: $color-text-dark-muted;
     line-height: 1.5;
     
     &::before {
@@ -145,7 +144,7 @@
     display: flex;
     justify-content: space-between;
     padding: 10px 0;
-    border-bottom: 1px dashed rgba(0,0,0,0.1);
+    border-bottom: 1px dashed rgba($color-text-pure-black, 0.1);
     font-family: 'PT Sans', sans-serif;
     
     &:last-child {
@@ -153,11 +152,11 @@
     }
     
     .programName {
-      color: #333;
+      color: $color-text-dark-main;
     }
     
     .programHours {
-      color: #FE3B15;
+      color: $color-brand-primary;
       font-weight: 600;
     }
   }
@@ -168,7 +167,7 @@
   font-family: 'Oswald', sans-serif;
   font-size: 28px;
   font-weight: 700;
-  color: #FE3B15;
+  color: $color-brand-primary;
   margin: 20px 0 0;
   
   @media (max-width: 768px) {
@@ -185,30 +184,30 @@
 }
 
 .priceCard {
-  background: #f8f8f8;
+  background: rgba($color-text-pure-black, 0.03);
   border-radius: 15px;
   padding: 25px;
   transition: all 0.3s ease;
   border: 1px solid transparent;
   
   &:hover {
-    border-color: #FE3B15;
+    border-color: $color-brand-primary;
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(254, 59, 21, 0.1);
+    box-shadow: 0 10px 25px $color-shadow-primary-light;
   }
   
   .priceCardTitle {
     font-family: 'Oswald', sans-serif;
     font-size: 18px;
     font-weight: 600;
-    color: #333;
+    color: $color-text-dark-main;
     margin-bottom: 8px;
   }
   
   .priceCardDesc {
     font-family: 'PT Sans', sans-serif;
     font-size: 14px;
-    color: #999;
+    color: $color-text-dark-dimmed;
     margin-bottom: 15px;
   }
   
@@ -216,13 +215,13 @@
     font-family: 'Oswald', sans-serif;
     font-size: 24px;
     font-weight: 700;
-    color: #FE3B15;
+    color: $color-brand-primary;
   }
 }
 
 // Дополнительные услуги
 .servicesList {
-  background: #f8f8f8;
+  background: rgba($color-text-pure-black, 0.03);
   border-radius: 15px;
   padding: 25px;
   
@@ -231,7 +230,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 12px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba($color-text-pure-black, 0.1);
     
     &:last-child {
       border-bottom: none;
@@ -240,30 +239,30 @@
     .serviceName {
       font-family: 'PT Sans', sans-serif;
       font-size: 16px;
-      color: #333;
+      color: $color-text-dark-main;
     }
     
     .servicePrice {
       font-family: 'Oswald', sans-serif;
       font-size: 18px;
       font-weight: 600;
-      color: #FE3B15;
+      color: $color-brand-primary;
     }
   }
 }
 
 // Расписание
 .scheduleList {
-  background: #f8f8f8;
+  background: rgba($color-text-pure-black, 0.03);
   border-radius: 15px;
   padding: 25px;
   
   .scheduleItem {
     padding: 10px 0;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba($color-text-pure-black, 0.1);
     font-family: 'PT Sans', sans-serif;
     font-size: 16px;
-    color: #555;
+    color: $color-text-dark-muted;
     
     &:last-child {
       border-bottom: none;
@@ -273,7 +272,7 @@
 
 // Информация об экзамене
 .examSection {
-  background: #f8f8f8;
+  background: rgba($color-text-pure-black, 0.03);
   border-radius: 20px;
   padding: 35px;
   margin: 40px 0;
@@ -282,7 +281,7 @@
     font-family: 'Oswald', sans-serif;
     font-size: 28px;
     font-weight: 600;
-    color: #333;
+    color: $color-text-dark-main;
     margin-bottom: 30px;
   }
 }
@@ -302,14 +301,14 @@
       font-family: 'Oswald', sans-serif;
       font-size: 22px;
       font-weight: 600;
-      color: #FE3B15;
+      color: $color-brand-primary;
       margin-bottom: 20px;
     }
     
     p {
       font-family: 'PT Sans', sans-serif;
       font-size: 16px;
-      color: #555;
+      color: $color-text-dark-muted;
       margin-bottom: 15px;
     }
     
@@ -323,11 +322,11 @@
         position: relative;
         font-family: 'PT Sans', sans-serif;
         font-size: 15px;
-        color: #555;
+        color: $color-text-dark-muted;
         
         &::before {
           content: '•';
-          color: #FE3B15;
+          color: $color-brand-primary;
           font-size: 18px;
           position: absolute;
           left: 0;
@@ -343,7 +342,7 @@
   li {
     &::before {
       content: '⚠️' !important;
-      color: #FE3B15;
+      color: $color-brand-primary;
     }
   }
 }
@@ -351,17 +350,21 @@
 .warning {
   margin-top: 20px;
   padding: 15px;
-  background: rgba(254, 59, 21, 0.1);
-  border-left: 4px solid #FE3B15;
+  background: rgba($color-brand-primary, 0.1);
+  border-left: 4px solid $color-brand-primary;
   border-radius: 8px;
   font-family: 'Oswald', sans-serif;
   font-weight: 500;
-  color: #333;
+  color: $color-text-dark-main;
 }
 
 // Результат
 .resultBlock {
-  background: linear-gradient(135deg, #f8f8f8, #f0f0f0);
+  background: linear-gradient(
+    135deg,
+    rgba($color-text-pure-black, 0.03),
+    rgba($color-text-pure-black, 0.06)
+  );
   border-radius: 20px;
   padding: 35px;
   margin: 40px 0;
@@ -370,21 +373,21 @@
   p {
     font-family: 'PT Sans', sans-serif;
     font-size: 18px;
-    color: #333;
+    color: $color-text-dark-main;
     line-height: 1.6;
     margin-bottom: 10px;
     
     &:last-child {
       margin-bottom: 0;
       font-weight: 600;
-      color: #FE3B15;
+      color: $color-brand-primary;
     }
   }
 }
 
 // Контакты
 .contactsBlock {
-  background: #f8f8f8;
+  background: rgba($color-text-pure-black, 0.03);
   border-radius: 20px;
   padding: 35px;
   margin: 40px 0;
@@ -393,14 +396,14 @@
     font-family: 'Oswald', sans-serif;
     font-size: 28px;
     font-weight: 600;
-    color: #333;
+    color: $color-text-dark-main;
     margin-bottom: 15px;
   }
   
   p {
     font-family: 'PT Sans', sans-serif;
     font-size: 18px;
-    color: #555;
+    color: $color-text-dark-muted;
     margin-bottom: 25px;
   }
 }
@@ -429,20 +432,20 @@
         font-family: 'Oswald', sans-serif;
         font-size: 18px;
         font-weight: 600;
-        color: #333;
+        color: $color-text-dark-main;
         margin-bottom: 10px;
       }
       
       p, a {
         font-family: 'PT Sans', sans-serif;
         font-size: 16px;
-        color: #555;
+        color: $color-text-dark-muted;
         text-decoration: none;
         line-height: 1.5;
       }
       
       a:hover {
-        color: #FE3B15;
+        color: $color-brand-primary;
       }
     }
   }

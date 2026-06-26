@@ -1,20 +1,18 @@
+@use '../../../shared/styles/variables' as *; 
+
 .documentsPage {
   width: 100%;
-  max-width: 1280px;
-  margin: 100px auto 80px;
-  padding: 0 30px;
-  
+  margin: 100px 0 80px;
+
   @media (max-width: 768px) {
-    padding: 0 20px;
-    margin: 80px auto 40px;
+    margin: 80px 0 40px;
   }
 }
 
-// Навигация с кнопкой назад
 .pageNavigation {
   margin-left: 20px;
   margin-bottom: 20px;
-  
+
   @media (max-width: 768px) {
     margin-left: 10px;
   }
@@ -23,7 +21,7 @@
 .categorySection {
   scroll-margin-top: 150px;
   margin-left: 20px;
-  
+
   @media (max-width: 768px) {
     margin-left: 10px;
   }
@@ -34,32 +32,32 @@
   align-items: center;
   gap: 15px;
   margin-bottom: 30px;
-  
+
   .categoryIcon {
     width: 60px;
     height: 60px;
-    background: rgba(254, 59, 21, 0.1);
+    background: $color-glass-primary-hover;
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 30px;
-    color: #FE3B15;
+    color: $color-brand-primary;
     flex-shrink: 0;
   }
-  
+
   .categoryTitle {
     font-family: 'Oswald', sans-serif;
     font-size: 32px;
     font-weight: 600;
-    color: #333;
+    color: $color-text-dark-main;
     margin: 0;
-    
+
     @media (max-width: 768px) {
       font-size: 24px;
     }
   }
-  
+
   @media (max-width: 768px) {
     flex-direction: column;
     text-align: center;
@@ -68,10 +66,10 @@
 }
 
 .contentContainer {
-  background: #f8f8f8;
+  background: $color-bg-light-footer;
   border-radius: 30px;
   padding: 40px;
-  
+
   @media (max-width: 768px) {
     padding: 25px;
   }
@@ -88,81 +86,80 @@
   align-items: center;
   gap: 20px;
   padding: 20px 25px;
-  background: white;
+  background: $color-bg-light-card;
   border-radius: 16px;
   transition: all 0.3s ease;
-  border: 1px solid rgba(0, 0, 0, 0.03);
-  
+  border: 1px solid $color-border-dark-alpha;
+
   &:hover {
     transform: translateX(5px);
-    box-shadow: 0 8px 20px rgba(254, 59, 21, 0.1);
-    border-color: #FE3B15;
-    
+    box-shadow: 0 8px 20px $color-shadow-primary-light;
+    border-color: $color-brand-primary;
+
     .documentIcon {
-      background: #FE3B15;
-      color: white;
+      background: $color-brand-primary;
+      color: $color-text-pure-white;
       transform: rotate(5deg);
     }
-    
+
     .downloadButton {
-      background: #FE3B15;
-      color: white;
-      border-color: #FE3B15;
+      background: $color-brand-primary;
+      color: $color-text-pure-white;
+      border-color: $color-brand-primary;
     }
   }
-  
+
   .documentIcon {
     width: 48px;
     height: 48px;
-    background: rgba(254, 59, 21, 0.05);
+    background: $color-glass-primary-alpha;
     border-radius: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 24px;
-    color: #FE3B15;
+    color: $color-brand-primary;
     transition: all 0.3s ease;
     flex-shrink: 0;
   }
-  
+
   .documentInfo {
     flex: 1;
-    
+
     .documentName {
       font-family: 'PT Sans', sans-serif;
       font-size: 16px;
       font-weight: 600;
-      color: #333;
+      color: $color-text-dark-main;
       line-height: 1.5;
     }
   }
-  
+
   .downloadButton {
     padding: 10px 25px;
     background: transparent;
-    border: 2px solid #FE3B15;
+    border: 2px solid $color-brand-primary;
     border-radius: 30px;
     font-family: 'Oswald', sans-serif;
     font-size: 14px;
     font-weight: 500;
-    color: #333;
+    color: $color-text-dark-main;
     text-decoration: none;
     transition: all 0.3s ease;
     white-space: nowrap;
     cursor: pointer;
-    
+
     &:hover {
-      background: #FE3B15;
-      color: white;
+      background: $color-brand-primary;
+      color: $color-text-pure-white;
     }
   }
 }
 
-// Стили для нумерации документов (опционально)
 .documentNumber {
   width: 30px;
   height: 30px;
-  background: rgba(254, 59, 21, 0.05);
+  background: $color-glass-primary-alpha;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -170,46 +167,45 @@
   font-family: 'Oswald', sans-serif;
   font-size: 14px;
   font-weight: 600;
-  color: #FE3B15;
+  color: $color-brand-primary;
   transition: all 0.3s ease;
   margin-right: 10px;
 }
 
-// Статистика документов (опционально)
 .documentStats {
   display: flex;
   justify-content: flex-end;
   gap: 20px;
   margin-top: 30px;
   padding-top: 20px;
-  border-top: 1px dashed rgba(0,0,0,0.1);
-  
+  border-top: 1px dashed $color-border-dark-alpha;
+
   .statItem {
     display: flex;
     align-items: center;
     gap: 8px;
     font-family: 'PT Sans', sans-serif;
     font-size: 14px;
-    color: #666;
-    
+    color: $color-text-dark-muted;
+
     .statIcon {
-      color: #FE3B15;
+      color: $color-brand-primary;
       font-size: 16px;
     }
-    
+
     .statValue {
       font-weight: 600;
-      color: #333;
+      color: $color-text-dark-main;
     }
   }
 }
 
-// Анимация появления
 @keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);

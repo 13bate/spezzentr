@@ -1,3 +1,5 @@
+@use '../../shared/styles/variables' as *;
+
 // ─── Section ─────────────────────────────────────────────────
 .section {
   max-width: 1200px;
@@ -35,7 +37,7 @@
   right: -60px;
   width: 480px;
   height: 480px;
-  background: radial-gradient(circle, rgba(254, 59, 21, 0.06) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba($color-brand-primary, 0.06) 0%, transparent 65%);
   border-radius: 50%;
   animation: d1 14s ease-in-out infinite;
 }
@@ -46,7 +48,7 @@
   left: -40px;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(254, 59, 21, 0.04) 0%, transparent 65%);
+  background: radial-gradient(circle, rgba($color-brand-primary, 0.04) 0%, transparent 65%);
   border-radius: 50%;
   animation: d2 17s ease-in-out infinite;
 }
@@ -72,7 +74,7 @@
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #FE3B15;
+  color: $color-brand-primary;
   margin-bottom: 12px;
   display: flex;
   align-items: center;
@@ -82,7 +84,7 @@
     content: '';
     width: 28px;
     height: 1px;
-    background: #FE3B15;
+    background: $color-brand-primary;
     opacity: 0.5;
   }
 }
@@ -91,21 +93,21 @@
   font-family: 'Oswald', sans-serif;
   font-size: clamp(28px, 3.5vw, 42px);
   font-weight: 600;
-  color: #111;
+  color: $color-text-dark-main;
   line-height: 1.1;
   letter-spacing: -0.02em;
   margin-bottom: 16px;
 
   em {
     font-style: normal;
-    color: #FE3B15;
+    color: $color-brand-primary;
   }
 }
 
 .desc {
   font-size: 14px;
   line-height: 1.75;
-  color: #999;
+  color: $color-text-dark-muted;
   margin-bottom: 28px;
 }
 
@@ -131,7 +133,7 @@
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: #FE3B15;
+  background: $color-brand-primary;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -141,7 +143,7 @@
 // ─── Meta ────────────────────────────────────────────────────
 .meta {
   display: flex;
-  border: 1px solid #ebebeb;
+  border: 1px solid $color-border-gold-alpha;
   border-radius: 10px;
   overflow: hidden;
   margin-bottom: 28px;
@@ -153,7 +155,7 @@
   display: flex;
   flex-direction: column;
   gap: 3px;
-  border-right: 1px solid #ebebeb;
+  border-right: 1px solid $color-border-gold-alpha;
 
   &:last-child { border-right: none; }
 }
@@ -169,11 +171,11 @@
 .mv {
   font-size: 15px;
   font-weight: 600;
-  color: #111;
+  color: $color-text-dark-main;
   letter-spacing: -0.01em;
 }
 
-.mvRed { color: #FE3B15; }
+.mvRed { color: $color-brand-primary; }
 
 // ─── Button ──────────────────────────────────────────────────
 .btn {
@@ -186,15 +188,15 @@
   font-weight: 500;
   border-radius: 8px;
   text-decoration: none;
-  color: #111;
+  color: $color-text-dark-main;
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba($color-text-pure-white, 0.6);
   backdrop-filter: blur(12px) saturate(1.6);
   -webkit-backdrop-filter: blur(12px) saturate(1.6);
   border: 1px solid rgba(0, 0, 0, 0.12);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba($color-text-pure-white, 0.9);
   transition: box-shadow 0.25s ease, border-color 0.25s ease, color 0.25s ease;
   white-space: nowrap;
 
@@ -202,7 +204,7 @@
     content: '';
     position: absolute;
     top: 0; left: 15%; width: 70%; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.9), transparent);
+    background: linear-gradient(90deg, transparent, rgba($color-text-pure-white, 0.9), transparent);
     pointer-events: none;
   }
 
@@ -210,16 +212,16 @@
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(105deg, transparent 30%, rgba(255, 255, 255, 0.45) 50%, transparent 70%);
+    background: linear-gradient(105deg, transparent 30%, rgba($color-text-pure-white, 0.45) 50%, transparent 70%);
     transform: translateX(-100%);
     transition: transform 0.5s ease;
     z-index: -1;
   }
 
   &:hover {
-    color: #FE3B15;
-    border-color: rgba(254, 59, 21, 0.3);
-    box-shadow: 0 4px 16px rgba(254, 59, 21, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    color: $color-brand-primary;
+    border-color: rgba($color-brand-primary, 0.3);
+    box-shadow: 0 4px 16px rgba($color-brand-primary, 0.12), inset 0 1px 0 rgba($color-text-pure-white, 0.9);
 
     &::after { transform: translateX(100%); }
     .arr { transform: translateX(4px); }
@@ -276,7 +278,6 @@
   letter-spacing: 0.06em;
 }
 
-// Paper target
 .targetWrap {
   position: absolute;
   top: 20px; left: 50%;
@@ -343,15 +344,15 @@
   position: absolute;
   top: 10px; left: 50%; transform: translateX(-50%);
   width: 26px; height: 36px;
-  background: rgba(254,59,21,.1);
-  border: 1.5px solid rgba(254,59,21,.3);
+  background: rgba($color-brand-primary, 0.1);
+  border: 1.5px solid rgba($color-brand-primary, 0.3);
   border-radius: 8px 8px 4px 4px;
 }
 
 .hole {
   position: absolute;
   border-radius: 50%;
-  background: #111;
+  background: $color-text-dark-main;
   box-shadow: 0 0 0 1.5px rgba(0,0,0,.15), 0 0 0 3px rgba(0,0,0,.04);
 }
 
@@ -363,7 +364,7 @@
     position: absolute;
     top: 50%; left: 50%; transform: translate(-50%,-50%);
     width: 10px; height: 10px;
-    border: 1px solid rgba(254,59,21,.4);
+    border: 1px solid rgba($color-brand-primary, 0.4);
     border-radius: 50%;
   }
 }
@@ -378,7 +379,7 @@
   bottom: 6px; right: 6px;
   font-size: 8px; font-weight: 600;
   letter-spacing: 0.06em;
-  color: rgba(254,59,21,.5);
+  color: rgba($color-brand-primary, 0.5);
   font-family: 'Oswald', sans-serif;
 }
 
@@ -394,7 +395,6 @@
   border-radius: 2px;
 }
 
-// Scope
 .scope {
   position: absolute;
   bottom: 24px; right: 20px;
@@ -425,7 +425,7 @@
   position: absolute;
   top: 50%; left: 50%; transform: translate(-50%,-50%);
   width: 24px; height: 24px;
-  border: 1.5px solid rgba(254,59,21,.3);
+  border: 1.5px solid rgba($color-brand-primary, 0.3);
   border-radius: 50%;
 }
 
@@ -433,12 +433,11 @@
   position: absolute;
   top: 50%; left: 50%; transform: translate(-50%,-50%);
   width: 4px; height: 4px;
-  background: rgba(254,59,21,.5);
+  background: rgba($color-brand-primary, 0.5);
   border-radius: 50%;
-  box-shadow: 0 0 6px 2px rgba(254,59,21,.25);
+  box-shadow: 0 0 6px 2px rgba($color-brand-primary, 0.25);
 }
 
-// Shield badge
 .badge {
   position: absolute;
   top: 24px; left: 16px;
@@ -461,7 +460,7 @@
     content: '';
     position: absolute;
     top: 0; left: 20%; width: 60%; height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,.9), transparent);
+    background: linear-gradient(90deg, transparent, rgba($color-text-pure-white, 0.9), transparent);
   }
 }
 
@@ -475,8 +474,8 @@
     top: 50%; left: 50%;
     transform: translate(-50%, -52%) rotate(-45deg);
     width: 8px; height: 4px;
-    border-left: 2px solid #FE3B15;
-    border-bottom: 2px solid #FE3B15;
+    border-left: 2px solid $color-brand-primary;
+    border-bottom: 2px solid $color-brand-primary;
     border-radius: 1px;
   }
 }
@@ -491,7 +490,6 @@
   margin-top: 4px;
 }
 
-// Shells
 .shells {
   position: absolute;
   bottom: 20px; left: 20px;
@@ -513,7 +511,7 @@
     width: 7px; height: 7px;
     background: radial-gradient(circle, #e8b820, #b8860b);
     border-radius: 50%;
-    border: 1px solid rgba(255,255,255,.2);
+    border: 1px solid rgba($color-text-pure-white, 0.2);
   }
 }
 
@@ -539,26 +537,26 @@
 // ─── Animations ──────────────────────────────────────────────
 @keyframes d1 {
   0%, 100% { transform: translate(0, 0); }
-  50%       { transform: translate(-20px, 20px); }
+  50%        { transform: translate(-20px, 20px); }
 }
 
 @keyframes d2 {
   0%, 100% { transform: translate(0, 0); }
-  50%       { transform: translate(20px, -20px); }
+  50%        { transform: translate(20px, -20px); }
 }
 
 @keyframes sway {
   0%, 100% { transform: translateX(-50%) rotate(0deg); }
-  25%       { transform: translateX(-50%) rotate(0.6deg); }
-  75%       { transform: translateX(-50%) rotate(-0.6deg); }
+  25%        { transform: translateX(-50%) rotate(0.6deg); }
+  75%        { transform: translateX(-50%) rotate(-0.6deg); }
 }
 
 @keyframes breathe {
   0%, 100% { transform: scale(1); opacity: 0.5; }
-  50%       { transform: scale(1.06); opacity: 0.75; }
+  50%        { transform: scale(1.06); opacity: 0.75; }
 }
 
 @keyframes float2 {
   0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-5px); }
+  50%        { transform: translateY(-5px); }
 }

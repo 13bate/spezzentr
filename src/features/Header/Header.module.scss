@@ -1,16 +1,19 @@
+@use '../../shared/styles/variables' as *;
+
+// --- Styles ---
 .header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-    padding: 8px 0;
-    color: black !important;
-    backdrop-filter: blur(12px) saturate(180%);
-    -webkit-backdrop-filter: blur(12px) saturate(180%);
-    background: rgba(255, 255, 255, 0.8);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  padding: 8px 0;
+  color: $color-text-dark-main !important;
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  background: $color-bg-light-header;
+  box-shadow: 0 4px 20px $color-shadow-light;
+  border-bottom: 1px solid $color-border-light-alpha;
 }
 
 .headerContainer {
@@ -32,14 +35,14 @@
   font-size: 24px;
   font-weight: 600;
   text-decoration: none;
-  color: #1d1d1f;
+  color: $color-text-dark-main;
   letter-spacing: -0.5px;
   transition: all 0.3s ease;
   position: relative;
   z-index: 1001;
   
   span {
-    color: #FE3B15;
+    color: $color-brand-primary;
     font-weight: 700;
   }
   
@@ -82,23 +85,23 @@
   align-items: center;
   gap: 8px;
   text-decoration: none;
-  color: #1d1d1f;
+  color: $color-text-dark-main;
   font-family: 'Oswald', sans-serif;
   font-size: 16px;
   font-weight: 500;
   transition: color 0.3s ease;
   padding: 8px 12px;
   border-radius: 100px;
-  background: rgba(0, 0, 0, 0.02);
+  background: $color-glass-dark-alpha;
   backdrop-filter: blur(4px);
   
   &:hover {
-    color: #FE3B15;
-    background: rgba(254, 59, 21, 0.05);
+    color: $color-brand-primary;
+    background: $color-glass-primary-alpha;
   }
   
   .phoneIcon {
-    color: #FE3B15;
+    color: $color-brand-primary;
     font-size: 14px;
   }
   
@@ -114,22 +117,22 @@
   align-items: center;
   gap: 8px;
   padding: 10px 20px;
-  background: #FE3B15;
+  background: $color-brand-primary;
   border: none;
   border-radius: 100px;
   font-family: 'Oswald', sans-serif;
   font-size: 14px;
   font-weight: 500;
-  color: white !important;
+  color: $color-text-pure-white !important;
   text-decoration: none;
   transition: all 0.3s ease;
   cursor: pointer;
   letter-spacing: 0.3px;
   
   &:hover {
-    background: darken(#FE3B15, 8%);
+    background: $color-brand-primary-hover;
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(254, 59, 21, 0.3);
+    box-shadow: 0 8px 20px $color-shadow-primary-deep;
     gap: 12px;
   }
   
@@ -159,7 +162,7 @@
   span {
     width: 100%;
     height: 2px;
-    background: #1d1d1f;
+    background: $color-text-dark-main;
     transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     border-radius: 2px;
   }
@@ -171,7 +174,7 @@
   &.open {
     span:first-child {
       transform: rotate(45deg) translate(5px, 5px);
-      background: #FE3B15;
+      background: $color-brand-primary;
     }
     
     span:nth-child(2) {
@@ -181,7 +184,7 @@
     
     span:last-child {
       transform: rotate(-45deg) translate(7px, -7px);
-      background: #FE3B15;
+      background: $color-brand-primary;
     }
   }
 }
@@ -197,28 +200,26 @@
 }
 
 .headerInfoSectionPhone:hover{
-  color:  #FE3B15;
-
+  color: $color-brand-primary;
 }
 
 // Мобильное меню
 .mobileMenu {
   position: fixed;
-
   top: 0;
   pointer-events: auto;
   right: -100%;
   width: 100%;
   max-width: 400px;
   height: 100vh;
-  background: rgba(255, 255, 255, 0.96);
+  background: $color-bg-light-menu;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   z-index: 1001;
   transition: right 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   flex-direction: column;
-  box-shadow: -5px 0 30px rgba(0, 0, 0, 0.05);
+  box-shadow: -5px 0 30px $color-shadow-dark-menu;
   
   @media (min-width: 769px) {
     display: none;
@@ -233,13 +234,13 @@
     align-items: center;
     justify-content: space-between;
     padding: 24px 30px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid $color-border-dark-alpha;
     
     .mobileLogo {
       font-family: 'Oswald', sans-serif;
       font-size: 22px;
       font-weight: 600;
-      color: #1d1d1f;
+      color: $color-text-dark-main;
       text-decoration: none;
     }
     
@@ -247,16 +248,16 @@
       width: 40px;
       height: 40px;
       border: none;
-      background: rgba(0, 0, 0, 0.02);
+      background: $color-glass-dark-alpha;
       border-radius: 50%;
       font-size: 18px;
-      color: #666;
+      color: $color-text-dark-muted;
       cursor: pointer;
       transition: all 0.3s ease;
       
       &:hover {
-        background: rgba(254, 59, 21, 0.1);
-        color: #FE3B15;
+        background: $color-glass-primary-hover;
+        color: $color-brand-primary;
       }
     }
   }
@@ -269,15 +270,15 @@
   
   .mobileContacts {
     padding: 30px;
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
-    background: rgba(255, 255, 255, 0.5);
+    border-top: 1px solid $color-border-dark-alpha;
+    background: $color-bg-light-footer;
     
     .mobilePhone {
       display: flex;
       align-items: center;
       gap: 15px;
       padding: 15px;
-      background: white;
+      background: $color-bg-light-card;
       border-radius: 20px;
       text-decoration: none;
       margin-bottom: 15px;
@@ -285,18 +286,18 @@
       
       &:hover {
         transform: translateY(-2px);
-        box-shadow: 0 10px 20px rgba(254, 59, 21, 0.1);
+        box-shadow: 0 10px 20px $color-glass-primary-hover;
       }
       
       .mobilePhoneIcon {
         width: 48px;
         height: 48px;
-        background: rgba(254, 59, 21, 0.1);
+        background: $color-glass-primary-hover;
         border-radius: 16px;
         display: flex;
         align-items: center;
         justify-content: center;
-        color: #FE3B15;
+        color: $color-brand-primary;
         font-size: 20px;
       }
       
@@ -307,7 +308,7 @@
         .mobilePhoneLabel {
           font-family: 'PT Sans', sans-serif;
           font-size: 13px;
-          color: #999;
+          color: $color-text-dark-dimmed;
           margin-bottom: 2px;
         }
         
@@ -315,7 +316,7 @@
           font-family: 'Oswald', sans-serif;
           font-size: 18px;
           font-weight: 600;
-          color: #1d1d1f;
+          color: $color-text-dark-main;
         }
       }
     }
@@ -325,19 +326,19 @@
       align-items: center;
       justify-content: space-between;
       padding: 16px 20px;
-      background: #FE3B15;
+      background: $color-brand-primary;
       border-radius: 20px;
       text-decoration: none;
-      color: white;
+      color: $color-text-pure-white;
       font-family: 'Oswald', sans-serif;
       font-size: 16px;
       font-weight: 500;
       transition: all 0.3s ease;
       
       &:hover {
-        background: darken(#FE3B15, 8%);
+        background: $color-brand-primary-hover;
         transform: translateY(-2px);
-        box-shadow: 0 10px 20px rgba(254, 59, 21, 0.3);
+        box-shadow: 0 10px 20px $color-shadow-primary-deep;
       }
       
       svg {
@@ -359,7 +360,7 @@
   pointer-events: auto;
   width: 100%;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.3);
+  background: $color-bg-overlay-dark;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   z-index: 1000;

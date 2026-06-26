@@ -1,13 +1,11 @@
+@use '../../shared/styles/variables' as *;
+
 .page {
   width: 100%;
-  max-width: 1280px;
-
-  margin: 100px auto 80px;
-  padding: 0 30px;
+  margin: 100px 0 80px;
 
   @media (max-width: 768px) {
-    margin: 80px auto 40px;
-    padding: 0 20px;
+    margin: 80px 0 40px;
   }
 }
 
@@ -27,23 +25,23 @@
   text-transform: uppercase;
   letter-spacing: .08em;
 
-  color: #FE3B15;
+  color: $color-brand-primary;
 }
 
 
 .textBlock {
   padding: 25px;
 
-  border-left: 4px solid #FE3B15;
+  border-left: 4px solid $color-brand-primary;
   border-radius: 14px;
 
-  background: #f8f8f8;
+  background: rgba($color-text-pure-black, 0.03);
 
   font-family: 'PT Sans', sans-serif;
   font-size: 16px;
   line-height: 1.7;
 
-  color: #555;
+  color: $color-text-dark-muted;
 }
 
 .listItems {
@@ -56,7 +54,7 @@
 
   list-style: none;
 
-  background: #f8f8f8;
+  background: rgba($color-text-pure-black, 0.03);
 
   border-radius: 14px;
 
@@ -69,7 +67,7 @@
     font-size: 16px;
     line-height: 1.6;
 
-    color: #555;
+    color: $color-text-dark-muted;
 
     &::before {
       content: '';
@@ -84,7 +82,7 @@
 
       border-radius: 50%;
 
-      background: #FE3B15;
+      background: $color-brand-primary;
     }
   }
 }
@@ -101,8 +99,8 @@
   background:
     linear-gradient(
       135deg,
-      #f8f8f8,
-      #f1f1f1
+      rgba($color-text-pure-black, 0.03),
+      rgba($color-text-pure-black, 0.06)
     );
 
   h2 {
@@ -112,7 +110,7 @@
     font-size: 32px;
     font-weight: 600;
 
-    color: #333;
+    color: $color-text-dark-main;
   }
 
   p {
@@ -124,7 +122,7 @@
     font-size: 16px;
     line-height: 1.7;
 
-    color: #555;
+    color: $color-text-dark-muted;
   }
 }
 
@@ -142,9 +140,9 @@
 
   border-radius: 10px;
 
-  background: #FE3B15;
+  background: $color-brand-primary;
 
-  color: white;
+  color: $color-text-pure-white;
 
   text-decoration: none;
 
@@ -157,11 +155,11 @@
     background .25s ease;
 
   &:hover {
-    background: #e1320f;
+    background: $color-brand-primary-hover;
 
     transform: translateY(-2px);
 
     box-shadow:
-      0 8px 20px rgba(254, 59, 21, .2);
+      0 8px 20px $color-shadow-primary-light;
   }
 }

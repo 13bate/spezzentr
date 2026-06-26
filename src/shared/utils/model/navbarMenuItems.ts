@@ -1,5 +1,3 @@
-
-
 export const trainingCenter = [
 	{
 		label: 'Обучение на гражданское оружие',
@@ -10,21 +8,20 @@ export const trainingCenter = [
 		label: 'Периодическая проверка охранников 4–6 разрядов',
 		href: '/training/periodic-checks',
 	},
-	{ label: 'БПЛА', href: '/training/drones' },
-	{ label: "Охрана труда", href: "/training/labor-safety" },
-	{ label: "Обучение рабочим специальностям", href: '/training/professions' },
-	{ label: "Обучение руководителей ЧОП", href: "/training/psc-managers" }
+	{ label: 'Центр беспилотной авиации', href: '/training/drones' },
+	{ label: 'Охрана труда', href: '/training/labor-safety' },
+	{ label: 'Обучение рабочим специальностям', href: '/training/professions' },
+	{ label: 'Обучение руководителей ЧОП', href: '/training/psc-managers' },
 ]
 
 export const shootingRange = [
-	{ label: 'Ознакомительная стрельба', href: '/shooting/intro' },
+	{ label: 'Арсенал', href: '/shooting/intro' },
 	{ label: 'Практическая стрельба', href: '/shooting/practice' },
 	{ label: 'Подарочные сертификаты', href: '/shooting/gift-cards' },
 ]
 
-
 export const eduOrgInfo = [
-	{ label: "Сведения об образовательной организации", href: "/education" },
+	{ label: 'Сведения об образовательной организации', href: '/education' },
 	{ label: 'Основные сведения', href: '/education/basic-info' },
 	{ label: 'Структура и органы управления', href: '/education/structure' },
 	{ label: 'Документы', href: '/education/documents' },
@@ -33,7 +30,8 @@ export const eduOrgInfo = [
 	{ label: 'Руководство', href: '/education/management' },
 	{ label: 'Педагогический состав', href: '/education/teachers' },
 	{
-		label: 'Материально-техническое обеспечение и оснащенность образовательного процесса. Доступная среда',
+		label:
+			'Материально-техническое обеспечение и оснащенность образовательного процесса. Доступная среда',
 		href: '/education/facilities',
 	},
 	{ label: 'Платные образовательные услуги', href: '/education/paidServices' },
@@ -54,15 +52,21 @@ export const eduOrgInfoShort = [
 	{ label: 'Образование', href: '/educationInfo/education' },
 	{ label: 'Образовательные стандарты', href: '/educationInfo/standards' },
 	{ label: 'Руководство', href: '/education/management' },
-	{ label: "Педогогический соства", href: "/education/teachers" },
+	{ label: 'Педогогический соства', href: '/education/teachers' },
 	{
 		label:
 			'Материально-техническое обеспечение и оснащенность образовательного процесса. Доступная среда',
 		href: '/educationInfo/facilities',
 	},
-	{ label: "Доступная среда", href: "accesability" },
-	{ label: 'Платные образовательные услуги', href: '/educationInfo/paidServices' },
-	{ label: 'Финансово-хозяйственная деятельность', href: '/educationInfo/finance' },
+	{ label: 'Доступная среда', href: 'accesability' },
+	{
+		label: 'Платные образовательные услуги',
+		href: '/educationInfo/paidServices',
+	},
+	{
+		label: 'Финансово-хозяйственная деятельность',
+		href: '/educationInfo/finance',
+	},
 	{ label: 'Вакантные места для приема', href: '/educationInfo/vacancies' },
 	{
 		label: 'Стипендии и иные виды материальной поддержки',
@@ -80,6 +84,5 @@ export const trainingCenterShort = [
 		label: 'Периодическая проверка',
 		href: '/training/periodic-checks',
 	},
-	{ label: 'БПЛА', href: '/training/drones' },
+	{ label: 'Центр беспилотной авиации', href: '/training/drones' },
 ]
-
