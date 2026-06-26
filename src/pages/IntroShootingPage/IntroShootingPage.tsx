@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import { PageTitle } from '../../shared/ui/PageTitle'
 import style from './IntroShootingPage.module.scss'
+import type { Weapon, WeaponCategory } from './types'
 import { getAllWeapons, weaponsData } from './weaponsData'
-
-type WeaponCategory = 'all' | 'pistols' | 'rifles' | 'shotguns'
 
 export const IntroShootingPage: React.FC = () => {
 	const [activeCategory, setActiveCategory] = useState<WeaponCategory>('all')
-	const [selectedWeapon, setSelectedWeapon] = useState<any>(null)
+	const [selectedWeapon, setSelectedWeapon] = useState<Weapon>()
 
 	// Получаем отображаемое оружие в зависимости от категории
 	const getDisplayWeapons = () => {
