@@ -29,6 +29,7 @@ import { WorkingProfessions } from '../pages/WorkingProfessions'
 import { NotFoundPage } from '../pages/NotFoundPage'
 import { PscManagersTraining } from '../pages/PscManagersTraining'
 import { CompetitionPage } from '../pages/Competitions'
+import { ShootingProgramsPage } from '../pages/ShootingProgramsPage'
 
 // Массив для навигации (можно использовать где угодно)
 export const eduOrgInfo = [
@@ -116,7 +117,10 @@ export const router = createBrowserRouter([
 				path: "shooting/competitions",
 				element: <CompetitionPage />
 			},
-
+			{
+				path: "shooting/programs",
+				element: <ShootingProgramsPage />,
+			},
 			// Главная страница раздела
 			{
 				path: "education",

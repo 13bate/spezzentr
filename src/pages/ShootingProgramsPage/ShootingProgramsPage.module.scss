@@ -1,0 +1,557 @@
+@use '../../shared/styles/variables' as *;
+
+// ─────────────────────────────────────────────────────────────
+// PAGE WRAPPER
+// ─────────────────────────────────────────────────────────────
+
+.page {
+	min-height: 100vh;
+	background-color: $color-bg-light-footer;
+	font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+	color: $color-text-light-main;
+}
+
+// ─────────────────────────────────────────────────────────────
+// HERO
+// ─────────────────────────────────────────────────────────────
+
+.hero {
+	position: relative;
+	background: linear-gradient(
+		160deg,
+		$color-bg-light-footer 0%,
+		$color-bg-light-footer 100%
+	);
+	padding: 96px 48px 80px;
+	overflow: hidden;
+	border-bottom: 1px solid $color-border-primary-alpha;
+
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: radial-gradient(
+			ellipse 60% 70% at 70% 50%,
+			rgba(179, 32, 37, 0.08) 0%,
+			transparent 70%
+		);
+		pointer-events: none;
+	}
+
+	&::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 1px;
+		background: linear-gradient(
+			90deg,
+			transparent,
+			$color-border-primary-alpha,
+			transparent
+		);
+	}
+}
+
+.heroInner {
+	position: relative;
+	max-width: 1200px;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 1fr auto;
+	align-items: center;
+	gap: 48px;
+}
+
+.heroContent {
+	max-width: 680px;
+}
+
+.heroEyebrow {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: $color-gold;
+	margin-bottom: 24px;
+
+	&::before {
+		content: '';
+		display: block;
+		width: 24px;
+		height: 1px;
+		background: $color-brand-primary;
+	}
+}
+
+.heroTitle {
+	font-size: clamp(38px, 5.5vw, 68px);
+	font-weight: 800;
+	line-height: 1;
+	letter-spacing: -0.02em;
+	color: $color-text-pure-white;
+	margin: 0 0 8px;
+
+	em {
+		font-style: normal;
+		color: $color-brand-primary;
+	}
+}
+
+.heroSubtitle {
+	font-size: 18px;
+	font-weight: 400;
+	color: $color-text-light-muted;
+	margin: 16px 0 0;
+	line-height: 1.6;
+	max-width: 520px;
+}
+
+.heroCrosshair {
+	flex-shrink: 0;
+	opacity: 0.18;
+
+	@media (max-width: 768px) {
+		display: none;
+	}
+}
+
+// ─────────────────────────────────────────────────────────────
+// STATS BAR
+// ─────────────────────────────────────────────────────────────
+
+.statsBar {
+	background: $color-bg-light-footer;
+	border-bottom: 1px solid $color-border-gold-alpha;
+}
+
+.statsBarInner {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 48px;
+	display: flex;
+	gap: 0;
+
+	@media (max-width: 640px) {
+		flex-direction: column;
+		padding: 0 24px;
+	}
+}
+
+.statItem {
+	flex: 1;
+	padding: 24px 32px;
+	border-right: 1px solid $color-border-gold-alpha;
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+
+	&:last-child {
+		border-right: none;
+	}
+
+	@media (max-width: 640px) {
+		border-right: none;
+		border-bottom: 1px solid $color-border-gold-alpha;
+		padding: 16px 0;
+
+		&:last-child {
+			border-bottom: none;
+		}
+	}
+}
+
+.statValue {
+	font-size: 26px;
+	font-weight: 700;
+	color: $color-text-dark-main;
+	line-height: 1;
+}
+
+.statLabel {
+	font-size: 12px;
+	font-weight: 500;
+	letter-spacing: 0.06em;
+	color: $color-text-dark-dimmed;
+	text-transform: uppercase;
+}
+
+// ─────────────────────────────────────────────────────────────
+// PROGRAMS SECTION
+// ─────────────────────────────────────────────────────────────
+
+.section {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 72px 48px;
+
+	@media (max-width: 768px) {
+		padding: 48px 24px;
+	}
+}
+
+.sectionLabel {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	color: $color-gold;
+	margin-bottom: 40px;
+
+	span {
+		display: block;
+		width: 32px;
+		height: 1px;
+		background: linear-gradient(90deg, $color-brand-primary, $color-gold-dim);
+	}
+}
+
+.grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+	gap: 24px;
+
+	@media (max-width: 768px) {
+		grid-template-columns: 1fr;
+	}
+}
+
+// ─────────────────────────────────────────────────────────────
+// PROGRAM CARD
+// ─────────────────────────────────────────────────────────────
+
+.card {
+	position: relative;
+	background: linear-gradient(
+		145deg,
+		$color-bg-dark-card-from,
+		$color-bg-dark-card-to
+	);
+	border-radius: $radius-card-large;
+	border: 1px solid $color-border-gold-alpha;
+	padding: 32px;
+	overflow: hidden;
+	cursor: pointer;
+	transition:
+		transform 0.25s ease,
+		box-shadow 0.25s ease,
+		border-color 0.25s ease;
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+
+	&::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: $color-glass-primary-alpha;
+		opacity: 0;
+		transition: opacity 0.25s ease;
+		border-radius: inherit;
+	}
+
+	&:hover {
+		transform: translateY(-4px);
+		border-color: $color-border-primary-alpha;
+		box-shadow:
+			0 20px 48px $color-shadow-primary-deep,
+			0 0 0 1px $color-border-primary-alpha;
+
+		&::before {
+			opacity: 1;
+		}
+
+		.cardAccent {
+			transform: scaleX(1);
+		}
+	}
+}
+
+.cardFeatured {
+	border-color: $color-border-primary-alpha;
+	background: linear-gradient(145deg, #2e1f21, #1a1214);
+
+	&::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 2px;
+		background: linear-gradient(90deg, $color-brand-primary, transparent);
+		border-radius: $radius-card-large $radius-card-large 0 0;
+	}
+}
+
+.cardAccent {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 2px;
+	background: linear-gradient(90deg, $color-brand-primary, $color-gold-dim);
+	transform: scaleX(0);
+	transform-origin: left;
+	transition: transform 0.35s ease;
+	border-radius: 0 0 $radius-card-large $radius-card-large;
+}
+
+.cardHeader {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 12px;
+	margin-bottom: 20px;
+}
+
+.cardBadge {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 5px 12px;
+	border-radius: 100px;
+	font-size: 10px;
+	font-weight: 700;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	background: $color-chip-white;
+	color: $color-gold-light;
+	border: 1px solid $color-border-gold-alpha;
+	white-space: nowrap;
+	flex-shrink: 0;
+}
+
+.cardBadgeRed {
+	background: rgba(179, 32, 37, 0.15);
+	color: #e8696d;
+	border-color: rgba(179, 32, 37, 0.3);
+}
+
+.cardBadgeYouth {
+	background: rgba(100, 160, 100, 0.12);
+	color: #7aba7a;
+	border-color: rgba(100, 160, 100, 0.28);
+}
+
+.cardIcon {
+	width: 40px;
+	height: 40px;
+	border-radius: 10px;
+	background: rgba(179, 32, 37, 0.12);
+	border: 1px solid $color-border-primary-alpha;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	color: $color-brand-primary;
+}
+
+.cardTitle {
+	font-size: 20px;
+	font-weight: 700;
+	color: $color-text-pure-white;
+	line-height: 1.25;
+	margin: 0 0 8px;
+	letter-spacing: -0.01em;
+}
+
+.cardDescription {
+	font-size: 13.5px;
+	color: $color-text-dark-dimmed;
+	line-height: 1.6;
+	margin: 0 0 24px;
+	flex: 1;
+}
+
+.cardMeta {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 12.5px;
+	color: $color-gold;
+	margin-bottom: 24px;
+
+	svg {
+		flex-shrink: 0;
+		opacity: 0.7;
+	}
+}
+
+.cardDivider {
+	height: 1px;
+	background: $color-border-gold-alpha;
+	margin-bottom: 20px;
+}
+
+.cardFooter {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.cardPrice {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.cardPriceLabel {
+	font-size: 10px;
+	font-weight: 600;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: $color-text-dark-dimmed;
+}
+
+.cardPriceValue {
+	font-size: 28px;
+	font-weight: 800;
+	color: $color-text-pure-white;
+	letter-spacing: -0.02em;
+	line-height: 1;
+}
+
+.cardBtn {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 11px 20px;
+	border-radius: 10px;
+	background: $color-brand-primary;
+	color: $color-text-pure-white;
+	font-size: 13px;
+	font-weight: 600;
+	border: none;
+	cursor: pointer;
+	letter-spacing: 0.02em;
+	transition:
+		background 0.2s ease,
+		box-shadow 0.2s ease,
+		transform 0.15s ease;
+	white-space: nowrap;
+
+	&:hover {
+		background: $color-brand-primary-hover;
+		box-shadow: 0 6px 24px $color-shadow-primary-deep;
+		transform: translateY(-1px);
+	}
+
+	&:active {
+		transform: translateY(0);
+	}
+}
+
+// ─────────────────────────────────────────────────────────────
+// CTA BLOCK
+// ─────────────────────────────────────────────────────────────
+
+.ctaBlock {
+	background: linear-gradient(
+		135deg,
+		$color-bg-light-footer,
+		$color-bg-light-card
+	);
+	border-top: 1px solid $color-border-gold-alpha;
+}
+
+.ctaInner {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 64px 48px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 32px;
+
+	@media (max-width: 768px) {
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 48px 24px;
+	}
+}
+
+.ctaText {
+	h3 {
+		font-size: 26px;
+		font-weight: 700;
+		color: $color-text-dark-main;
+		margin: 0 0 8px;
+		letter-spacing: -0.01em;
+	}
+
+	p {
+		font-size: 15px;
+		color: $color-text-dark-dimmed;
+		margin: 0;
+		line-height: 1.6;
+	}
+}
+
+.ctaActions {
+	display: flex;
+	gap: 12px;
+	flex-shrink: 0;
+
+	@media (max-width: 480px) {
+		flex-direction: column;
+		width: 100%;
+	}
+}
+
+.btnPrimary {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 14px 28px;
+	border-radius: $radius-card-medium;
+	background: $color-brand-primary;
+	color: $color-text-pure-white;
+	font-size: 14px;
+	font-weight: 600;
+	border: none;
+	cursor: pointer;
+	letter-spacing: 0.01em;
+	transition:
+		background 0.2s ease,
+		box-shadow 0.2s ease,
+		transform 0.15s ease;
+
+	&:hover {
+		background: $color-brand-primary-hover;
+		box-shadow: 0 8px 28px $color-shadow-primary-deep;
+		transform: translateY(-1px);
+	}
+}
+
+.btnSecondary {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 14px 28px;
+	border-radius: $radius-card-medium;
+	background: transparent;
+	color: $color-text-dark-muted;
+	font-size: 14px;
+	font-weight: 600;
+	border: 1px solid $color-border-gold-alpha;
+	cursor: pointer;
+	letter-spacing: 0.01em;
+	transition:
+		border-color 0.2s ease,
+		color 0.2s ease,
+		background 0.2s ease;
+
+	&:hover {
+		border-color: $color-gold;
+		color: $color-text-dark-main;
+		background: $color-chip-white;
+	}
+}
