@@ -1,78 +1,121 @@
-import clsx from 'clsx'
-import React, { useEffect } from 'react'
-import style from './HeroSection.module.scss'
+import styles from './HeroSection.module.scss';
+import weaponHeroImg from "../../assets/weapon_hero.png"
+import { Button } from '../../shared/ui/Button';
+import { ArrowIcon, BigTrophyIcon, PersonIcon, ShieldIcon, StarIcon, TrophyIcon } from './assets/icons';
+import { Link } from 'react-router';
+import { SectionTitle } from '../../shared/ui/SectionTitle';
 
-interface Props {
-	className?: string
-}
 
-export const HeroSection: React.FC<Props> = ({ className }) => {
-	useEffect(() => {
-		const handleMouseMove = (e: MouseEvent) => {
-			const x = (e.clientX / window.innerWidth) * 100
-			const y = (e.clientY / window.innerHeight) * 100
 
-			document.documentElement.style.setProperty('--mouse-x', `${x}%`)
-			document.documentElement.style.setProperty('--mouse-y', `${y}%`)
-		}
-
-		window.addEventListener('mousemove', handleMouseMove)
-
-		return () => {
-			window.removeEventListener('mousemove', handleMouseMove)
-		}
-	}, [])
-
+export const HeroSection = () => {
 	return (
-		<section className={clsx(style.hero, className)}>
-			<div className={style.background} />
-			<div className={style.grid} />
-			<div className={style.bulletTrail} />
+		<section className={styles.hero}>
+			<div className={styles.content}>
+				{/* Eyebrow badge */}
+				<div className={styles.eyebrow}>
+					<span className={styles.eyebrowDot} />
+					<span className={styles.eyebrowText}>Современный стрелковый комплекс</span>
+					<span className={styles.eyebrowDivider} />
+					<span className={styles.eyebrowYear}>С 2013 года</span>
+				</div>
 
-			<div className={style.crosshair}>
-				<span />
-				<span />
-				<span />
-				<span />
-			</div>
 
-			<div className={style.content}>
-				<div className={style.tag}>LIVE FIRE EXPERIENCE</div>
 
-				<h1 className={style.title}>
-					TRAIN LIKE
-					<span>A PROFESSIONAL</span>
-				</h1>
+				<SectionTitle title='ЦЕНТР СТРЕЛЬБЫ И ПОДГОТОВКИ.' />
 
-				<p className={style.description}>
-					Elite shooting range designed for serious shooters. Military-grade
-					equipment, certified instructors, precision training, and an
-					unforgettable experience.
+				{/* Subtext */}
+				<p className={styles.subtext}>
+					Стрелковый центр нового поколения для спортсменов,<br />
+					профессионалов и всех, кто ценит точность и дисциплину.
 				</p>
 
-				<div className={style.actions}>
-					<button className={style.primaryBtn}>BOOK SESSION</button>
-
-					<button className={style.secondaryBtn}>WATCH VIDEO</button>
+				{/* CTAs */}
+				<div className={styles.ctas}>
+					<Button variant='primary'>
+						Записаться
+						<ArrowIcon />
+					</Button>
 				</div>
 
-				<div className={style.stats}>
-					<div className={style.statCard}>
-						<strong>12</strong>
-						<span>LANES</span>
+				{/* Stats */}
+				<div className={styles.stats}>
+					<div className={styles.statItem}>
+						<span className={styles.statIcon}><ShieldIcon /></span>
+						<div>
+							<div className={styles.statTitle}>Безопасность</div>
+							<div className={styles.statLabel}>на первом месте</div>
+						</div>
 					</div>
-
-					<div className={style.statCard}>
-						<strong>1500+</strong>
-						<span>CLIENTS</span>
+					<div className={styles.statItem}>
+						<span className={styles.statIcon}><PersonIcon /></span>
+						<div>
+							<div className={styles.statTitle}>Опытные</div>
+							<div className={styles.statLabel}>инструкторы</div>
+						</div>
 					</div>
-
-					<div className={style.statCard}>
-						<strong>24/7</strong>
-						<span>ACCESS</span>
+					<div className={styles.statItem}>
+						<span className={styles.statIcon}><TrophyIcon /></span>
+						<div>
+							<div className={styles.statTitle}>Соревнования</div>
+							<div className={styles.statLabel}>и турниры</div>
+						</div>
 					</div>
 				</div>
 			</div>
+
+			{/* Right visual area */}
+			<div className={styles.visual}>
+				{/* Floating card — top right: club card */}
+				<Link to="shooting/gift-cards">
+					<div className={styles.cardClub}>
+						<div className={styles.cardClubInner}>
+							<div className={styles.cardClubText}>
+
+								<span className={styles.cardClubTitle}>Подарочные сертификаты</span>
+								<span className={styles.cardClubSub}>Подарите незабываемые эмоции</span>
+							</div>
+							<button className={styles.cardClubBtn}>
+								<StarIcon />
+							</button>
+						</div>
+						<div className={styles.cardClubArrow}>
+							<ArrowIcon />
+						</div>
+					</div>
+				</Link>
+
+				{/* Decorative dot grid */}
+				<div className={styles.dotGrid} aria-hidden="true">
+					{Array.from({ length: 25 }).map((_, i) => (
+						<span key={i} className={styles.dot} />
+					))}
+				</div>
+
+				{/* Hero weapon image */}
+				<div className={styles.weaponWrap}>
+					<img
+						src={weaponHeroImg}
+						alt="Пистолет на мишени"
+						className={styles.weaponImg}
+					/>
+				</div>
+
+				{/* Floating card — bottom right: competition */}
+				<Link to="shooting/competitions">
+					<div className={styles.cardComp}>
+						<div className={styles.cardCompInner}>
+							<div>
+								<div className={styles.cardCompLabel}>Ближайшее соревнование</div>
+								<div className={styles.cardCompTitle}>Кубок ...</div>
+								<div className={styles.cardCompDate}>24 мая 2025</div>
+							</div>
+							<div className={styles.cardCompTrophy}>
+								<BigTrophyIcon />
+							</div>
+						</div>
+					</div>
+				</Link>
+			</div>
 		</section>
-	)
-}
+	);
+};

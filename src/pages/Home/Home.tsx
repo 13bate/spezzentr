@@ -34,8 +34,8 @@ export const Home: React.FC<Props> = ({ className }) => {
 	}, [])
 	return (
 		<div className={clsx(className, style.homeContainer)}>
-			<HeroSection />
 			<div className={style.contentContainer}>
+							<HeroSection />
 				<SectionTitle title={'СТРЕЛКОВЫЙ КЛУБ'} />
 				<ShootingClubSection />
 				<ProgrammsSection />

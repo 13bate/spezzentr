@@ -5,7 +5,6 @@ import { CrosshairDecor, IconArrow, IconClock, IconPhone, IconShield, IconTarget
 import type { IProgramm } from './types'
 import { programs } from './model/data'
 import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle'
-import { ContactsSection } from '../../features/contacts'
 import { Link } from 'react-router'
 import { useScrollToContacts } from '../../shared/utils/ScrollToContacts'
 

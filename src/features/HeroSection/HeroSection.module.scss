@@ -1,394 +1,558 @@
-// HeroSection.module.scss
+// ── tokens ──────────────────────────────────────────────
+$red: #E8001C;
+$dark: #1a1a1a;
+$mid: #555;
+$surface: #ffffff;
+$bg: #f0f0f0;
+$card-bg: rgba(255, 255, 255, 0.92);
+$border: rgba(0, 0, 0, 0.08);
 
-@use '../../shared/styles/variables' as *;
 
+// ── hero shell ──────────────────────────────────────────
 .hero {
-	position: relative;
-	min-height: 70vh;
-	overflow: hidden;
-	background: $color-bg-light-header;
-	display: flex;
-	align-items: center;
-	margin-top: 16px;
-	padding: 50px 8vw;
+  position: relative;
+  display: grid;
+  font-weight: 400;
+  min-width: 100%;
+	grid-template-columns: 40% 60%;
+  align-items: center;
+  min-height: 580px;
+  background: $bg;
+  overflow: hidden;
+  padding: 48px 0 40px 56px;
+  border-radius: 30px;
+
+	margin-top: 90px;
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    padding: 36px 24px 32px;
+  }
 }
 
-.background {
-	position: absolute;
-	inset: 0;
-
-	background:
-		radial-gradient(
-			circle at var(--mouse-x, 70%) var(--mouse-y, 50%),
-			$color-shadow-primary-light,
-			transparent 25%
-		),
-		linear-gradient(180deg, $color-bg-light-card 0%, #f4f4f2 50%, #fafaf8 100%);
-
-	z-index: 1;
-}
-
-.grid {
-	position: absolute;
-	inset: 0;
-	z-index: 2;
-
-	background-image:
-		linear-gradient($color-border-dark-alpha 1px, transparent 1px),
-		linear-gradient(90deg, $color-border-dark-alpha 1px, transparent 1px);
-
-	background-size: 80px 80px;
-	mask-image: radial-gradient(circle, $color-text-pure-black, transparent 90%);
-}
-
+// ── left content column ─────────────────────────────────
 .content {
-	position: relative;
-	z-index: 20;
-	max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  z-index: 2;
+  max-width: 560px;
 }
 
-.tag {
-	color: $color-brand-primary;
-	font-size: 0.85rem;
-	letter-spacing: 0.35em;
-	margin-bottom: 30px;
-	text-transform: uppercase;
-	animation: fadeUp 1s ease forwards;
+// eyebrow
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: $surface;
+  border-radius: 32px;
+  padding: 8px 16px;
+  margin-bottom: 24px;
+  width: fit-content;
 }
 
-.title {
-	display: flex;
-	flex-direction: column;
-
-	font-size: clamp(3rem, 6vw, 7rem);
-	line-height: 0.88;
-	font-weight: 900;
-	letter-spacing: -0.07em;
-
-	margin-bottom: 30px;
-
-	color: $color-text-dark-main;
-
-	animation: fadeUp 1s 0.2s both;
-
-	span {
-		color: $color-brand-primary;
-
-		text-shadow:
-			0 0 30px $color-shadow-primary-light,
-			0 0 80px rgba($color-brand-primary, 0.08);
-	}
+.eyebrowDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: $red;
+  flex-shrink: 0;
 }
 
-.description {
-	max-width: 650px;
-
-	color: $color-text-dark-muted;
-
-	font-size: 1.15rem;
-	line-height: 1.8;
-
-	margin-bottom: 50px;
-
-	animation: fadeUp 1s 0.4s both;
+.eyebrowText {
+  font-size: 13px;
+  font-weight: 500;
+  color: $dark;
+  white-space: nowrap;
 }
 
-.actions {
-	display: flex;
-	gap: 20px;
-	margin-bottom: 60px;
-
-	animation: fadeUp 1s 0.6s both;
+.eyebrowDivider {
+  width: 1px;
+  height: 14px;
+  background: #d0d0d0;
 }
 
-.primaryBtn,
-.secondaryBtn {
-	height: 60px;
-	padding: 0 34px;
-
-	border-radius: 999px;
-
-	font-weight: 700;
-	letter-spacing: 0.08em;
-
-	cursor: pointer;
-
-	transition: 0.4s ease;
+.eyebrowYear {
+  font-size: 13px;
+  color: $mid;
+  white-space: nowrap;
 }
 
-.primaryBtn {
-	border: none;
-
-	background: $color-brand-primary;
-	color: $color-text-pure-white;
-
-	box-shadow: 0 10px 30px $color-shadow-black-medium;
-
-	&:hover {
-		transform: translateY(-4px);
-
-		box-shadow: 0 20px 50px $color-shadow-primary-deep;
-	}
+// headline
+.headline {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.0;
+  margin: 0 0 20px 0;
+  letter-spacing: -0.5px;
 }
 
-.secondaryBtn {
-	background: rgba($color-bg-light-card, 0.7);
-
-	backdrop-filter: blur(20px);
-
-	border: 1px solid $color-border-dark-alpha;
-
-	color: $color-text-dark-main;
-
-	&:hover {
-		background: $color-bg-light-card;
-	}
+.headlineDark {
+  font-size: clamp(45px, 3vw, 40px);
+  font-weight: 800;
+  color: $dark;
+  text-transform: uppercase;
 }
 
+.headlineRed {
+  font-size: clamp(45px, 3vw, 40px);
+  font-weight: 800;
+  color: $red;
+  text-transform: uppercase;
+}
+
+// subtext
+.subtext {
+  font-size: 16px;
+  line-height: 1.55;
+  color: $mid;
+  margin: 0 0 32px 0;
+  max-width: 460px;
+}
+
+// CTAs
+.ctas {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: $red;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s, transform 0.12s;
+  white-space: nowrap;
+
+  &:hover {
+    background: darken(#E8001C, 8%);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.ctaArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: $surface;
+  color: $dark;
+  border: 1.5px solid $border;
+  border-radius: 12px;
+  padding: 16px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.18s, transform 0.12s;
+  white-space: nowrap;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+
+  &:hover {
+    border-color: #bbb;
+    transform: translateY(-1px);
+  }
+}
+
+.ctaCalendar {
+  display: flex;
+  align-items: center;
+  opacity: 0.7;
+}
+
+// stats row
+// ── stats ──────────────────────────────────────────────────
 .stats {
-	display: flex;
-	gap: 20px;
-
-	animation: fadeUp 1s 0.8s both;
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
 }
 
-.statCard {
-	min-width: 140px;
+.statItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 2px 12px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.25s ease;
 
-	padding: 24px;
-
-	background: rgba($color-bg-light-card, 0.75);
-
-	backdrop-filter: blur(20px);
-
-	border: 1px solid $color-border-dark-alpha;
-
-	border-radius: 24px;
-
-	box-shadow: 0 10px 40px $color-shadow-light;
-
-	strong {
-		display: block;
-		color: $color-text-dark-main;
-		font-size: 2rem;
-		margin-bottom: 8px;
-	}
-
-	span {
-		color: $color-text-dark-muted;
-		letter-spacing: 0.15em;
-		font-size: 0.75rem;
-	}
-
-	&:hover {
-		background: rgba($color-bg-light-card, 0.95);
-		transform: translateY(-4px);
-	}
+  &:hover {
+    background: rgba(255, 255, 255, 0.14);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 
+      0 4px 20px rgba(0, 0, 0, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+  }
 }
 
-/* 🔄 Анимированный прицел */
-.crosshair {
-	position: absolute;
-
-	right: 10%;
-	top: 50%;
-
-	width: 300px;
-	height: 300px;
-
-	transform: translateY(-50%);
-
-	z-index: 10;
-
-	animation:
-		crosshairSpin 12s linear infinite,
-		crosshairPulse 2s ease-in-out infinite;
-
-	&::after {
-		content: '';
-
-		position: absolute;
-
-		width: 12px;
-		height: 12px;
-
-		border-radius: 50%;
-
-		background: $color-brand-primary;
-
-		left: 50%;
-		top: 50%;
-
-		transform: translate(-50%, -50%);
-
-		box-shadow:
-			0 0 20px $color-shadow-primary-pulse,
-			0 0 50px $color-shadow-primary-light;
-
-		animation: dotPulse 2s ease-in-out infinite;
-	}
-
-	span {
-		position: absolute;
-		background: linear-gradient(
-			180deg,
-			transparent,
-			rgba($color-brand-primary, 0.6),
-			transparent
-		);
-
-		&:nth-child(1),
-		&:nth-child(3) {
-			width: 2px;
-			height: 80px;
-			left: 50%;
-			transform: translateX(-50%);
-		}
-
-		&:nth-child(1) {
-			top: 0;
-		}
-
-		&:nth-child(3) {
-			bottom: 0;
-		}
-
-		&:nth-child(2),
-		&:nth-child(4) {
-			height: 2px;
-			width: 80px;
-			top: 50%;
-			transform: translateY(-50%);
-		}
-
-		&:nth-child(2) {
-			right: 0;
-		}
-
-		&:nth-child(4) {
-			left: 0;
-		}
-	}
+.statIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  margin-top: 2px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
-/* 🔄 Анимации */
-@keyframes crosshairSpin {
-	0% {
-		transform: translateY(-50%) rotate(0deg);
-	}
-	100% {
-		transform: translateY(-50%) rotate(360deg);
-	}
+.statValue {
+  font-size: 18px;
+  font-weight: 700;
+  color: $dark;
+  line-height: 1.1;
 }
 
-@keyframes crosshairPulse {
-	0%,
-	100% {
-		opacity: 0.8;
-		scale: 1;
-	}
-	50% {
-		opacity: 1;
-		scale: 1.05;
-	}
+.statTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: $dark;
+  line-height: 1.2;
 }
 
-@keyframes dotPulse {
-	0%,
-	100% {
-		box-shadow:
-			0 0 20px $color-shadow-primary-pulse,
-			0 0 50px $color-shadow-primary-light;
-	}
-	50% {
-		box-shadow:
-			0 0 30px $color-shadow-primary-pulse,
-			0 0 70px $color-shadow-primary-light,
-			0 0 100px rgba($color-brand-primary, 0.2);
-	}
+.statLabel {
+  font-size: 12px;
+  color: $mid;
+  line-height: 1.3;
+  margin-top: 1px;
 }
 
-.bulletTrail {
-	position: absolute;
+// ── right visual column ─────────────────────────────────
+.visual {
+  position: relative;
+  height: 500px;
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-	width: 150%;
-	height: 2px;
-
-	top: 38%;
-	left: -30%;
-
-	background: linear-gradient(
-		90deg,
-		transparent,
-		rgba($color-brand-primary, 0.6),
-		transparent
-	);
-
-	filter: blur(1px);
-
-	z-index: 5;
-
-	animation: bulletMove 4s linear infinite;
-
-	&::after {
-		content: '';
-
-		position: absolute;
-
-		right: 0;
-		top: 50%;
-
-		width: 8px;
-		height: 8px;
-
-		border-radius: 50%;
-
-		background: $color-brand-primary;
-
-		transform: translateY(-50%);
-
-		box-shadow: 0 0 20px $color-brand-primary;
-
-		animation: bulletGlow 1s ease-in-out infinite;
-	}
+  @media (max-width: 900px) {
+    height: 340px;
+    margin-top: 24px;
+  }
 }
 
-@keyframes bulletMove {
-	0% {
-		transform: translateX(-10%);
-		opacity: 0;
-	}
-	10% {
-		opacity: 1;
-	}
-	90% {
-		opacity: 1;
-	}
-	100% {
-		transform: translateX(10%);
-		opacity: 0;
-	}
+// weapon image (the hero asset)
+.weaponWrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
 }
 
-@keyframes bulletGlow {
-	0%,
-	100% {
-		box-shadow: 0 0 20px $color-brand-primary;
-	}
-	50% {
-		box-shadow:
-			0 0 30px $color-brand-primary,
-			0 0 50px rgba($color-brand-primary, 0.5);
-	}
+.weaponImg {
+  width: 170%;
+  height: 170%;
+  object-fit: cover;
+  object-position: center;
+  user-select: none;
+  pointer-events: none;
 }
 
-@keyframes fadeUp {
-	0% {
-		opacity: 0;
-		transform: translateY(30px);
-	}
-	100% {
-		opacity: 1;
-		transform: translateY(0);
-	}
+// dot grid decoration (top-right corner)
+.dotGrid {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+  padding: 8px;
+  z-index: 2;
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ccc;
+  display: block;
+}
+
+// floating card — club card (top right)
+
+
+.cardClubInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.cardClubText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cardClubTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: $dark;
+  letter-spacing: -0.2px;
+}
+
+.cardClubSub {
+  font-size: 12px;
+  color: $mid;
+  line-height: 1.4;
+}
+
+.cardClubBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: $red;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.15s;
+
+  &:hover {
+    background: darken(#E8001C, 8%);
+  }
+}
+
+.cardClubArrow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: $red;
+}
+
+// ── floating cards ────────────────────────────────────────
+.floatingCard {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.15);  // Much more transparent
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border-radius: 16px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+  z-index: 10;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: all 0.3s ease;
+  will-change: transform;
+
+  &:hover {
+    transform: translateY(-3px) scale(1.01);
+    background: rgba(255, 255, 255, 0.22);
+    box-shadow: 
+      0 12px 48px rgba(0, 0, 0, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+// ── club card ──────────────────────────────────────────────
+.cardClub {
+  composes: floatingCard;
+  top: 12px;
+  right: 200px;
+  padding: 14px 16px;
+  min-width: 200px;
+}
+
+.cardClubInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.cardClubText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cardClubTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: $mid;  // White text on glass
+  letter-spacing: -0.2px;
+}
+
+.cardClubSub {
+  font-size: 12px;
+  color: black;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  line-height: 1.4;
+}
+
+.cardClubBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(232, 0, 28, 0.85);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s;
+
+  &:hover {
+    background: #E8001C;
+    transform: scale(1.05);
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+.cardClubArrow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  color: #fff;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+
+  .cardClub:hover & {
+    opacity: 1;
+  }
+}
+
+// ── competition card ──────────────────────────────────────
+.cardComp {
+  composes: floatingCard;
+  bottom: 20px;
+  right: 300px;
+  padding: 26px 30px;
+  min-width: 240px;
+}
+
+.cardCompInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cardCompLabel {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.7);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.cardCompTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  letter-spacing: -0.3px;
+  margin-bottom: 6px;
+}
+
+.cardCompDate {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.cardCompTrophy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  flex-shrink: 0;
+  transition: all 0.2s;
+
+  .cardComp:hover & {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+  }
+}
+
+.cardCompInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cardCompLabel {
+  font-size: 11px;
+  color: $mid;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.cardCompTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: $dark;
+  letter-spacing: -0.3px;
+  margin-bottom: 6px;
+}
+
+.cardCompDate {
+  font-size: 13px;
+  color: $mid;
+}
+
+.cardCompTrophy {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba(232, 0, 28, 0.08);
+  border-radius: 12px;
+  flex-shrink: 0;
 }

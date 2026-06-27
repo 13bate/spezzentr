@@ -1,17 +1,170 @@
+// Import all variables from your global file
+// Adjust the path if needed (e.g., '../styles/variables')
+@use '../../styles/variables.scss' as *;
+
+// ---- Keyframes (local) ----
+@keyframes liquidFlow {
+  0%   { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+@keyframes glossPulse {
+  0%   { opacity: 0.2; transform: scale(0.95); }
+  50%  { opacity: 0.6; transform: scale(1.05); }
+  100% { opacity: 0.2; transform: scale(0.95); }
+}
+
+// ---- Base Button ----
 .button {
-  background: #ed1f02;
-  color: white;
-  border: none;
-  padding: 12px 36px;
-  font-size: 15px;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI', system-ui, sans-serif;
   font-weight: 600;
-  border-radius: 8px;
+  letter-spacing: 0.02em;
+  border: none;
+  border-radius: 60px;
   cursor: pointer;
-  transition: all 0.3s ease;
-      
-  &:hover {
-  background: darken(#FE3B15, 10%);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(254, 59, 21, 0.3);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+  user-select: none;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  min-height: 2.8rem;
+
+  // Glass base (shared)
+  backdrop-filter: blur(12px) saturate(180%);
+  -webkit-backdrop-filter: blur(12px) saturate(180%);
+  box-shadow: 0 8px 32px $color-shadow-light;
+
+  // ---- Sizes ----
+  &.sm {
+    padding: 0.5rem 1.2rem;
+    font-size: 0.8rem;
+    min-height: 2.2rem;
+  }
+  &.md {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    min-height: 2.8rem;
+  }
+  &.lg {
+    padding: 1rem 2.8rem;
+    font-size: 1.2rem;
+    min-height: 3.6rem;
+  }
+
+  // ---- LIQUID (default) – dark text, subtle glass ----
+  &.liquid {
+    background: $color-glass-dark-alpha;
+    border: 1px solid $color-border-dark-alpha;
+    color: $color-text-dark-main;
+    text-shadow: none;
+
+    &:hover:not(.disabled) {
+      background: rgba(0, 0, 0, 0.06);
+      box-shadow: 0 8px 32px $color-shadow-dark-menu;
+      transform: translateY(-2px);
+    }
+  }
+
+  // ---- PRIMARY – solid red, white text ----
+  &.primary {
+    background: $color-brand-primary;
+    border: 1px solid lighten($color-brand-primary, 15%);
+    color: $color-text-pure-white;
+    text-shadow: 0 2px 4px $color-shadow-black-text;
+
+    &:hover:not(.disabled) {
+      background: $color-brand-primary-hover;
+      box-shadow: 0 8px 32px $color-shadow-primary-deep;
+      transform: translateY(-2px);
+    }
+  }
+
+  // ---- SECONDARY – steel gray, dark text ----
+  &.secondary {
+    background: rgba($color-gold, 0.12);
+    border: 1px solid $color-border-gold-alpha;
+    color: $color-text-dark-main;
+    text-shadow: none;
+
+    &:hover:not(.disabled) {
+      background: rgba($color-gold, 0.2);
+      box-shadow: 0 8px 32px rgba($color-gold, 0.2);
+      transform: translateY(-2px);
+    }
+  }
+
+  // ---- Disabled ----
+  &.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+    .glass,
+    .gloss {
+      animation: none !important;
+      opacity: 0 !important;
+    }
+  }
+
+  // ---- Content ----
+  .content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  // ---- Liquid shimmer (shared) ----
+  .glass {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0.4;
+    background: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0) 0%,
+      $color-shimmer-white 40%,
+      rgba(255, 255, 255, 0.3) 50%,
+      $color-shimmer-white 60%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 300% 100%;
+    animation: liquidFlow 4s ease-in-out infinite;
+    mix-blend-mode: overlay;
+  }
+
+  // ---- Gloss highlight (shared) ----
+  .gloss {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(
+      circle at 20% 30%,
+      $color-gloss-white-1 0%,
+      $color-gloss-white-2 70%,
+      transparent 100%
+    );
+    animation: glossPulse 5s ease-in-out infinite;
+    mix-blend-mode: soft-light;
+  }
+
+  // ---- Focus / Active ----
+  &:focus-visible {
+    outline: 2px solid $color-brand-primary;
+    outline-offset: 2px;
+  }
+
+  &:active:not(.disabled) {
+    transform: scale(0.96);
+    transition-duration: 0.1s;
   }
 }
