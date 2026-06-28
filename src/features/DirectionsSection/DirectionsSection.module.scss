@@ -1,0 +1,288 @@
+@use '../../shared/styles/variables' as *;
+
+// ── section ──────────────────────────────────────────────────
+.directions {
+  background-color: $color-bg-light-footer;
+  padding: 20px;
+  border-radius: 32px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 40px;
+  width: 100%;
+  max-width: 420px;
+
+  @media (max-width: 768px) {
+    padding: 24px;
+    max-width: 100%;
+    border-radius: 24px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 18px;
+    border-radius: 18px;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  background: $color-glass-dark-alpha;
+  border-radius: 20px;
+  width: 100%;
+  @media (max-width: 768px) {
+    gap: 16px;
+  }
+}
+
+// ── header (top) ────────────────────────────────────────────
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2px;
+  border-bottom: 1px solid $color-border-dark-alpha;
+
+  @media (max-width: 768px) {
+    padding-bottom: 6px;
+  }
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: $color-brand-primary;
+  background: $color-glass-primary-alpha;
+  padding: 3px 14px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+  border: 1px solid $color-border-primary-alpha;
+
+  @media (max-width: 768px) {
+    font-size: 10px;
+    padding: 2px 12px;
+    margin-bottom: 6px;
+  }
+}
+
+.title {
+  font-size: clamp(17px, 2.0vw, 25px);
+  font-weight: 700;
+  color: $color-text-dark-main;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+
+  @media (max-width: 768px) {
+    font-size: clamp(18px, 3.5vw, 24px);
+  }
+}
+
+// ── list ─────────────────────────────────────────────────────
+.list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @media (max-width: 768px) {
+    gap: 4px;
+  }
+}
+
+// ── card link ────────────────────────────────────────────────
+.cardLink {
+  text-decoration: none;
+  display: block;
+  transition: all 0.25s ease;
+
+  &:hover .card {
+    background: $color-bg-light-card;
+    border-color: $color-border-primary-alpha;
+    box-shadow: 
+      0 2px 12px rgba(0, 0, 0, 0.05),
+      0 1px 4px rgba(0, 0, 0, 0.02);
+  }
+
+  &:hover .arrowWrapper {
+    opacity: 1;
+    transform: translateX(4px);
+  }
+
+  &:hover .iconWrapper {
+    border-color: $color-brand-primary;
+    background: $color-glass-primary-alpha;
+  }
+
+  &.active .card {
+    background: $color-bg-light-card;
+    border-color: $color-border-primary-alpha;
+    box-shadow: 
+      0 2px 12px rgba(0, 0, 0, 0.05),
+      0 1px 4px rgba(0, 0, 0, 0.02);
+  }
+
+  &.active .arrowWrapper {
+    opacity: 1;
+  }
+
+  &:active .card {
+    transform: scale(0.98);
+  }
+}
+
+// ── card ──────────────────────────────────────────────────────
+.card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: $radius-card-medium;
+  padding: 12px 16px;
+  box-shadow: 
+    0 1px 4px $color-shadow-light,
+    inset 0 1px 0 $color-gloss-white-1;
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    padding: 10px 14px;
+    gap: 10px;
+    border-radius: $radius-card-medium;
+  }
+
+  @media (max-width: 480px) {
+    padding: 8px 12px;
+    gap: 8px;
+    border-radius: 12px;
+  }
+}
+
+// ── icon ──────────────────────────────────────────────────────
+.iconWrapper {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: $color-glass-primary-alpha;
+  border: 1px solid $color-border-dark-alpha;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+
+  @media (max-width: 768px) {
+    width: 32px;
+    height: 32px;
+  }
+
+  @media (max-width: 480px) {
+    width: 28px;
+    height: 28px;
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
+
+    @media (max-width: 768px) {
+      width: 16px;
+      height: 16px;
+    }
+
+    @media (max-width: 480px) {
+      width: 14px;
+      height: 14px;
+    }
+  }
+}
+
+// ── title ─────────────────────────────────────────────────────
+.cardTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: $color-text-dark-main;
+  letter-spacing: -0.01em;
+  flex: 1;
+  transition: color 0.25s ease;
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 12px;
+  }
+}
+
+// ── arrow ─────────────────────────────────────────────────────
+.arrowWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-brand-primary;
+  opacity: 0.12;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    opacity: 0.2;
+  }
+
+  svg {
+    width: 14px;
+    height: 14px;
+
+    @media (max-width: 480px) {
+      width: 12px;
+      height: 12px;
+    }
+  }
+}
+
+// ── dark theme ──────────────────────────────────────────────
+.dark {
+  .directions {
+    background: $color-bg-dark-section-1;
+  }
+
+  .title {
+    color: $color-text-light-main;
+  }
+
+  .eyebrow {
+    background: rgba(179, 32, 37, 0.15);
+    border-color: rgba(179, 32, 37, 0.3);
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.06);
+  }
+
+  .cardLink {
+    &:hover .card,
+    &.active .card {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 2px 16px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  .cardTitle {
+    color: $color-text-light-main;
+  }
+
+  .iconWrapper {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.06);
+  }
+
+  .cardLink:hover .iconWrapper,
+  .cardLink.active .iconWrapper {
+    border-color: $color-brand-primary;
+    background: rgba(179, 32, 37, 0.15);
+  }
+}

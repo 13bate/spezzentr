@@ -4,6 +4,7 @@ import style from './IntroShootingPage.module.scss'
 import type { Weapon, WeaponCategory } from './types'
 import { getAllWeapons, weaponsData } from './weaponsData'
 
+
 export const IntroShootingPage: React.FC = () => {
 	const [activeCategory, setActiveCategory] = useState<WeaponCategory>('all')
 	const [selectedWeapon, setSelectedWeapon] = useState<Weapon>()

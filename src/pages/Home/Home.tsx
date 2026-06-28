@@ -10,6 +10,8 @@ import { ShootingClubSection } from '../../features/ShootingClubSection'
 import { TrainigCenterSection } from '../../features/TrainigCenterSection/'
 import { SectionTitle } from '../../shared/ui/SectionTitle/'
 import { Separator } from '../../shared/ui/separator/'
+import {DirectionsSection} from "../../features/DirectionsSection"
+import {ArsenalSection} from "../../features/ArsenalSection"
 import style from './Home.module.scss'
 
 interface Props {
@@ -36,8 +38,14 @@ export const Home: React.FC<Props> = ({ className }) => {
 		<div className={clsx(className, style.homeContainer)}>
 			<div className={style.contentContainer}>
 							<HeroSection />
-				<SectionTitle title={'СТРЕЛКОВЫЙ КЛУБ'} />
-				<ShootingClubSection />
+				<div className={style.shootingClub}>
+					<DirectionsSection/>
+					<div className={style.shootingClubRight}>
+						<SectionTitle title={'СТРЕЛКОВЫЙ КЛУБ'} />
+						<ShootingClubSection />
+					</div>
+				</div>
+			  <ArsenalSection/>
 				<ProgrammsSection />
 				<IntroShootingOverview />
 				<GiftCardsOverview />

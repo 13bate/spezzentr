@@ -3,20 +3,6 @@ import { Link } from 'react-router'
 import style from './ShootingClubSection.module.scss'
 import { shootingRangeCardsData } from './model'
 
-const IPSCTarget = () => (
-	<div className={style.target}>
-		<div className={style.targetHead} />
-		<div className={style.targetBody}>
-			<div className={style.targetC} />
-			<div className={style.targetA} />
-			<div className={style.targetDot} />
-			<div className={`${style.hole} ${style.h1}`} />
-			<div className={`${style.hole} ${style.h2}`} />
-			<div className={`${style.hole} ${style.h3}`} />
-		</div>
-	</div>
-)
-
 export const ShootingClubSection: React.FC = () => {
 	return (
 		<section className={style.section}>
@@ -59,28 +45,7 @@ export const ShootingClubSection: React.FC = () => {
 			</div>
 
 			{/* Arsenal */}
-			<div className={style.arsenal}>
-				<div className={style.arsenalLeft}>
-					<div className={style.arsenalEye}>Наш арсенал</div>
-					<div className={style.arsenalTitle}>18 единиц оружия</div>
-					<p className={style.arsenalDesc}>
-						Пистолеты, карабины, ружья — стреляйте из того, о чём мечтали.
-					</p>
-				</div>
-				<div className={style.arsenalMid}>
-					{['Пистолеты', 'Карабины', 'Ружья'].map(item => (
-						<div key={item} className={style.aItem}>
-							{item}
-						</div>
-					))}
-				</div>
-				<div className={style.arsenalRight}>
-					<IPSCTarget />
-					<Link to='/shooting/intro' className={style.arsenalBtn}>
-						Весь арсенал →
-					</Link>
-				</div>
-			</div>
+
 		</section>
 	)
 }
