@@ -1,0 +1,231 @@
+@use '../../../../shared/styles/variables.scss' as *;
+
+// ─── Section ─────────────────────────────────────────────────
+.section {
+  padding: 32px 0 48px;
+
+  @media (max-width: 768px) {
+    padding: 20px 0 32px;
+  }
+}
+
+.container {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 32px;
+  padding: 28px 32px 24px;
+  border-radius: $radius-card-large;
+  background: linear-gradient(180deg, #252628, #17181a);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.18);
+  max-width: 1320px;
+  margin: 0 auto;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at top right,
+      rgba(179, 32, 37, 0.10),
+      transparent 35%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px 24px 20px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 18px 16px 16px;
+    border-radius: $radius-card-medium;
+  }
+}
+
+// ─── Header ──────────────────────────────────────────────────
+.header {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-around;  
+  z-index: 2;
+  position: relative;
+
+  @media (max-width: 1024px) {
+    text-align: center;
+  }
+}
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+
+  span {
+    width: 26px;
+    height: 2px;
+    background: $color-brand-primary;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 1024px) {
+    justify-content: center;
+  }
+}
+
+.header h2 {
+  margin: 0;
+  font-size: clamp(28px, 3vw, 40px);
+  line-height: 1.05;
+  color: #fff;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+
+  span {
+    color: $color-brand-primary;
+    font-weight: 800;
+  }
+
+  @media (max-width: 768px) {
+    font-size: clamp(22px, 5vw, 30px);
+  }
+}
+
+// ─── Grid ────────────────────────────────────────────────────
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  z-index: 2;
+  position: relative;
+
+  @media (max-width: 768px) {
+    gap: 10px;
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+// ─── Button (Desktop) ───────────────────────────────────────
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  color: white !important;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  z-index: 2;
+  position: relative;
+  justify-self: end;
+  align-self: start;
+  margin-top: 4px;
+
+  &:hover {
+    background: $color-brand-primary-hover;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px $color-shadow-primary-deep;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  svg {
+    transition: transform 0.25s ease;
+  }
+
+  &:hover svg {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 1024px) {
+    justify-self: center;
+    align-self: center;
+    padding: 12px 28px;
+    font-size: 14px;
+  }
+
+  @media (max-width: 480px) {
+    display: none;
+  }
+}
+
+// ─── Mobile Button ──────────────────────────────────────────
+.mobileButton {
+  display: none;
+  z-index: 2;
+  position: relative;
+
+  @media (max-width: 480px) {
+    display: block;
+    margin-top: 4px;
+  }
+}
+
+.buttonFull {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 24px;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px $color-shadow-primary-deep;
+
+  &:hover {
+    background: $color-brand-primary-hover;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px $color-shadow-primary-deep;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  svg {
+    transition: transform 0.25s ease;
+  }
+
+  &:hover svg {
+    transform: translateX(4px);
+  }
+}
+
+
+
+
+// ─── Dark Theme (optional) ──────────────────────────────────
+.dark {
+  .container {
+    background: linear-gradient(180deg, #1a1b1d, #0e0f10);
+  }
+}

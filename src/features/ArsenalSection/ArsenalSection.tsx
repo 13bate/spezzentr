@@ -2,6 +2,7 @@ import styles from './ArsenalSection.module.scss';
 import weaponImg from '../../assets/arsenal_weapon.png';
 import { Button } from '../../shared/ui/Button';
 import { useScrollToContacts } from '../../shared/utils/ScrollToContacts';
+import { ArsenalShowCase } from './ui/ArsenalShowCase/ArsenalShowCase';
 
 
 // ── Icons ──────────────────────────────────────────────────
@@ -86,8 +87,7 @@ export const ArsenalSection = () => {
           </div>
 
           <h1 className={styles.title}>
-            Выбирай. Целься.<br />
-            Попадай.
+            Готовы сделать первый выстрел?
           </h1>
 
           <p className={styles.subtext}>
@@ -140,6 +140,7 @@ export const ArsenalSection = () => {
         </div>
 
       </div>
+      <ArsenalShowCase />
     </section>
   );
 };

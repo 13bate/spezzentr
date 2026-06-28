@@ -16,7 +16,7 @@ export const DirectionsSection = () => {
         {/* Title at top */}
         <div className={styles.header}>
           <h2 className={styles.title}>
-            Направления
+            СТРЕЛКОВЫЙ КЛУБ
           </h2>
         </div>
 

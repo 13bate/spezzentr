@@ -41,7 +41,6 @@ export const Home: React.FC<Props> = ({ className }) => {
 				<div className={style.shootingClub}>
 					<DirectionsSection/>
 					<div className={style.shootingClubRight}>
-						<SectionTitle title={'СТРЕЛКОВЫЙ КЛУБ'} />
 						<ShootingClubSection />
 					</div>
 				</div>
