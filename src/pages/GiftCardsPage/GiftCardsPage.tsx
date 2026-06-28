@@ -1,208 +1,180 @@
-import React from 'react';
-import { PageTitle } from '../../shared/ui/PageTitle';
-import { BackButton } from '../../shared/ui/BackButton';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faWifi,
-  faGift,
-  faClock,
-  faCreditCard,
-  faPhone,
-  faEnvelope,
-  faMapMarkerAlt,
-  faQuestionCircle
-} from '@fortawesome/free-solid-svg-icons';
-import { giftCardsData } from './giftCardsData.ts';
-import style from './GiftCardsPage.module.scss';
+import clsx from 'clsx'
+import style from './GiftCardsPage.module.scss'
+import { Link } from 'react-router'
 
-export const GiftCardsPage: React.FC = () => {
-  const features = [
-    { icon: faGift, text: 'Любой номинал' },
-    { icon: faClock, text: '12 месяцев' },
-    { icon: faCreditCard, text: 'Электронный' },
-    { icon: faWifi, text: 'Мгновенно' }
-  ];
+interface Props {
+  className?: string
+}
 
+export const GiftCardsPage: React.FC<Props> = ({ className }) => {
   return (
-    <>
-      <PageTitle title={`${giftCardsData.page.title} | СПЕЦЦЕНТР`} />
+    <section className={clsx(className, style.giftCards)}>
+      <div className={style.container}>
+        {/* ─── Header with Card ─────────────────────────────── */}
+        <div className={style.headerRow}>
+          {/* Left: Text content */}
+          <div className={style.content}>
+            <span className={style.badge}>Подарочный сертификат</span>
+            <h1 className={style.title}>
+              Подарок, который<br />
+              <span>попадает в цель</span>
+            </h1>
+            <p className={style.description}>
+              Подарите яркие эмоции — сертификат на стрельбу в современном
+              стрелковом центре. Идеальный подарок для тех, кто ценит новые
+              впечатления и драйв.
+            </p>
+            <div className={style.buttonGroup}>
+              <Link to="/gift-cards/choose" className={style.primaryBtn}>
+                Выбрать сертификат
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                  <path d="M3 9h12M10 4l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
+              <Link to="/gift-cards/how-it-works" className={style.secondaryBtn}>
+                Как это работает
+              </Link>
+            </div>
+          </div>
 
-      <main className={style.giftCardsPage}>
-        <div className={style.pageNavigation}>
-          <BackButton text='Назад' to='/' />
+          {/* Right: Gift Card */}
+          <div className={style.mediaContainer}>
+            <div className={style.card}>
+              <div className={style.cardBg}></div>
+              <div className={style.cardStripe}></div>
+              <div className={style.cardContent}>
+                <div className={style.cardHeader}>
+                  <span className={style.cardBrand}>СПЕЦЦЕНТР</span>
+                  <span className={style.cardType}>GIFT CARD</span>
+                </div>
+                <div className={style.cardValue}>
+                  <span className={style.amount}>5 000</span>
+                  <span className={style.currency}>₽</span>
+                </div>
+                <div className={style.cardFooter}>
+                  <span className={style.cardNumber}>**** **** **** 1234</span>
+                  <span className={style.cardExpiry}>12/26</span>
+                </div>
+              </div>
+              <div className={style.gloss}></div>
+              <svg className={style.cornerDecor} viewBox="0 0 24 24" fill="none">
+                <path d="M2 2L6 2M2 2V6M22 22L18 22M22 22V18M2 22L6 22M2 22V18M22 2L18 2M22 2V6"
+                  stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
+            </div>
+          </div>
         </div>
 
-        {/* Hero секция с картой */}
-        <section className={style.heroSection}>
-          <div className={style.heroContent}>
-            <h1 className={style.heroTitle}>
-              Подарочные
-              <span>сертификаты</span>
-            </h1>
-            <p className={style.heroSubtitle}>{giftCardsData.hero.subtitle}</p>
-          </div>
-
-          {/* Дебетовая карта */}
-          <div className={style.cardContainer}>
-            <div className={style.card}>
-              {/* Золотая полоса */}
-              <div className={style.cardGoldStripe}></div>
-
-              {/* Чип карты */}
-              <div className={style.cardChip}>
-                <div className={style.chipLines}></div>
-              </div>
-
-              {/* Бесконтактная оплата */}
-              <div className={style.cardContactless}>
-                <FontAwesomeIcon icon={faWifi} />
-              </div>
-
-              {/* Номинал */}
-              <div className={style.cardAmount}>
-                <span className={style.currency}>₽</span>
-                <span className={style.amount}>5 000</span>
-                <span className={style.decimal}>00</span>
-              </div>
-
-              {/* Информация о карте */}
-              <div className={style.cardInfo}>
-                <div className={style.cardHolder}>
-                  <div className={style.label}>Card Holder</div>
-                  <div className={style.name}>SPEZZENTER</div>
-                </div>
-                <div className={style.cardExpiry}>
-                  <div className={style.label}>Valid Thru</div>
-                  <div className={style.date}>12/26</div>
-                </div>
-              </div>
-
-              {/* Голографическая наклейка */}
-              <div className={style.hologram}></div>
-
-              {/* Логотип */}
-              <div className={style.cardLogo}>СПЕЦЦЕНТР</div>
-
-              {/* Парящие элементы */}
-              <div className={style.glowEffect}></div>
-              <div className={style.sparkle1}></div>
-              <div className={style.sparkle2}></div>
+        {/* ─── Why This Is a Great Gift ────────────────────── */}
+        <div className={style.benefits}>
+          <h3 className={style.sectionTitle}>Почему это отличный подарок</h3>
+          <div className={style.benefitsGrid}>
+            <div className={style.benefitItem}>
+              <span className={style.benefitIcon}>✦</span>
+              <h4>Яркие впечатления</h4>
+              <p>Незабываемый опыт и эмоции от стрельбы в безопасных условиях.</p>
+            </div>
+            <div className={style.benefitItem}>
+              <span className={style.benefitIcon}>✦</span>
+              <h4>Безопасность</h4>
+              <p>Профессиональные инструкторы и современное оборудование.</p>
+            </div>
+            <div className={style.benefitItem}>
+              <span className={style.benefitIcon}>✦</span>
+              <h4>Гибкость</h4>
+              <p>Свободный выбор даты и времени для посещения стрелкового комплекса.</p>
+            </div>
+            <div className={style.benefitItem}>
+              <span className={style.benefitIcon}>✦</span>
+              <h4>Для каждого</h4>
+              <p>Подходит для новичков и опытных стрелков, мужчин и женщин.</p>
             </div>
           </div>
-        </section>
+        </div>
 
-        {/* Преимущества */}
-        <section className={style.featuresSection}>
-          <h2 className={style.sectionTitle}>Почему выбирают нас</h2>
-          <div className={style.featuresGrid}>
-            {features.map((feature, index) => (
-              <div key={index} className={style.featureCard}>
-                <div className={style.featureIconWrapper}>
-                  <FontAwesomeIcon icon={feature.icon} />
-                </div>
-                <h3>{feature.text}</h3>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Номиналы */}
-        <section className={style.nominalsSection}>
-          <h2 className={style.sectionTitle}>Выберите номинал</h2>
-          <div className={style.nominalsGrid}>
-            {[1000, 2500, 5000, 7500, 10000].map((nominal) => (
-              <div key={nominal} className={style.nominalCard}>
-                <div className={style.nominalAmount}>
-                  <span className={style.nominalCurrency}>₽</span>
-                  <span className={style.nominalValue}>{nominal.toLocaleString()}</span>
-                </div>
-                <button className={style.nominalButton}>Выбрать</button>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Поводы для подарка */}
-        <section className={style.occasionsSection}>
-          <h2 className={style.sectionTitle}>Идеальный подарок на любой повод</h2>
-          <div className={style.occasionsGrid}>
-            {giftCardsData.occasions.map((occasion, index) => (
-              <div key={index} className={style.occasionCard}>
-                <span className={style.occasionIcon}>{occasion.icon}</span>
-                <span className={style.occasionText}>{occasion.text}</span>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Как это работает */}
-        <section className={style.howItWorksSection}>
-          <h2 className={style.sectionTitle}>Как это работает</h2>
-          <div className={style.stepsGrid}>
-            {giftCardsData.howToBuy.map((step) => (
-              <div key={step.step} className={style.stepCard}>
-                <div className={style.stepNumber}>{step.step}</div>
-                <h3>{step.title}</h3>
-                <p>{step.description}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* FAQ */}
-        <section className={style.faqSection}>
-          <h2 className={style.sectionTitle}>Часто задаваемые вопросы</h2>
-          <div className={style.faqGrid}>
-            {giftCardsData.faq.map((item, index) => (
-              <div key={index} className={style.faqCard}>
-                <div className={style.faqQuestion}>
-                  <FontAwesomeIcon icon={faQuestionCircle} />
-                  <h3>{item.question}</h3>
-                </div>
-                <p>{item.answer}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Контакты */}
-        <section className={style.contactsSection}>
-          <h2 className={style.sectionTitle}>Закажите прямо сейчас</h2>
-          <p className={style.contactNote}>{giftCardsData.contacts.orderNote}</p>
-
-          <div className={style.contactsGrid}>
-            <a href={`tel:${giftCardsData.contacts.phone.replace(/[^0-9+]/g, '')}`} className={style.contactCard}>
-              <div className={style.contactIcon}>
-                <FontAwesomeIcon icon={faPhone} />
-              </div>
-              <div className={style.contactInfo}>
-                <span className={style.contactLabel}>Телефон</span>
-                <span className={style.contactValue}>{giftCardsData.contacts.phone}</span>
-              </div>
-            </a>
-
-            <a href={`mailto:${giftCardsData.contacts.email}`} className={style.contactCard}>
-              <div className={style.contactIcon}>
-                <FontAwesomeIcon icon={faEnvelope} />
-              </div>
-              <div className={style.contactInfo}>
-                <span className={style.contactLabel}>Email</span>
-                <span className={style.contactValue}>{giftCardsData.contacts.email}</span>
-              </div>
-            </a>
-
-            <div className={style.contactCard}>
-              <div className={style.contactIcon}>
-                <FontAwesomeIcon icon={faMapMarkerAlt} />
-              </div>
-              <div className={style.contactInfo}>
-                <span className={style.contactLabel}>Адрес</span>
-                <span className={style.contactValue}>{giftCardsData.contacts.address}</span>
-              </div>
+        {/* ─── Pricing Plans ────────────────────────────────── */}
+        <div className={style.pricing}>
+          <h3 className={style.sectionTitle}>Выберите номинал</h3>
+          <div className={style.pricingGrid}>
+            <div className={style.planCard}>
+              <h4>Базовый</h4>
+              <div className={style.price}>3 000 ₽</div>
+              <Link to="/gift-cards/choose" className={style.planBtn}>Выбрать</Link>
+            </div>
+            <div className={`${style.planCard} ${style.popular}`}>
+              <span className={style.popularBadge}>Популярный</span>
+              <h4>Стандарт</h4>
+              <div className={style.price}>5 000 ₽</div>
+              <Link to="/gift-cards/choose" className={`${style.planBtn} ${style.primary}`}>Выбрать</Link>
+            </div>
+            <div className={style.planCard}>
+              <h4>Оптимальный</h4>
+              <div className={style.price}>10 000 ₽</div>
+              <Link to="/gift-cards/choose" className={style.planBtn}>Выбрать</Link>
+            </div>
+            <div className={style.planCard}>
+              <h4>Премиум</h4>
+              <div className={style.price}>15 000 ₽</div>
+              <Link to="/gift-cards/choose" className={style.planBtn}>Выбрать</Link>
             </div>
           </div>
-        </section>
-      </main>
-    </>
-  );
-};
+        </div>
+
+        {/* ─── How It Works ──────────────────────────────────── */}
+        <div className={style.howItWorks}>
+          <h3 className={style.sectionTitle}>Как это работает</h3>
+          <div className={style.steps}>
+            <div className={style.step}>
+              <span className={style.stepNumber}>1</span>
+              <h4>Выберите</h4>
+              <p>Номинал сертификата и способ получения</p>
+            </div>
+            <div className={style.step}>
+              <span className={style.stepNumber}>2</span>
+              <h4>Получите</h4>
+              <p>Сертификат на email или в печатном виде</p>
+            </div>
+            <div className={style.step}>
+              <span className={style.stepNumber}>3</span>
+              <h4>Подарите</h4>
+              <p>Безопасное и яркое приключение</p>
+            </div>
+            <div className={style.step}>
+              <span className={style.stepNumber}>4</span>
+              <h4>Используйте</h4>
+              <p>Сертификат для записи на стрельбу</p>
+            </div>
+          </div>
+          <div className={style.electronicInfo}>
+            <strong>Электронный сертификат</strong>
+            <p>Красивый дизайн, уникальный номер и надежная система защиты. Можно распечатать или отправить в электронном виде.</p>
+          </div>
+        </div>
+
+        {/* ─── Features ──────────────────────────────────────── */}
+        <div className={style.features}>
+          <div className={style.featureItem}>
+            <span className={style.featureIcon}>🛡️</span>
+            <h4>Безопасность на первом месте</h4>
+            <p>Все занятия проходят под контролем опытных инструкторов.</p>
+          </div>
+          <div className={style.featureItem}>
+            <span className={style.featureIcon}>🔧</span>
+            <h4>Современное оборудование</h4>
+            <p>Исправное оружие и полный набор снаряжения для комфортной стрельбы.</p>
+          </div>
+          <div className={style.featureItem}>
+            <span className={style.featureIcon}>📍</span>
+            <h4>Удобное расположение</h4>
+            <p>Легко добраться из любого района города.</p>
+          </div>
+          <div className={style.featureItem}>
+            <span className={style.featureIcon}>💬</span>
+            <h4>Есть вопросы?</h4>
+            <p>Свяжитесь с нами — мы всегда на связи.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}

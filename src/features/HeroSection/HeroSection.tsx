@@ -60,8 +60,22 @@ export const HeroSection = () => {
 							<div className={styles.statLabel}>и турниры</div>
 						</div>
 					</div>
+
+					<div>
+						<iframe
+							src="https://yandex.ru/sprav/widget/rating-badge/67934832673?type=rating&theme=white"
+							width="150"
+							height="80"
+							frameBorder="0"
+							className={styles.ratingBadge}
+							title="Yandex Rating Badge"
+						></iframe>
+
+					</div>
+
 				</div>
 			</div>
+
 
 			{/* Right visual area */}
 			<div className={styles.visual}>

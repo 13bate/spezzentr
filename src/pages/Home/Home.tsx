@@ -8,7 +8,6 @@ import { ProgrammsSection } from '../../features/ProgrammsSection'
 import { SafetyTrainingOverview } from '../../features/SafetyTrainingOverview'
 import { ShootingClubSection } from '../../features/ShootingClubSection'
 import { TrainigCenterSection } from '../../features/TrainigCenterSection/'
-import { SectionTitle } from '../../shared/ui/SectionTitle/'
 import { Separator } from '../../shared/ui/separator/'
 import {DirectionsSection} from "../../features/DirectionsSection"
 import {ArsenalSection} from "../../features/ArsenalSection"
@@ -49,7 +48,6 @@ export const Home: React.FC<Props> = ({ className }) => {
 				<IntroShootingOverview />
 				<GiftCardsOverview />
 				<Separator />
-				<SectionTitle title={'УЧЕБНЫЙ ЦЕНТР'} />
 				<TrainigCenterSection />
 				<SafetyTrainingOverview />
 				<ContactsSection />

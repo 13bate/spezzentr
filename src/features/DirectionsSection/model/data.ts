@@ -1,6 +1,6 @@
 
 export const directions = [
-  { label: 'Нащ арсенал', href: '/shooting/intro' },
+  { label: 'Наш арсенал', href: '/shooting/intro' },
   { label: 'Практическая стрельба', href: '/shooting/practice' },
   { label: 'Подарочные сертификаты', href: '/shooting/gift-cards' },
   { label: 'Стрелковые программы и курсы', href: '/shooting/programms' },

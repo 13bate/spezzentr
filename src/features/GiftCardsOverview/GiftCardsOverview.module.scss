@@ -1,363 +1,380 @@
 @use '../../shared/styles/variables' as *;
 
-@keyframes floatCard {
-	0%,
-	100% {
-		transform: translateY(0) rotateX(2deg) rotateY(-2deg);
-	}
-	50% {
-		transform: translateY(-10px) rotateX(-1deg) rotateY(2deg);
-	}
-}
-
-@keyframes holoShift {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
-
-@keyframes scanline {
-	0% {
-		transform: translateY(-100%);
-	}
-	100% {
-		transform: translateY(400%);
-	}
-}
-
-@keyframes redGlow {
-	0%,
-	100% {
-		box-shadow:
-			0 0 20px 4px rgba(232, 25, 44, 0.25),
-			0 0 60px 12px rgba(232, 25, 44, 0.1),
-			0 30px 80px rgba(0, 0, 0, 0.8);
-	}
-	50% {
-		box-shadow:
-			0 0 35px 8px rgba(232, 25, 44, 0.4),
-			0 0 100px 24px rgba(232, 25, 44, 0.15),
-			0 30px 80px rgba(0, 0, 0, 0.8);
-	}
-}
-
-@keyframes fadeSlideUp {
-	from {
-		opacity: 0;
-		transform: translateY(28px);
-	}
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
-}
-
-@keyframes badgePop {
-	0% {
-		transform: scale(0.85);
-		opacity: 0;
-	}
-	60% {
-		transform: scale(1.06);
-	}
-	100% {
-		transform: scale(1);
-		opacity: 1;
-	}
-}
-
-// ── Section wrapper ───────────────────────────────────────
+// ─── Section ─────────────────────────────────────────────────
 .giftCards {
-	display: flex;
-	align-items: center;
-	gap: 64px;
-	padding: 80px 60px;
-	background: $color-bg-light-menu;
-	overflow: hidden;
-	position: relative;
-	border-radius: $radius-card-medium;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  padding: 60px 0;
+  max-width: 1320px;
+  margin: 0 auto;
+  align-items: center;
+  position: relative;
 
-	> * {
-		position: relative;
-		z-index: 1;
-	}
+  @media (max-width: 1024px) {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 40px 20px;
+  }
 
-	@media (max-width: 900px) {
-		flex-direction: column;
-		padding: 48px 24px;
-		gap: 48px;
-	}
+  @media (max-width: 768px) {
+    padding: 32px 16px;
+    gap: 24px;
+  }
 }
 
-// ── Text content ──────────────────────────────────────────
+// ─── Content ──────────────────────────────────────────────────
 .content {
-	flex: 1;
-	max-width: 420px;
-	animation: fadeSlideUp 0.7s ease both;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-right: 20px;
+
+  @media (max-width: 1024px) {
+    padding-right: 0;
+    text-align: center;
+  }
 }
 
 .badge {
-	display: inline-block;
-	padding: 6px 16px;
-	border-radius: 100px;
-	background: rgba(232, 25, 44, 0.12);
-	border: 1px solid rgba(232, 25, 44, 0.35);
-	color: #ff6070;
-	font-size: 0.78rem;
-	font-weight: 600;
-	letter-spacing: 0.06em;
-	text-transform: uppercase;
-	margin-bottom: 20px;
-	animation: badgePop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: $color-brand-primary;
+  background: $color-glass-primary-alpha;
+  padding: 4px 16px;
+  border-radius: 999px;
+  border: 1px solid $color-border-primary-alpha;
+  width: fit-content;
+
+  @media (max-width: 1024px) {
+    align-self: center;
+  }
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: $color-brand-primary;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
 }
 
 .title {
-	font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-	font-weight: 800;
-	color: $color-text-dark-main;
-	line-height: 1.15;
-	margin: 0 0 16px;
-	letter-spacing: -0.02em;
-	animation: fadeSlideUp 0.7s ease 0.15s both;
+  font-family: 'Oswald', 'Inter', sans-serif;
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 700;
+  color: $color-text-dark-main;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0;
 
-	em {
-		font-style: normal;
-		background: linear-gradient(90deg, #ff6070, #e8192c);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
+  @media (max-width: 768px) {
+    font-size: clamp(24px, 5vw, 32px);
+  }
 }
 
 .description {
-	font-size: 1rem;
-	line-height: 1.7;
-	color: #999;
-	margin: 0 0 32px;
-	animation: fadeSlideUp 0.7s ease 0.25s both;
+  font-size: 16px;
+  line-height: 1.6;
+  color: $color-text-dark-muted;
+  max-width: 460px;
+
+  @media (max-width: 1024px) {
+    max-width: 100%;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 }
 
 .buttonWrapper {
-	animation: fadeSlideUp 0.7s ease 0.35s both;
-	a {
-		text-decoration: none;
-	}
+  margin-top: 8px;
+
+  @media (max-width: 1024px) {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .button {
-	position: relative;
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	padding: 14px 32px;
-	font-size: 0.75rem;
-	font-weight: 700;
-	letter-spacing: 0.08em;
-	text-transform: uppercase;
-	cursor: pointer;
-	border: none;
-	border-radius: 10px;
-	background: linear-gradient(135deg, #e8192c, #c0152a);
-	color: #fff;
-	box-shadow: 0 4px 20px rgba(232, 25, 44, 0.4);
-	transition:
-		transform 0.22s ease,
-		box-shadow 0.22s ease;
-	overflow: hidden;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  background: $color-brand-primary;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 20px $color-shadow-primary-deep;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 
-	&::after {
-		content: '';
-		position: absolute;
-		inset: 0;
-		background: linear-gradient(
-			120deg,
-			transparent 20%,
-			rgba(255, 255, 255, 0.18) 50%,
-			transparent 80%
-		);
-		transform: skew(-15deg) translateX(-150%);
-		transition: transform 0.7s ease;
-	}
+  &:hover {
+    background: $color-brand-primary-hover;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px $color-shadow-primary-deep;
+  }
 
-	&:hover {
-		transform: translateY(-2px) scale(1.02);
-		box-shadow: 0 8px 28px rgba(232, 25, 44, 0.55);
-		&::after {
-			transform: skew(-15deg) translateX(200%);
-		}
-	}
+  &:active {
+    transform: translateY(0);
+  }
 
-	&:active {
-		transform: translateY(0) scale(0.98);
-	}
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 12px 24px;
+    font-size: 13px;
+  }
 }
 
-// ── Card media container ──────────────────────────────────
+// ─── Media Container ──────────────────────────────────────────
 .mediaContainer {
-	flex-shrink: 0;
-	width: $card-w;
-	height: $card-h;
-	border-radius: $radius-card-large;
-	position: relative;
-	perspective: 900px;
-	cursor: pointer;
-	overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
 
-	animation:
-		floatCard 6s ease-in-out infinite,
-		redGlow 4s ease-in-out infinite;
-
-	// Card base — dark charcoal with subtle texture
-	&::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		border-radius: $radius-card-large;
-		background: radial-gradient(
-			ellipse at 20% 20%,
-			#2a2a2a 0%,
-			#111 60%,
-			#0a0a0a 100%
-		);
-		z-index: 0;
-	}
-
-	// Subtle red shimmer overlay
-	&::after {
-		content: '';
-		position: absolute;
-		inset: 0;
-		border-radius: $radius-card-large;
-		background: linear-gradient(
-			125deg,
-			transparent 0%,
-			rgba(232, 25, 44, 0.06) 30%,
-			rgba(255, 96, 112, 0.1) 50%,
-			rgba(232, 25, 44, 0.06) 70%,
-			transparent 100%
-		);
-		background-size: 300% 300%;
-		animation: holoShift 6s ease infinite;
-		z-index: 2;
-		pointer-events: none;
-	}
-
-	border: 1px solid rgba(232, 25, 44, 0.25);
-	box-shadow:
-		inset 0 0 0 1px rgba(255, 255, 255, 0.06),
-		0 30px 80px rgba(0, 0, 0, 0.9),
-		0 0 0 1px rgba(0, 0, 0, 0.5);
-
-	@media (max-width: 900px) {
-		width: 100%;
-		max-width: 380px;
-		height: 230px;
-	}
+  @media (max-width: 768px) {
+    min-height: 240px;
+  }
 }
 
-// ── SVG Ribbon (full bleed) ───────────────────────────────
-.ribbonSvg {
-	position: absolute;
-	inset: 0;
-	width: 100%;
-	height: 100%;
-	z-index: 5;
-	pointer-events: none;
-	border-radius: $radius-card-large;
+// ─── Premium Gift Card ──────────────────────────────────────
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 1.618 / 1;
+  border-radius: 18px;
+  overflow: hidden;
+  background: linear-gradient(145deg, #1a1b1e, #0d0e10);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.3),
+    0 2px 8px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+
+  @media (max-width: 768px) {
+    max-width: 100%;
+    border-radius: 14px;
+  }
 }
 
-// ── Gloss ─────────────────────────────────────────────────
-.gloss {
-	position: absolute;
-	inset: 0;
-	border-radius: $radius-card-large;
-	background: linear-gradient(
-		135deg,
-		rgba(255, 255, 255, 0.07) 0%,
-		rgba(255, 255, 255, 0.03) 40%,
-		transparent 60%
-	);
-	z-index: 8;
-	pointer-events: none;
+// ─── Card Background ─────────────────────────────────────────
+.cardBg {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 30% 20%, rgba(179, 32, 37, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 80%, rgba(179, 32, 37, 0.06) 0%, transparent 50%);
+  z-index: 0;
 }
 
-// ── Scanline ──────────────────────────────────────────────
-.scanlineEffect {
-	position: absolute;
-	left: 0;
-	right: 0;
-	height: 60px;
-	background: linear-gradient(
-		to bottom,
-		transparent,
-		rgba(255, 255, 255, 0.03) 50%,
-		transparent
-	);
-	animation: scanline 5s linear infinite;
-	z-index: 9;
-	pointer-events: none;
+// ─── Brand Stripe ────────────────────────────────────────────
+.cardStripe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, 
+    $color-brand-primary 0%, 
+    $color-brand-primary 40%, 
+    rgba(255, 255, 255, 0.15) 40%, 
+    rgba(255, 255, 255, 0.15) 60%,
+    $color-brand-primary 60%, 
+    $color-brand-primary 100%
+  );
+  z-index: 2;
+  opacity: 0.6;
 }
 
-// ── Gift Value ────────────────────────────────────────────
-.giftValue {
-	position: absolute;
-	bottom: 62px;
-	right: 36px;
-	font-size: 2.4rem;
-	font-weight: 900;
-	letter-spacing: -0.03em;
-	z-index: 10;
-	background: linear-gradient(135deg, #fff 0%, #ccc 60%, #fff 100%);
-	background-size: 200% 200%;
-	animation: holoShift 4s ease infinite;
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-clip: text;
-	filter: drop-shadow(0 0 10px rgba(232, 25, 44, 0.4));
-	user-select: none;
+// ─── Card Content ────────────────────────────────────────────
+.cardContent {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 24px 28px;
+
+  @media (max-width: 768px) {
+    padding: 18px 20px;
+  }
 }
 
-// ── Card Number ───────────────────────────────────────────
-.decorNumber {
-	position: absolute;
-	bottom: 36px;
-	right: 36px;
-	font-family: 'Courier New', monospace;
-	font-size: 0.75rem;
-	letter-spacing: 0.16em;
-	color: rgba(255, 255, 255, 0.35);
-	z-index: 10;
-	user-select: none;
-
-	span {
-		color: rgba(232, 25, 44, 0.7);
-		font-weight: 700;
-	}
+// ─── Card Header ─────────────────────────────────────────────
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
-// ── Card Brand ────────────────────────────────────────────
 .cardBrand {
-	position: absolute;
-	top: 32px;
-	right: 36px;
-	font-size: 0.65rem;
-	font-weight: 800;
-	letter-spacing: 0.35em;
-	text-transform: uppercase;
-	color: rgba(255, 255, 255, 0.5);
-	z-index: 10;
-	text-shadow: 0 0 8px rgba(232, 25, 44, 0.5);
+  font-family: 'Oswald', 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.9;
+
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
 }
 
-// ── Hover ─────────────────────────────────────────────────
-.mediaContainer:hover {
-	animation-play-state: paused;
-	transform: scale(1.03) rotateX(4deg) rotateY(-6deg);
-	transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+.cardType {
+  font-size: 10px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 3px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+
+  @media (max-width: 768px) {
+    font-size: 8px;
+    padding: 2px 8px;
+  }
+}
+
+// ─── Card Value ──────────────────────────────────────────────
+.cardValue {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin: 12px 0;
+
+  @media (max-width: 768px) {
+    margin: 8px 0;
+  }
+}
+
+.amount {
+  font-family: 'Oswald', 'Inter', sans-serif;
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+
+  @media (max-width: 768px) {
+    font-size: clamp(28px, 6vw, 38px);
+  }
+}
+
+.currency {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  margin-left: 2px;
+}
+
+// ─── Card Footer ─────────────────────────────────────────────
+.cardFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 14px;
+
+  @media (max-width: 768px) {
+    padding-top: 10px;
+  }
+}
+
+.cardNumber {
+  font-family: 'Inter', monospace;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.3);
+  letter-spacing: 0.06em;
+
+  @media (max-width: 768px) {
+    font-size: 11px;
+  }
+}
+
+.cardExpiry {
+  font-family: 'Inter', monospace;
+  font-size: 11px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.2);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+
+  @media (max-width: 768px) {
+    font-size: 9px;
+  }
+}
+
+// ─── Gloss Overlay ───────────────────────────────────────────
+.gloss {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0.02) 40%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+// ─── Corner Decor ────────────────────────────────────────────
+.cornerDecor {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+  z-index: 2;
+  opacity: 0.3;
+
+  @media (max-width: 768px) {
+    top: 12px;
+    right: 12px;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+// ─── Dark Theme ──────────────────────────────────────────────
+.dark {
+  .badge {
+    background: rgba(179, 32, 37, 0.15);
+    border-color: rgba(179, 32, 37, 0.3);
+  }
+
+  .title {
+    color: $color-text-light-main;
+  }
+
+  .description {
+    color: $color-text-light-muted;
+  }
+
+  .card {
+    background: linear-gradient(145deg, #121316, #08090b);
+    box-shadow: 
+      0 20px 60px rgba(0, 0, 0, 0.5),
+      inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  }
 }

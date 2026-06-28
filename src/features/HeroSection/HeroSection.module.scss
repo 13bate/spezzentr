@@ -556,3 +556,10 @@ $border: rgba(0, 0, 0, 0.08);
   border-radius: 12px;
   flex-shrink: 0;
 }
+
+
+.ratingBadge{
+  display:flex;
+  justify-content:center;
+  align-items:center
+}
