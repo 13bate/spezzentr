@@ -197,3 +197,4 @@ export const getAllWeapons = () => {
     ...weaponsData.shotguns.map(w => ({ ...w, category: 'shotguns' }))
   ];
 };
+

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { PageTitle } from '../../shared/ui/PageTitle'
 import style from './IntroShootingPage.module.scss'
 import type { Weapon, WeaponCategory } from './types'
-import { getAllWeapons, weaponsData } from './weaponsData'
+import { getAllWeapons, weaponsData } from "../../shared/model"
 
 
 export const IntroShootingPage: React.FC = () => {

@@ -3,8 +3,10 @@ import { Link } from 'react-router';
 import { ArrowRight } from 'lucide-react';
 import { weapons } from '../../model/weapons';
 import { WeaponCard } from '../WeaponCard/WeaponCard';
+import { getAllWeapons } from '../../../../shared/model';
 
 export const ArsenalShowCase = () => {
+  const weaponsCount = getAllWeapons();
   return (
     <section className={styles.section}>
       <div className={styles.container}>
@@ -15,7 +17,7 @@ export const ArsenalShowCase = () => {
             Арсенал
           </div>
           <h2>
-            <span>18</span> eдиниц оружия
+            <span>{weaponsCount.length}</span> eдиниц оружия
           </h2>
           <Link to="/shooting/intro" className={styles.button}>
             Весь арсенал
