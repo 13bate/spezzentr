@@ -2,7 +2,7 @@ import styles from './ArsenalSection.module.scss';
 import weaponImg from '../../assets/arsenal_weapon.png';
 import { Button } from '../../shared/ui/Button';
 import { useScrollToContacts } from '../../shared/utils/ScrollToContacts';
-import { Link } from 'react-router';
+
 
 // ── Icons ──────────────────────────────────────────────────
 const ArrowRightIcon = () => (
