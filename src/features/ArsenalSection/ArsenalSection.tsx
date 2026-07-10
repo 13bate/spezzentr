@@ -79,7 +79,7 @@ export const ArsenalSection = () => {
         <div className={styles.content}>
           {/* Eyebrow with crosshair and line */}
           <div className={styles.eyebrowRow}>
-            <span className={styles.eyebrow}>Арсенал</span>
+
             <span className={styles.eyebrowLine} />
             <span className={styles.eyebrowIcon}>
               <CrosshairIcon size={18} />
