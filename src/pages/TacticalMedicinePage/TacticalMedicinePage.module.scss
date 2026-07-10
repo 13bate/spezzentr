@@ -1,0 +1,499 @@
+@use '../../shared/styles/variables' as *;
+
+.tacticalMedicinePage {
+  width: 100%;
+  margin: 100px 0 80px;
+  
+  @media (max-width: 768px) {
+    margin: 80px 0 40px;
+  }
+}
+
+// ─── Hero ────────────────────────────────────────────────────
+.hero {
+  margin-bottom: 60px;
+  
+  .title {
+    font-family: 'Oswald', sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    color: $color-text-dark-main;
+    text-transform: uppercase;
+    margin: 0 0 20px;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: $color-brand-primary;
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 32px;
+    }
+  }
+  
+  .description {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: $color-text-dark-muted;
+    max-width: 800px;
+    
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
+  }
+}
+
+// ─── Section ─────────────────────────────────────────────────
+.section {
+  margin: 60px 0;
+}
+
+.sectionTitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: $color-text-dark-main;
+  margin: 0 0 15px;
+  
+  @media (max-width: 768px) {
+    font-size: 26px;
+  }
+}
+
+.sectionSubtitle {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 16px;
+  color: $color-brand-primary;
+  margin-bottom: 24px;
+  font-weight: 600;
+  
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+}
+
+.sectionHeading {
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: $color-text-dark-main;
+  margin: 20px 0 12px;
+}
+
+// ─── Grid 2 columns ──────────────────────────────────────────
+.grid2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+// ─── Card ────────────────────────────────────────────────────
+.card {
+  background: rgba($color-text-pure-black, 0.03);
+  border-radius: 20px;
+  padding: 35px;
+  height: 100%;
+  
+  @media (max-width: 768px) {
+    padding: 25px;
+  }
+}
+
+.cardTitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: $color-text-dark-main;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid $color-brand-primary;
+}
+
+// ─── Program List ────────────────────────────────────────────
+.programList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px;
+  
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 10px;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 15px;
+    color: $color-text-dark-muted;
+    line-height: 1.5;
+    
+    &::before {
+      content: '▹';
+      color: $color-brand-primary;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+  }
+}
+
+// ─── Price & Duration ────────────────────────────────────────
+.price {
+  font-family: 'Oswald', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: $color-brand-primary;
+  margin: 16px 0 4px;
+  
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
+}
+
+.duration {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 14px;
+  color: $color-text-dark-dimmed;
+}
+
+// ─── Prices Grid ─────────────────────────────────────────────
+.pricesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin: 40px 0;
+}
+
+.priceCard {
+  background: rgba($color-text-pure-black, 0.03);
+  border-radius: 15px;
+  padding: 25px;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  
+  &:hover {
+    border-color: $color-brand-primary;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px $color-shadow-primary-light;
+  }
+}
+
+.priceCardTitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: $color-text-dark-main;
+  margin-bottom: 8px;
+}
+
+.priceCardDesc {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 14px;
+  color: $color-text-dark-dimmed;
+  margin-bottom: 15px;
+}
+
+.priceCardValue {
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: $color-brand-primary;
+}
+
+// ─── Services List ───────────────────────────────────────────
+.servicesList {
+  background: rgba($color-text-pure-black, 0.03);
+  border-radius: 15px;
+  padding: 25px;
+}
+
+.serviceItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba($color-text-pure-black, 0.1);
+  
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.serviceName {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 16px;
+  color: $color-text-dark-main;
+}
+
+.servicePrice {
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: $color-brand-primary;
+}
+
+// ─── Schedule ────────────────────────────────────────────────
+.scheduleList {
+  background: rgba($color-text-pure-black, 0.03);
+  border-radius: 15px;
+  padding: 25px;
+}
+
+.scheduleItem {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba($color-text-pure-black, 0.1);
+  font-family: 'PT Sans', sans-serif;
+  font-size: 16px;
+  color: $color-text-dark-muted;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+// ─── Exam Section ────────────────────────────────────────────
+.examSection {
+  background: rgba($color-text-pure-black, 0.03);
+  border-radius: 20px;
+  padding: 35px;
+  margin: 40px 0;
+}
+
+.examTitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 28px;
+  font-weight: 600;
+  color: $color-text-dark-main;
+  margin-bottom: 30px;
+}
+
+.examGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+.examBlock {
+  h4 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: $color-brand-primary;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    color: $color-text-dark-muted;
+    margin-bottom: 15px;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    
+    li {
+      margin-bottom: 10px;
+      padding-left: 20px;
+      position: relative;
+      font-family: 'PT Sans', sans-serif;
+      font-size: 15px;
+      color: $color-text-dark-muted;
+      
+      &::before {
+        content: '•';
+        color: $color-brand-primary;
+        font-size: 18px;
+        position: absolute;
+        left: 0;
+      }
+    }
+  }
+}
+
+.criteriaBlock {
+  margin-top: 30px;
+  
+  h4 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: $color-text-dark-main;
+    margin-bottom: 15px;
+  }
+}
+
+.criteriaList {
+  list-style: none;
+  padding: 0;
+  
+  li {
+    margin-bottom: 8px;
+    padding-left: 24px;
+    position: relative;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 15px;
+    color: $color-text-dark-muted;
+    
+    &::before {
+      content: '✓';
+      color: $color-brand-primary;
+      font-weight: 700;
+      position: absolute;
+      left: 0;
+    }
+  }
+}
+
+// ─── Result Block ────────────────────────────────────────────
+.resultBlock {
+  background: linear-gradient(
+    135deg,
+    rgba($color-text-pure-black, 0.03),
+    rgba($color-text-pure-black, 0.06)
+  );
+  border-radius: 20px;
+  padding: 35px;
+  margin: 40px 0;
+  text-align: center;
+  
+  p {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 18px;
+    color: $color-text-dark-main;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+}
+
+.resultNote {
+  font-weight: 600;
+  color: $color-brand-primary !important;
+}
+
+// ─── Contacts ────────────────────────────────────────────────
+.contactsBlock {
+  background: rgba($color-text-pure-black, 0.03);
+  border-radius: 20px;
+  padding: 35px;
+  margin: 40px 0;
+  
+  h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: $color-text-dark-main;
+    margin-bottom: 15px;
+  }
+  
+  > p {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 18px;
+    color: $color-text-dark-muted;
+    margin-bottom: 25px;
+  }
+}
+
+.contactMethods {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.contactMethod {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.methodIcon {
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.methodContent {
+  h4 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: $color-text-dark-main;
+    margin-bottom: 10px;
+  }
+  
+  p, a {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
+    color: $color-text-dark-muted;
+    text-decoration: none;
+    line-height: 1.5;
+  }
+  
+  a:hover {
+    color: $color-brand-primary;
+  }
+}
+
+// ─── Dark Theme ──────────────────────────────────────────────
+.dark {
+  .tacticalMedicinePage {
+    background: $color-bg-dark-section-2;
+  }
+  
+  .card,
+  .priceCard,
+  .servicesList,
+  .scheduleList,
+  .examSection,
+  .contactsBlock {
+    background: rgba(255, 255, 255, 0.04);
+  }
+  
+  .cardTitle,
+  .sectionTitle,
+  .examTitle,
+  .contactsBlock h3,
+  .methodContent h4 {
+    color: $color-text-light-main;
+  }
+  
+  .sectionSubtitle {
+    color: $color-brand-primary;
+  }
+  
+  .programList li,
+  .examBlock ul li,
+  .criteriaList li,
+  .serviceName,
+  .scheduleItem,
+  .resultBlock p {
+    color: $color-text-light-muted;
+  }
+  
+  .resultBlock {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.04),
+      rgba(255, 255, 255, 0.08)
+    );
+  }
+}

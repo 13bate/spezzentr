@@ -30,6 +30,7 @@ import { NotFoundPage } from '../pages/NotFoundPage'
 import { PscManagersTraining } from '../pages/PscManagersTraining'
 import { CompetitionPage } from '../pages/Competitions'
 import { ShootingProgramsPage } from '../pages/ShootingProgramsPage'
+import { TacticalMedicinePage } from '../pages/TacticalMedicinePage'
 
 // Массив для навигации (можно использовать где угодно)
 export const eduOrgInfo = [
@@ -96,6 +97,10 @@ export const router = createBrowserRouter([
 			{
 				path: '/training/professions',
 				element: <WorkingProfessions />
+			},
+			{
+				path: "/training/tac-med",
+				element: <TacticalMedicinePage />
 			},
 			{
 				path: "training/psc-managers",

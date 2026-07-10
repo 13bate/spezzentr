@@ -1,0 +1,1 @@
+export { TacticalMedicinePage } from "./TacticalMedicinePage";
