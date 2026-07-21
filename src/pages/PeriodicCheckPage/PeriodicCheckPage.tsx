@@ -2,6 +2,7 @@ import { PageTitle } from '../../shared/ui/PageTitle';
 import style from './PeriodicCheckPage.module.scss';
 import periodicCheckQuestions from "../../../public/ПЕРИОДИЧЕСКАЯ-ПРОВЕРКА-2023-4-6-разряд.pdf"
 import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle';
+import { ReachUs } from '../../shared/ui/ReachUs';
 
 export const PeriodicCheckPage: React.FC = () => {
   // Данные для страницы
@@ -103,25 +104,7 @@ export const PeriodicCheckPage: React.FC = () => {
             <p>Результаты объявляются в день проверки, выдается акт проверки</p>
           </div>
         </section>
-
-        {/* Контакты */}
-        <section className={style.contactsSection}>
-          <h2 className={style.sectionTitle}>Запись и справки по телефону:</h2>
-          <div className={style.contacts}>
-            <a href="tel:+74832757545" className={style.phone}>
-              <span className={style.phoneIcon}>📞</span>
-              +7 (4832) 32-75-45
-            </a>
-            <a href="tel:+74832757546" className={style.phone}>
-              <span className={style.phoneIcon}>📞</span>
-              32-75-46
-            </a>
-          </div>
-          <p className={style.address}>
-            <span className={style.addressIcon}>📍</span>
-            г. Брянск, ул. Институтская д. 15 к. 3 офис 232
-          </p>
-        </section>
+        <ReachUs />
       </main>
     </>
   );

@@ -1,9 +1,9 @@
 import styles from './HeroSection.module.scss';
-import weaponHeroImg from "../../assets/weapon_hero.png"
+import weaponHeroImg from "../../assets/weapon-hero.png"
 import { Button } from '../../shared/ui/Button';
 import { ArrowIcon, BigTrophyIcon, PersonIcon, ShieldIcon, StarIcon, TrophyIcon } from './assets/icons';
 import { Link } from 'react-router';
-import { SectionTitle } from '../../shared/ui/SectionTitle';
+
 
 
 
@@ -21,9 +21,19 @@ export const HeroSection = () => {
 
 
 
-				<SectionTitle title='ЦЕНТР СТРЕЛЬБЫ И ПОДГОТОВКИ.' />
+				{/* ─── Title ─────────────────────────────────────────────── */}
 
-				{/* Subtext */}
+				<div className={styles.titleBlock}>
+					<span className={styles.titleEyebrow}>Стрелковый центр</span>
+					<h1 className={styles.mainTitle}>
+						<span className={styles.titleMain}>СПЕЦЦЕНТР</span>
+					</h1>
+					<div className={styles.titleSub}>
+						<span className={styles.titleSubLine} />
+						<span className={styles.titleSubText}>Точность &bull; Дисциплина &bull; Мастерство</span>
+						<span className={styles.titleSubLine} />
+					</div>
+				</div>	{/* Subtext */}
 				<p className={styles.subtext}>
 					Стрелковый центр нового поколения для спортсменов,<br />
 					профессионалов и всех, кто ценит точность и дисциплину.

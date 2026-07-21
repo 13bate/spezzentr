@@ -11,7 +11,7 @@ export const GiftCardsOverview: React.FC<Props> = ({ className }) => {
 	return (
 		<section className={clsx(className, style.giftCards)}>
 			<div className={style.content}>
-				<span className={style.badge}>Подарочный сертификат</span>
+				<span className={style.badge}>ПОДАРОЧНЫЕ СЕРТИФИКАТЫ</span>
 
 				<h2 className={style.title}>{giftCardsContent.title}</h2>
 

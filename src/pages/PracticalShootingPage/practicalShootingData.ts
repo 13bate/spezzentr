@@ -82,6 +82,7 @@ export const practicalShootingData = {
 		],
 	},
 }
+
 export const practicalShootingCards = [
 	{
 		id: 'bikoso',
@@ -101,7 +102,8 @@ export const practicalShootingCards = [
 		],
 		price: '18 000 ₽',
 		accent: '#FE3B15',
-		featured: true,
+		gradient: 'linear-gradient(135deg, #FE3B15, #FF6B4A)',
+		featured: false,
 	},
 	{
 		id: 'individual',
@@ -120,6 +122,7 @@ export const practicalShootingCards = [
 		],
 		price: '5 600 ₽',
 		accent: '#4a8fff',
+		gradient: 'linear-gradient(135deg, #4a8fff, #7AABFF)',
 		featured: false,
 	},
 	{
@@ -139,6 +142,7 @@ export const practicalShootingCards = [
 		],
 		price: '3 500 ₽',
 		accent: '#2dc653',
+		gradient: 'linear-gradient(135deg, #2dc653, #5FEA87)',
 		featured: false,
 	},
 	{
@@ -159,6 +163,7 @@ export const practicalShootingCards = [
 		],
 		price: '2 500 ₽',
 		accent: '#d4a017',
+		gradient: 'linear-gradient(135deg, #d4a017, #F5C542)',
 		featured: false,
 	},
 ]

@@ -1,12 +1,11 @@
 import type React from 'react'
 import styles from './ShootingProgramsPage.module.scss'
 import clsx from 'clsx'
-import { CrosshairDecor, IconArrow, IconClock, IconPhone, IconShield, IconTarget } from './assets/svg'
+import { CrosshairDecor, IconArrow, IconClock, IconTarget } from './assets/svg'
 import type { IProgramm } from './types'
 import { programs } from './model/data'
 import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle'
-import { Link } from 'react-router'
-import { useScrollToContacts } from '../../shared/utils/ScrollToContacts'
+import { ReachUs } from '../../shared/ui/ReachUs'
 
 
 interface ProgramCardProps {
@@ -115,29 +114,7 @@ export const ShootingProgramsPage: React.FC<Props> = ({ className }) => {
 			</section>
 
 			{/* CTA BLOCK */}
-			<div className={styles.ctaBlock}>
-				<div className={styles.ctaInner}>
-					<div className={styles.ctaText}>
-						<h3>Готовы начать подготовку?</h3>
-						<p>
-							Оставьте заявку — мы подберём программу и удобное время занятий.
-						</p>
-					</div>
-					<div className={styles.ctaActions}>
-						<button className={styles.btnPrimary}>
-							<IconPhone size={15} />
-							Записаться
-						</button>
-						<Link to={"/#contacts"}>
-							<button className={styles.btnSecondary} onClick={() => useScrollToContacts}>
-								<IconShield size={15} />
-								Контакты
-							</button>
-						</Link>
-
-					</div>
-				</div>
-			</div>
+			<ReachUs />
 		</div>
 	)
 }

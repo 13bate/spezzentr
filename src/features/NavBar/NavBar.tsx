@@ -125,11 +125,11 @@ export const NavBar: React.FC<Props> = ({ className, onItemClick }) => {
 					<li
 						className={clsx(
 							style.listItem,
-							isActive('/trainning/tacmed') && style.active,
+							isActive('/trainning/tac-med') && style.active,
 						)}
 					>
 						<Link
-							to='/training/tacmed/'
+							to='/training/tac-med/'
 							className={style.plainLink}
 							onClick={handleLinkClick}
 						>

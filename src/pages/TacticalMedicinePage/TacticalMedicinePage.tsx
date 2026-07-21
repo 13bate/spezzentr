@@ -3,6 +3,7 @@ import style from './TacticalMedicinePage.module.scss';
 import { tacticalMedicineData } from './tacticalMedicineData';
 import { PageTitle } from '../../shared/ui/PageTitle';
 import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle';
+import { ReachUs } from '../../shared/ui/ReachUs';
 
 export const TacticalMedicinePage: React.FC = () => {
   return (
@@ -134,32 +135,7 @@ export const TacticalMedicinePage: React.FC = () => {
       </section>
 
       {/* Контакты для записи */}
-      <section className={style.contactsBlock}>
-        <h3>{tacticalMedicineData.contacts.title}</h3>
-        <p>{tacticalMedicineData.contacts.description}</p>
-
-        <div className={style.contactMethods}>
-          <div className={style.contactMethod}>
-            <span className={style.methodIcon}>📍</span>
-            <div className={style.methodContent}>
-              <h4>Адрес:</h4>
-              <p>{tacticalMedicineData.contacts.address}</p>
-            </div>
-          </div>
-
-          <div className={style.contactMethod}>
-            <span className={style.methodIcon}>📞</span>
-            <div className={style.methodContent}>
-              <h4>Телефоны:</h4>
-              {tacticalMedicineData.contacts.phones.map((phone, idx) => (
-                <p key={idx}>
-                  <a href={`tel:${phone.replace(/[^0-9+]/g, '')}`}>{phone}</a>
-                </p>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <ReachUs />
     </main>
   );
 };

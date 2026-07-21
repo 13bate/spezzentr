@@ -3,7 +3,6 @@ import { useEffect } from 'react'
 import { ContactsSection } from '../../features/contacts'
 import { GiftCardsOverview } from '../../features/GiftCardsOverview'
 import { HeroSection } from '../../features/HeroSection'
-import { IntroShootingOverview } from '../../features/IntroShootingOverview'
 import { ProgrammsSection } from '../../features/ProgrammsSection'
 import { SafetyTrainingOverview } from '../../features/SafetyTrainingOverview'
 import { ShootingClubSection } from '../../features/ShootingClubSection'
@@ -45,7 +44,6 @@ export const Home: React.FC<Props> = ({ className }) => {
 				</div>
 			  <ArsenalSection/>
 				<ProgrammsSection />
-				<IntroShootingOverview />
 				<GiftCardsOverview />
 				<Separator />
 				<TrainigCenterSection />

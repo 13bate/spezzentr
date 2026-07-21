@@ -1,6 +1,7 @@
 import React from 'react';
 import { PageTitle } from '../../shared/ui/PageTitle';
 import style from './DroneTrainingPage.module.scss';
+import { ReachUs } from '../../shared/ui/ReachUs';
 
 export const DroneTrainingPage: React.FC = () => {
   // Данные для страницы
@@ -128,26 +129,7 @@ export const DroneTrainingPage: React.FC = () => {
         </section>
 
         {/* Контакты */}
-        <section className={style.contactsSection}>
-          <h2 className={style.sectionTitle}>Запись и консультации</h2>
-
-          <div className={style.contacts}>
-            <div className={style.contactItem}>
-              <span className={style.contactIcon}>📞</span>
-              <div>
-                <a href="tel:+74832757545">+7 (4832) 32-75-45</a>
-                <a href="tel:+74832757546">32-75-46</a>
-              </div>
-            </div>
-
-            <div className={style.contactItem}>
-              <span className={style.contactIcon}>📍</span>
-              <div>
-                <p>г. Брянск, ул. Институтская д. 15 к. 3 офис 232</p>
-              </div>
-            </div>
-          </div>
-        </section>
+        <ReachUs />
       </main>
     </>
   );

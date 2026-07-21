@@ -7,21 +7,18 @@ import style from './LaborSafety.module.scss'
 const programs = [
   {
     id: 'A',
-    title: 'Программа А',
     who: 'Руководители организаций, заместители, члены комиссий по ОТ',
     hours: '16 часов',
     freq: 'Раз в 3 года',
   },
   {
     id: 'Б',
-    title: 'Программа Б',
     who: 'Руководители подразделений, специалисты по охране труда',
     hours: '16 часов',
     freq: 'Раз в 3 года',
   },
   {
     id: 'В',
-    title: 'Программа В',
     who: 'Работники, выполняющие работы повышенной опасности',
     hours: '16 часов',
     freq: 'Раз в 3 года',
@@ -120,8 +117,7 @@ export const LaborSafety: React.FC = () => {
           {programs.map((p, i) => (
             <div key={p.id} className={style.programCard} style={{ '--index': i } as React.CSSProperties}>
               <div className={style.programId}>{p.id}</div>
-              <div className={style.programTitle}>{p.title}</div>
-              <p className={style.programWho}>{p.who}</p>
+              <p className={style.programTitle}>{p.who}</p>
               <div className={style.programMeta}>
                 <div className={style.pmItem}>
                   <span className={style.pmLabel}>Объём</span>

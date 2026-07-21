@@ -6,7 +6,7 @@ interface Props {
   image: string;
 }
 
-export const WeaponCard = ({ title, count, image }: Props) => {
+export const WeaponCard = ({ title, count }: Props) => {
 
   let typesLabel: string;
   if (count == 2 || count == 3 || count == 4) {
@@ -18,7 +18,7 @@ export const WeaponCard = ({ title, count, image }: Props) => {
 
   return (
     <article className={styles.card}>
-      <img src={image} alt={title} className={styles.weapon} />
+
       <div className={styles.cardContent}>
         <h3>{title}</h3>
         <span>{count} {typesLabel}</span>

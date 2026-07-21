@@ -1,6 +1,7 @@
 import clsx from 'clsx'
 import style from './GiftCardsPage.module.scss'
 import { Link } from 'react-router'
+import { ReachUs } from '../../shared/ui/ReachUs'
 
 interface Props {
   className?: string
@@ -8,7 +9,7 @@ interface Props {
 
 export const GiftCardsPage: React.FC<Props> = ({ className }) => {
   return (
-    <section className={clsx(className, style.giftCards)}>
+    <div className={clsx(className, style.giftCards)}>
       <div className={style.container}>
         {/* ─── Header with Card ─────────────────────────────── */}
         <div className={style.headerRow}>
@@ -175,6 +176,8 @@ export const GiftCardsPage: React.FC<Props> = ({ className }) => {
           </div>
         </div>
       </div>
-    </section>
+      <ReachUs />
+    </div>
+
   )
 }
