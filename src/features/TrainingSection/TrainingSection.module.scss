@@ -1,0 +1,101 @@
+// features/TrainingSection/TrainingSection.module.scss
+@use '../../shared/styles/variables' as *;
+
+.section {
+  position: relative;
+  padding: 60px 0;
+  overflow: hidden;
+  background: #0a0a0a; // темный фон, как и в стрелковом клубе
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 100%;
+  padding: 0 clamp(16px, 3vw, 40px);
+  margin: 0 auto;
+}
+
+// Фоновые эффекты (можно такие же, как в ShootingClubSection)
+.bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(
+    ellipse 80% 80% at 50% 50%,
+    black 30%,
+    transparent 100%
+  );
+}
+
+.blob1 {
+  position: absolute;
+  top: -80px;
+  left: -100px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(254, 59, 21, 0.05) 0%,
+    transparent 65%
+  );
+  border-radius: 50%;
+  animation: drift1 12s ease-in-out infinite;
+}
+
+.blob2 {
+  position: absolute;
+  top: 60px;
+  right: -80px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle,
+    rgba(74, 143, 255, 0.04) 0%,
+    transparent 65%
+  );
+  border-radius: 50%;
+  animation: drift2 15s ease-in-out infinite;
+}
+
+.blob3 {
+  position: absolute;
+  bottom: -60px;
+  left: 40%;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.02) 0%, transparent 70%);
+  border-radius: 50%;
+  animation: drift1 18s ease-in-out infinite reverse;
+}
+
+@keyframes drift1 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(30px, 20px);
+  }
+}
+
+@keyframes drift2 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-20px, 30px);
+  }
+}

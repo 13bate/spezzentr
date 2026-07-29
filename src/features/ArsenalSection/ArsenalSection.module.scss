@@ -4,7 +4,7 @@
 .arsenal {
   position: relative;
   background: $color-bg-light-footer;
-  padding: 60px 0 80px;
+
   overflow: hidden;
 
   @media (max-width: 1024px) {
@@ -22,7 +22,7 @@
   justify-content: space-between;
   max-width: 1320px;
   margin: 0 auto;
-  padding: 0 20px;
+
   gap: 48px;
   position: relative;
 

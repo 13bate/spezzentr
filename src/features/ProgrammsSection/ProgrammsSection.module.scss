@@ -2,34 +2,16 @@
 
 .section {
   position: relative;
-  padding: 20px;
   color: $color-text-dark-main;
   overflow: hidden;
   min-height: min(100vh, 1100px);
 }
 
-.content {
-  position: relative;
-  z-index: 2;
-  max-width: 100%;
-  padding: 0 clamp(16px, 3vw, 40px);
-  margin: 0 auto;
-}
 
-.bgArt {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
 
-.bgGrid {
-  position: absolute;
-  inset: -2px;
-  background-size: 54px 54px;
-  opacity: 0.25;
-  transform: translateZ(0);
-}
+
+
+
 
 .bgBlob1 {
   position: absolute;
@@ -96,13 +78,15 @@
 // ─── Grid ─────────────────────────────────────────────────────
 .grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr); // ← теперь 2 колонки
   gap: clamp(24px, 2.5vw, 40px);
   position: relative;
   z-index: 2;
   max-width: 100%;
   margin: 0 auto;
   align-items: stretch;
+
+
 
   @media (max-width: 900px) {
     grid-template-columns: repeat(2, 1fr);
@@ -130,15 +114,8 @@
   width: 100%;
 }
 
-// Последняя карточка — на всю ширину и по центру
-.cardWrapper:last-child {
-  grid-column: 1 / -1;
-
-
-  @media (max-width: 600px) {
-    max-width: 100%;
-  }
-}
+// Убираем растяжение последней карточки
+// .cardWrapper:last-child { grid-column: 1 / -1; } // ← удалено
 
 .cardWrapper > * {
   flex: 1;

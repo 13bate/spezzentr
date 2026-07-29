@@ -1,0 +1,193 @@
+@use '../../styles/variables' as *;
+
+.header {
+  position: relative;
+  margin-top: 60px;
+  margin-bottom: 56px;
+  width: 100%;
+
+  // Анимация появления
+  &.animate {
+    opacity: 0;
+    transform: translateY(32px);
+    animation: fadeUp 0.8s cubic-bezier(0.2, 1, 0.2, 1) forwards;
+  }
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 100%;
+}
+
+// ─── Eyebrow ──────────────────────────────────────────────────
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: $color-brand-primary;
+  background: rgba($color-brand-primary, 0.06);
+  padding: 6px 16px 6px 12px;
+  border-radius: 40px;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba($color-brand-primary, 0.08);
+}
+
+.eyebrowDot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: $color-brand-primary;
+  flex-shrink: 0;
+  animation: pulse-dot 1.8s ease-in-out infinite;
+}
+
+.eyebrowText {
+  font-weight: 600;
+  color: $color-brand-primary;
+  letter-spacing: 0.12em;
+}
+
+// ─── Title ────────────────────────────────────────────────────
+.title {
+  font-size: clamp(36px, 5.5vw, 64px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+  color: $color-text-dark-main;
+  margin: 0 0 16px 0;
+
+  // Поддержка выделения через <em>
+  em {
+    font-style: normal;
+    color: $color-brand-primary;
+    background: linear-gradient(135deg, $color-brand-primary, darken($color-brand-primary, 15%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+// ─── Description ─────────────────────────────────────────────
+.description {
+  font-size: 16px;
+  line-height: 1.7;
+  color: $color-text-dark-muted;
+  max-width: 680px;
+  margin: 0 0 24px 0;
+  font-weight: 400;
+}
+
+// ─── Extra content (кнопки) ──────────────────────────────────
+.extra {
+  margin-top: 8px;
+}
+
+// ─── Align ────────────────────────────────────────────────────
+.header.center {
+  text-align: center;
+  .description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .lineWrap {
+    justify-content: center;
+  }
+  .eyebrow {
+    justify-content: center;
+  }
+}
+
+.header.left {
+  text-align: left;
+  .description {
+    margin-left: 0;
+  }
+  .lineWrap {
+    justify-content: flex-start;
+  }
+}
+
+// ─── Line decoration ─────────────────────────────────────────
+.lineWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  position: relative;
+  z-index: 2;
+}
+
+.line {
+  display: block;
+  height: 3px;
+  width: 60px;
+  background: linear-gradient(90deg, $color-brand-primary, transparent);
+  border-radius: 4px;
+  opacity: 0.6;
+  transition: width 0.4s ease;
+}
+
+.lineAccent {
+  display: block;
+  height: 3px;
+  width: 20px;
+  background: $color-brand-primary;
+  border-radius: 4px;
+  opacity: 1;
+  transition: width 0.4s ease;
+}
+
+// При наведении на секцию можно увеличивать линию (но не обязательно)
+.header:hover .line {
+  width: 80px;
+}
+.header:hover .lineAccent {
+  width: 30px;
+}
+
+// ─── Animations ──────────────────────────────────────────────
+@keyframes fadeUp {
+  0% {
+    opacity: 0;
+    transform: translateY(32px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.4; }
+}
+
+// ─── Responsive ──────────────────────────────────────────────
+@media (max-width: 768px) {
+  .header {
+    margin-bottom: 40px;
+  }
+  .title {
+    font-size: clamp(30px, 8vw, 42px);
+  }
+  .description {
+    font-size: 14px;
+  }
+  .eyebrow {
+    font-size: 10px;
+    padding: 4px 12px 4px 8px;
+  }
+  .line {
+    width: 40px;
+  }
+  .lineAccent {
+    width: 14px;
+  }
+}

@@ -1,13 +1,18 @@
 // ─── Section ─────────────────────────────────────────────────
 .section {
-	margin: 0 auto;
+	width: 100%;
+	max-width: 100%;
+	margin: 70px 0;
+	padding: 0;
 	position: relative;
 	overflow: hidden;
 
 	@media (max-width: 768px) {
-		padding: 48px 20px;
+		padding: 48px 16px; // небольшие отступы по бокам на мобилках
 	}
 }
+
+// ─── Title (оставлен как есть, если используется) ──────────
 .title {
 	font-size: clamp(34px, 4.5vw, 60px);
 	font-weight: 800;
@@ -15,6 +20,7 @@
 	margin-bottom: 24px;
 	letter-spacing: -0.03em;
 }
+
 .sectionTitle {
 	background: linear-gradient(135deg, #0b1220, #fe3b15, #0b1220);
 	background-size: 200% auto;
@@ -23,6 +29,7 @@
 	background-clip: text;
 	animation: shine 5s linear infinite;
 }
+
 // ─── Background ──────────────────────────────────────────────
 .bg {
 	position: absolute;
@@ -90,17 +97,18 @@
 // ─── Cards grid ──────────────────────────────────────────────
 .grid {
 	display: grid;
-	grid-template-columns: repeat(4, minmax(0, 1fr));
+	grid-template-columns: repeat(4, 1fr); // равные доли без minmax
 	gap: 16px;
-	margin-bottom: 24px;
+	width: 100%;
+	margin: 0;
+	padding: 0;
 	position: relative;
 	z-index: 1;
-	align-items: stretch; // Ensure all grid items stretch to same height
+	align-items: stretch;
 
 	@media (max-width: 1024px) {
-		grid-template-columns: repeat(2, minmax(0, 1fr));
+		grid-template-columns: repeat(2, 1fr);
 	}
-
 	@media (max-width: 520px) {
 		grid-template-columns: 1fr;
 	}
@@ -108,13 +116,14 @@
 
 // ─── Card ────────────────────────────────────────────────────
 .card {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
 	position: relative;
 	perspective: 900px;
 	cursor: pointer;
 	text-decoration: none;
-	height: 100%; // Take full height of grid cell
-	display: flex;
-	flex-direction: column;
 }
 
 .cardInner {
@@ -129,13 +138,9 @@
 	transition:
 		transform 0.45s cubic-bezier(0.23, 1, 0.32, 1),
 		box-shadow 0.45s ease;
-	height: 100%; // Take full height of parent
-	min-height: 320px; // Set minimum height for consistency
-
-	// Allow content to flex properly
-	> * {
-		flex-shrink: 0;
-	}
+	height: 100%;
+	width: 100%;
+	min-height: 320px;
 
 	// Top gloss streak
 	&::before {
@@ -154,7 +159,6 @@
 		pointer-events: none;
 		z-index: 5;
 	}
-
 	// Inner radial glow
 	&::after {
 		content: '';
@@ -174,7 +178,7 @@
 	transform: rotateY(0) rotateX(0) scale(1.02);
 }
 
-// Per-card themes
+// ─── Per-card themes ────────────────────────────────────────
 .t1 {
 	.cardInner {
 		background: linear-gradient(145deg, #1a0805, #0a0200);
@@ -243,7 +247,7 @@
 	}
 }
 
-// Rotating shimmer
+// ─── Shimmer ─────────────────────────────────────────────────
 .shimmer {
 	position: absolute;
 	top: -60%;
@@ -271,7 +275,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-start;
-	margin-bottom: 16px; // Consistent spacing
+	margin-bottom: 16px;
 }
 
 .cardNum {
@@ -287,7 +291,6 @@
 	border-radius: 2px;
 	width: 24px;
 	transition: width 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-
 	.card:hover & {
 		width: 100%;
 	}
@@ -297,7 +300,7 @@
 	position: relative;
 	z-index: 3;
 	margin-top: 0;
-	flex: 1; // Take remaining space
+	flex: 1;
 	display: flex;
 	flex-direction: column;
 }
@@ -321,31 +324,6 @@
 	flex-shrink: 0;
 }
 
-// Add features container for dynamic content
-.cardFeatures {
-	margin-top: auto;
-	padding-top: 12px;
-}
-
-.featureItem {
-	display: flex;
-	align-items: center;
-	gap: 8px;
-	font-size: 11px;
-	color: rgba(255, 255, 255, 0.5);
-	margin-bottom: 8px;
-
-	i {
-		font-size: 10px;
-		color: currentColor;
-		opacity: 0.7;
-	}
-
-	&:last-child {
-		margin-bottom: 0;
-	}
-}
-
 .cardFooter {
 	position: relative;
 	z-index: 3;
@@ -354,7 +332,7 @@
 	justify-content: space-between;
 	padding-top: 14px;
 	border-top: 1px solid rgba(255, 255, 255, 0.07);
-	margin-top: 16px; // Ensure spacing from content
+	margin-top: 16px;
 	flex-shrink: 0;
 }
 
@@ -365,7 +343,6 @@
 	text-transform: uppercase;
 	color: rgba(255, 255, 255, 0.3);
 	transition: color 0.2s;
-
 	.card:hover & {
 		color: rgba(255, 255, 255, 0.65);
 	}
@@ -377,278 +354,10 @@
 	transition:
 		transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
 		color 0.2s;
-
 	.card:hover & {
 		transform: translateX(4px);
 		color: rgba(255, 255, 255, 0.55);
 	}
-}
-
-// ─── Arsenal ─────────────────────────────────────────────────
-.arsenal {
-	position: relative;
-	z-index: 1;
-	border: 1px solid #ebebeb;
-	border-radius: 16px;
-	padding: 28px 32px;
-	background: #fafafa;
-	display: flex;
-	align-items: center;
-	gap: 28px;
-	flex-wrap: wrap;
-	overflow: hidden;
-
-	&::before {
-		content: '';
-		position: absolute;
-		inset: 0;
-		border-radius: 16px;
-		background: radial-gradient(
-			ellipse 50% 100% at 0% 50%,
-			rgba(254, 59, 21, 0.045),
-			transparent 55%
-		);
-		pointer-events: none;
-	}
-
-	@media (max-width: 768px) {
-		padding: 24px 20px;
-		gap: 20px;
-	}
-}
-
-.arsenalLeft {
-	max-width: 260px;
-	position: relative;
-	z-index: 1;
-}
-
-.arsenalEye {
-	font-size: 11px;
-	font-weight: 500;
-	letter-spacing: 0.16em;
-	text-transform: uppercase;
-	color: #fe3b15;
-	margin-bottom: 6px;
-}
-
-.arsenalTitle {
-	font-family: 'Oswald', sans-serif;
-	font-size: 20px;
-	font-weight: 600;
-	color: #111;
-	letter-spacing: -0.02em;
-	margin-bottom: 6px;
-}
-
-.arsenalDesc {
-	font-size: 12px;
-	color: #aaa;
-	line-height: 1.6;
-}
-
-.arsenalMid {
-	display: flex;
-	gap: 6px;
-	flex-wrap: wrap;
-	flex: 1;
-	position: relative;
-	z-index: 1;
-}
-
-.aItem {
-	padding: 7px 13px;
-	border: 1px solid #e4e4e4;
-	border-radius: 8px;
-	font-size: 12px;
-	font-weight: 500;
-	color: #555;
-	background: #fff;
-	white-space: nowrap;
-	cursor: pointer;
-	transition:
-		border-color 0.15s,
-		color 0.15s;
-
-	&:hover {
-		border-color: #fe3b15;
-		color: #fe3b15;
-	}
-}
-
-.arsenalRight {
-	display: flex;
-	align-items: center;
-	gap: 20px;
-	position: relative;
-	z-index: 1;
-	flex-shrink: 0;
-}
-
-.arsenalBtn {
-	display: inline-flex;
-	align-items: center;
-	gap: 8px;
-	padding: 11px 22px;
-	font-family: 'Inter', sans-serif;
-	font-size: 13px;
-	font-weight: 500;
-	border-radius: 8px;
-	text-decoration: none;
-	white-space: nowrap;
-	color: #111;
-	position: relative;
-	overflow: hidden;
-	isolation: isolate;
-
-	// Glass base
-	background: rgba(255, 255, 255, 0.6);
-	backdrop-filter: blur(12px) saturate(1.6);
-	-webkit-backdrop-filter: blur(12px) saturate(1.6);
-	border: 1px solid rgba(255, 255, 255, 0.9);
-	box-shadow:
-		0 2px 8px rgba(0, 0, 0, 0.08),
-		inset 0 1px 0 rgba(255, 255, 255, 0.9);
-	transition:
-		box-shadow 0.25s ease,
-		border-color 0.25s ease,
-		color 0.25s ease;
-
-	// Top gloss streak
-	&::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: 15%;
-		width: 70%;
-		height: 1px;
-		background: linear-gradient(
-			90deg,
-			transparent,
-			rgba(255, 255, 255, 0.9),
-			transparent
-		);
-		pointer-events: none;
-	}
-
-	// Shimmer sweep on hover
-	&::after {
-		content: '';
-		position: absolute;
-		inset: 0;
-		background: linear-gradient(
-			105deg,
-			transparent 30%,
-			rgba(255, 255, 255, 0.45) 50%,
-			transparent 70%
-		);
-		transform: translateX(-100%);
-		transition: transform 0.5s ease;
-		z-index: -1;
-	}
-
-	&:hover {
-		color: #fe3b15;
-		border-color: rgba(254, 59, 21, 0.35);
-		box-shadow:
-			0 4px 16px rgba(254, 59, 21, 0.15),
-			inset 0 1px 0 rgba(255, 255, 255, 0.9);
-
-		&::after {
-			transform: translateX(100%);
-		}
-	}
-}
-
-// ─── IPSC Target ─────────────────────────────────────────────
-.target {
-	width: 52px;
-	height: 72px;
-	position: relative;
-	flex-shrink: 0;
-	filter: drop-shadow(0 4px 12px rgba(254, 59, 21, 0.2));
-	animation: breathe 3s ease-in-out infinite;
-}
-
-.targetHead {
-	position: absolute;
-	top: 0;
-	left: 50%;
-	transform: translateX(-50%);
-	width: 26px;
-	height: 26px;
-	background: #e8e8e8;
-	border-radius: 50%;
-	border: 1.5px solid #d0d0d0;
-}
-
-.targetBody {
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	transform: translateX(-50%);
-	width: 42px;
-	height: 54px;
-	background: #e8e8e8;
-	border-radius: 20px 20px 12px 12px;
-	border: 1.5px solid #d0d0d0;
-}
-
-.targetC {
-	position: absolute;
-	bottom: 14px;
-	left: 50%;
-	transform: translateX(-50%);
-	width: 34px;
-	height: 38px;
-	border: 1.5px dashed rgba(0, 0, 0, 0.1);
-	border-radius: 14px 14px 8px 8px;
-}
-
-.targetA {
-	position: absolute;
-	bottom: 18px;
-	left: 50%;
-	transform: translateX(-50%);
-	width: 22px;
-	height: 28px;
-	background: rgba(254, 59, 21, 0.15);
-	border-radius: 10px 10px 6px 6px;
-	border: 1.5px solid rgba(254, 59, 21, 0.35);
-}
-
-.targetDot {
-	position: absolute;
-	bottom: 30px;
-	left: 50%;
-	transform: translateX(-50%);
-	width: 5px;
-	height: 5px;
-	background: #fe3b15;
-	border-radius: 50%;
-	box-shadow: 0 0 6px 2px rgba(254, 59, 21, 0.5);
-}
-
-.hole {
-	position: absolute;
-	width: 4px;
-	height: 4px;
-	background: #111;
-	border-radius: 50%;
-	box-shadow: 0 0 0 1.5px rgba(0, 0, 0, 0.2);
-}
-
-.h1 {
-	bottom: 30px;
-	left: 18px;
-}
-.h2 {
-	bottom: 26px;
-	right: 16px;
-}
-.h3 {
-	bottom: 22px;
-	left: 22px;
 }
 
 // ─── Animations ──────────────────────────────────────────────
@@ -678,15 +387,5 @@
 	}
 	50% {
 		transform: translate(-20px, 30px);
-	}
-}
-
-@keyframes breathe {
-	0%,
-	100% {
-		transform: scale(1);
-	}
-	50% {
-		transform: scale(1.04);
 	}
 }

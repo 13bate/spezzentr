@@ -7,10 +7,9 @@ import { ProgrammsSection } from '../../features/ProgrammsSection'
 import { SafetyTrainingOverview } from '../../features/SafetyTrainingOverview'
 import { ShootingClubSection } from '../../features/ShootingClubSection'
 import { TrainigCenterSection } from '../../features/TrainigCenterSection/'
-import { Separator } from '../../shared/ui/separator/'
-import {DirectionsSection} from "../../features/DirectionsSection"
 import {ArsenalSection} from "../../features/ArsenalSection"
 import style from './Home.module.scss'
+import {SectionHeader} from "../../shared/ui/SectionHeader"
 
 interface Props {
 	className?: string
@@ -35,17 +34,19 @@ export const Home: React.FC<Props> = ({ className }) => {
 	return (
 		<div className={clsx(className, style.homeContainer)}>
 			<div className={style.contentContainer}>
-							<HeroSection />
-				<div className={style.shootingClub}>
-					<DirectionsSection/>
-					<div className={style.shootingClubRight}>
-						<ShootingClubSection />
-					</div>
-				</div>
-			  <ArsenalSection/>
+				<HeroSection />
+      <SectionHeader
+        title="Стрелковый клуб"
+        align="center"
+      />
+				<ShootingClubSection />
+				<ArsenalSection/>
 				<ProgrammsSection />
 				<GiftCardsOverview />
-				<Separator />
+				<SectionHeader
+        title="Учебный центр"
+        align="center"
+      />
 				<TrainigCenterSection />
 				<SafetyTrainingOverview />
 				<ContactsSection />
