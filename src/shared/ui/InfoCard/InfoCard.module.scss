@@ -3,22 +3,63 @@
 // ─── Card Container ──────────────────────────────────────────
 .card {
   width: 100%;
-  max-width: none;   // или удалить строку max-width
-  min-width: 0;  
-  background: #ffffff;
+  max-width: none;
+  min-width: 0;
+  
+  // 🔥 Улучшенный фон с градиентом и текстурой
+  background: linear-gradient(145deg, #ffffff, #f8f9fa);
   border-radius: 20px;
   padding: 28px 32px 24px;
-  border: 1px solid #eeeeee;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  
+  // 🎯 Более глубокая тень
+  box-shadow: 
+    0 4px 20px rgba(0, 0, 0, 0.06),
+    0 1px 3px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   display: flex;
   flex-direction: column;
   height: 100%;
+  position: relative;
+  overflow: hidden;
+
+  // 🎨 Декоративная полоса сверху
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, $color-brand-primary, #ff6b4a, $color-brand-primary);
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+  }
+
+  // 🌟 Текстура — лёгкий шум
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.3;
+    border-radius: 20px;
+  }
 
   &:hover {
-    transform: translateY(-4px);
-    border-color: #d0d0d0;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+    transform: translateY(-6px) scale(1.005);
+    border-color: rgba(139, 26, 26, 0.15);
+    box-shadow: 
+      0 16px 48px rgba(0, 0, 0, 0.08),
+      0 4px 12px rgba(139, 26, 26, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+    
+    &::before {
+      opacity: 1;
+    }
   }
 
   @media (max-width: 480px) {
@@ -30,6 +71,8 @@
 // ─── Header ──────────────────────────────────────────────────
 .header {
   margin-bottom: 16px;
+  position: relative;
+  z-index: 2;
 }
 
 .title {
@@ -49,7 +92,7 @@
 .titleUnderline {
   width: 32px;
   height: 2px;
-  background: #8B1A1A;
+  background: $color-brand-primary;
   margin-top: 8px;
   border-radius: 2px;
   transition: width 0.3s ease;
@@ -63,10 +106,12 @@
 .descriptionBlock {
   flex: 1;
   margin-bottom: 18px;
+  position: relative;
+  z-index: 2;
 }
 
 .description {
-  font-size: 17px;
+  font-size: 15px;
   line-height: 1.7;
   color: #3d3d3d;
   margin: 0;
@@ -84,9 +129,13 @@
   flex-direction: column;
   gap: 6px;
   padding: 14px 0;
-  border-top: 1px solid #f0f0f0;
-  border-bottom: 1px solid #f0f0f0;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   margin-bottom: 14px;
+  position: relative;
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.01);
+  border-radius: 8px;
 }
 
 .detailItem {
@@ -118,6 +167,8 @@
   display: flex;
   flex-direction: column;
   gap: 6px;
+  position: relative;
+  z-index: 2;
 }
 
 .featureItem {
@@ -127,6 +178,7 @@
   font-size: 13px;
   color: #3d3d3d;
   line-height: 1.4;
+  padding: 4px 0;
 
   @media (max-width: 480px) {
     font-size: 12px;
@@ -135,12 +187,19 @@
 
 .featureBullet {
   display: inline-block;
-  width: 5px;
-  height: 5px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
-  background: #8B1A1A;
+  background: $color-brand-primary;
   flex-shrink: 0;
-  opacity: 0.6;
+  opacity: 0.7;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px rgba(139, 26, 26, 0.15);
+
+  .card:hover & {
+    opacity: 1;
+    transform: scale(1.2);
+  }
 }
 
 // ─── Footer ──────────────────────────────────────────────────
@@ -151,7 +210,9 @@
   gap: 16px;
   margin-top: auto;
   padding-top: 14px;
-  border-top: 1px solid #f0f0f0;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  position: relative;
+  z-index: 2;
 
   @media (max-width: 480px) {
     flex-direction: column;
@@ -200,10 +261,12 @@
   align-items: center;
   gap: 8px;
   padding: 10px 20px;
-  background: rgba(235, 235, 235, 0.6);
+  
+  // 🌟 Улучшенная кнопка с градиентом
+  background: linear-gradient(135deg, rgba(139, 26, 26, 0.08), rgba(139, 26, 26, 0.02));
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(139, 26, 26, 0.12);
   border-radius: 30px;
   font-size: 12px;
   font-weight: 600;
@@ -217,10 +280,11 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 
   &:hover {
-    background: rgba(235, 235, 235, 0.85);
-    border-color: rgba(255, 255, 255, 0.5);
+    background: linear-gradient(135deg, rgba(139, 26, 26, 0.15), rgba(139, 26, 26, 0.05));
+    border-color: rgba(139, 26, 26, 0.25);
     transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 8px 24px rgba(139, 26, 26, 0.1);
+    color: $color-brand-primary;
   }
 
   &:active {
@@ -239,5 +303,59 @@
     justify-content: center;
     padding: 12px 20px;
     font-size: 13px;
+  }
+}
+
+// ─── Вариант с тёмным фоном ──────────────────────────────────
+.dark {
+  .card {
+    background: linear-gradient(145deg, #1a1b1d, #0e0f10);
+    border-color: rgba(255, 255, 255, 0.06);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+
+    &::after {
+      opacity: 0.1;
+    }
+
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.12);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  .title {
+    color: #fff;
+  }
+
+  .description {
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .featureItem {
+    color: rgba(255, 255, 255, 0.65);
+  }
+
+  .detailValue {
+    color: #fff;
+  }
+
+  .metaValue {
+    color: #fff;
+  }
+
+  .button {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.8);
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.12);
+      border-color: rgba(255, 255, 255, 0.2);
+      color: #fff;
+    }
+  }
+
+  .titleUnderline {
+    background: $color-brand-primary;
   }
 }
