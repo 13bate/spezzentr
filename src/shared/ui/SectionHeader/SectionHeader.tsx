@@ -3,6 +3,7 @@ import styles from './SectionHeader.module.scss';
 import type { SectionHeaderProps } from './types';
 
 export const SectionHeader: React.FC<SectionHeaderProps> = ({
+  id,
   title,
   eyebrow,
   description,
@@ -16,6 +17,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
 
   return (
     <header
+      id={id}
       className={`
         ${styles.header}
         ${styles[align]}

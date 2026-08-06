@@ -2,7 +2,6 @@ import clsx from 'clsx'
 import { useEffect } from 'react'
 import { ContactsSection } from '../../features/contacts'
 import { GiftCardsOverview } from '../../features/GiftCardsOverview'
-import { HeroSection } from '../../features/HeroSection'
 import { ProgrammsSection } from '../../features/ProgrammsSection'
 import { SafetyTrainingOverview } from '../../features/SafetyTrainingOverview'
 import { ShootingClubSection } from '../../features/ShootingClubSection'
@@ -34,8 +33,8 @@ export const Home: React.FC<Props> = ({ className }) => {
 	return (
 		<div className={clsx(className, style.homeContainer)}>
 			<div className={style.contentContainer}>
-				<HeroSection />
       <SectionHeader
+      	id="ShootingClubSection"
         title="Стрелковый клуб"
         align="center"
       />

@@ -1,6 +1,7 @@
 export type SectionHeaderAlign = 'left' | 'center';
 
 export interface SectionHeaderProps {
+  id?: string;
   /** Основной заголовок (может содержать <em> для выделения) */
   title: string;
   /** Короткий текст над заголовком (eyebrow) */
