@@ -2,74 +2,12 @@ import React from 'react'
 import { Link } from 'react-router'
 import style from './SafetyTrainigOverview.module.scss'
 import { safetyTrainingContent } from './model'
+import contentImg from '../../assets/spezzenter/man_with_pistol.avif'
 
 const CheckIcon = () => (
-	<svg width='8' height='6' viewBox='0 0 8 6' fill='none'>
-		<path
-			d='M1 3l2 2 4-4'
-			stroke='#fff'
-			strokeWidth='1.2'
-			strokeLinecap='round'
-			strokeLinejoin='round'
-		/>
+	<svg width="12" height="9" viewBox="0 0 12 9" fill="none">
+		<path d="M1 4.5l3.5 3.5 6.5-7" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
 	</svg>
-)
-
-const SceneVisual = () => (
-	<div className={style.visual}>
-		<div className={style.lane} />
-
-		{/* Safety badge */}
-		<div className={style.badge}>
-			<div className={style.shield}>
-				<div className={style.shieldCheck} />
-			</div>
-			<div className={style.badgeLabel}>Сертификат</div>
-		</div>
-
-		{/* Paper target on stand */}
-		<div className={style.targetWrap}>
-			<div className={style.paper}>
-				<div className={style.zoneD} />
-				<div className={style.zoneC} />
-				<div className={style.silHead} />
-				<div className={style.silBody}>
-					<div className={style.zoneA} />
-				</div>
-				<div className={`${style.hole} ${style.hA1}`} />
-				<div className={`${style.hole} ${style.hA2}`} />
-				<div className={`${style.hole} ${style.hA3}`} />
-				<div className={`${style.hole} ${style.hB1}`} />
-				<div className={`${style.hole} ${style.hB2}`} />
-				<div className={style.score}>A·ZONE</div>
-			</div>
-			<div className={style.crossbar} />
-			<div className={style.pole} />
-		</div>
-
-		{/* Scope reticle */}
-		<div className={style.scope}>
-			<div className={style.scopeInner} />
-			<div className={style.scopeDot} />
-		</div>
-
-		{/* Brass shells */}
-		<div className={style.shells}>
-			<div className={`${style.shell} ${style.sh1}`} />
-			<div className={`${style.shell} ${style.sh2}`} />
-			<div className={`${style.shell} ${style.sh3}`} />
-			<div className={`${style.shell} ${style.sh4}`} />
-		</div>
-
-		<div className={style.distLine} />
-		<div className={style.distLabel}>25 м</div>
-
-		<div className={style.markers}>
-			<span className={style.marker}>0</span>
-			<span className={style.marker}>10м</span>
-			<span className={style.marker}>25м</span>
-		</div>
-	</div>
 )
 
 interface Props {
@@ -89,8 +27,14 @@ export const SafetyTrainingOverview: React.FC<Props> = ({ className }) => {
 			<div className={style.inner}>
 				{/* Left: content */}
 				<div className={style.content}>
-					<div className={style.eyebrow}>Учебный центр</div>
-					<h2 className={style.title}>Обучение на гражданское оружие</h2>
+					<div className={style.eyebrow}>
+						<span className={style.eyebrowLine} />
+						Учебный центр
+					</div>
+
+					<h2 className={style.title}>
+						Обучение на <br /><span>гражданское оружие</span>
+					</h2>
 
 					<ul className={style.list}>
 						{safetyTrainingContent.highlights.map((item, i) => (
@@ -104,30 +48,39 @@ export const SafetyTrainingOverview: React.FC<Props> = ({ className }) => {
 					</ul>
 
 					<div className={style.meta}>
-						<div className={style.mi}>
-							<span className={style.ml}>Стоимость</span>
-							<span className={`${style.mv} ${style.mvRed}`}>
+						<div className={style.metaItem}>
+							<span className={style.metaLabel}>Стоимость</span>
+							<span className={`${style.metaValue} ${style.metaValueAccent}`}>
 								{safetyTrainingContent.price}
 							</span>
 						</div>
-						<div className={style.mi}>
-							<span className={style.ml}>Длительность</span>
-							<span className={style.mv}>{safetyTrainingContent.duration}</span>
+						<div className={style.metaDivider} />
+						<div className={style.metaItem}>
+							<span className={style.metaLabel}>Длительность</span>
+							<span className={style.metaValue}>{safetyTrainingContent.duration}</span>
 						</div>
-						<div className={style.mi}>
-							<span className={style.ml}>Формат</span>
-							<span className={style.mv}>{safetyTrainingContent.format}</span>
+						<div className={style.metaDivider} />
+						<div className={style.metaItem}>
+							<span className={style.metaLabel}>Формат</span>
+							<span className={style.metaValue}>{safetyTrainingContent.format}</span>
 						</div>
 					</div>
 
 					<Link to={safetyTrainingContent.buttonLink} className={style.btn}>
 						{safetyTrainingContent.buttonText}
-						<span className={style.arr}>→</span>
+						<span className={style.btnArrow}>→</span>
 					</Link>
 				</div>
 
-				{/* Right: visual scene */}
-				<SceneVisual />
+				{/* Right: image with effects */}
+				<div className={style.imageWrapper}>
+					<img src={contentImg} alt="Обучение на гражданское оружие" className={style.image} />
+					<div className={style.overlay} />
+					<div className={style.glow} />
+					<div className={style.grid} />
+
+
+				</div>
 			</div>
 		</section>
 	)
