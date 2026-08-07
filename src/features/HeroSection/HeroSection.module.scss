@@ -78,9 +78,8 @@ $font-gothic: 'century gothic', 'centurygothic', 'apple gothic', 'gill sans', sa
   align-items: center;
 
   @media (max-width: 1024px) {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    text-align: center;
+    display:flex;
+    justify-content: center;
   }
 }
 
@@ -91,6 +90,10 @@ $font-gothic: 'century gothic', 'centurygothic', 'apple gothic', 'gill sans', sa
   width: 600px;
   padding-top: 30px;
   gap: 20px;
+
+  @media (max-width: 1040px){
+    align-items: center;
+  }
 }
 
 .labelcontainer{
@@ -113,8 +116,8 @@ $font-gothic: 'century gothic', 'centurygothic', 'apple gothic', 'gill sans', sa
     display: block;
   }
 
-  @media (max-width: 768px) {
-    font-size: clamp(26px, 6vw, 38px);
+  @media (max-width: 600px) {
+    display: none;
   }
 }
 
@@ -311,10 +314,22 @@ $font-gothic: 'century gothic', 'centurygothic', 'apple gothic', 'gill sans', sa
 .imagewrapper {
   position: absolute;
   right: 0;
-  top: 50%;
+  top: 60%;
   overflow: hidden;
-width: 850px;
-      transform: translateY(-50%);
+  width: 850px;
+  transform: translateY(-50%);
+
+  @media (max-width: 1320px){
+    max-width: 560px;
+  }
+
+  @media (max-width: 1048px) {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 320px;
+  }
 }
 
 .heroimage {
@@ -324,13 +339,7 @@ width: 850px;
   object-fit: contain;
   filter: drop-shadow(0 8px 30px rgba(0, 0, 0, 0.3));
 
-  @media (max-width: 1024px) {
-    max-width: 420px;
-  }
 
-  @media (max-width: 768px) {
-    max-width: 320px;
-  }
 }
 
 // ─── адаптивность ──────────────────────────────────────

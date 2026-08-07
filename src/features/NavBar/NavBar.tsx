@@ -1,10 +1,11 @@
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import clsx from 'clsx'
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router'
 import { shootingRange, trainingCenter } from '../../shared/utils/model'
 import style from './NavBar.module.scss'
+import type { TListId } from './types'
 
 interface Props {
 	className?: string
@@ -12,8 +13,12 @@ interface Props {
 }
 
 export const NavBar: React.FC<Props> = ({ className, onItemClick }) => {
-	const [cardHoveredTc, setCardHoveredTc] = useState(false)
-	const [cardHoveredSr, setCardHoveredSr] = useState(false)
+
+	const [isTcOpen, setIsTcOpen] = useState(false);
+	const [isSrOpen, setIsSrOpen] = useState(false);
+
+
+
 	const location = useLocation()
 
 	const isTcActive = () =>
@@ -24,15 +29,47 @@ export const NavBar: React.FC<Props> = ({ className, onItemClick }) => {
 
 	const handleLinkClick = () => onItemClick?.()
 
+
+	const listStateToggle = (listId: TListId) => {
+		if (listId == "tc") {
+			setIsTcOpen(!isTcOpen)
+		}
+		else setIsSrOpen(!isSrOpen)
+	}
+
+	const tcRef = useRef<HTMLLIElement>(null);
+	const srRef = useRef<HTMLLIElement>(null);
+
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (tcRef.current && !tcRef.current.contains(event.target as Node)) {
+				setIsTcOpen(false)
+			}
+
+			if (srRef.current && !srRef.current.contains(event.target as Node)) {
+				setIsSrOpen(false);
+			}
+
+		}
+
+
+		document.addEventListener("pointerdown", handleClickOutside);
+
+		return () => {
+			window.removeEventListener("click", handleClickOutside)
+		}
+	}, [])
+
+
 	return (
 		<div className={clsx(className, style.NavBar)}>
 			<nav className={style.navContainer}>
 				<ul className={style.navList}>
 					{/* Dropdown: Учебный центр */}
 					<li
+						ref={tcRef}
 						className={clsx(style.listItem, isTcActive() && style.active)}
-						onMouseEnter={() => setCardHoveredTc(true)}
-						onMouseLeave={() => setCardHoveredTc(false)}
+						onClick={() => listStateToggle("tc")}
 					>
 						<span className={style.itemInner}>
 							Учебный центр
@@ -40,11 +77,11 @@ export const NavBar: React.FC<Props> = ({ className, onItemClick }) => {
 								icon={faAngleDown}
 								className={clsx(
 									style.arrowIcon,
-									cardHoveredTc && style.arrowOpen,
+									isTcOpen && style.arrowOpen,
 								)}
 							/>
 						</span>
-						{cardHoveredTc && (
+						{isTcOpen && (
 							<div className={style.DropDownListContainer}>
 								<div className={style.dropdownAccent} />
 								{trainingCenter.map(tcItem => (
@@ -68,9 +105,9 @@ export const NavBar: React.FC<Props> = ({ className, onItemClick }) => {
 
 					{/* Dropdown: Стрелковый клуб */}
 					<li
+						ref={srRef}
 						className={clsx(style.listItem, isSrActive() && style.active)}
-						onMouseEnter={() => setCardHoveredSr(true)}
-						onMouseLeave={() => setCardHoveredSr(false)}
+						onClick={() => listStateToggle("sr")}
 					>
 						<span className={style.itemInner}>
 							Стрелковый клуб
@@ -78,11 +115,11 @@ export const NavBar: React.FC<Props> = ({ className, onItemClick }) => {
 								icon={faAngleDown}
 								className={clsx(
 									style.arrowIcon,
-									cardHoveredSr && style.arrowOpen,
+									isSrOpen && style.arrowOpen,
 								)}
 							/>
 						</span>
-						{cardHoveredSr && (
+						{isSrOpen && (
 							<div className={style.DropDownListContainer}>
 								<div className={style.dropdownAccent} />
 								{shootingRange.map(srItem => (

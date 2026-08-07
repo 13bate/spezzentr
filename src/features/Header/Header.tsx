@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import clsx from 'clsx'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { useScrollToContacts } from '../../shared/utils/ScrollToContacts'
 import { NavBar } from '../NavBar'
 import style from './Header.module.scss'
 
@@ -44,46 +43,44 @@ export const Header: React.FC<Props> = ({ className }) => {
 				)}
 			>
 				<div className={style.headerContainer}>
-					<Link to='/' className={style.logo} onClick={closeMobileMenu}>
+					{/* Левая часть — логотип */}
+					<Link to="/" className={style.logo} onClick={closeMobileMenu}>
 						СПЕЦ<span>ЦЕНТР</span>
 					</Link>
 
+					{/* Центральная часть — десктоп навигация */}
 					<div className={style.desktopNav}>
 						<NavBar />
 					</div>
 
-					<div className={style.headerInfoSection}>
+					{/* Правая часть — контакты + бургер */}
+					<div className={style.rightGroup}>
 						<div className={style.headerInfoSectionPhone}>
-							<a href='tel:+74832320201'>(4832) 32-02-01</a>
+							<a href="tel:+74832320201">(4832) 32-02-01</a>
 						</div>
 
-						<div className={style.desktopContacts}>
-							<a
-								href='/#contacts'
-								className={style.contactButton}
-								onClick={() => useScrollToContacts}
-							>
-								<span>Контакты</span>
-								<FontAwesomeIcon icon={faChevronRight} />
-							</a>
-						</div>
+						<Link to="/contacts" className={style.contactButton}>
+							<span>Контакты</span>
+							<FontAwesomeIcon icon={faChevronRight} />
+						</Link>
+
+						<button
+							className={clsx(style.burgerButton, mobileMenuOpen && style.open)}
+							onClick={toggleMobileMenu}
+							aria-label="Меню"
+						>
+							<span></span>
+							<span></span>
+							<span></span>
+						</button>
 					</div>
-
-					<button
-						className={clsx(style.burgerButton, mobileMenuOpen && style.open)}
-						onClick={toggleMobileMenu}
-						aria-label='Меню'
-					>
-						<span></span>
-						<span></span>
-						<span></span>
-					</button>
 				</div>
 			</header>
 
+			{/* Мобильное меню */}
 			<div className={clsx(style.mobileMenu, mobileMenuOpen && style.open)}>
 				<div className={style.mobileMenuHeader}>
-					<Link to='/' className={style.mobileLogo} onClick={closeMobileMenu}>
+					<Link to="/" className={style.mobileLogo} onClick={closeMobileMenu}>
 						СПЕЦЦЕНТР
 					</Link>
 
@@ -98,7 +95,7 @@ export const Header: React.FC<Props> = ({ className }) => {
 
 				<div className={style.mobileContacts}>
 					<a
-						href='tel:+74832320201'
+						href="tel:+74832320201"
 						className={style.mobilePhone}
 						onClick={closeMobileMenu}
 					>
@@ -112,14 +109,14 @@ export const Header: React.FC<Props> = ({ className }) => {
 						</div>
 					</a>
 
-					<a
-						href='/#contacts'
+					<Link
+						to="/contacts"
 						className={style.mobileContactButton}
-						onClick={useScrollToContacts}
+						onClick={closeMobileMenu}
 					>
 						<span>Контакты</span>
 						<FontAwesomeIcon icon={faChevronRight} />
-					</a>
+					</Link>
 				</div>
 			</div>
 
