@@ -1,5 +1,7 @@
 @use '../../shared/styles/variables' as *;
+@use 'sass:color';
 
+// ─── Page ──────────────────────────────────────────────────────
 .securityTrainingPage {
   width: 100%;
   margin: 100px 0 80px;
@@ -57,28 +59,144 @@
   }
 }
 
-// ─── Hero ──────────────────────────────────────────────────────
-.hero {
-  margin-bottom: 40px;
+// ─── Hero Section ─────────────────────────────────────────────
+.heroSection {
+  position: relative;
+  padding: 40px 30px 48px;
+  margin-bottom: 20px;
+  border-radius: 32px;
+  overflow: hidden;
+  background: linear-gradient(
+    175deg,
+    rgba($color-bg-light-card, 0.5) 0%,
+    rgba($color-bg-light-card, 0.3) 60%,
+    rgba($color-bg-light-card, 0.4) 100%
+  );
+
+  @media (max-width: 768px) {
+    padding: 28px 16px 32px;
+    border-radius: 24px;
+  }
+}
+
+.heroContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+  }
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.heroGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba($color-text-dark-main, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba($color-text-dark-main, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+}
+
+.heroBlob1 {
+  position: absolute;
+  top: -200px;
+  right: -150px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba($color-brand-primary, 0.08), transparent 65%);
+  filter: blur(40px);
+  animation: floatBlob 12s ease-in-out infinite;
+}
+
+.heroBlob2 {
+  position: absolute;
+  bottom: -180px;
+  left: -120px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba($color-brand-primary, 0.06), transparent 65%);
+  filter: blur(40px);
+  animation: floatBlob2 14s ease-in-out infinite;
+}
+
+@keyframes floatBlob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-30px, 20px) scale(1.05); }
+}
+
+@keyframes floatBlob2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, -20px) scale(0.95); }
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+
+  @media (max-width: 768px) {
+    padding: 0;
+  }
+}
+
+.heroHeader {
+  margin-bottom: 24px;
+}
+
+.heroText {
+  max-width: 860px;
+
+  p {
+    font-size: 16px;
+    line-height: 1.7;
+    color: $color-text-dark-muted;
+    margin-bottom: 16px;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
+  }
+}
+
+.heroNote {
+  display: flex;
+  gap: 14px;
+  padding: 18px 22px;
+  background: rgba($color-brand-primary, 0.04);
+  border-radius: 16px;
+  border-left: 4px solid $color-brand-primary;
+  margin-top: 8px;
+
+  @media (max-width: 768px) {
+    padding: 14px 16px;
+    flex-wrap: wrap;
+  }
+
+  div {
+    font-size: 15px;
+    line-height: 1.6;
+    color: $color-text-dark-muted;
+
+    strong {
+      color: $color-text-dark-main;
+      font-weight: 700;
+    }
+  }
 }
 
 // ─── Full Description ─────────────────────────────────────────
-.fullDescription {
-  font-family: 'PT Sans', sans-serif;
-  font-size: 16px;
-  line-height: 1.7;
-  color: $color-text-dark-muted;
-  margin: 0 0 40px;
-  padding: 24px 28px;
-  background: rgba($color-text-pure-black, 0.03);
-  border-radius: 16px;
-  border-left: 4px solid $color-brand-primary;
 
-  @media (max-width: 768px) {
-    padding: 18px 20px;
-    font-size: 14px;
-  }
-}
 
 // ─── Prices ────────────────────────────────────────────────────
 .pricesSection {
@@ -162,34 +280,7 @@
   }
 }
 
-// ─── Enrollment Box ────────────────────────────────────────────
-.enrollmentBox {
-  background: linear-gradient(135deg, rgba($color-brand-primary, 0.04), rgba($color-brand-primary, 0.02));
-  border-radius: 16px;
-  padding: 28px 32px;
-  margin: 20px 0 40px;
-  border: 1px solid rgba($color-brand-primary, 0.06);
-
-  p {
-    font-family: 'PT Sans', sans-serif;
-    font-size: 16px;
-    color: $color-text-dark-muted;
-    line-height: 1.6;
-    margin-bottom: 12px;
-
-    &:last-child {
-      margin-bottom: 0;
-      font-weight: 600;
-      color: $color-text-dark-main;
-    }
-
-    @media (max-width: 768px) {
-      font-size: 14px;
-    }
-  }
-}
-
-// ─── Documents ──────────────────────────────────────────────────
+// ─── Documents (секция со списком документов) ────────────────
 .documentsSection {
   background: $color-bg-light-card;
   border-radius: 18px;
@@ -228,7 +319,7 @@
     font-size: 15px;
     color: $color-text-dark-muted;
     line-height: 1.5;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    border-bottom: 1px solid $color-border-dark-alpha;
 
     &:last-child {
       border-bottom: none;
@@ -255,7 +346,7 @@
   margin: 8px 0 0;
 }
 
-// ─── Accordion ──────────────────────────────────────────────────
+// ─── Accordion (старые стили) ──────────────────────────────────
 .accordionList {
   display: flex;
   flex-direction: column;
@@ -442,7 +533,7 @@
     font-size: 14px;
     color: $color-text-dark-muted;
     line-height: 1.6;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    border-bottom: 1px solid $color-border-dark-alpha;
 
     &:last-child {
       border-bottom: none;
@@ -528,7 +619,7 @@
 
   &:hover {
     border-color: rgba($color-brand-primary, 0.15);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 4px 16px rgba($color-text-dark-main, 0.04);
     transform: translateY(-2px);
   }
 }
@@ -580,7 +671,7 @@
   }
 
   .fullDescription {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba($color-text-pure-white, 0.04);
     color: $color-text-light-muted;
   }
 
@@ -597,8 +688,8 @@
   .limitationsBlock,
   .medicalOrderBlock,
   .faqItem {
-    background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(255, 255, 255, 0.06);
+    background: rgba($color-text-pure-white, 0.04);
+    border-color: rgba($color-text-pure-white, 0.06);
   }
 
   .priceHours,
@@ -607,18 +698,16 @@
   .accordionContent p,
   .accordionContent ul li,
   .limitationsList li,
-  .medicalOrderBlock p,
-  .enrollmentBox p {
+  .medicalOrderBlock p {
     color: $color-text-light-muted;
   }
 
-  .enrollmentBox {
-    background: rgba($color-brand-primary, 0.08);
-    border-color: rgba($color-brand-primary, 0.15);
+  .heroSection {
+    background: linear-gradient(175deg, $color-bg-dark-card-from 0%, $color-bg-dark-card-to 100%);
+  }
 
-    p:last-child {
-      color: $color-text-light-main;
-    }
+  .heroNote {
+    background: rgba($color-brand-primary, 0.06);
   }
 
   .accordionHeader {
@@ -626,7 +715,7 @@
   }
 
   .docNotice {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba($color-text-pure-white, 0.04);
 
     span:last-child {
       color: $color-text-light-muted;
@@ -639,5 +728,10 @@
 
   .limitationsText {
     color: $color-text-light-main;
+  }
+
+  .heroText p,
+  .heroNote div {
+    color: $color-text-light-muted;
   }
 }

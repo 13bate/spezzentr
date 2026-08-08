@@ -39,6 +39,16 @@
   box-shadow: 0 8px 32px $color-shadow-light;
 
   // ---- Sizes ----
+  &.xxs {
+    padding: 0.25rem 0.7rem;
+    font-size: 0.65rem;
+    min-height: 1.8rem;
+  }
+  &.xs {
+    padding: 0.35rem 0.9rem;
+    font-size: 0.7rem;
+    min-height: 2rem;
+  }
   &.sm {
     padding: 0.5rem 1.2rem;
     font-size: 0.8rem;

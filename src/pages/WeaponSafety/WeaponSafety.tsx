@@ -3,6 +3,8 @@ import style from './WeaponSafety.module.scss';
 import { safetyTrainingData } from './safetyTrainingData';
 import { PageTitle } from '../../shared/ui/PageTitle';
 import { ReachUs } from '../../shared/ui/ReachUs';
+import { TestBlock } from '../../shared/ui/TestBlock';
+import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle';
 
 // ─── Icons ──────────────────────────────────────────────────
 const ChevronDown = () => (
@@ -17,11 +19,7 @@ const ChevronUp = () => (
   </svg>
 );
 
-const ArrowRight = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-  </svg>
-);
+
 
 // ─── Accordion Component ────────────────────────────────────
 const AccordionItem: React.FC<{
@@ -61,40 +59,43 @@ export const WeaponSafety: React.FC = () => {
           <div className={style.heroBlob1} />
           <div className={style.heroBlob2} />
         </div>
-        <div className={style.heroContent}>
-          <div className={style.heroHeader}>
-            <span className={style.eyebrow}>
-              <span className={style.eyebrowLine} />
-              Обучение
-            </span>
-            <h1 className={style.heroTitle}>
-              Обучение безопасному
-              <br />
-              <span>обращению с оружием</span>
-            </h1>
-          </div>
+        <div className={style.heroContainer}>
+          <div className={style.heroContent}>
+            <div className={style.heroHeader}>
+              <span className={style.eyebrow}>
+                <span className={style.eyebrowLine} />
+                Обучение
+              </span>
+              <InfoPagesTitle title='Обучение безопасному
+обращению с оружием'/>
+            </div>
 
-          <div className={style.heroText}>
-            <p>
-              Граждане РФ, впервые приобретающие гражданское оружие, обязаны пройти подготовку
-              (обучение для получения лицензии на оружие) в целях изучения правил безопасного
-              обращения с оружием и приобретения навыков безопасного обращения с оружием.
-            </p>
-            <p>
-              Граждане РФ, являющиеся владельцами огнестрельного оружия ограниченного поражения,
-              газовых пистолетов или револьверов, гражданского огнестрельного гладкоствольного
-              длинноствольного оружия самообороны, обязаны не реже одного раза в пять лет проходить
-              проверку знания правил безопасного обращения с оружием и наличия навыков безопасного
-              обращения с оружием.
-            </p>
-            <div className={style.heroNote}>
-              <div>
-                <strong>По завершению обучения в ЧОУ ДПО «СПЕЦЦЕНТР»</strong> Вы получите
-                свидетельство и акт установленного образца о том, что пройдено обучение для
-                получения лицензии или продления разрешения на оружие.
+            <div className={style.heroText}>
+              <p>
+                Граждане РФ, впервые приобретающие гражданское оружие, обязаны пройти подготовку
+                (обучение для получения лицензии на оружие) в целях изучения правил безопасного
+                обращения с оружием и приобретения навыков безопасного обращения с оружием.
+              </p>
+              <p>
+                Граждане РФ, являющиеся владельцами огнестрельного оружия ограниченного поражения,
+                газовых пистолетов или револьверов, гражданского огнестрельного гладкоствольного
+                длинноствольного оружия самообороны, обязаны не реже одного раза в пять лет проходить
+                проверку знания правил безопасного обращения с оружием и наличия навыков безопасного
+                обращения с оружием.
+              </p>
+              <div className={style.heroNote}>
+                <div>
+                  <strong>По завершению обучения в ЧОУ ДПО «СПЕЦЦЕНТР»</strong> Вы получите
+                  свидетельство и акт установленного образца о том, что пройдено обучение для
+                  получения лицензии или продления разрешения на оружие.
+                </div>
               </div>
             </div>
           </div>
+
+          <TestBlock title='Пройти тестирование онлайн' testUrl='https://test.tgrant.ru/category/gro'
+            description='Проверьте свои знания правил безопасного обращения с оружием в формате онлайн-теста. 
+          Тест состоит из 10 вопросов. Для успешной сдачи допускается 1 ошибка.'/>
         </div>
       </section>
 
@@ -469,29 +470,6 @@ export const WeaponSafety: React.FC = () => {
         </div>
       </section>
 
-      {/* ─── Тестирование ОНЛАЙН ────────────────────────────── */}
-      <section className={style.section}>
-        <div className={style.sectionHead}>
-          <span className={style.eyebrow}>
-            <span className={style.eyebrowLine} />
-            Тестирование
-          </span>
-          <h2 className={style.sectionTitle}>Проверка знаний онлайн</h2>
-        </div>
-        <div className={style.onlineTest}>
-          <div className={style.onlineTestContent}>
-            <h3>Пройти тестирование онлайн</h3>
-            <p>
-              Проверьте свои знания правил безопасного обращения с оружием в формате онлайн-теста.
-              Тест состоит из 10 вопросов. Для успешной сдачи допускается 1 ошибка.
-            </p>
-            <a href="/online-test" className={style.onlineTestBtn}>
-              Начать тестирование
-              <ArrowRight />
-            </a>
-          </div>
-        </div>
-      </section>
 
       {/* ─── Результат ────────────────────────────────────────── */}
       <section className={style.resultBlock}>

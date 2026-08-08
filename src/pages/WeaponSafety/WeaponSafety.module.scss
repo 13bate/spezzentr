@@ -81,7 +81,7 @@
 // ─── Hero Section ─────────────────────────────────────────────
 .heroSection {
   position: relative;
-  padding: 40px 0 48px;
+  padding: 40px 30px 48px;
   margin-bottom: 20px;
   border-radius: 32px;
   overflow: hidden;
@@ -90,6 +90,16 @@
   @media (max-width: 768px) {
     padding: 28px 16px 32px;
     border-radius: 24px;
+  }
+}
+
+.heroContainer{
+  display:flex;
+  align-items:center;
+  gap: 16px;
+
+  @media(max-width: 640px){
+    flex-direction: column;
   }
 }
 
@@ -149,7 +159,6 @@
   z-index: 2;
   max-width: 1240px;
   margin: 0 auto;
-  padding: 0 20px;
 
   @media (max-width: 768px) {
     padding: 0;
@@ -171,7 +180,7 @@
 
   span {
     color: $color-brand-primary;
-    background: linear-gradient(135deg, $color-brand-primary, #ff6b4a);
+    background: linear-gradient(135deg, $color-brand-primary, $color-brand-primary-hover);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;

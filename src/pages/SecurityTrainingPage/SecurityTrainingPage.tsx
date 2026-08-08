@@ -6,6 +6,7 @@ import studyQuestionsPdf from "../../../public/Методичка-ОХРАННИ
 import periodicCheckQuestionsPdf from "../../../public/ПЕРИОДИЧЕСКАЯ-ПРОВЕРКА-2023-4-6-разряд.pdf";
 import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle';
 import { ReachUs } from '../../shared/ui/ReachUs';
+import { TestBlock } from '../../shared/ui/TestBlock/TestBlock.tsx';
 
 // ─── Icons ──────────────────────────────────────────────────
 const ChevronDown = () => (
@@ -48,16 +49,42 @@ export const SecurityTrainingPage: React.FC = () => {
       <PageTitle title="Обучение частных охранников | СПЕЦЦЕНТР" />
 
       <main className={style.securityTrainingPage}>
-        {/* Hero секция */}
-        <section className={style.hero}>
-          <InfoPagesTitle
-            title={securityTrainingData.hero.title}
-            description={securityTrainingData.hero.description}
-          />
+        {/* ─── HERO (как на странице оружия) ────────────────── */}
+        <section className={style.heroSection}>
+          <div className={style.heroBg}>
+            <div className={style.heroGrid} />
+            <div className={style.heroBlob1} />
+            <div className={style.heroBlob2} />
+          </div>
+          <div className={style.heroContainer}>
+            <div className={style.heroContent}>
+              <div className={style.heroHeader}>
+                <span className={style.eyebrow}>
+                  <span className={style.eyebrowLine} />
+                  Обучение
+                </span>
+                <InfoPagesTitle title={securityTrainingData.hero.title} />
+              </div>
+
+              <div className={style.heroText}>
+                <div className={style.heroNote}>
+                  <div>
+                    <strong>По завершению обучения в ЧОУ ДПО «СПЕЦЦЕНТР»</strong> Вы получите
+                    необходимые документы для подачи в Росгвардию.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <TestBlock
+              title="Пройти тестирование онлайн"
+              testUrl="https://test.tgrant.ru/category/gro"
+              description="Проверьте свои знания по программе подготовки охранников. Тест состоит из 10 вопросов, допускается 1 ошибка."
+            />
+          </div>
         </section>
 
-        {/* Полное описание */}
-        <p className={style.fullDescription}>{securityTrainingData.fullDescription}</p>
+
 
         {/* ─── ОБУЧЕНИЕ ЧАСТНЫХ ОХРАННИКОВ ───────────────────── */}
         <section className={style.pricesSection}>

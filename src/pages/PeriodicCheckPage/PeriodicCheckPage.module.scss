@@ -1,52 +1,172 @@
 @use '../../shared/styles/variables' as *;
+@use 'sass:color';
 
-// ==========================================================================
-// ─── MAIN PAGE SHELL CONTROLLER ───────────────────────────────────────────
-// ==========================================================================
+// ─── Page ──────────────────────────────────────────────────────
 .periodicCheckPage {
   width: 100%;
   margin: 100px 0 80px;
 
-  
   @media (max-width: 768px) {
     margin: 80px 0 40px;
   }
 }
 
-// ==========================================================================
-// ─── HERO INTRODUCTORY ELEMENT ────────────────────────────────────────────
-// ==========================================================================
-.hero {
-  margin-bottom: 60px;
-  
-  .description {
-    font-family: 'PT Sans', sans-serif;
-    font-size: 18px;
-    line-height: 1.6;
-    color: $color-text-dark-dimmed;
-    max-width: 800px;
-    
-    @media (max-width: 768px) {
-      font-size: 16px;
-    }
-  }
+// ─── Shared (общие элементы) ──────────────────────────────────
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: $color-brand-primary;
+  margin-bottom: 8px;
 }
 
-// ─── Global Reusable Section Titles ───────────────────────────────────────
+.eyebrowLine {
+  width: 28px;
+  height: 2px;
+  background: $color-brand-primary;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
 .sectionTitle {
   font-family: 'Oswald', sans-serif;
   font-size: 28px;
   font-weight: 600;
   color: $color-text-light-main;
   margin: 0 0 30px;
-  
+
   @media (max-width: 768px) {
     font-size: 24px;
   }
 }
 
+// ─── Hero Section (светлая, как на странице оружия) ───────────
+.heroSection {
+  position: relative;
+  padding: 40px 30px 48px;
+  margin-bottom: 20px;
+  border-radius: 32px;
+  overflow: hidden;
+  background: linear-gradient(
+    175deg,
+    rgba($color-bg-light-card, 0.5) 0%,
+    rgba($color-bg-light-card, 0.3) 60%,
+    rgba($color-bg-light-card, 0.4) 100%
+  );
+
+  @media (max-width: 768px) {
+    padding: 28px 16px 32px;
+    border-radius: 24px;
+  }
+}
+
+.heroContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  @media (max-width: 640px) {
+    flex-direction: column;
+  }
+}
+
+.heroBg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.heroGrid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba($color-text-dark-main, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba($color-text-dark-main, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
+}
+
+.heroBlob1 {
+  position: absolute;
+  top: -200px;
+  right: -150px;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba($color-brand-primary, 0.08), transparent 65%);
+  filter: blur(40px);
+  animation: floatBlob 12s ease-in-out infinite;
+}
+
+.heroBlob2 {
+  position: absolute;
+  bottom: -180px;
+  left: -120px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba($color-brand-primary, 0.06), transparent 65%);
+  filter: blur(40px);
+  animation: floatBlob2 14s ease-in-out infinite;
+}
+
+@keyframes floatBlob {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-30px, 20px) scale(1.05); }
+}
+
+@keyframes floatBlob2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(20px, -20px) scale(0.95); }
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+
+  @media (max-width: 768px) {
+    padding: 0;
+  }
+}
+
+.heroHeader {
+  margin-bottom: 24px;
+}
+
+.heroNote {
+  display: flex;
+  gap: 14px;
+  padding: 18px 22px;
+  background: rgba($color-brand-primary, 0.04);
+  border-radius: 16px;
+  border-left: 4px solid $color-brand-primary;
+  margin-top: 8px;
+
+  @media (max-width: 768px) {
+    padding: 14px 16px;
+    flex-wrap: wrap;
+  }
+
+  div {
+    font-size: 15px;
+    line-height: 1.6;
+    color: $color-text-dark-muted;
+
+    strong {
+      color: $color-text-dark-main;
+      font-weight: 700;
+    }
+  }
+}
+
 // ==========================================================================
-// ─── TIME INTERVAL GRID / SCHEDULE SECTIONS ───────────────────────────────
+// ─── SCHEDULE ─────────────────────────────────────────────────────────────
 // ==========================================================================
 .scheduleSection {
   margin: 50px 0;
@@ -71,24 +191,24 @@
   border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: 10px;
   transition: all 0.3s ease;
-  
+
   &:hover {
     transform: translateX(5px);
     background: $color-glass-primary-alpha;
     border-color: $color-border-primary-alpha;
     box-shadow: 0 5px 15px $color-shadow-primary-light;
   }
-  
+
   .dateIcon {
     font-size: 24px;
     color: $color-brand-primary;
   }
-  
+
   .dateText {
     font-family: 'PT Sans', sans-serif;
     font-size: 18px;
     color: $color-text-pure-white;
-    
+
     @media (max-width: 768px) {
       font-size: 16px;
     }
@@ -96,7 +216,7 @@
 }
 
 // ==========================================================================
-// ─── DOCUMENT STORAGE PLATFORM ────────────────────────────────────────────
+// ─── DOCUMENTS ────────────────────────────────────────────────────────────
 // ==========================================================================
 .documentsSection {
   margin: 50px 0;
@@ -111,7 +231,7 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  
+
   li {
     display: flex;
     align-items: center;
@@ -124,11 +244,11 @@
     font-family: 'PT Sans', sans-serif;
     font-size: 18px;
     color: $color-text-light-main;
-    
+
     @media (max-width: 768px) {
       font-size: 16px;
     }
-    
+
     .docIcon {
       font-size: 20px;
       color: $color-brand-primary;
@@ -137,11 +257,11 @@
 }
 
 // ==========================================================================
-// ─── PREMIUM RESOURCE DOWNLOAD PIPELINE (PDF) ─────────────────────────────
+// ─── PDF ──────────────────────────────────────────────────────────────────
 // ==========================================================================
 .pdfSection {
   margin: 50px 0;
-  
+
   .pdfDescription {
     font-family: 'PT Sans', sans-serif;
     font-size: 18px;
@@ -160,26 +280,26 @@
   border: 1px solid $color-border-primary-alpha;
   box-shadow: 0 20px 40px $color-shadow-black-hard;
   backdrop-filter: blur(10px);
-  
+
   @media (max-width: 768px) {
     flex-direction: column;
     text-align: center;
     padding: 25px;
   }
-  
+
   .pdfIcon {
     font-size: 64px;
     color: $color-brand-primary;
     filter: drop-shadow(0 4px 10px $color-shadow-primary-deep);
-    
+
     @media (max-width: 768px) {
       font-size: 48px;
     }
   }
-  
+
   .pdfContent {
     flex: 1;
-    
+
     h3 {
       font-family: 'Oswald', sans-serif;
       font-size: 24px;
@@ -187,7 +307,7 @@
       color: $color-text-pure-white;
       margin-bottom: 8px;
     }
-    
+
     p {
       font-family: 'PT Sans', sans-serif;
       font-size: 16px;
@@ -209,12 +329,12 @@
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
   box-shadow: 0 4px 15px $color-shadow-primary-deep;
-  
+
   &:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 25px $color-shadow-primary-pulse;
   }
-  
+
   @media (max-width: 768px) {
     width: 100%;
     padding: 12px 20px;
@@ -222,14 +342,14 @@
 }
 
 // ==========================================================================
-// ─── AMBIENT GLASS BENTO INFO CARDS ───────────────────────────────────────
+// ─── INFO CARDS ──────────────────────────────────────────────────────────
 // ==========================================================================
 .infoSection {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 25px;
   margin: 50px 0;
-  
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -243,7 +363,7 @@
   padding: 25px;
   box-shadow: 0 10px 30px $color-shadow-black-medium;
   backdrop-filter: blur(10px);
-  
+
   h3 {
     font-family: 'Oswald', sans-serif;
     font-size: 20px;
@@ -252,7 +372,7 @@
     margin-bottom: 15px;
     text-shadow: 0 0 15px $color-shadow-primary-light;
   }
-  
+
   p {
     font-family: 'PT Sans', sans-serif;
     font-size: 16px;
@@ -260,5 +380,3 @@
     line-height: 1.6;
   }
 }
-
-
