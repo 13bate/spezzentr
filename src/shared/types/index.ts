@@ -1,1 +1,6 @@
 export type { INavBarItems } from "./navigation.ts"
+export type { DocumentMeta } from "./document.ts"
+export type { NewsItem } from "./news.types.ts"
+export type { ScheduleItem } from "./schedule.types.ts"
+export type { Schedule } from "./schedule.types.ts"
+export type { ScheduleId } from "./schedule.types.ts"

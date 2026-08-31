@@ -1,0 +1,123 @@
+@use '../../../shared/styles/variables' as *;
+
+.page {
+  padding: 32px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: $color-text-dark-main;
+  margin: 0;
+}
+
+.subtitle {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 15px;
+  color: $color-text-dark-muted;
+  margin: 4px 0 0;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.addBtn {
+  padding: 12px 24px;
+  background: $color-brand-primary;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-family: 'Oswald', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+
+  &:hover {
+    background: $color-brand-primary-hover;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba($color-brand-primary, 0.25);
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  background: $color-bg-light-card;
+  border-radius: 12px;
+  border: 1px solid $color-border-dark-alpha;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: rgba($color-brand-primary, 0.1);
+  }
+}
+
+.itemContent {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.itemDate {
+  font-size: 13px;
+  color: $color-text-dark-muted;
+  font-weight: 500;
+}
+
+.itemTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: $color-text-dark-main;
+}
+
+.published {
+  font-size: 11px;
+  padding: 2px 12px;
+  border-radius: 20px;
+  background: rgba(46, 198, 83, 0.1);
+  color: #2ec653;
+  font-weight: 500;
+}
+
+.draft {
+  font-size: 11px;
+  padding: 2px 12px;
+  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.04);
+  color: $color-text-dark-muted;
+  font-weight: 500;
+}
+
+.editBtn {
+  padding: 12px 24px;
+}
+
+
+
+
+.loading,
+.empty {
+  padding: 40px;
+  text-align: center;
+  color: $color-text-dark-muted;
+}

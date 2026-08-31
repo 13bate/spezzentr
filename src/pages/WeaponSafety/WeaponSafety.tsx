@@ -5,6 +5,7 @@ import { PageTitle } from '../../shared/ui/PageTitle';
 import { ReachUs } from '../../shared/ui/ReachUs';
 import { TestBlock } from '../../shared/ui/TestBlock';
 import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle';
+import { ScheduleViewer } from '../../features/ScheduleViewer';
 
 // ─── Icons ──────────────────────────────────────────────────
 const ChevronDown = () => (
@@ -452,23 +453,9 @@ export const WeaponSafety: React.FC = () => {
       </section>
 
       {/* ─── Расписание ──────────────────────────────────────── */}
-      <section className={style.section}>
-        <div className={style.sectionHead}>
-          <span className={style.eyebrow}>
-            <span className={style.eyebrowLine} />
-            Расписание
-          </span>
-          <h2 className={style.sectionTitle}>{safetyTrainingData.schedule.title}</h2>
-        </div>
-        <div className={style.scheduleList}>
-          {safetyTrainingData.schedule.dates.map((date, idx) => (
-            <div key={idx} className={style.scheduleItem}>
-              <span className={style.scheduleDot} />
-              {date}
-            </div>
-          ))}
-        </div>
-      </section>
+
+
+      <ScheduleViewer scheduleId="exam-schedule" />
 
 
       {/* ─── Результат ────────────────────────────────────────── */}

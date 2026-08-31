@@ -1,0 +1,92 @@
+.schedule {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  margin: 20px 0;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.title {
+  font-family: 'Oswald', 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin: 0 0 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #c81524;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 16px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.date {
+  font-weight: 600;
+  color: #1a1a1a;
+  min-width: 140px;
+}
+
+.time {
+  color: #c81524;
+  font-weight: 500;
+}
+
+.note {
+  color: #6a6f78;
+  font-size: 13px;
+}
+
+.updated {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+  font-size: 12px;
+  color: #a0a5ad;
+}
+
+// ─── Состояния ──────────────────────────────────────────────
+.loading {
+  padding: 20px;
+  text-align: center;
+  color: #6a6f78;
+  font-size: 14px;
+}
+
+.error {
+  padding: 20px;
+  text-align: center;
+  color: #c81524;
+  font-size: 14px;
+  background: rgba(200, 21, 36, 0.04);
+  border-radius: 12px;
+}
+
+.empty {
+  padding: 20px;
+  text-align: center;
+  color: #a0a5ad;
+  font-size: 14px;
+}
+
+.hidden {
+  padding: 20px;
+  text-align: center;
+  color: #a0a5ad;
+  font-size: 14px;
+}

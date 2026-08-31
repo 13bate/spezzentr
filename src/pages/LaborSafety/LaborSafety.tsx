@@ -1,6 +1,7 @@
-import React from 'react'
-import { Link } from 'react-router'
-import style from './LaborSafety.module.scss'
+import React from 'react';
+import { Link } from 'react-router';
+import style from './LaborSafety.module.scss';
+import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle';
 
 // ─── Data ────────────────────────────────────────────────────
 
@@ -23,14 +24,14 @@ const programs = [
     hours: '16 часов',
     freq: 'Раз в 3 года',
   },
-]
+];
 
 const steps = [
   { num: '01', title: 'Подача заявки', desc: 'Оставьте заявку — мы подберём нужную программу' },
   { num: '02', title: 'Обучение', desc: 'Очно или онлайн, 40 академических часов' },
   { num: '03', title: 'Проверка знаний', desc: 'Тестирование в соответствии с Постановлением № 2464' },
   { num: '04', title: 'Документы', desc: 'Протокол и удостоверение. Данные вносятся в ЕИСОТ' },
-]
+];
 
 const faq = [
   {
@@ -49,7 +50,7 @@ const faq = [
     q: 'Что будет, если не пройти обучение?',
     a: 'Работник отстраняется от работы. Штраф для организации — до 130 000 ₽ по ст. 5.27.1 КоАП РФ.',
   },
-]
+];
 
 // ─── Component ───────────────────────────────────────────────
 
@@ -58,37 +59,47 @@ export const LaborSafety: React.FC = () => {
     <main className={style.page}>
 
       {/* ── Hero ── */}
-      <section className={style.hero}>
-        <div className={style.heroInner}>
-          <span className={style.eyebrow}>Охрана труда</span>
-          <h1 className={style.heroTitle}>
-            Обучение и проверка<br />
-            знаний требований<br />
-            <em>охраны труда</em>
-          </h1>
-          <p className={style.heroSub}>
-            По Постановлению Правительства РФ № 2464.<br />
-            Очно и онлайн. Удостоверение + внесение в ЕИСОТ.
-          </p>
-          <div className={style.heroActions}>
-            <Link to="/contacts" className={style.btnPrimary}>Записаться на курс</Link>
-            <a href="#programs" className={style.btnGhost}>Программы обучения</a>
-          </div>
+      <section className={style.heroSection}>
+        <div className={style.heroBg}>
+          <div className={style.heroGrid} />
+          <div className={style.heroBlob1} />
+          <div className={style.heroBlob2} />
         </div>
-        <div className={style.heroStats}>
-          <div className={style.stat}>
-            <span className={style.statNum}>40</span>
-            <span className={style.statLabel}>академических часов</span>
+
+        <div className={style.heroContainer}>
+          <div className={style.heroContent}>
+            <div className={style.heroHeader}>
+              <span className={style.eyebrow}>
+                <span className={style.eyebrowLine} />
+                Охрана труда
+              </span>
+              <InfoPagesTitle
+                title="Обучение и проверка знаний требований охраны труда"
+                description="По Постановлению Правительства РФ № 2464. Очно и онлайн. Удостоверение + внесение в ЕИСОТ."
+              />
+            </div>
+
+            <div className={style.heroActions}>
+              <Link to="/contacts" className={style.btnPrimary}>Записаться на курс</Link>
+              <a href="#programs" className={style.btnGhost}>Программы обучения</a>
+            </div>
           </div>
-          <div className={style.statDivider} />
-          <div className={style.stat}>
-            <span className={style.statNum}>3 500 ₽</span>
-            <span className={style.statLabel}>стоимость курса</span>
-          </div>
-          <div className={style.statDivider} />
-          <div className={style.stat}>
-            <span className={style.statNum}>3 года</span>
-            <span className={style.statLabel}>срок действия</span>
+
+          <div className={style.heroStats}>
+            <div className={style.stat}>
+              <span className={style.statNum}>40</span>
+              <span className={style.statLabel}>академических часов</span>
+            </div>
+            <div className={style.statDivider} />
+            <div className={style.stat}>
+              <span className={style.statNum}>3 500 ₽</span>
+              <span className={style.statLabel}>стоимость курса</span>
+            </div>
+            <div className={style.statDivider} />
+            <div className={style.stat}>
+              <span className={style.statNum}>3 года</span>
+              <span className={style.statLabel}>срок действия</span>
+            </div>
           </div>
         </div>
       </section>
@@ -110,7 +121,10 @@ export const LaborSafety: React.FC = () => {
       {/* ── Programs ── */}
       <section className={style.section} id="programs">
         <div className={style.sectionHead}>
-          <span className={style.eyebrow}>Программы</span>
+          <span className={style.eyebrow}>
+            <span className={style.eyebrowLine} />
+            Программы
+          </span>
           <h2 className={style.sectionTitle}>Три программы обучения</h2>
         </div>
         <div className={style.programGrid}>
@@ -136,7 +150,10 @@ export const LaborSafety: React.FC = () => {
       {/* ── What's included ── */}
       <section className={style.section}>
         <div className={style.sectionHead}>
-          <span className={style.eyebrow}>Состав курса</span>
+          <span className={style.eyebrow}>
+            <span className={style.eyebrowLine} />
+            Состав курса
+          </span>
           <h2 className={style.sectionTitle}>Что входит в обучение</h2>
         </div>
         <div className={style.includeGrid}>
@@ -160,7 +177,10 @@ export const LaborSafety: React.FC = () => {
       {/* ── Steps ── */}
       <section className={style.stepsSection}>
         <div className={style.sectionHead}>
-          <span className={style.eyebrow}>Процесс</span>
+          <span className={style.eyebrow}>
+            <span className={style.eyebrowLine} />
+            Процесс
+          </span>
           <h2 className={style.sectionTitle}>Как проходит обучение</h2>
         </div>
         <div className={style.steps}>
@@ -178,7 +198,10 @@ export const LaborSafety: React.FC = () => {
       {/* ── FAQ ── */}
       <section className={style.section}>
         <div className={style.sectionHead}>
-          <span className={style.eyebrow}>Вопросы</span>
+          <span className={style.eyebrow}>
+            <span className={style.eyebrowLine} />
+            Вопросы
+          </span>
           <h2 className={style.sectionTitle}>Частые вопросы</h2>
         </div>
         <div className={style.faqList}>
@@ -201,5 +224,5 @@ export const LaborSafety: React.FC = () => {
       </section>
 
     </main>
-  )
-}
+  );
+};

@@ -1,6 +1,7 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import styles from './InfoCard.module.scss';
+import clsx from 'clsx';
 
 export interface InfoCardProps {
   /** Заголовок карточки */
@@ -17,10 +18,14 @@ export interface InfoCardProps {
   duration?: string;
   /** Текст кнопки */
   buttonText?: string;
-  /** Ссылка для кнопки */
-  buttonLink?: string;
   /** Дополнительный класс */
   className?: string;
+  /** Вариант темы: 'light' | 'dark' */
+  variant?: 'light' | 'dark';
+  /** Ссылка для кнопки */
+  buttonLink?: string;
+  /** Обработчик клика по кнопке */
+  onButtonClick?: () => void;
 }
 
 export const InfoCard: React.FC<InfoCardProps> = ({
@@ -30,24 +35,26 @@ export const InfoCard: React.FC<InfoCardProps> = ({
   features = [],
   price,
   duration,
-  buttonText = 'Подробнее',
-  buttonLink = '/',
+  buttonText = 'Записаться',
   className = '',
+  variant = 'light',
+  buttonLink = '/contacts',
+  onButtonClick,
 }) => {
   return (
-    <article className={`${styles.card} ${className}`}>
+    <article className={clsx(styles.card, styles[variant], className)}>
       {/* Заголовок */}
       <header className={styles.header}>
         <h3 className={styles.title}>{title}</h3>
         <div className={styles.titleUnderline} />
       </header>
 
-      {/* Основное описание — большой блок */}
+      {/* Основное описание */}
       <div className={styles.descriptionBlock}>
         <p className={styles.description}>{description}</p>
       </div>
 
-      {/* Детали (характеристики) — как в примере: Last Service, Oil, Chain, Brakes */}
+      {/* Детали (характеристики) */}
       {details.length > 0 && (
         <div className={styles.details}>
           {details.map((item, index) => (
@@ -88,7 +95,11 @@ export const InfoCard: React.FC<InfoCardProps> = ({
           )}
         </div>
 
-        <Link to={buttonLink} className={styles.button}>
+        <Link
+          to={buttonLink}
+          className={styles.button}
+          onClick={onButtonClick}
+        >
           {buttonText}
           <svg
             width="16"

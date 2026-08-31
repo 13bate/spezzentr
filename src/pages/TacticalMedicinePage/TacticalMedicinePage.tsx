@@ -4,6 +4,7 @@ import { tacticalMedicineData } from './tacticalMedicineData';
 import { PageTitle } from '../../shared/ui/PageTitle';
 import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle';
 import { ReachUs } from '../../shared/ui/ReachUs';
+import { ScheduleViewer } from '../../features/ScheduleViewer';
 
 export const TacticalMedicinePage: React.FC = () => {
   return (
@@ -82,12 +83,7 @@ export const TacticalMedicinePage: React.FC = () => {
 
       {/* Расписание */}
       <section className={style.section}>
-        <h2 className={style.sectionTitle}>{tacticalMedicineData.schedule.title}</h2>
-        <div className={style.scheduleList}>
-          {tacticalMedicineData.schedule.dates.map((date, idx) => (
-            <div key={idx} className={style.scheduleItem}>{date}</div>
-          ))}
-        </div>
+        <ScheduleViewer scheduleId="tactical-medicine-schedule" />
       </section>
 
       {/* Информация об экзамене */}

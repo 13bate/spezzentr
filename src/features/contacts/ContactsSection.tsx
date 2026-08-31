@@ -1,24 +1,17 @@
-
-import style from './ContactsSection.module.scss';
+import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faLocationDot, faPhone } from '@fortawesome/free-solid-svg-icons';
-import clsx from 'clsx';
+import { faLocationDot, faPhone, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { ContactsMap } from './ContactsMap';
+import style from './ContactsSection.module.scss';
 
-interface Props {
-  className?: string;
-}
-
-export const ContactsSection: React.FC<Props> = ({ className }) => {
-
-
-
+export const ContactsSection: React.FC = () => {
   return (
-    <section className={clsx(style.contactsSection, className)} id='contacts'>
+    <section className={style.contactsSection}>
       <div className={style.container}>
         <h2 className={style.title}>Контакты</h2>
 
         <div className={style.grid}>
-          {/* Информация слева */}
+          {/* Левая часть — информация */}
           <div className={style.info}>
             <div className={style.infoCard}>
               <h3>ЧОУ ДПО "СПЕЦЦЕНТР"</h3>
@@ -35,8 +28,7 @@ export const ContactsSection: React.FC<Props> = ({ className }) => {
                 <FontAwesomeIcon icon={faPhone} className={style.icon} />
                 <div>
                   <span className={style.label}>Телефон:</span>
-                  <a href="tel:+74951234567">
-                    (4832) 32-02-01</a>
+                  <a href="tel:+74832320201">(4832) 32-02-01</a>
                 </div>
               </div>
 
@@ -50,8 +42,10 @@ export const ContactsSection: React.FC<Props> = ({ className }) => {
             </div>
           </div>
 
-          {/* Карта справа */}
-          <iframe src="https://yandex.ru/map-widget/v1/?z=12&ol=biz&oid=1874339268" width="560" height="400"></iframe>
+          {/* Правая часть — карта */}
+          <div className={style.mapWrapper}>
+            <ContactsMap />
+          </div>
         </div>
       </div>
     </section>

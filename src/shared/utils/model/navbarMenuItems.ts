@@ -16,7 +16,7 @@ export const trainingCenter = [
 
 export const shootingRange = [
 	{ label: 'Арсенал', href: '/shooting/intro' },
-	{ label: 'Практическая стрельба', href: '/shooting/practice' },
+	{ label: 'Практическая стрельба', href: '/shooting/practical' },
 	{ label: 'Подарочные сертификаты', href: '/shooting/gift-cards' },
 	{ label: 'Стрелковые программы и курсы', href: '/shooting/programs' },
 	{ label: 'Соревнования и матчи', href: '/shooting/competitions' },

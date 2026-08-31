@@ -1,2 +1,2 @@
-export { PracticalShootingPage } from './PracticalShootingPage';
-export { practicalShootingData } from './practicalShootingData';
+export { PracticalShootingPage } from './PracticalShootingPage.tsx';
+export { practicalShootingData } from './practicalShootingData.ts';

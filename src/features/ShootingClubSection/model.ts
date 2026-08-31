@@ -2,14 +2,14 @@ export const shootingRangeCardsData = [
 	{
 		id: 't1',
 		label: 'ФПСР/Практическая стрельба',
-		href: '/shooting/practice',
+		href: '/shooting/practical',
 		description:
 			'Еженедельные групповые и индивидуальные тренировки проводятся по утверждённому расписанию',
 	},
 	{
 		id: 't2',
 		label: 'Стрелковые программы',
-		href: '/shooting/courses',
+		href: '/shooting/programs',
 		description:
 			'Авторские курсы от инструкторов: от базовой техники до тактической стрельбы.',
 	},
@@ -23,7 +23,7 @@ export const shootingRangeCardsData = [
 	{
 		id: 't4',
 		label: 'Клубные матчи',
-		href: '/shooting/gift-cards',
+		href: '/shooting/competitions',
 		description:
 			'Подарите незабываемые эмоции — стрельба из разных видов оружия с инструктором.',
 	},

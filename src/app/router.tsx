@@ -31,6 +31,13 @@ import { PscManagersTraining } from '../pages/PscManagersTraining'
 import { CompetitionPage } from '../pages/Competitions'
 import { ShootingProgramsPage } from '../pages/ShootingProgramsPage'
 import { TacticalMedicinePage } from '../pages/TacticalMedicinePage'
+import { ContactsPage } from '../pages/ContactsPage'
+import { AdminLayout } from '../features/Admin/AdminLayout'
+import { PrivateRoute } from '../features/auth/ui/PrivateRoute'
+import { AdminSchedulesPage } from '../pages/admin/ui/AdminSchedulesPage'
+import { AdminNewsPage } from '../pages/admin/ui/AdminNewsPage'
+import { AdminDocumentsPage } from '../pages/admin/ui/AdminDocumentsPage'
+import { AdminLogin } from '../features/auth'
 
 // Массив для навигации (можно использовать где угодно)
 export const eduOrgInfo = [
@@ -70,20 +77,43 @@ export const router = createBrowserRouter([
 			},
 		],
 	},
+
+	{
+		path: '/admin/login',
+		element: <AdminLogin />,
+	},
+	{
+		path: '/admin',
+		element: (
+			<PrivateRoute>
+				<AdminLayout />
+			</PrivateRoute>
+		),
+		children: [
+			{ path: 'schedules', element: <AdminSchedulesPage /> },
+			{ path: 'news', element: <AdminNewsPage /> },
+			{ path: 'documents', element: <AdminDocumentsPage /> },
+		],
+	},
+
 	{
 		path: "/",
 		element: <InfoPagesLayout />,
 		children: [
 			{
-				path: "training/safety",
+				path: "/contacts",
+				element: <ContactsPage />
+			},
+			{
+				path: "/training/safety",
 				element: <WeaponSafety />
 			},
 			{
-				path: "training/security-guards",
+				path: "/training/security-guards",
 				element: <SecurityTrainingPage />
 			},
 			{
-				path: "training/periodic-checks",
+				path: "/training/periodic-checks",
 				element: <PeriodicCheckPage />
 			},
 			{
@@ -111,7 +141,7 @@ export const router = createBrowserRouter([
 				element: <IntroShootingPage />
 			},
 			{
-				path: "shooting/practice",
+				path: "shooting/practical",
 				element: <PracticalShootingPage />
 			},
 			{

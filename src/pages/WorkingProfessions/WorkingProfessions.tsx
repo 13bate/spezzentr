@@ -1,22 +1,24 @@
-import React from 'react'
-import { Link } from 'react-router'
-import style from './WorkingProfessions.module.scss'
+import React from 'react';
+import { Link } from 'react-router';
+import style from './WorkingProfessions.module.scss';
+import { PageTitle } from '../../shared/ui/PageTitle';
+import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle';
 
-// ─── Data ─────────────────────────────────────────────────────
+// ─── Data ────────────────────────────────────────────────────
 
 const programs = [
   {
     id: '01',
     title: 'Профессиональная подготовка',
-    who: 'Лица, ранее не имевшие профессии рабочего. Без требований к уровню образования.',
-    hours: 'от 80 до 320 ч',
+    who: 'Лица без опыта работы, желающие получить профессию и первый разряд.',
+    hours: 'от 250 до 2 000 ч',
     doc: 'Свидетельство о профессии',
-    note: 'Первичное получение профессии',
+    note: 'Новая профессия с нуля',
   },
   {
     id: '02',
     title: 'Переподготовка',
-    who: 'Работники, меняющие специальность. Выпускники СПО и вузов.',
+    who: 'Специалисты, желающие освоить новую профессию или сменить сферу деятельности.',
     hours: 'от 250 до 2 000 ч',
     doc: 'Свидетельство о профессии',
     note: 'Новая профессия с нуля',
@@ -29,14 +31,14 @@ const programs = [
     doc: 'Удостоверение о повышении квалификации',
     note: 'Повышение разряда',
   },
-]
+];
 
 const professions = [
   'Сварщик', 'Электромонтажник', 'Машинист крана',
   'Водитель погрузчика', 'Стропальщик', 'Кровельщик',
   'Бетонщик', 'Газорезчик', 'Арматурщик',
   'Изолировщик', 'Землекоп', 'Дробильщик',
-]
+];
 
 const steps = [
   { num: '01', title: 'Заявка', desc: 'Оставьте заявку — подберём программу под ваш опыт и цели' },
@@ -44,14 +46,14 @@ const steps = [
   { num: '03', title: 'Обучение', desc: 'Очно, заочно или дистанционно — в удобном формате' },
   { num: '04', title: 'Аттестация', desc: 'Квалификационный экзамен с присвоением разряда' },
   { num: '05', title: 'Документы', desc: 'Свидетельство установленного образца. Внесение в ФИС ФРДО' },
-]
+];
 
 const docs = [
   ['Паспорт', 'Копия паспорта гражданина РФ'],
   ['Образование', 'Копия диплома или аттестата об образовании'],
   ['Трудовая книжка', 'Копия — при наличии стажа по специальности'],
   ['Смена ФИО', 'Документ о смене фамилии, если данные не совпадают'],
-]
+];
 
 const faq = [
   {
@@ -78,52 +80,71 @@ const faq = [
     q: 'Засчитывается ли разряд при трудоустройстве?',
     a: 'Да. Свидетельство подтверждает квалификационный разряд, класс или категорию по профессии и принимается всеми работодателями на территории РФ.',
   },
-]
+];
 
 // ─── Component ────────────────────────────────────────────────
 
 export const WorkingProfessions: React.FC = () => {
   return (
     <main className={style.page}>
+      <PageTitle
+        title="Обучение рабочим специальностям | СПЕЦЦЕНТР"
+        description="Профессиональная подготовка, переподготовка и повышение квалификации рабочих. Свидетельство установленного образца. Внесение в ФИС ФРДО."
+        keywords="обучение рабочим специальностям, профессиональная подготовка, переподготовка, повышение квалификации"
+      />
 
       {/* ── Hero ── */}
       <section className={style.hero}>
-        <div className={style.heroInner}>
-          <span className={style.eyebrow}>Рабочие специальности</span>
-          <h1 className={style.heroTitle}>
-            Обучение рабочим<br />
-            <em>специальностям</em>
-          </h1>
-          <p className={style.heroSub}>
-            Профессиональная подготовка, переподготовка и повышение квалификации.<br />
-            Свидетельство установленного образца. Внесение в ФИС ФРДО.
-          </p>
-          <div className={style.heroActions}>
-            <Link to="/contacts" className={style.btnPrimary}>Записаться на курс</Link>
-            <a href="#programs" className={style.btnGhost}>Программы обучения</a>
-          </div>
+        <div className={style.heroBg}>
+          <div className={style.heroGlow1} />
+          <div className={style.heroGlow2} />
+          <div className={style.heroGrid} />
         </div>
-        <div className={style.heroStats}>
-          <div className={style.stat}>
-            <span className={style.statNum}>250+</span>
-            <span className={style.statLabel}>специальностей</span>
+
+        <div className={style.heroContent}>
+          <div className={style.heroText}>
+            <span className={style.eyebrow}>
+              <span className={style.eyebrowLine} />
+              Рабочие специальности
+            </span>
+            <InfoPagesTitle
+              title="Обучение рабочим
+специальностям"
+              description="Профессиональная подготовка, переподготовка и повышение квалификации. Свидетельство установленного образца. Внесение в ФИС ФРДО."
+            />
+            <div className={style.heroActions}>
+              <Link to="/contacts" className={style.btnPrimary}>
+                Записаться на курс
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
+              <a href="#programs" className={style.btnGhost}>Программы обучения</a>
+            </div>
           </div>
-          <div className={style.statDivider} />
-          <div className={style.stat}>
-            <span className={style.statNum}>от 5 000 ₽</span>
-            <span className={style.statLabel}>стоимость курса</span>
-          </div>
-          <div className={style.statDivider} />
-          <div className={style.stat}>
-            <span className={style.statNum}>Бессрочно</span>
-            <span className={style.statLabel}>действие документа</span>
+
+          <div className={style.heroStats}>
+            <div className={style.stat}>
+              <span className={style.statNum}>250+</span>
+              <span className={style.statLabel}>специальностей</span>
+            </div>
+            <div className={style.statDivider} />
+            <div className={style.stat}>
+              <span className={style.statNum}>от 5 000 ₽</span>
+              <span className={style.statLabel}>стоимость курса</span>
+            </div>
+            <div className={style.statDivider} />
+            <div className={style.stat}>
+              <span className={style.statNum}>Бессрочно</span>
+              <span className={style.statLabel}>действие документа</span>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ── Basis ── */}
       <section className={style.basis}>
-        <div className={style.basisCard}>
+        <div className={style.basisInner}>
           <span className={style.basisLabel}>Нормативная база</span>
           <p className={style.basisText}>
             Профессиональное обучение регулируется
@@ -139,15 +160,21 @@ export const WorkingProfessions: React.FC = () => {
       {/* ── Programs ── */}
       <section className={style.section} id="programs">
         <div className={style.sectionHead}>
-          <span className={style.eyebrow}>Программы</span>
+          <span className={style.eyebrow}>
+            <span className={style.eyebrowLine} />
+            Программы
+          </span>
           <h2 className={style.sectionTitle}>Три вида обучения</h2>
+          <p className={style.sectionDesc}>Выберите подходящий формат профессионального обучения</p>
         </div>
         <div className={style.programGrid}>
-          {programs.map((p, i) => (
-            <div key={p.id} className={style.programCard} style={{ '--index': i } as React.CSSProperties}>
-              <div className={style.programId}>{p.id}</div>
-              <div className={style.programNote}>{p.note}</div>
-              <div className={style.programTitle}>{p.title}</div>
+          {programs.map((p) => (
+            <div key={p.id} className={style.programCard}>
+              <div className={style.programTop}>
+                <span className={style.programId}>{p.id}</span>
+                <span className={style.programNote}>{p.note}</span>
+              </div>
+              <h3 className={style.programTitle}>{p.title}</h3>
               <p className={style.programWho}>{p.who}</p>
               <div className={style.programMeta}>
                 <div className={style.pmItem}>
@@ -167,7 +194,10 @@ export const WorkingProfessions: React.FC = () => {
       {/* ── Professions list ── */}
       <section className={style.section}>
         <div className={style.sectionHead}>
-          <span className={style.eyebrow}>Специальности</span>
+          <span className={style.eyebrow}>
+            <span className={style.eyebrowLine} />
+            Специальности
+          </span>
           <h2 className={style.sectionTitle}>Популярные профессии</h2>
         </div>
         <div className={style.profGrid}>
@@ -186,14 +216,17 @@ export const WorkingProfessions: React.FC = () => {
       {/* ── Steps ── */}
       <section className={style.stepsSection}>
         <div className={style.sectionHead}>
-          <span className={style.eyebrow}>Процесс</span>
+          <span className={style.eyebrow}>
+            <span className={style.eyebrowLine} />
+            Процесс
+          </span>
           <h2 className={style.sectionTitle}>Как проходит обучение</h2>
         </div>
         <div className={style.steps}>
           {steps.map((s, i) => (
             <div key={i} className={style.step}>
               <div className={style.stepNum}>{s.num}</div>
-              <div className={style.stepTitle}>{s.title}</div>
+              <h4 className={style.stepTitle}>{s.title}</h4>
               <p className={style.stepDesc}>{s.desc}</p>
               {i < steps.length - 1 && <div className={style.stepArrow}>→</div>}
             </div>
@@ -204,14 +237,17 @@ export const WorkingProfessions: React.FC = () => {
       {/* ── Documents required ── */}
       <section className={style.section}>
         <div className={style.sectionHead}>
-          <span className={style.eyebrow}>Документы</span>
+          <span className={style.eyebrow}>
+            <span className={style.eyebrowLine} />
+            Документы
+          </span>
           <h2 className={style.sectionTitle}>Что нужно для поступления</h2>
         </div>
         <div className={style.docGrid}>
           {docs.map(([title, desc], i) => (
             <div key={i} className={style.docItem}>
-              <div className={style.docNum}>{String(i + 1).padStart(2, '0')}</div>
-              <div className={style.docTitle}>{title}</div>
+              <span className={style.docNum}>{String(i + 1).padStart(2, '0')}</span>
+              <h4 className={style.docTitle}>{title}</h4>
               <p className={style.docDesc}>{desc}</p>
             </div>
           ))}
@@ -221,7 +257,10 @@ export const WorkingProfessions: React.FC = () => {
       {/* ── FAQ ── */}
       <section className={style.section}>
         <div className={style.sectionHead}>
-          <span className={style.eyebrow}>Вопросы</span>
+          <span className={style.eyebrow}>
+            <span className={style.eyebrowLine} />
+            Вопросы
+          </span>
           <h2 className={style.sectionTitle}>Частые вопросы</h2>
         </div>
         <div className={style.faqList}>
@@ -237,12 +276,16 @@ export const WorkingProfessions: React.FC = () => {
       {/* ── CTA ── */}
       <section className={style.cta}>
         <div className={style.ctaInner}>
-          <h2 className={style.ctaTitle}>Готовы начать?</h2>
+          <h2 className={style.ctaTitle}>Готовы начать обучение?</h2>
           <p className={style.ctaSub}>Оставьте заявку — подберём программу и ответим в течение рабочего дня</p>
-          <Link to="/contacts" className={style.btnPrimary}>Записаться</Link>
+          <Link to="/contacts" className={style.btnPrimary}>
+            Записаться
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </Link>
         </div>
       </section>
-
     </main>
-  )
-}
+  );
+};

@@ -3,142 +3,80 @@
 .mapContainer {
   width: 100%;
   height: 100%;
-  min-height: 450px;
-  border-radius: 20px;
+  min-height: 300px;
+  border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   position: relative;
-  
-  @media (max-width: 992px) {
-    min-height: 350px;
-  }
-  
-  @media (max-width: 768px) {
-    min-height: 300px;
-  }
-}
-
-.mapIframe {
-  width: 100%;
-  height: 100%;
-  border: none;
-  border-radius: 20px;
-  
-  // Отключаем скролл колесиком через CSS
-  pointer-events: auto;
-  
-  // Для WebKit браузеров
-  &::-webkit-scrollbar {
-    display: none;
-  }
-  
-  // Для Firefox
-  scrollbar-width: none;
-}
-
-// Плашка с адресом
-.mapAddress {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba($color-text-pure-white, 0.95);
-  padding: 12px 25px;
-  border-radius: 50px;
-  font-family: 'PT Sans', sans-serif;
-  font-size: 15px;
-  color: $color-text-dark-main;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-  backdrop-filter: blur(5px);
-  z-index: 10;
-  white-space: nowrap;
-  max-width: 90%;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  border: 1px solid rgba($color-brand-primary, 0.2);
+  background: #f5f5f5;
+  cursor: pointer;
   transition: all 0.3s ease;
-  pointer-events: none; // Чтобы не мешал взаимодействию с картой
-  
-  span {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    
-    &::before {
-      content: '📍';
-      font-size: 16px;
+
+  @media (max-width: 992px) {
+    min-height: 280px;
+  }
+
+  @media (max-width: 768px) {
+    min-height: 160px;
+    border-radius: 12px;
+    cursor: default;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  @media (max-width: 480px) {
+    min-height: 140px;
+    border-radius: 10px;
+  }
+
+  // ─── Десктоп: интерактивный режим ──────────────────
+  &.interactive {
+    cursor: default;
+
+    .mapOverlay {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .mapIframe {
+      pointer-events: auto;
     }
   }
-  
-  @media (max-width: 768px) {
-    bottom: 15px;
-    padding: 8px 15px;
-    font-size: 13px;
-    
-    span::before {
-      font-size: 14px;
+
+  // ─── Мобильный режим ──────────────────────────────────
+  &.mobile {
+    cursor: default;
+
+    .mapIframe {
+      pointer-events: none !important;
+    }
+
+    .mapAddress {
+      display: none;
+    }
+
+    .mapOverlay {
+      display: none;
     }
   }
-}
 
-// Оверлей с названием
-.mapOverlay {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: $color-brand-primary;
-  color: $color-text-pure-white;
-  padding: 8px 16px;
-  border-radius: 30px;
-  font-family: 'Oswald', sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  z-index: 10;
-  opacity: 0.9;
-  box-shadow: 0 2px 10px rgba($color-brand-primary, 0.3);
-  pointer-events: none;
-  
-  @media (max-width: 768px) {
-    top: 10px;
-    right: 10px;
-    padding: 4px 12px;
-    font-size: 10px;
+  .mapIframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    pointer-events: none;
+    border-radius: 16px;
+    position: relative;
+    z-index: 1;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    scrollbar-width: none;
+    -ms-overflow-style: none;
   }
 }
 
-// Подсказка для пользователя
-.mapHint {
-  position: absolute;
-  bottom: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(0, 0, 0, 0.6);
-  color: $color-text-pure-white;
-  padding: 6px 15px;
-  border-radius: 30px;
-  font-family: 'PT Sans', sans-serif;
-  font-size: 12px;
-  backdrop-filter: blur(4px);
-  z-index: 10;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  white-space: nowrap;
-  
-  @media (max-width: 768px) {
-    bottom: 70px;
-    font-size: 11px;
-    padding: 4px 12px;
-  }
-}
-
-.mapContainer:hover .mapHint {
-  opacity: 1;
-}
-
-// Лоадер
+// ─── Загрузчик ──────────────────────────────────────────
 .mapLoader {
   position: absolute;
   top: 0;
@@ -151,18 +89,38 @@
   background: #f5f5f5;
   color: $color-text-dark-muted;
   font-family: 'PT Sans', sans-serif;
-  z-index: 5;
-  border-radius: 20px;
-  
+  font-size: 14px;
+  z-index: 2;
+  border-radius: 16px;
+  gap: 10px;
+
   &::after {
     content: '';
-    width: 30px;
-    height: 30px;
-    margin-left: 10px;
+    width: 20px;
+    height: 20px;
     border: 2px solid $color-brand-primary;
     border-top-color: transparent;
     border-radius: 50%;
     animation: spin 1s linear infinite;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+    gap: 8px;
+
+    &::after {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    font-size: 11px;
+
+    &::after {
+      width: 14px;
+      height: 14px;
+    }
   }
 }
 
@@ -172,23 +130,156 @@
   }
 }
 
-// Адаптивность
-@media (max-width: 480px) {
-  .mapAddress {
-    width: 90%;
-    white-space: normal;
-    text-align: center;
-    line-height: 1.4;
-    
-    span {
-      justify-content: center;
+// ─── Десктоп: Оверлей "Нажмите для управления" ────────
+.mapOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+
+  span {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    padding: 8px 20px;
+    border-radius: 40px;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 12px;
+    color: $color-text-pure-white;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+    user-select: none;
+    pointer-events: none;
+    white-space: nowrap;
+
+    @media (max-width: 992px) {
+      font-size: 11px;
+      padding: 6px 16px;
+    }
+
+    @media (max-width: 768px) {
+      display: none;
     }
   }
 }
 
-// Дополнительные стили для iframe
+// ─── Мобильный оверлей ──────────────────────────────────
+.mobileOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(22, 28, 35, 0.25);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  gap: 4px;
+  pointer-events: none;
+
+  span {
+    font-size: 28px;
+    opacity: 0.6;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+
+    @media (max-width: 480px) {
+      font-size: 22px;
+    }
+  }
+
+  p {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    padding: 0 16px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+
+    @media (max-width: 480px) {
+      font-size: 10px;
+    }
+  }
+}
+
+// ─── Адрес поверх карты ──────────────────────────────────
+.mapAddress {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 6px 18px;
+  border-radius: 40px;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 12px;
+  color: $color-text-dark-main;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  z-index: 4;
+  border: 1px solid rgba($color-brand-primary, 0.12);
+  pointer-events: none;
+  white-space: nowrap;
+  max-width: 90%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    &::before {
+      content: '📍';
+      font-size: 14px;
+    }
+  }
+
+  @media (max-width: 992px) {
+    bottom: 14px;
+    padding: 5px 16px;
+    font-size: 11px;
+
+    span::before {
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+// ─── Стили для iframe ──────────────────────────────────
 :global {
-  body > iframe[src*="yandex"] {
-    pointer-events: auto;
+  .mapContainer iframe {
+    pointer-events: none !important;
+  }
+
+  .mapContainer.interactive iframe {
+    pointer-events: auto !important;
+  }
+
+  .mapContainer.mobile iframe {
+    pointer-events: none !important;
   }
 }

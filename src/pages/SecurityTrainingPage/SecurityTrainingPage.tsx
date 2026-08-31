@@ -8,6 +8,7 @@ import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle';
 import { ReachUs } from '../../shared/ui/ReachUs';
 import { TestBlock } from '../../shared/ui/TestBlock/TestBlock.tsx';
 
+
 // ─── Icons ──────────────────────────────────────────────────
 const ChevronDown = () => (
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -323,6 +324,7 @@ export const SecurityTrainingPage: React.FC = () => {
             </ul>
           </div>
         </section>
+
 
         {/* ─── ПОРЯДОК МЕДИЦИНСКОГО ОСВИДЕТЕЛЬСТВОВАНИЯ ──────── */}
         <section className={style.section}>

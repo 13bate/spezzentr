@@ -1,0 +1,48 @@
+@use '../../../styles/variables.scss' as *;
+
+.newsList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.newsItem {
+  padding: 20px 24px;
+  background: $color-bg-light-card;
+  border-radius: 16px;
+  border: 1px solid $color-border-dark-alpha;
+  transition: all 0.25s ease;
+
+  &:hover {
+    border-color: rgba($color-brand-primary, 0.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  }
+}
+
+.newsDate {
+  font-size: 12px;
+  color: $color-text-dark-muted;
+  margin-bottom: 6px;
+}
+
+.newsTitle {
+  font-family: 'Oswald', 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: $color-text-dark-main;
+  margin: 0 0 8px;
+}
+
+.newsContent {
+  font-size: 15px;
+  line-height: 1.6;
+  color: $color-text-dark-muted;
+  margin: 0;
+}
+
+.loading,
+.empty {
+  padding: 20px;
+  text-align: center;
+  color: $color-text-dark-muted;
+}

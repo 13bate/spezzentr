@@ -3,18 +3,19 @@ import style from './ShootingClubSection.module.scss';
 import { DarkCardList } from '../../shared/ui/DarkCardList';
 import { shootingRangeCardsData } from './model';
 
-// Определяем допустимые цвета
-const cardColors = ['red', 'blue', 'green', 'gold'] as const;
-type CardColor = typeof cardColors[number]; // 'red' | 'blue' | 'green' | 'gold'
+type CardColor = 'red' | 'blue' | 'green' | 'gold';
 
 export const ShootingClubSection: React.FC = () => {
+  const cardColors: CardColor[] = ['red', 'blue', 'green', 'gold'];
+  
   const cardsWithColor = shootingRangeCardsData.map((card, index) => ({
     ...card,
     color: cardColors[index % cardColors.length] as CardColor,
   }));
 
   return (
-    <section className={style.section}>
+    // Добавляем id для якорной ссылки
+    <section id="shooting-club" className={style.section}>
       {/* Background effects */}
       <div className={style.bg}>
         <div className={style.bgGrid} />
@@ -23,7 +24,6 @@ export const ShootingClubSection: React.FC = () => {
         <div className={style.blob3} />
       </div>
 
-      {/* Cards */}
       <DarkCardList items={cardsWithColor} linkText="Подробнее" />
     </section>
   );

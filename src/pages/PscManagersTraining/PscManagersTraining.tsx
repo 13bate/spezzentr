@@ -2,6 +2,7 @@ import React from 'react'
 import clsx from 'clsx'
 import style from './PscManagersTraining.module.scss'
 import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle'
+import { Link } from 'react-router'
 
 interface Props {
   className?: string
@@ -127,9 +128,9 @@ export const PscManagersTraining: React.FC<Props> = ({ className }) => {
             кандидатам и порядку оформления документов.
           </p>
 
-          <a href="#contacts" className={style.btn}>
+          <Link to="/contacts" className={style.btn}>
             Оставить заявку
-          </a>
+          </Link>
         </div>
       </section>
     </div>

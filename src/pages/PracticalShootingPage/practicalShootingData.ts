@@ -89,7 +89,6 @@ export const practicalShootingCards = [
 		num: '01',
 		tag: 'БИКОСО',
 		title: 'Курс БИКОСО',
-		route: '/training/safety',
 		description:
 			'Обязательное условие вступления в Федерацию практической стрельбы России (ФПСР). Направлен на изучение правил обращения с короткоствольным и длинноствольным оружием.',
 		details:
@@ -110,7 +109,6 @@ export const practicalShootingCards = [
 		num: '02',
 		tag: 'Персонально',
 		title: 'Индивидуальные тренировки',
-		route: '/shooting/individual',
 		description:
 			'Персональные тренировки под руководством инструкторов клуба. Тренировочный процесс формируется исходя из уровня подготовки и целей спортсмена.',
 		details: null,
@@ -130,7 +128,6 @@ export const practicalShootingCards = [
 		num: '03',
 		tag: 'Группа',
 		title: 'Групповые тренировки',
-		route: '/shooting/group',
 		description:
 			'Командный формат тренировок для развития навыков взаимодействия и соревновательного духа в кругу единомышленников.',
 		details: null,
@@ -150,7 +147,6 @@ export const practicalShootingCards = [
 		num: '04',
 		tag: 'Матчи',
 		title: 'Мини-матчи',
-		route: '/shooting/matches',
 		description:
 			'Регулярные соревнования внутри клуба. Почувствуйте спортивный азарт практической стрельбы без выезда за пределы региона.',
 		details:

@@ -4,19 +4,13 @@ import periodicCheckQuestions from "../../../public/ПЕРИОДИЧЕСКАЯ-�
 import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle';
 import { ReachUs } from '../../shared/ui/ReachUs';
 import { TestBlock } from '../../shared/ui/TestBlock';
+import { ScheduleViewer } from '../../features/ScheduleViewer';
 
 export const PeriodicCheckPage: React.FC = () => {
   const pageData = {
     title: 'Периодическая проверка частных охранников',
     description: 'На базе учебного центра ЧОУ ДПО «СПЕЦЦЕНТР» проводится периодическая проверка частных охранников 4-6 разрядов.',
-    schedule: [
-      '12 января 2026 г. — регистрация в 9-00',
-      '19 января 2026 г. регистрация в 9-00',
-      '26 января 2026 г. регистрация в 9-00',
-      '2 февраля 2026 г. регистрация в 9-00',
-      '9 февраля 2026 г. регистрация в 9-00',
-      '16 февраля 2026 г. регистрация в 9-00'
-    ],
+
     documents: [
       'паспорт',
       'удостоверение частного охранника',
@@ -66,18 +60,8 @@ export const PeriodicCheckPage: React.FC = () => {
           </div>
         </section>
 
-        {/* Остальные секции без изменений */}
-        <section className={style.scheduleSection}>
-          <h2 className={style.sectionTitle}>График проведения</h2>
-          <div className={style.scheduleList}>
-            {pageData.schedule.map((date, index) => (
-              <div key={index} className={style.scheduleItem}>
-                <span className={style.dateIcon}>📅</span>
-                <span className={style.dateText}>{date}</span>
-              </div>
-            ))}
-          </div>
-        </section>
+
+        <ScheduleViewer scheduleId="periodic-check-schedule" />
 
         <section className={style.documentsSection}>
           <h2 className={style.sectionTitle}>При себе необходимо иметь оригиналы документов:</h2>

@@ -10,7 +10,8 @@ interface Props {
 
 export const TrainigCenterSection: React.FC<Props> = ({ className }) => {
 	return (
-		<section className={clsx(className, style.section)}>
+		// Добавляем id для якорной ссылки
+		<section id="training-center" className={clsx(className, style.section)}>
 			<div className={style.sectionHeader}>
 				<div className={style.headerLeft}>
 					<span className={style.eyebrow}>Наши программы</span>
@@ -40,5 +41,5 @@ export const TrainigCenterSection: React.FC<Props> = ({ className }) => {
 				))}
 			</div>
 		</section>
-	)
-}
+	);
+};
