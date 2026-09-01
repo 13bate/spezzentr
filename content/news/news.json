@@ -1,0 +1,51 @@
+[
+  {
+    "title": "ру",
+    "date": "2026-09-01",
+    "content": "ваываыаы",
+    "isPublished": "true",
+    "id": "1788267252171",
+    "image": "/content/news/images/1788267252150.png",
+    "imageFile": "1788267252150.png",
+    "createdAt": "2026-09-01T12:54:12.171Z",
+    "updatedAt": "2026-09-01T12:54:12.172Z"
+  },
+  {
+    "title": "new post",
+    "date": "2026-09-01",
+    "content": "hi there",
+    "isPublished": "true",
+    "id": "1788267035020",
+    "image": "/content/news/images/1788267035009.png",
+    "imageFile": "1788267035009.png",
+    "createdAt": "2026-09-01T12:50:35.020Z",
+    "updatedAt": "2026-09-01T12:50:35.020Z"
+  },
+  {
+    "title": "m n",
+    "date": "2026-09-01",
+    "content": "mn",
+    "isPublished": true,
+    "id": "1788263369293",
+    "createdAt": "2026-09-01T11:49:29.293Z",
+    "updatedAt": "2026-09-01T11:49:36.152Z"
+  },
+  {
+    "title": "sdfsdfs",
+    "date": "2026-08-31",
+    "content": "sdfsdfsdf",
+    "isPublished": false,
+    "id": "1788174104304",
+    "createdAt": "2026-08-31T11:01:44.304Z",
+    "updatedAt": "2026-09-01T11:49:42.218Z"
+  },
+  {
+    "title": "ksjgfjsks",
+    "date": "2026-08-31",
+    "content": "fsdfsdfsf",
+    "isPublished": true,
+    "id": "1788174098913",
+    "createdAt": "2026-08-31T11:01:38.913Z",
+    "updatedAt": "2026-08-31T11:01:38.913Z"
+  }
+]
