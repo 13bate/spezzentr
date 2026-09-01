@@ -1,4 +1,6 @@
-import React, { useState, useRef, useEffect } from 'react';
+/* eslint-disable react-hooks/set-state-in-effect */
+
+import React, { useState, useRef, useEffect, useLayoutEffect } from 'react';
 import style from './ContactsMap.module.scss';
 
 interface Props {
@@ -22,7 +24,6 @@ export const ContactsMap: React.FC<Props> = ({
   const [isMobile, setIsMobile] = useState(false);
   const mapRef = useRef<HTMLDivElement>(null);
 
-  // Определяем мобильное устройство
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -32,17 +33,16 @@ export const ContactsMap: React.FC<Props> = ({
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // На мобильных — карта всегда НЕ интерактивна
-  useEffect(() => {
+  // ✅ Используем useLayoutEffect для синхронного обновления
+  useLayoutEffect(() => {
     if (isMobile) {
       setIsInteractive(false);
     }
   }, [isMobile]);
 
-  // Закрываем интерактивность при клике вне карты (только на десктопе)
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent | TouchEvent) => {
-      if (isMobile) return; // На мобильных не обрабатываем
+      if (isMobile) return;
       if (mapRef.current && !mapRef.current.contains(event.target as Node)) {
         setIsInteractive(false);
       }
@@ -57,33 +57,10 @@ export const ContactsMap: React.FC<Props> = ({
     };
   }, [isMobile]);
 
-  // Блокируем скролл на мобильных
-  useEffect(() => {
-    const iframe = mapRef.current?.querySelector('iframe');
-    if (iframe) {
-      const preventScroll = (e: WheelEvent | TouchEvent) => {
-        if (isMobile) {
-          e.preventDefault();
-          e.stopPropagation();
-          return false;
-        }
-        if (isInteractive) {
-          e.stopPropagation();
-        }
-      };
-      iframe.addEventListener('wheel', preventScroll as EventListener, { passive: false });
-      iframe.addEventListener('touchmove', preventScroll as EventListener, { passive: false });
-      return () => {
-        iframe.removeEventListener('wheel', preventScroll as EventListener);
-        iframe.removeEventListener('touchmove', preventScroll as EventListener);
-      };
-    }
-  }, [isInteractive, isMobile]);
-
   const mapUrl = `https://yandex.ru/map-widget/v1/?ll=${coordinates.lng}%2C${coordinates.lat}&z=${zoom}&pt=${coordinates.lng}%2C${coordinates.lat},pmwtm1&l=map`;
 
   const handleMapClick = () => {
-    if (isMobile) return; // На мобильных не активируем
+    if (isMobile) return;
     setIsInteractive(true);
   };
 
@@ -113,14 +90,12 @@ export const ContactsMap: React.FC<Props> = ({
         <span>{address}</span>
       </div>
 
-      {/* Оверлей только на десктопе */}
       {!isInteractive && !isMobile && (
         <div className={style.mapOverlay}>
           <span>Нажмите, чтобы управлять картой</span>
         </div>
       )}
 
-      {/* На мобильных — статичный оверлей с иконкой */}
       {isMobile && (
         <div className={style.mobileOverlay}>
           <span>📍</span>

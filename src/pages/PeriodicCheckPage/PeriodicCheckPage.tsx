@@ -1,10 +1,11 @@
 import { PageTitle } from '../../shared/ui/PageTitle';
+import { BackButton } from '../../shared/ui/BackButton';
 import style from './PeriodicCheckPage.module.scss';
-import periodicCheckQuestions from "../../../public/ПЕРИОДИЧЕСКАЯ-ПРОВЕРКА-2023-4-6-разряд.pdf"
 import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle';
 import { ReachUs } from '../../shared/ui/ReachUs';
 import { TestBlock } from '../../shared/ui/TestBlock';
 import { ScheduleViewer } from '../../features/ScheduleViewer';
+import { DocumentViewer } from '../../features/DocumentViewer/ui/DocumentViewer';
 
 export const PeriodicCheckPage: React.FC = () => {
   const pageData = {
@@ -16,12 +17,6 @@ export const PeriodicCheckPage: React.FC = () => {
       'удостоверение частного охранника',
       'личная карточка'
     ],
-    pdfInfo: {
-      title: 'Вопросы теоретической части',
-      description: 'Скачайте список вопросов для подготовки к теоретической части экзамена',
-      fileName: 'periodic-check-questions.pdf',
-      displayName: 'Вопросы для периодической проверки.pdf'
-    }
   };
 
   return (
@@ -29,7 +24,11 @@ export const PeriodicCheckPage: React.FC = () => {
       <PageTitle title="Периодическая проверка | СПЕЦЦЕНТР" />
 
       <main className={style.periodicCheckPage}>
-        {/* ─── HERO (светлый, с анимацией и тестом) ──────────────── */}
+        <div className={style.pageNavigation}>
+          <BackButton />
+        </div>
+
+        {/* ─── HERO ────────────────────────────────────────── */}
         <section className={style.heroSection}>
           <div className={style.heroBg}>
             <div className={style.heroGrid} />
@@ -54,15 +53,28 @@ export const PeriodicCheckPage: React.FC = () => {
 
             <TestBlock
               title="Пройти тестирование онлайн"
-              testUrl="https://test.tgrant.ru/category/grade4"  // ← замени на реальную ссылку теста для периодической проверки
+              testUrl="https://test.tgrant.ru/category/grade4"
               description="Проверьте свои знания в формате онлайн-теста. Тест состоит из 10 вопросов, допускается 1 ошибка."
             />
           </div>
         </section>
 
+        {/* ─── Расписание ────────────────────────────────────── */}
+        <section className={style.scheduleSection}>
+          <h2 className={style.sectionTitle}>Расписание периодической проверки</h2>
+          <ScheduleViewer scheduleId="periodic-check-schedule" />
+        </section>
 
-        <ScheduleViewer scheduleId="periodic-check-schedule" />
+        {/* ─── Документ с вопросами ──────────────────────────── */}
+        <section className={style.documentSection}>
+          <h2 className={style.sectionTitle}>Вопросы для подготовки</h2>
+          <p className={style.sectionDescription}>
+            Скачайте список вопросов для подготовки к теоретической части экзамена
+          </p>
+          <DocumentViewer documentId="periodic-questions" category="security" />
+        </section>
 
+        {/* ─── Документы ──────────────────────────────────────── */}
         <section className={style.documentsSection}>
           <h2 className={style.sectionTitle}>При себе необходимо иметь оригиналы документов:</h2>
           <ul className={style.documentsList}>
@@ -75,23 +87,7 @@ export const PeriodicCheckPage: React.FC = () => {
           </ul>
         </section>
 
-        <section className={style.pdfSection}>
-          <h2 className={style.sectionTitle}>{pageData.pdfInfo.title}</h2>
-          <p className={style.pdfDescription}>{pageData.pdfInfo.description}</p>
-          <div className={style.pdfCard}>
-            <div className={style.pdfIcon}>📘</div>
-            <div className={style.pdfContent}>
-              <h3>Вопросы для подготовки</h3>
-              <p>Полный список вопросов для теоретической части проверки</p>
-            </div>
-            <a href={periodicCheckQuestions}>
-              <button className={style.downloadButton}>
-                Скачать вопросы
-              </button>
-            </a>
-          </div>
-        </section>
-
+        {/* ─── Информация ────────────────────────────────────── */}
         <section className={style.infoSection}>
           <div className={style.infoCard}>
             <h3>Форма проведения</h3>

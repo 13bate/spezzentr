@@ -1,6 +1,5 @@
 import React from 'react';
 import { PageTitle } from '../../../shared/ui/PageTitle';
-import { BackButton } from '../../../shared/ui/BackButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChalkboardTeacher,
@@ -15,32 +14,12 @@ import style from './TeachersPage.module.scss';
 export const TeachersPage: React.FC = () => {
   const teachers = [
     {
-      name: 'Агеенко Олег Николаевич',
-      education: 'высшее',
-      qualification: 'инженер-механик',
-      disciplines: ['Тактико-специальная подготовка', 'Использование специальных средств'],
-      experience: {
-        total: '31 год',
-        teaching: '3 года'
-      }
-    },
-    {
       name: 'Першукевич Андрей Викторович',
       education: 'высшее',
       qualification: 'учитель физической культуры',
       disciplines: ['Специальная физическая подготовка', 'Первая медицинская помощь', 'Правовая подготовка', 'Огневая подготовка'],
       experience: {
         total: '17 лет',
-        teaching: '9 лет'
-      }
-    },
-    {
-      name: 'Марочкина Наталья Николаевна',
-      education: 'высшее',
-      qualification: 'психолог, преподаватель психологии',
-      disciplines: ['Психологическая подготовка'],
-      experience: {
-        total: '10 лет',
         teaching: '9 лет'
       }
     },
@@ -53,16 +32,6 @@ export const TeachersPage: React.FC = () => {
         total: '47 лет',
         teaching: '9 лет'
       }
-    },
-    {
-      name: 'Мармус Владимир Викторович',
-      education: 'среднее специальное',
-      qualification: 'преподаватель физической культуры',
-      disciplines: ['Огневая подготовка'],
-      experience: {
-        total: '33 года',
-        teaching: '9 лет'
-      }
     }
   ];
 
@@ -71,10 +40,6 @@ export const TeachersPage: React.FC = () => {
       <PageTitle title="Педагогический состав | СПЕЦЦЕНТР" />
 
       <main className={style.teachersPage}>
-        <div className={style.pageNavigation}>
-          <BackButton />
-        </div>
-
         <section className={style.section}>
           <div className={style.sectionHeader}>
             <div className={style.sectionIcon}>

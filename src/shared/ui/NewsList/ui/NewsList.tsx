@@ -38,11 +38,18 @@ export const NewsList: React.FC<Props> = ({ limit, className }) => {
     <div className={`${styles.newsList} ${className || ''}`}>
       {news.map((item) => (
         <article key={item.id} className={styles.newsItem}>
-          <div className={styles.newsDate}>
-            {new Date(item.date).toLocaleDateString('ru-RU')}
+          {item.image && (
+            <div className={styles.newsImage}>
+              <img src={`/spezzentr${item.image}`} alt={item.title} />
+            </div>
+          )}
+          <div className={styles.newsContent}>
+            <div className={styles.newsDate}>
+              {new Date(item.date).toLocaleDateString('ru-RU')}
+            </div>
+            <h3 className={styles.newsTitle}>{item.title}</h3>
+            <p className={styles.newsText}>{item.content}</p>
           </div>
-          <h3 className={styles.newsTitle}>{item.title}</h3>
-          <p className={styles.newsContent}>{item.content}</p>
         </article>
       ))}
     </div>

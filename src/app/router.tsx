@@ -38,6 +38,7 @@ import { AdminSchedulesPage } from '../pages/admin/ui/AdminSchedulesPage'
 import { AdminNewsPage } from '../pages/admin/ui/AdminNewsPage'
 import { AdminDocumentsPage } from '../pages/admin/ui/AdminDocumentsPage'
 import { AdminLogin } from '../features/auth'
+import { AdminPage } from '../pages/admin'
 
 // Массив для навигации (можно использовать где угодно)
 export const eduOrgInfo = [
@@ -90,6 +91,7 @@ export const router = createBrowserRouter([
 			</PrivateRoute>
 		),
 		children: [
+			{ path: "", element: <AdminPage /> },
 			{ path: 'schedules', element: <AdminSchedulesPage /> },
 			{ path: 'news', element: <AdminNewsPage /> },
 			{ path: 'documents', element: <AdminDocumentsPage /> },

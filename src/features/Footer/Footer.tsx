@@ -7,6 +7,7 @@ import vkLogo from "../../assets/spezzenter/vkLogo.png";
 import eaisBanner from "../../assets/spezzenter/weapons_cluster.png";
 import minobrBanner from "../../assets/spezzenter/min_obr_nauki_logo.jpeg";
 import minprosvBanner from "../../assets/spezzenter/min_prosv.jpeg";
+import rosguard from "../../assets/spezzenter/rosguard.png";
 
 import { trainingCenter, shootingRange } from "../../shared/utils/model";
 
@@ -15,6 +16,33 @@ interface Props {
 }
 
 export const Footer: React.FC<Props> = ({ className }) => {
+  const banners = [
+    {
+      src: eaisBanner,
+      url: "https://eais-ok.ru/",
+      alt: "ЕАИС-ОК",
+      square: false
+    },
+    {
+      src: minobrBanner,
+      url: "https://minobr.ru/",
+      alt: "Министерство науки и образования РФ",
+      square: true
+    },
+    {
+      src: minprosvBanner,
+      url: "https://minprosv.ru/",
+      alt: "Министерство просвещения РФ",
+      square: true
+    },
+    {
+      src: rosguard,
+      url: "https://rosguard.gov.ru/",
+      alt: "Росгвардия",
+      square: true
+    },
+  ];
+
   return (
     <footer className={clsx(className, style.footer)}>
       <div className={style.contentContainer}>
@@ -61,7 +89,7 @@ export const Footer: React.FC<Props> = ({ className }) => {
                 СПЕЦЦЕНТР
               </Link>
             </li>
-            <li >
+            <li>
               <iframe
                 src="https://yandex.ru/sprav/widget/rating-badge/67934832673?type=rating&theme=dark"
                 width="150"
@@ -71,27 +99,34 @@ export const Footer: React.FC<Props> = ({ className }) => {
                 title="Yandex Rating Badge"
               ></iframe>
             </li>
-
           </ul>
         </div>
       </div>
 
-      {/* Banners section */}
+      {/* Banners section — обновлённый */}
       <div className={style.footerBanners}>
-        <a href="https://eais-ok.ru/" target="_blank" rel="noopener noreferrer" className="footerBanners-banner">
-          <img src={eaisBanner} alt="ЕАИС-ОК" className="footerBanners-banner-img" />
-        </a>
-        <a href="https://minobr.ru/" target="_blank" rel="noopener noreferrer" className="footerBanners-banner">
-          <img src={minobrBanner} alt="Министерство науки и образования РФ" className="footerBanners-banner-img" />
-        </a>
-        <a href="https://minprosv.ru/" target="_blank" rel="noopener noreferrer" className="footerBanners-banner">
-          <img src={minprosvBanner} alt="Министерство просвещения РФ" className="footerBanners-banner-img" />
-        </a>
+        {banners.map((banner, index) => (
+          <a
+            key={index}
+            href={banner.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={style.footerBannersItem}
+            aria-label={banner.alt}
+          >
+            <img
+              src={banner.src}
+              alt={banner.alt}
+              loading="lazy"
+              data-square={banner.square ? "true" : "false"}
+            />
+          </a>
+        ))}
       </div>
 
       <div className={style.companyInfo}>
-        ЧОУ ДПО "СПЕЦЦЕНТР"  ИНН 3257001611, ОГРН 1133256002670
+        ЧОУ ДПО "СПЕЦЦЕНТР" ИНН 3257001611, ОГРН 1133256002670
       </div>
-    </footer >
+    </footer>
   );
 };

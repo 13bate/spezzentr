@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { auth } from '../model/auth';
 import styles from './LoginForm.module.scss';
 
@@ -8,22 +7,25 @@ export const AdminLogin = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
     setLoading(true);
 
-    // Имитация задержки (позже заменить на реальный API)
-    await new Promise(resolve => setTimeout(resolve, 500));
+    console.log('🔐 Попытка входа:', username);
 
-    if (auth.login(username, password)) {
-      navigate('/admin/schedules');
+    const result = await auth.login(username, password);
+    console.log('🔐 Результат:', result);
+
+    if (result.success) {
+      console.log('✅ Успешный вход, редирект на /admin');
+      // Принудительный редирект
+      window.location.href = '/spezzentr/admin';
     } else {
-      setError('Неверный логин или пароль');
+      setError(result.error || 'Неверный логин или пароль');
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
@@ -45,6 +47,7 @@ export const AdminLogin = () => {
               placeholder="Введите логин"
               required
               autoFocus
+              autoComplete="username"
             />
           </div>
 
@@ -57,6 +60,7 @@ export const AdminLogin = () => {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Введите пароль"
               required
+              autoComplete="current-password"
             />
           </div>
 

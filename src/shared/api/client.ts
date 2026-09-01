@@ -1,3 +1,5 @@
+import type { Schedule } from "../types";
+
 const API_URL = 'http://localhost:3001/api';
 
 // Маппинг: scheduleId → имя файла
@@ -13,16 +15,15 @@ const getFileName = (id: string): string => {
 };
 
 export const api = {
+  // ─── Расписания ───────────────────────────────────────────
   schedules: {
-    // Получить одно расписание
     get: (id: string) =>
       fetch(`${API_URL}/schedules/${getFileName(id)}`).then((res) => {
         if (!res.ok) throw new Error('Не удалось загрузить');
         return res.json();
       }),
 
-    // Сохранить расписание
-    save: (id: string, data: any) =>
+    save: (id: string, data: Schedule) =>
       fetch(`${API_URL}/schedules/${getFileName(id)}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -32,7 +33,6 @@ export const api = {
         return res.json();
       }),
 
-    // Удалить расписание
     delete: (id: string) =>
       fetch(`${API_URL}/schedules/${getFileName(id)}`, {
         method: 'DELETE',
@@ -41,56 +41,139 @@ export const api = {
         return res.json();
       }),
 
-    // Получить список всех расписаний
     list: () =>
       fetch(`${API_URL}/schedules`).then((res) => {
         if (!res.ok) throw new Error('Не удалось загрузить список');
         return res.json();
       }),
   },
+
+  // ─── Новости ──────────────────────────────────────────────
   news: {
-    // Получить все новости
     list: () =>
       fetch(`${API_URL}/news`).then((res) => {
         if (!res.ok) throw new Error('Не удалось загрузить новости');
         return res.json();
       }),
 
-    // Получить одну новость
     get: (id: string) =>
       fetch(`${API_URL}/news/${id}`).then((res) => {
         if (!res.ok) throw new Error('Не удалось загрузить новость');
         return res.json();
       }),
 
-    // Создать новость
-    create: (data: any) =>
+    create: (data: FormData) =>
       fetch(`${API_URL}/news`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: data,
       }).then((res) => {
         if (!res.ok) throw new Error('Не удалось создать новость');
         return res.json();
       }),
 
-    // Обновить новость
-    update: (id: string, data: any) =>
+    update: (id: string, data: FormData) =>
       fetch(`${API_URL}/news/${id}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
+        body: data,
       }).then((res) => {
         if (!res.ok) throw new Error('Не удалось обновить новость');
         return res.json();
       }),
 
-    // Удалить новость
     delete: (id: string) =>
       fetch(`${API_URL}/news/${id}`, {
         method: 'DELETE',
       }).then((res) => {
         if (!res.ok) throw new Error('Не удалось удалить новость');
+        return res.json();
+      }),
+  },
+
+  // ─── Документы ─────────────────────────────────────────────
+  documents: {
+    getByCategory: (category: string) =>
+      fetch(`${API_URL}/documents/${category}`).then((res) => {
+        if (!res.ok) throw new Error('Не удалось загрузить документы');
+        return res.json();
+      }),
+
+    getAll: () =>
+      fetch(`${API_URL}/documents`).then((res) => {
+        if (!res.ok) throw new Error('Не удалось загрузить документы');
+        return res.json();
+      }),
+
+    upload: (category: string, file: File, name?: string) => {
+      const formData = new FormData();
+      formData.append('file', file);
+      formData.append('category', category);
+      if (name) formData.append('name', name);
+
+      return fetch(`${API_URL}/documents/upload`, {
+        method: 'POST',
+        body: formData,
+      }).then((res) => {
+        if (!res.ok) throw new Error('Не удалось загрузить PDF');
+        return res.json();
+      });
+    },
+
+    delete: (category: string, fileName: string) =>
+      fetch(`${API_URL}/documents/${category}/${encodeURIComponent(fileName)}`, {
+        method: 'DELETE',
+      }).then((res) => {
+        if (!res.ok) throw new Error('Не удалось удалить документ');
+        return res.json();
+      }),
+  },
+
+  // ─── Карусель ──────────────────────────────────────────────
+  carousel: {
+    list: () =>
+      fetch(`${API_URL}/carousel`).then((res) => {
+        if (!res.ok) throw new Error('Не удалось загрузить карусель');
+        return res.json();
+      }),
+
+    get: (id: string) =>
+      fetch(`${API_URL}/carousel/${id}`).then((res) => {
+        if (!res.ok) throw new Error('Не удалось загрузить слайд');
+        return res.json();
+      }),
+
+    create: (data: FormData) =>
+      fetch(`${API_URL}/carousel`, {
+        method: 'POST',
+        body: data,
+      }).then((res) => {
+        if (!res.ok) throw new Error('Не удалось создать слайд');
+        return res.json();
+      }),
+
+    update: (id: string, data: FormData) =>
+      fetch(`${API_URL}/carousel/${id}`, {
+        method: 'PUT',
+        body: data,
+      }).then((res) => {
+        if (!res.ok) throw new Error('Не удалось обновить слайд');
+        return res.json();
+      }),
+
+    delete: (id: string) =>
+      fetch(`${API_URL}/carousel/${id}`, {
+        method: 'DELETE',
+      }).then((res) => {
+        if (!res.ok) throw new Error('Не удалось удалить слайд');
+        return res.json();
+      }),
+
+    reorder: (order: string[]) =>
+      fetch(`${API_URL}/carousel/reorder`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ order }),
+      }).then((res) => {
+        if (!res.ok) throw new Error('Не удалось изменить порядок');
         return res.json();
       }),
   },

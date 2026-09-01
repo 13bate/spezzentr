@@ -2,7 +2,7 @@ import clsx from 'clsx'
 import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle'
 import styles from './CompetitionPage.module.scss'
 import { ScheduleViewer } from '../../features/ScheduleViewer'
-import { NewsList } from '../../shared/ui/NewsList/ui/NewsList'
+import { Carousel } from '../../shared/ui/Carousel/ui/Carousel'
 
 interface Props {
 	className?: string
@@ -49,7 +49,7 @@ export const CompetitionPage: React.FC<Props> = ({ className }) => {
 				{/* NEWS */}
 				<h2 className={styles.sectionTitle}>Новости</h2>
 
-				<NewsList />
+				<Carousel />
 			</section>
 		</div>
 	)

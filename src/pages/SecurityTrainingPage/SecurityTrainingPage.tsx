@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { PageTitle } from '../../shared/ui/PageTitle';
 import { securityTrainingData } from './model/securityTrainingData.ts';
 import style from './SecurityTrainingPage.module.scss';
-import studyQuestionsPdf from "../../../public/Методичка-ОХРАННИКИ-2023-4-6-разряд.pdf";
-import periodicCheckQuestionsPdf from "../../../public/ПЕРИОДИЧЕСКАЯ-ПРОВЕРКА-2023-4-6-разряд.pdf";
 import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle';
 import { ReachUs } from '../../shared/ui/ReachUs';
 import { TestBlock } from '../../shared/ui/TestBlock/TestBlock.tsx';
+import { DocumentViewer } from '../../features/DocumentViewer/ui/DocumentViewer.tsx';
 
 
 // ─── Icons ──────────────────────────────────────────────────
@@ -50,7 +49,7 @@ export const SecurityTrainingPage: React.FC = () => {
       <PageTitle title="Обучение частных охранников | СПЕЦЦЕНТР" />
 
       <main className={style.securityTrainingPage}>
-        {/* ─── HERO (как на странице оружия) ────────────────── */}
+        {/* ─── HERO ────────────────────────────────────────── */}
         <section className={style.heroSection}>
           <div className={style.heroBg}>
             <div className={style.heroGrid} />
@@ -85,8 +84,6 @@ export const SecurityTrainingPage: React.FC = () => {
           </div>
         </section>
 
-
-
         {/* ─── ОБУЧЕНИЕ ЧАСТНЫХ ОХРАННИКОВ ───────────────────── */}
         <section className={style.pricesSection}>
           <h2 className={style.sectionTitle}>Обучение частных охранников</h2>
@@ -102,7 +99,7 @@ export const SecurityTrainingPage: React.FC = () => {
           </div>
         </section>
 
-        {/* ─── ПОВЫШЕНИЕ КВАЛИФИКАЦИИ ЧАСТНЫХ ОХРАННИКОВ ────── */}
+        {/* ─── ПОВЫШЕНИЕ КВАЛИФИКАЦИИ ────────────────────────── */}
         <section className={style.pricesSection}>
           <h2 className={style.sectionTitle}>Повышение квалификации частных охранников</h2>
           <div className={style.pricesGrid}>
@@ -117,8 +114,7 @@ export const SecurityTrainingPage: React.FC = () => {
           </div>
         </section>
 
-
-        {/* ─── Необходимые документы ──────────────────────────── */}
+        {/* ─── ДОКУМЕНТЫ ──────────────────────────────────────── */}
         <section className={style.documentsSection}>
           <h3 className={style.documentsTitle}>{securityTrainingData.documents.title}</h3>
           <ul className={style.documentsList}>
@@ -129,6 +125,17 @@ export const SecurityTrainingPage: React.FC = () => {
           {securityTrainingData.documents.note && (
             <p className={style.documentsNote}>{securityTrainingData.documents.note}</p>
           )}
+        </section>
+
+        {/* ─── ВОПРОСЫ ДЛЯ ПОДГОТОВКИ (PDF) ──────────────────── */}
+        <section className={style.faqSection}>
+          <h2 className={style.faqTitle}>Вопросы для подготовки</h2>
+          <div className={style.faqGrid}>
+            <div className={style.faqItem}>
+              <DocumentViewer documentId="security-questions" category="security" />
+              <DocumentViewer documentId="periodic-questions" category="security" />
+            </div>
+          </div>
         </section>
 
         {/* ─── ПОРЯДОК ПОЛУЧЕНИЯ УДОСТОВЕРЕНИЯ ────────────────── */}
@@ -294,9 +301,7 @@ export const SecurityTrainingPage: React.FC = () => {
               <strong>Правовой статус частного охранника не могут получить лица:</strong>
             </p>
             <ul className={style.limitationsList}>
-              <li>
-                1) указанные в части 3 статьи 11 настоящего Федерального закона
-              </li>
+              <li>1) указанные в части 3 статьи 11 настоящего Федерального закона</li>
               <li>
                 2) не имеющие медицинского заключения об отсутствии медицинских противопоказаний
                 к исполнению обязанностей частного охранника
@@ -324,7 +329,6 @@ export const SecurityTrainingPage: React.FC = () => {
             </ul>
           </div>
         </section>
-
 
         {/* ─── ПОРЯДОК МЕДИЦИНСКОГО ОСВИДЕТЕЛЬСТВОВАНИЯ ──────── */}
         <section className={style.section}>
@@ -354,27 +358,6 @@ export const SecurityTrainingPage: React.FC = () => {
                   consultant.ru — Порядок медицинского освидетельствования
                 </a>
               </span>
-            </div>
-          </div>
-        </section>
-
-        {/* ─── FAQ секция ───────────────────────────────────────── */}
-        <section className={style.faqSection}>
-          <h2 className={style.faqTitle}>Вопросы для подготовки</h2>
-          <div className={style.faqGrid}>
-            <div className={style.faqItem}>
-              <a href={studyQuestionsPdf} className={style.faqLink} target="_blank" rel="noopener noreferrer">
-                <span className={style.faqIcon}>📘</span>
-                <span className={style.faqQuestion}>Обучение частных охранников — вопросы и ответы</span>
-                <span className={style.faqArrow}>→</span>
-              </a>
-            </div>
-            <div className={style.faqItem}>
-              <a href={periodicCheckQuestionsPdf} className={style.faqLink} target="_blank" rel="noopener noreferrer">
-                <span className={style.faqIcon}>📘</span>
-                <span className={style.faqQuestion}>Периодическая проверка — вопросы и ответы</span>
-                <span className={style.faqArrow}>→</span>
-              </a>
             </div>
           </div>
         </section>

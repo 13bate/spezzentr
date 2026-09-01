@@ -1,4 +1,4 @@
-@use '../../shared/styles/variables' as *;
+@use '../../shared/styles/variables.scss' as *;
 @use 'sass:color';
 
 // ─── Page ──────────────────────────────────────────────────────
@@ -378,5 +378,66 @@
     font-size: 16px;
     color: $color-text-dark-dimmed;
     line-height: 1.6;
+  }
+}
+
+// ─── Page Navigation ─────────────────────────────────────────
+
+.pageNavigation {
+  margin-bottom: 20px;
+  padding: 0 20px;
+
+  @media (max-width: 768px) {
+    padding: 0 16px;
+  }
+}
+
+// ─── Schedule Section ────────────────────────────────────────
+
+.scheduleSection {
+  padding: 0 20px;
+  margin-bottom: 40px;
+
+  @media (max-width: 768px) {
+    padding: 0 16px;
+    margin-bottom: 28px;
+  }
+}
+
+// ─── Document Section ────────────────────────────────────────
+
+.documentSection {
+  padding: 0 20px;
+  margin-bottom: 40px;
+
+  @media (max-width: 768px) {
+    padding: 0 16px;
+    margin-bottom: 28px;
+  }
+}
+
+.sectionDescription {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 15px;
+  color: $color-text-dark-muted;
+  margin: 4px 0 20px;
+  line-height: 1.6;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+}
+
+// ─── Section Title ────────────────────────────────────────────
+
+.sectionTitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  color: $color-text-dark-main;
+  margin: 0 0 4px;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
   }
 }

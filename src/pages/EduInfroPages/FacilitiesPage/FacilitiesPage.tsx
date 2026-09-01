@@ -1,6 +1,5 @@
 import React from 'react';
 import { PageTitle } from '../../../shared/ui/PageTitle';
-import { BackButton } from '../../../shared/ui/BackButton';
 import style from './FacilitiesPage.module.scss';
 
 export const FacilitiesPage: React.FC = () => {
@@ -32,13 +31,9 @@ export const FacilitiesPage: React.FC = () => {
       <PageTitle title="Материально-техническое обеспечение | СПЕЦЦЕНТР" />
 
       <main className={style.facilitiesPage}>
-        <div className={style.pageNavigation}>
-          <BackButton />
-        </div>
 
         <section className={style.section}>
           <div className={style.sectionHeader}>
-            <span className={style.sectionIcon}>🏢</span>
             <h1 className={style.sectionTitle}>Материально-техническое обеспечение</h1>
           </div>
 
@@ -48,7 +43,6 @@ export const FacilitiesPage: React.FC = () => {
             {facilitiesData.classrooms.map((room, index) => (
               <div key={index} className={style.infoCard}>
                 <div className={style.cardHeader}>
-                  <span className={style.cardIcon}>🏛️</span>
                   <h3 className={style.cardTitle}>Учебный класс</h3>
                 </div>
                 <p className={style.cardAddress}>{room.address}</p>
@@ -60,7 +54,6 @@ export const FacilitiesPage: React.FC = () => {
             <h2 className={style.sectionSubtitle}>Стрелковый тир</h2>
             <div className={style.shootingRangeCard}>
               <div className={style.cardHeader}>
-                <span className={style.cardIcon}>🎯</span>
                 <h3 className={style.cardTitle}>Практический тир</h3>
               </div>
               <p className={style.cardAddress}>{facilitiesData.shootingRange.address}</p>
@@ -80,8 +73,6 @@ export const FacilitiesPage: React.FC = () => {
             <h2 className={style.sectionSubtitle}>Библиотека</h2>
             <div className={style.infoCard}>
               <div className={style.cardHeader}>
-                <span className={style.cardIcon}>📚</span>
-                <h3 className={style.cardTitle}>Учебная литература</h3>
               </div>
               <p className={style.cardDescription}>{facilitiesData.library}</p>
             </div>
@@ -90,7 +81,6 @@ export const FacilitiesPage: React.FC = () => {
             <h2 className={style.sectionSubtitle}>Спортивный зал</h2>
             <div className={style.infoCard}>
               <div className={style.cardHeader}>
-                <span className={style.cardIcon}>🏋️</span>
                 <h3 className={style.cardTitle}>Спортивный зал</h3>
               </div>
               <p className={style.cardDescription}>{facilitiesData.sportsFacility}</p>
@@ -100,7 +90,6 @@ export const FacilitiesPage: React.FC = () => {
             <h2 className={style.sectionSubtitle}>Информационные ресурсы</h2>
             <div className={style.infoCard}>
               <div className={style.cardHeader}>
-                <span className={style.cardIcon}>💻</span>
                 <h3 className={style.cardTitle}>Доступ к информационным сетям</h3>
               </div>
               <p className={style.cardDescription}>{facilitiesData.internet}</p>

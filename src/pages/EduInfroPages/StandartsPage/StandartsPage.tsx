@@ -1,6 +1,5 @@
 import React from 'react';
 import { PageTitle } from '../../../shared/ui/PageTitle';
-import { BackButton } from '../../../shared/ui/BackButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 import style from './StandartsPage.module.scss';
@@ -11,9 +10,6 @@ export const StandardsPage: React.FC = () => {
       <PageTitle title="Образовательные стандарты | СПЕЦЦЕНТР" />
 
       <main className={style.standardsPage}>
-        <div className={style.pageNavigation}>
-          <BackButton />
-        </div>
 
         <section className={style.section}>
           <div className={style.sectionHeader}>

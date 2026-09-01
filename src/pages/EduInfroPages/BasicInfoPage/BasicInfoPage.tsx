@@ -1,7 +1,7 @@
 import React from 'react';
 import { PageTitle } from '../../../shared/ui/PageTitle';
 import style from './BasicInfoPage.module.scss';
-import { BackButton } from '../../../shared/ui/BackButton';
+import { DocumentViewer } from '../../../features/DocumentViewer/ui/DocumentViewer';
 
 export const BasicInfoPage: React.FC = () => {
   return (
@@ -9,10 +9,6 @@ export const BasicInfoPage: React.FC = () => {
       <PageTitle title="Основные сведения | СПЕЦЦЕНТР" />
 
       <main className={style.basicInfoPage}>
-        {/* Кнопка с отступом слева */}
-        <div className={style.buttonWrapper}>
-          <BackButton />
-        </div>
 
         {/* Секция с отступом слева */}
         <section className={style.categorySection}>
@@ -61,6 +57,13 @@ export const BasicInfoPage: React.FC = () => {
                 <span className={style.infoLabel}>Email</span>
                 <div className={style.infoValue}>
                   <a href="mailto:spezzentr@bk.ru">spezzentr@bk.ru</a>
+                </div>
+              </div>
+
+              <div className={style.infoCard}>
+                <span className={style.infoLabel}>Лицензия</span>
+                <div className={style.infoValue}>
+                  <DocumentViewer category="basic-info" documentId="basic-license" />
                 </div>
               </div>
             </div>

@@ -1,7 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { api } from '../../../../shared/api/client';
+import type { NewsItem, NewsFormData } from '../../../../shared/types/news.types';
 import styles from './NewsEditor.module.scss';
-import type { NewsFormData } from '../../../../shared/types/news.types';
 import { Modal } from '../../../../shared/ui/Modal';
 import { Input } from '../../../../shared/ui/Input';
 import { Button } from '../../../../shared/ui/Button';
@@ -24,19 +24,25 @@ export const NewsEditor: React.FC<Props> = ({ newsId, isOpen, onClose, onSave })
   const [form, setForm] = useState<NewsFormData>(emptyForm);
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [existingImage, setExistingImage] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
   const isEdit = !!newsId;
 
   useEffect(() => {
     if (isOpen && newsId) {
       setLoading(true);
       api.news.get(newsId)
-        .then((data) => {
+        .then((data: NewsItem) => {
           setForm({
             title: data.title,
             date: data.date,
             content: data.content,
             isPublished: data.isPublished,
           });
+          setExistingImage(data.image || null);
           setLoading(false);
         })
         .catch(() => {
@@ -45,11 +51,35 @@ export const NewsEditor: React.FC<Props> = ({ newsId, isOpen, onClose, onSave })
         });
     } else if (isOpen) {
       setForm(emptyForm);
+      setExistingImage(null);
+      setImagePreview(null);
+      setImageFile(null);
     }
   }, [newsId, isOpen]);
 
   const handleChange = (field: keyof NewsFormData, value: string | boolean) => {
     setForm({ ...form, [field]: value });
+  };
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setImageFile(file);
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImagePreview(reader.result as string);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleRemoveImage = () => {
+    setImageFile(null);
+    setImagePreview(null);
+    setExistingImage(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
   };
 
   const handleSubmit = async () => {
@@ -60,10 +90,20 @@ export const NewsEditor: React.FC<Props> = ({ newsId, isOpen, onClose, onSave })
 
     setSaving(true);
     try {
+      const formData = new FormData();
+      formData.append('title', form.title);
+      formData.append('date', form.date);
+      formData.append('content', form.content);
+      formData.append('isPublished', String(form.isPublished));
+
+      if (imageFile) {
+        formData.append('image', imageFile);
+      }
+
       if (isEdit && newsId) {
-        await api.news.update(newsId, form);
+        await api.news.update(newsId, formData);
       } else {
-        await api.news.create(form);
+        await api.news.create(formData);
       }
       onSave();
       onClose();
@@ -111,6 +151,39 @@ export const NewsEditor: React.FC<Props> = ({ newsId, isOpen, onClose, onSave })
           </div>
 
           <div className={styles.field}>
+            <label>Изображение</label>
+            <div className={styles.imageArea}>
+              {(imagePreview || existingImage) && (
+                <div className={styles.imagePreview}>
+                  <img
+                    src={imagePreview || `/spezzentr${existingImage}`}
+                    alt="Превью"
+                  />
+                  <button
+                    type="button"
+                    className={styles.removeImageBtn}
+                    onClick={handleRemoveImage}
+                  >
+                    ✕
+                  </button>
+                </div>
+              )}
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                onChange={handleImageChange}
+                className={styles.fileInput}
+                id="news-image"
+              />
+              <label htmlFor="news-image" className={styles.fileLabel}>
+                {imagePreview || existingImage ? 'Заменить изображение' : 'Выбрать изображение'}
+              </label>
+              <span className={styles.fileHint}>PNG, JPG, WEBP до 5MB</span>
+            </div>
+          </div>
+
+          <div className={styles.field}>
             <label className={styles.checkboxLabel}>
               <input
                 type="checkbox"
@@ -122,7 +195,7 @@ export const NewsEditor: React.FC<Props> = ({ newsId, isOpen, onClose, onSave })
           </div>
 
           <div className={styles.actions}>
-            <Button variant="primary" onClick={onClose}>
+            <Button variant="liquid" onClick={onClose}>
               Отмена
             </Button>
             <Button onClick={handleSubmit} disabled={saving}>

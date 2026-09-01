@@ -1,0 +1,92 @@
+@use '../../../shared/styles/variables' as *;
+
+.documentList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.documentItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px;
+  background: $color-bg-light-card;
+  border-radius: 14px;
+  border: 1px solid $color-border-dark-alpha;
+  text-decoration: none;
+  color: $color-text-dark-main;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: rgba($color-brand-primary, 0.15);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    transform: translateX(4px);
+
+    .downloadButton {
+      background: $color-brand-primary;
+      color: $color-text-pure-white;
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 12px 16px;
+  }
+}
+
+.documentIcon {
+  font-size: 22px;
+  color: $color-brand-primary;
+  opacity: 0.6;
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
+}
+
+.documentName {
+  flex: 1;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
+}
+
+.downloadButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: transparent;
+  border: 1.5px solid $color-brand-primary;
+  border-radius: 8px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: $color-brand-primary;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+
+  svg {
+    font-size: 14px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 6px 14px;
+    font-size: 11px;
+  }
+}
+
+.loading,
+.empty {
+  padding: 20px;
+  text-align: center;
+  color: $color-text-dark-muted;
+}

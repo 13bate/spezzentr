@@ -1,92 +1,101 @@
 import React from 'react';
 import { PageTitle } from '../../../shared/ui/PageTitle';
-import { BackButton } from '../../../shared/ui/BackButton';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilePdf, faDownload } from '@fortawesome/free-solid-svg-icons';
+import {
+  faBookOpen,
+  faGraduationCap,
+  faScroll,
+  faCertificate,
+  faChalkboardTeacher,
+  faShieldAlt,
+  faUsers,
+  faHeartbeat,
+  faBrain,
+  faCogs,
+  faGavel,
+} from '@fortawesome/free-solid-svg-icons';
+import { DocumentViewer } from '../../../features/DocumentViewer/ui/DocumentViewer';
 import style from './EducationPage.module.scss';
 
 export const EducationPage: React.FC = () => {
-  // Массив с программами и соответствующими PDF файлами
-  const programFiles = [
-    {
-      name: 'Программа профессионального обучения для работы в качестве частного охранника',
-      file: '/eduOrgInfoPdf/ПРОГРАММА-2023-Обучение-охранников.pdf'
-    },
-    {
-      name: 'Программа повышения квалификации охранников для работы в качестве частного охранника',
-      file: '/eduOrgInfoPdf/ПРОГРАММА-2023-ПК-охранники.pdf'
-    },
-    {
-      name: 'Программа повышения квалификации руководителей ЧОП, впервые назначенных на должность',
-      file: '/eduOrgInfoPdf/ПРОГРАММА-2021-рук-чоп.pdf'
-    },
-    {
-      name: 'Программа повышения квалификации руководителей частных охранных организаций',
-      file: '/eduOrgInfoPdf/ПРОГРАММА-2021-ПК-рук-чоп.pdf'
-    },
-    {
-      name: 'Программа подготовки работников юридических лиц с особыми уставными задачами',
-      file: '/eduOrgInfoPdf/Программа-подготовки-ЮР.ЛИЦ-с-особыми-уставными-задачами.pdf'
-    },
-    {
-      name: 'Программа безопасного обращения с оружием',
-      file: '/eduOrgInfoPdf/Программа-БОО-ред.2023.pdf'
-    }
+  // ID документов для страницы "Образование"
+  const programDocumentIds = [
+    'program-security-guard',
+    'program-pk-security-guard',
+    'program-detective-2019',
+    'program-detective',
+    'program-pk-detective-2019',
+    'program-pk-detective',
+    'program-pk-guard',
+    'program-special-comm',
+    'program-fgup-ohrana',
+    'program-pk-ruk-chop',
+    'program-ruk-chop',
+    'program-boo',
+    'program-yur-lic',
+    'study-plan',
   ];
 
-  // Дополнительные документы
-  const additionalDocs = [
-    {
-      name: 'Учебный план',
-      file: '/eduOrgInfoPdf/Учебный-план.pdf',
-      icon: '📅'
-    },
-    {
-      name: 'Календарный учебный график',
-      file: '/eduOrgInfoPdf/КУГ.pdf',
-      icon: '📆'
-    }
+  const additionalDocumentIds = [
+    'study-plan',
+    // 'study-schedule' - если есть отдельный документ для календарного графика
   ];
 
   const disciplines = [
     {
       title: 'Правовая подготовка',
-      description: 'В рамках дисциплины слушатели изучают принципы юридического регулирования деятельности частных охранных организаций (в том числе порядок лицензирования, права, обязанности и правовой статус сотрудников), основы уголовного, административного, трудового законодательства, правовые аспекты применения оружия и специальных средств.'
+      description:
+        'В рамках дисциплины слушатели изучают принципы юридического регулирования деятельности частных охранных организаций (в том числе порядок лицензирования, права, обязанности и правовой статус сотрудников), основы уголовного, административного, трудового законодательства, правовые аспекты применения оружия и специальных средств.',
+      icon: faGavel,
     },
     {
       title: 'Тактико-специальная подготовка',
-      description: 'Дисциплина предполагает изучение тактики и методов обеспечения безопасности различных объектов и граждан (в том числе в ходе мероприятий, предполагающих массовое скопление людей), охраны имущества без оружия и с его использованием, а также принципов и порядка действий в случае возникновения террористической угрозы.'
+      description:
+        'Дисциплина предполагает изучение тактики и методов обеспечения безопасности различных объектов и граждан (в том числе в ходе мероприятий, предполагающих массовое скопление людей), охраны имущества без оружия и с его использованием, а также принципов и порядка действий в случае возникновения террористической угрозы.',
+      icon: faShieldAlt,
     },
     {
       title: 'Техническая подготовка',
-      description: 'Направлена на получение практических и теоретических знаний о технических средствах, используемых в профессиональной деятельности охранника: охранной и пожарной сигнализации, системах контроля доступа и управлении ими, средствах связи.'
+      description:
+        'Направлена на получение практических и теоретических знаний о технических средствах, используемых в профессиональной деятельности охранника: охранной и пожарной сигнализации, системах контроля доступа и управлении ими, средствах связи.',
+      icon: faCogs,
     },
     {
       title: 'Психологическая подготовка',
-      description: 'Слушатели изучают основы специальных знаний, которые будут применяться ими в процессе наблюдения, при проверке документов, в экстремальных и конфликтных ситуациях. Особое внимание уделяется профессиональным факторам стресса, приемам повышения психологической устойчивости и исключения нежелательного психологического влияния.'
+      description:
+        'Слушатели изучают основы специальных знаний, которые будут применяться ими в процессе наблюдения, при проверке документов, в экстремальных и конфликтных ситуациях. Особое внимание уделяется профессиональным факторам стресса, приемам повышения психологической устойчивости и исключения нежелательного психологического влияния.',
+      icon: faBrain,
     },
     {
       title: 'Огневая подготовка и применение спецсредств',
-      description: 'Обучающиеся получают теоретические сведенья касательно устройства, назначения, тактических и технических характеристик различных видов оружия и специальных средств, правил и мер безопасности. Вторая часть программы — практическая и предполагает выполнение упражнений, учебных стрельб, практическую отработку приемов и способов применения различных видов спецсредств и оружия.'
+      description:
+        'Обучающиеся получают теоретические сведенья касательно устройства, назначения, тактических и технических характеристик различных видов оружия и специальных средств, правил и мер безопасности. Вторая часть программы — практическая и предполагает выполнение упражнений, учебных стрельб, практическую отработку приемов и способов применения различных видов спецсредств и оружия.',
+      icon: faBookOpen,
     },
     {
       title: 'Первая помощь',
-      description: 'Изучаются организационно-правовые нормы, специальные приемы и порядок действий при оказании помощи пострадавшим с различными видами травм (в том числе при сочетанных и комбинированных травмах) после ДТП, драк, несчастных случаев, а также лицам, находящимся в ургентных состояниях, вызванных острыми нарушениями сознания, дыхания, кровообращения, судорожным синдромом.'
+      description:
+        'Изучаются организационно-правовые нормы, специальные приемы и порядок действий при оказании помощи пострадавшим с различными видами травм (в том числе при сочетанных и комбинированных травмах) после ДТП, драк, несчастных случаев, а также лицам, находящимся в ургентных состояниях, вызванных острыми нарушениями сознания, дыхания, кровообращения, судорожным синдромом.',
+      icon: faHeartbeat,
     },
     {
       title: 'Специальная физическая подготовка',
-      description: 'Частным охранникам нередко приходится сталкиваться с ситуациями, когда без применения физической силы не обойтись. Дисциплина предполагает изучение специальных приемов защиты и борьбы с использованием, специальных (разрешенных для использования) и подручных средств, а также особенностей помещения или местности. Кроме того, в курс включены способы нейтрализации противника, вооруженного ножом, аэрозольным средством, огнестрельным оружием, палкой. Слушатели также получают необходимые навыки для применения бронежилетов и защитных шлемов.'
+      description:
+        'Частным охранникам нередко приходится сталкиваться с ситуациями, когда без применения физической силы не обойтись. Дисциплина предполагает изучение специальных приемов защиты и борьбы с использованием, специальных (разрешенных для использования) и подручных средств, а также особенностей помещения или местности. Кроме того, в курс включены способы нейтрализации противника, вооруженного ножом, аэрозольным средством, огнестрельным оружием, палкой. Слушатели также получают необходимые навыки для применения бронежилетов и защитных шлемов.',
+      icon: faUsers,
     },
     {
       title: 'Противодействие терроризму',
-      description: 'Рассматриваются вопросы антитеррористической защиты охраняемых объектов и основные направления профилактики террористических угроз, а также порядок действий при обнаружении террористических угроз.'
-    }
+      description:
+        'Рассматриваются вопросы антитеррористической защиты охраняемых объектов и основные направления профилактики террористических угроз, а также порядок действий при обнаружении террористических угроз.',
+      icon: faShieldAlt,
+    },
   ];
 
   const programTypes = [
     'Программа профессиональной подготовки для охранников 4–6 разрядов. Срок освоения программы зависит от разряда и может составлять от 40 до 80 часов.',
     'Программа повышения квалификации охранников всех разрядов, занимает от 8 до 20 часов.',
-    'Программа подготовки лиц в целях изучения безопасного обращения с оружием и приобретением навыков безопасного обращения с оружием; занимает от 6 часов.'
+    'Программа подготовки лиц в целях изучения безопасного обращения с оружием и приобретением навыков безопасного обращения с оружием; занимает от 6 часов.',
   ];
 
   return (
@@ -94,63 +103,52 @@ export const EducationPage: React.FC = () => {
       <PageTitle title="Образование | СПЕЦЦЕНТР" />
 
       <main className={style.educationPage}>
-        <div className={style.pageNavigation}>
-          <BackButton />
-        </div>
-
         <section className={style.section}>
           <div className={style.sectionHeader}>
             <div className={style.sectionIcon}>
-              <FontAwesomeIcon icon={faFilePdf} />
+              <FontAwesomeIcon icon={faGraduationCap} />
             </div>
-            <h1 className={style.sectionTitle}>Образование</h1>
+            <div>
+              <h1 className={style.sectionTitle}>Образование</h1>
+            </div>
           </div>
 
           <div className={style.contentContainer}>
-            {/* Кнопки-ссылки на программы PDF */}
-            <h2 className={style.sectionSubtitle}>Образовательные программы</h2>
-            <div className={style.pdfButtonsGrid}>
-              {programFiles.map((program, index) => (
-                <a
-                  key={index}
-                  href={program.file}
-                  className={style.pdfButton}
-                  download
-                >
-                  <div className={style.pdfIcon}>
-                    <FontAwesomeIcon icon={faFilePdf} />
-                  </div>
-                  <span className={style.pdfText}>{program.name}</span>
-                  <div className={style.pdfDownloadIcon}>
-                    <FontAwesomeIcon icon={faDownload} />
-                  </div>
-                </a>
+            {/* ─── Образовательные программы ─────────────────── */}
+            <h2 className={style.sectionSubtitle}>
+              <FontAwesomeIcon icon={faBookOpen} />
+              Образовательные программы
+            </h2>
+            <div className={style.documentsList}>
+              {programDocumentIds.map((docId) => (
+                <DocumentViewer
+                  key={docId}
+                  documentId={docId}
+                  category="education"
+                />
               ))}
             </div>
 
-            {/* Дополнительные документы */}
-            <h2 className={style.sectionSubtitle}>Учебные документы</h2>
-            <div className={style.pdfButtonsGrid}>
-              {additionalDocs.map((doc, index) => (
-                <a
-                  key={index}
-                  href={doc.file}
-                  className={style.pdfButton}
-                  download
-                >
-                  <div className={style.pdfIcon}>
-                    <FontAwesomeIcon icon={faFilePdf} />
-                  </div>
-                  <span className={style.pdfText}>{doc.name}</span>
-                  <div className={style.pdfDownloadIcon}>
-                    <FontAwesomeIcon icon={faDownload} />
-                  </div>
-                </a>
+            {/* ─── Учебные документы ────────────────────────── */}
+            <h2 className={style.sectionSubtitle}>
+              <FontAwesomeIcon icon={faScroll} />
+              Учебные документы
+            </h2>
+            <div className={style.documentsList}>
+              {additionalDocumentIds.map((docId) => (
+                <DocumentViewer
+                  key={docId}
+                  documentId={docId}
+                  category="education"
+                />
               ))}
             </div>
 
-            {/* Общие сведения */}
-            <h2 className={style.sectionSubtitle}>Общие сведения</h2>
+            {/* ─── Общие сведения ───────────────────────────── */}
+            <h2 className={style.sectionSubtitle}>
+              <FontAwesomeIcon icon={faChalkboardTeacher} />
+              Общие сведения
+            </h2>
             <div className={style.infoCard}>
               <p className={style.text}>
                 Образовательный процесс в ЧОУ ДПО «СПЕЦЦЕНТР» организован в соответствии с законами
@@ -179,8 +177,11 @@ export const EducationPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Типы и виды образовательных программ */}
-            <h2 className={style.sectionSubtitle}>Типы и виды образовательных программ</h2>
+            {/* ─── Типы и виды образовательных программ ────── */}
+            <h2 className={style.sectionSubtitle}>
+              <FontAwesomeIcon icon={faCertificate} />
+              Типы и виды образовательных программ
+            </h2>
             <div className={style.infoCard}>
               <p className={style.text}>
                 Мы предлагаем программы профессиональной подготовки и повышения квалификации частных
@@ -199,8 +200,11 @@ export const EducationPage: React.FC = () => {
               </p>
             </div>
 
-            {/* Содержание образования */}
-            <h2 className={style.sectionSubtitle}>Содержание образования</h2>
+            {/* ─── Содержание образования ───────────────────── */}
+            <h2 className={style.sectionSubtitle}>
+              <FontAwesomeIcon icon={faBookOpen} />
+              Содержание образования
+            </h2>
             <p className={style.disciplinesNote}>
               Перечень преподаваемых дисциплин в зависимости от курса их количество может изменяться.
             </p>
@@ -208,14 +212,22 @@ export const EducationPage: React.FC = () => {
             <div className={style.disciplinesGrid}>
               {disciplines.map((discipline, index) => (
                 <div key={index} className={style.disciplineCard}>
-                  <h3 className={style.disciplineTitle}>{discipline.title}</h3>
-                  <p className={style.disciplineText}>{discipline.description}</p>
+                  <div className={style.disciplineIcon}>
+                    <FontAwesomeIcon icon={discipline.icon} />
+                  </div>
+                  <div className={style.disciplineContent}>
+                    <h3 className={style.disciplineTitle}>{discipline.title}</h3>
+                    <p className={style.disciplineText}>{discipline.description}</p>
+                  </div>
                 </div>
               ))}
             </div>
 
-            {/* Итоговая аттестация */}
-            <h2 className={style.sectionSubtitle}>Итоговая аттестация</h2>
+            {/* ─── Итоговая аттестация ──────────────────────── */}
+            <h2 className={style.sectionSubtitle}>
+              <FontAwesomeIcon icon={faGraduationCap} />
+              Итоговая аттестация
+            </h2>
             <div className={style.certificationCard}>
               <p className={style.certificationText}>
                 После завершения выбранного курса обучающиеся проходят итоговую аттестацию.
@@ -238,4 +250,4 @@ export const EducationPage: React.FC = () => {
       </main>
     </>
   );
-};
+}; 

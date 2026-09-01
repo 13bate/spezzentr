@@ -1,408 +1,392 @@
+@use '../../../shared/styles/variables' as *;
+
 .financePage {
   width: 100%;
   margin: 100px 0 80px;
-  
+
   @media (max-width: 768px) {
     margin: 80px 0 40px;
   }
 }
 
-.pageNavigation {
-  margin-left: 20px;
-  margin-bottom: 20px;
-  
+.section {
+  padding: 0 20px;
+
   @media (max-width: 768px) {
-    margin-left: 10px;
+    padding: 0 16px;
   }
 }
 
-.section {
-  scroll-margin-top: 150px;
-  margin-left: 20px;
-  
-  @media (max-width: 768px) {
-    margin-left: 10px;
-  }
-}
+// ─── Header ──────────────────────────────────────────────────
 
 .sectionHeader {
   display: flex;
   align-items: center;
-  gap: 15px;
-  margin-bottom: 30px;
-  
-  .sectionIcon {
-    width: 60px;
-    height: 60px;
-    background: rgba(254, 59, 21, 0.1);
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 30px;
-    color: #FE3B15;
-    flex-shrink: 0;
-  }
-  
-  .sectionTitle {
-    font-family: 'Oswald', sans-serif;
-    font-size: 32px;
-    font-weight: 600;
-    color: #333;
-    margin: 0;
-    
-    @media (max-width: 768px) {
-      font-size: 24px;
-    }
-  }
-  
+  gap: 20px;
+  margin-bottom: 32px;
+
   @media (max-width: 768px) {
     flex-direction: column;
     text-align: center;
-    gap: 10px;
+    gap: 14px;
   }
 }
 
+.sectionIcon {
+  width: 64px;
+  height: 64px;
+  background: $color-glass-primary-hover;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: $color-brand-primary;
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 56px;
+    height: 56px;
+    font-size: 24px;
+  }
+}
+
+.sectionTitle {
+  font-family: 'Oswald', sans-serif;
+  font-size: 32px;
+  font-weight: 600;
+  color: $color-text-dark-main;
+  margin: 0;
+  line-height: 1.1;
+
+  @media (max-width: 768px) {
+    font-size: 26px;
+  }
+}
+
+// ─── Content Container ──────────────────────────────────────
+
 .contentContainer {
-  background: #f8f8f8;
+  background: $color-bg-light-footer;
   border-radius: 30px;
   padding: 40px;
-  
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
   @media (max-width: 768px) {
-    padding: 25px;
+    padding: 24px 18px;
+    border-radius: 20px;
+    gap: 18px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 18px 14px;
+    gap: 14px;
+  }
+}
+
+// ─── Info Card ───────────────────────────────────────────────
+
+.infoCard {
+  background: $color-bg-light-card;
+  border-radius: 16px;
+  padding: 20px 24px;
+  border: 1px solid $color-border-dark-alpha;
+  transition: all 0.25s ease;
+
+  &:hover {
+    border-color: rgba($color-brand-primary, 0.1);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  }
+
+  @media (max-width: 768px) {
+    padding: 16px 18px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 14px 16px;
+  }
+}
+
+.infoText {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: $color-text-dark-muted;
+  margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+}
+
+// ─── Document Section ─────────────────────────────────────────
+
+.documentSection {
+  margin-top: 8px;
+  padding-top: 24px;
+  border-top: 1px solid $color-border-dark-alpha;
+
+  @media (max-width: 768px) {
+    padding-top: 18px;
+    margin-top: 4px;
   }
 }
 
 .sectionSubtitle {
   font-family: 'Oswald', sans-serif;
-  font-size: 24px;
+  font-size: 20px;
   font-weight: 600;
-  color: #333;
-  margin: 40px 0 25px;
-  position: relative;
-  
-  &:first-of-type {
-    margin-top: 0;
-  }
-  
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    width: 60px;
-    height: 3px;
-    background: #FE3B15;
+  color: $color-text-dark-main;
+  margin: 0 0 16px;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
   }
 }
 
-.infoGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-bottom: 30px;
-  
-  @media (max-width: 992px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  
-  @media (max-width: 576px) {
-    grid-template-columns: 1fr;
-  }
-}
+// ─── Document Link ───────────────────────────────────────────
 
-.infoCard {
-  background: white;
-  border-radius: 16px;
-  padding: 25px;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(0, 0, 0, 0.03);
-  
+.documentLink {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 20px;
+  background: $color-bg-light-card;
+  border-radius: 12px;
+  border: 1px solid $color-border-dark-alpha;
+  text-decoration: none;
+  color: $color-text-dark-main;
+  transition: all 0.25s ease;
+
   &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(254, 59, 21, 0.08);
-    border-color: #FE3B15;
+    border-color: rgba($color-brand-primary, 0.15);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    transform: translateX(4px);
+
+    .downloadButton {
+      background: $color-brand-primary;
+      color: $color-text-pure-white;
+    }
   }
-  
-  .infoLabel {
-    font-family: 'Oswald', sans-serif;
-    font-size: 16px;
-    font-weight: 600;
-    color: #FE3B15;
-    margin-bottom: 15px;
-    display: block;
-    border-bottom: 1px dashed rgba(254, 59, 21, 0.2);
-    padding-bottom: 8px;
+
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px 16px;
   }
-  
-  .infoText {
-    font-family: 'PT Sans', sans-serif;
-    font-size: 14px;
-    color: #555;
-    line-height: 1.6;
-    margin: 0;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    padding: 12px 14px;
   }
 }
+
+.documentIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: $color-glass-primary-alpha;
+  color: $color-brand-primary;
+  font-size: 18px;
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+}
+
+.documentTitle {
+  flex: 1;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.4;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+}
+
+.downloadButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: transparent;
+  border: 1.5px solid $color-brand-primary;
+  border-radius: 8px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: $color-brand-primary;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  cursor: pointer;
+
+  svg {
+    font-size: 14px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 6px 14px;
+    font-size: 12px;
+  }
+
+  @media (max-width: 480px) {
+    justify-content: center;
+    padding: 8px 16px;
+  }
+}
+
+// ─── Stats (опционально) ────────────────────────────────────
 
 .statsGrid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  margin-bottom: 40px;
-  
+  gap: 16px;
+
   @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
     grid-template-columns: 1fr;
   }
 }
 
 .statCard {
-  background: white;
-  border-radius: 16px;
-  padding: 25px;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(0, 0, 0, 0.03);
-  
+  background: $color-bg-light-card;
+  border-radius: 14px;
+  padding: 20px;
+  border: 1px solid $color-border-dark-alpha;
+  text-align: center;
+  transition: all 0.25s ease;
+
   &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(254, 59, 21, 0.08);
-    border-color: #FE3B15;
-  }
-  
-  .statYear {
-    font-family: 'Oswald', sans-serif;
-    font-size: 22px;
-    font-weight: 700;
-    color: #333;
-    margin-bottom: 15px;
-    padding-bottom: 8px;
-    border-bottom: 2px solid #FE3B15;
-  }
-  
-  .statRow {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 8px;
-    
-    .statLabel {
-      font-family: 'PT Sans', sans-serif;
-      font-size: 14px;
-      color: #999;
-    }
-    
-    .statValue {
-      font-family: 'Oswald', sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      
-      &.income {
-        color: #28a745;
-      }
-      
-      &.expense {
-        color: #dc3545;
-      }
-      
-      &.balance {
-        color: #FE3B15;
-      }
-    }
-  }
-  
-  .statDivider {
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(254, 59, 21, 0.3), transparent);
-    margin: 15px 0;
+    border-color: rgba($color-brand-primary, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
   }
 }
 
-.documentsList {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 12px;
-  margin-bottom: 40px;
-}
+.statNumber {
+  font-family: 'Oswald', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: $color-brand-primary;
 
-.documentItem {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  padding: 20px 25px;
-  background: white;
-  border-radius: 16px;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(0, 0, 0, 0.03);
-  
-  &:hover {
-    transform: translateX(5px);
-    box-shadow: 0 8px 20px rgba(254, 59, 21, 0.1);
-    border-color: #FE3B15;
-    
-    .documentIcon {
-      background: #FE3B15;
-      color: white;
-    }
-    
-    .downloadButton {
-      background: #FE3B15;
-      color: white;
-      border-color: #FE3B15;
-    }
-  }
-  
-  .documentIcon {
-    width: 48px;
-    height: 48px;
-    background: rgba(254, 59, 21, 0.05);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 24px;
-    color: #FE3B15;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
-  }
-  
-  .documentInfo {
-    flex: 1;
-    
-    .documentName {
-      font-family: 'PT Sans', sans-serif;
-      font-size: 16px;
-      font-weight: 600;
-      color: #333;
-      margin-bottom: 4px;
-      line-height: 1.5;
-    }
-    
-    .documentMeta {
-      display: flex;
-      gap: 20px;
-      
-      .documentDate,
-      .documentSize {
-        font-family: 'PT Sans', sans-serif;
-        font-size: 13px;
-        color: #999;
-      }
-    }
-  }
-  
-  .downloadButton {
-    padding: 10px 25px;
-    background: transparent;
-    border: 2px solid #FE3B15;
-    border-radius: 30px;
-    font-family: 'Oswald', sans-serif;
-    font-size: 14px;
-    font-weight: 500;
-    color: #333;
-    text-decoration: none;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-    cursor: pointer;
-    
-    &:hover {
-      background: #FE3B15;
-      color: white;
-    }
-  }
-}
-
-.expensesStructure {
-  background: white;
-  border-radius: 20px;
-  padding: 30px;
-  margin-bottom: 40px;
-}
-
-.expenseItem {
-  margin-bottom: 20px;
-  
-  &:last-child {
-    margin-bottom: 0;
-  }
-  
-  .expenseLabel {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 5px;
-    font-family: 'PT Sans', sans-serif;
-    font-size: 14px;
-    color: #555;
-    
-    .expensePercentage {
-      font-family: 'Oswald', sans-serif;
-      font-weight: 600;
-      color: #FE3B15;
-    }
-  }
-  
-  .progressBar {
-    width: 100%;
-    height: 8px;
-    background: #f0f0f0;
-    border-radius: 4px;
-    overflow: hidden;
-    
-    .progressFill {
-      height: 100%;
-      background: linear-gradient(90deg, #FE3B15, #ff8c42);
-      border-radius: 4px;
-      transition: width 1s ease;
-    }
-  }
-}
-
-.additionalInfo {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin-top: 30px;
-  
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
+    font-size: 22px;
   }
-  
-  .infoBlock {
-    background: white;
-    border-radius: 16px;
-    padding: 25px;
-    
-    .infoBlockTitle {
-      font-family: 'Oswald', sans-serif;
-      font-size: 18px;
-      font-weight: 600;
-      color: #FE3B15;
-      margin-bottom: 10px;
-    }
-    
-    .infoBlockText {
-      font-family: 'PT Sans', sans-serif;
-      font-size: 14px;
-      color: #555;
-      line-height: 1.6;
-      margin: 0;
+}
+
+.statLabel {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 13px;
+  color: $color-text-dark-muted;
+  margin-top: 4px;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
+}
+
+// ─── Footer Note ─────────────────────────────────────────────
+
+.footerNote {
+  margin-top: 8px;
+  padding: 14px 20px;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 10px;
+  text-align: center;
+
+  p {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 13px;
+    color: $color-text-dark-muted;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 768px) {
+    padding: 12px 16px;
+
+    p {
+      font-size: 12px;
     }
   }
 }
 
-// Анимация появления
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+// ─── Dark Theme ──────────────────────────────────────────────
 
-.infoCard,
-.statCard,
-.documentItem,
-.expenseItem,
-.infoBlock {
-  animation: fadeInUp 0.4s ease forwards;
+.dark {
+  .contentContainer {
+    background: $color-bg-dark-section-1;
+  }
+
+  .sectionTitle {
+    color: $color-text-light-main;
+  }
+
+  .sectionSubtitle {
+    color: $color-text-light-main;
+  }
+
+  .infoCard {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.06);
+
+    &:hover {
+      border-color: rgba($color-brand-primary, 0.15);
+    }
+  }
+
+  .infoText {
+    color: $color-text-light-muted;
+  }
+
+  .documentLink {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.06);
+    color: $color-text-light-main;
+
+    &:hover {
+      border-color: rgba($color-brand-primary, 0.15);
+    }
+  }
+
+  .documentTitle {
+    color: $color-text-light-main;
+  }
+
+  .statCard {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.06);
+  }
+
+  .statLabel {
+    color: $color-text-light-muted;
+  }
+
+  .footerNote {
+    background: rgba(255, 255, 255, 0.03);
+
+    p {
+      color: $color-text-light-muted;
+    }
+  }
+
+  .documentSection {
+    border-top-color: rgba(255, 255, 255, 0.06);
+  }
 }

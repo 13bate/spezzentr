@@ -6,6 +6,7 @@ import { ReachUs } from '../../shared/ui/ReachUs';
 import { TestBlock } from '../../shared/ui/TestBlock';
 import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle';
 import { ScheduleViewer } from '../../features/ScheduleViewer';
+import { DocumentViewer } from '../../features/DocumentViewer/ui/DocumentViewer';
 
 // ─── Icons ──────────────────────────────────────────────────
 const ChevronDown = () => (
@@ -455,7 +456,12 @@ export const WeaponSafety: React.FC = () => {
       {/* ─── Расписание ──────────────────────────────────────── */}
 
 
-      <ScheduleViewer scheduleId="exam-schedule" />
+      <ScheduleViewer scheduleId="weapon-safety-schedule" />
+
+      <DocumentViewer
+        category='security'
+        documentId="weapon-safety-questions"
+      />
 
 
       {/* ─── Результат ────────────────────────────────────────── */}

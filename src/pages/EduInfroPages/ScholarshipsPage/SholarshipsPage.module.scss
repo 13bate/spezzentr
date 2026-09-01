@@ -1,7 +1,9 @@
+@use '../../../shared/styles/variables' as *;
+
 .scholarshipsPage {
   width: 100%;
   margin: 100px 0 80px;
-  
+
   @media (max-width: 768px) {
     margin: 80px 0 40px;
   }
@@ -10,7 +12,7 @@
 .pageNavigation {
   margin-left: 20px;
   margin-bottom: 20px;
-  
+
   @media (max-width: 768px) {
     margin-left: 10px;
   }
@@ -19,7 +21,7 @@
 .section {
   scroll-margin-top: 150px;
   margin-left: 20px;
-  
+
   @media (max-width: 768px) {
     margin-left: 10px;
   }
@@ -30,32 +32,32 @@
   align-items: center;
   gap: 15px;
   margin-bottom: 30px;
-  
+
   .sectionIcon {
     width: 60px;
     height: 60px;
-    background: rgba(254, 59, 21, 0.1);
+    background: $color-glass-primary-hover;
     border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 30px;
-    color: #FE3B15;
+    color: $color-brand-primary;
     flex-shrink: 0;
   }
-  
+
   .sectionTitle {
     font-family: 'Oswald', sans-serif;
     font-size: 32px;
     font-weight: 600;
-    color: #333;
+    color: $color-text-dark-main;
     margin: 0;
-    
+
     @media (max-width: 768px) {
       font-size: 24px;
     }
   }
-  
+
   @media (max-width: 768px) {
     flex-direction: column;
     text-align: center;
@@ -64,89 +66,91 @@
 }
 
 .contentContainer {
-  background: #f8f8f8;
+  background: $color-bg-light-footer;
   border-radius: 30px;
   padding: 40px;
-  
+
   @media (max-width: 768px) {
     padding: 25px;
   }
 }
 
+// ─── Информационная карточка ─────────────────────────────────
 .infoCard {
-  background: white;
+  background: $color-bg-light-card;
   border-radius: 20px;
   padding: 30px;
   margin-bottom: 20px;
   transition: all 0.3s ease;
-  border: 1px solid rgba(0, 0, 0, 0.03);
-  
+  border: 1px solid $color-border-dark-alpha;
+
   &:hover {
     transform: translateX(5px);
-    box-shadow: 0 10px 25px rgba(254, 59, 21, 0.1);
-    border-color: #FE3B15;
-    
+    box-shadow: 0 10px 25px $color-shadow-primary-light;
+    border-color: $color-brand-primary;
+
     .cardIcon {
-      background: #FE3B15;
-      color: white;
+      background: $color-brand-primary;
+      color: $color-text-pure-white;
     }
   }
-  
+
   .cardHeader {
     display: flex;
     align-items: center;
     gap: 15px;
     margin-bottom: 20px;
-    
+
     .cardIcon {
       width: 48px;
       height: 48px;
-      background: rgba(254, 59, 21, 0.05);
+      background: $color-glass-primary-alpha;
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 24px;
-      color: #FE3B15;
+      color: $color-brand-primary;
       transition: all 0.3s ease;
     }
-    
+
     .cardTitle {
       font-family: 'Oswald', sans-serif;
       font-size: 20px;
       font-weight: 600;
-      color: #333;
+      color: $color-text-dark-main;
       margin: 0;
     }
   }
-  
+
   .cardText {
     font-family: 'PT Sans', sans-serif;
     font-size: 16px;
-    color: #555;
+    color: $color-text-dark-muted;
     line-height: 1.6;
     margin: 0;
   }
 }
 
+// ─── Карточка с примечанием ──────────────────────────────────
 .noteCard {
-  background: rgba(254, 59, 21, 0.05);
+  background: $color-glass-primary-alpha;
   border-radius: 16px;
   padding: 25px;
   margin-top: 30px;
-  border-left: 4px solid #FE3B15;
-  
+  border-left: 4px solid $color-brand-primary;
+
   .noteText {
     font-family: 'PT Sans', sans-serif;
     font-size: 15px;
-    color: #555;
+    color: $color-text-dark-muted;
     line-height: 1.6;
     margin: 0;
     font-style: italic;
   }
 }
 
-// Анимация появления
+// ─── Анимация ────────────────────────────────────────────────
 @keyframes fadeInUp {
   from {
     opacity: 0;

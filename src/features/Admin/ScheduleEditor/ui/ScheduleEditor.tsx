@@ -12,16 +12,20 @@ interface Props {
   onSave: () => void;
 }
 
+// ✅ Исправленный маппинг заголовков
 const scheduleTitles: Record<ScheduleId, string> = {
   'weapon-safety-schedule': 'Расписание экзаменов БИКОСО',
   'competitions-schedule': 'Расписание соревнований',
   'tactical-medicine-schedule': 'Расписание тактической медицины',
-  'periodic-check-schedule': 'Расписание периодической проверки',
+  'periodic-check-schedule': 'Расписание периодической проверки', // ← исправлено!
 };
 
-// Маппинг для заголовков (если нужно)
-const getTitle = (id: ScheduleId): string => {
-  return scheduleTitles[id] || id;
+// Маппинг: scheduleId → имя файла
+const fileNames: Record<ScheduleId, string> = {
+  'weapon-safety-schedule': 'Расписание экзаменов БОО',
+  'competitions-schedule': 'competitions-schedule',
+  'tactical-medicine-schedule': 'tactical-medicine-schedule',
+  'periodic-check-schedule': 'training-schedule',
 };
 
 export const ScheduleEditor: React.FC<Props> = ({ scheduleId, isOpen, onClose, onSave }) => {
@@ -31,7 +35,12 @@ export const ScheduleEditor: React.FC<Props> = ({ scheduleId, isOpen, onClose, o
 
   useEffect(() => {
     if (isOpen) {
-      api.schedules.get(scheduleId)
+      const fileName = fileNames[scheduleId] || scheduleId;
+      fetch(`/spezzentr/content/schedules/${fileName}.json`)
+        .then((res) => {
+          if (!res.ok) throw new Error('Ошибка загрузки');
+          return res.json();
+        })
         .then((data) => {
           setItems(data.content || []);
           setLoading(false);
@@ -63,7 +72,7 @@ export const ScheduleEditor: React.FC<Props> = ({ scheduleId, isOpen, onClose, o
     setSaving(true);
     const payload: Schedule = {
       id: scheduleId,
-      title: getTitle(scheduleId),
+      title: scheduleTitles[scheduleId],
       content: items,
       updatedAt: new Date().toISOString(),
       isPublished: true,
@@ -82,7 +91,7 @@ export const ScheduleEditor: React.FC<Props> = ({ scheduleId, isOpen, onClose, o
   };
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} title={`Редактирование: ${getTitle(scheduleId)}`}>
+    <Modal isOpen={isOpen} onClose={onClose} title={`Редактирование: ${scheduleTitles[scheduleId]}`}>
       {loading ? (
         <div className={styles.loading}>Загрузка...</div>
       ) : (

@@ -1,6 +1,6 @@
 {
-  "id": "training-schedule",
-  "title": "Расписание тренировок",
+  "id": "periodic-check-schedule",
+  "title": "Расписание переодических проверок",
   "content": [
     {
       "date": "Понедельник",

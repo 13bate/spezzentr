@@ -15,25 +15,39 @@ export const AdminLayout = () => {
       {/* Sidebar */}
       <aside className={styles.sidebar}>
         <div className={styles.logo}>
-          <span>СПЕЦЦЕНТР</span>
-          <small>Админка</small>
+          <Link to="/admin" className={styles.logoName}>СПЕЦЦЕНТР</Link>
+          <small>ПАНЕЛЬ АДМИНИСТРАТОРА</small>
         </div>
 
         <nav className={styles.nav}>
+          <Link to="/admin" className={styles.navLink}>
+            <span className={styles.navIcon}></span>
+            Главная
+          </Link>
           <Link to="/admin/schedules" className={styles.navLink}>
-            📅 Расписания
+            <span className={styles.navIcon}></span>
+            Расписания
           </Link>
           <Link to="/admin/news" className={styles.navLink}>
-            📰 Новости
+            <span className={styles.navIcon}></span>
+            Новости
           </Link>
           <Link to="/admin/documents" className={styles.navLink}>
-            📄 Документы PDF
+            <span className={styles.navIcon}></span>
+            Документы PDF
           </Link>
         </nav>
 
-        <button onClick={handleLogout} className={styles.logoutBtn}>
-          Выйти
-        </button>
+        <div className={styles.sidebarFooter}>
+          <a href="/spezzentr/" target="_blank" rel="noopener noreferrer" className={styles.siteLink}>
+            <span className={styles.navIcon}>🌐</span>
+            Перейти на сайт
+          </a>
+          <button onClick={handleLogout} className={styles.logoutBtn}>
+            <span className={styles.navIcon}>↩</span>
+            Выйти
+          </button>
+        </div>
       </aside>
 
       {/* Main content */}

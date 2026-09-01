@@ -3,7 +3,8 @@ export interface NewsItem {
   title: string;
   date: string;
   content: string;
-  image?: string;
+  image?: string;          // путь к изображению
+  imageFile?: string;      // имя файла изображения
   isPublished: boolean;
   createdAt: string;
   updatedAt: string;

@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faUsers,
   faUserTie,
-  faUser,
   faPhone,
   faEnvelope,
   faClock,
@@ -26,25 +25,9 @@ export const ManagementPage: React.FC = () => {
       email: 'spezzentr@bk.ru',
       receptionHours: 'Пн-Пт 10:00-17:00'
     },
-    deputy: {
-      name: 'Агеенко Олег Николаевич',
-      position: 'Заместитель директора',
-      phone: '+7 (4832) 32-75-45',
-      email: 'spezzentr@bk.ru'
-    }
   };
 
   const teachers = [
-    {
-      name: 'Агеенко Олег Николаевич',
-      education: 'высшее',
-      qualification: 'инженер-механик',
-      disciplines: ['Тактико-специальная подготовка', 'Использование специальных средств'],
-      experience: {
-        total: '31 год',
-        teaching: '3 года'
-      }
-    },
     {
       name: 'Першукевич Андрей Викторович',
       education: 'высшее',
@@ -52,16 +35,6 @@ export const ManagementPage: React.FC = () => {
       disciplines: ['Специальная физическая подготовка', 'Первая медицинская помощь', 'Правовая подготовка', 'Огневая подготовка'],
       experience: {
         total: '17 лет',
-        teaching: '9 лет'
-      }
-    },
-    {
-      name: 'Марочкина Наталья Николаевна',
-      education: 'высшее',
-      qualification: 'психолог, преподаватель психологии',
-      disciplines: ['Психологическая подготовка'],
-      experience: {
-        total: '10 лет',
         teaching: '9 лет'
       }
     },
@@ -75,16 +48,6 @@ export const ManagementPage: React.FC = () => {
         teaching: '9 лет'
       }
     },
-    {
-      name: 'Мармус Владимир Викторович',
-      education: 'среднее специальное',
-      qualification: 'преподаватель физической культуры',
-      disciplines: ['Огневая подготовка'],
-      experience: {
-        total: '33 года',
-        teaching: '9 лет'
-      }
-    }
   ];
 
   return (
@@ -133,31 +96,6 @@ export const ManagementPage: React.FC = () => {
                     <div className={style.contactItem}>
                       <FontAwesomeIcon icon={faClock} className={style.contactIcon} />
                       <span>{managementData.director.receptionHours}</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Заместитель */}
-              <div className={style.managementCard}>
-                <div className={style.managementIcon}>
-                  <FontAwesomeIcon icon={faUser} />
-                </div>
-                <div className={style.managementContent}>
-                  <span className={style.managementLabel}>Заместитель директора</span>
-                  <h3 className={style.managementName}>{managementData.deputy.name}</h3>
-                  <div className={style.managementContacts}>
-                    <div className={style.contactItem}>
-                      <FontAwesomeIcon icon={faPhone} className={style.contactIcon} />
-                      <a href={`tel:${managementData.deputy.phone.replace(/[^0-9+]/g, '')}`}>
-                        {managementData.deputy.phone}
-                      </a>
-                    </div>
-                    <div className={style.contactItem}>
-                      <FontAwesomeIcon icon={faEnvelope} className={style.contactIcon} />
-                      <a href={`mailto:${managementData.deputy.email}`}>
-                        {managementData.deputy.email}
-                      </a>
                     </div>
                   </div>
                 </div>

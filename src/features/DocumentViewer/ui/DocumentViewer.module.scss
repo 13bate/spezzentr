@@ -1,0 +1,122 @@
+@use '../../../shared/styles/variables' as *;
+
+.document {
+  padding: 14px 18px;
+  background: $color-bg-light-card;
+  border-radius: 12px;
+  border: 1px solid $color-border-dark-alpha;
+  transition: all 0.2s ease;
+
+  &:hover {
+    border-color: rgba($color-brand-primary, 0.12);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+  }
+
+  @media (max-width: 768px) {
+    padding: 12px 14px;
+  }
+}
+
+.documentContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+}
+
+.documentInfo {
+  flex: 1;
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.documentTitle {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: $color-text-dark-main;
+  line-height: 1.4;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+}
+
+.documentDescription {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 13px;
+  color: $color-text-dark-muted;
+  line-height: 1.4;
+}
+
+.downloadBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background: $color-brand-primary;
+  color: $color-text-pure-white;
+  border: none;
+  border-radius: 8px;
+  text-decoration: none;
+  font-family: 'Oswald', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  cursor: pointer;
+  flex-shrink: 0;
+
+  &:hover {
+    background: $color-brand-primary-hover;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba($color-brand-primary, 0.2);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  svg {
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 480px) {
+    justify-content: center;
+    padding: 10px 16px;
+    font-size: 12px;
+  }
+}
+
+.loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px;
+  color: $color-text-dark-muted;
+  font-size: 14px;
+  font-family: 'PT Sans', sans-serif;
+
+  svg {
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

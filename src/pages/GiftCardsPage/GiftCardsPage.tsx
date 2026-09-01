@@ -26,14 +26,8 @@ export const GiftCardsPage: React.FC<Props> = ({ className }) => {
               впечатления и драйв.
             </p>
             <div className={style.buttonGroup}>
-              <Link to="/gift-cards/choose" className={style.primaryBtn}>
-                Выбрать сертификат
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                  <path d="M3 9h12M10 4l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-              </Link>
-              <Link to="/gift-cards/how-it-works" className={style.secondaryBtn}>
-                Как это работает
+              <Link to="/contacts" className={style.secondaryBtn}>
+                СВЯЗАТЬСЯ С НАМИ
               </Link>
             </div>
           </div>
@@ -100,23 +94,19 @@ export const GiftCardsPage: React.FC<Props> = ({ className }) => {
             <div className={style.planCard}>
               <h4>Базовый</h4>
               <div className={style.price}>3 000 ₽</div>
-              <Link to="/gift-cards/choose" className={style.planBtn}>Выбрать</Link>
             </div>
             <div className={`${style.planCard} ${style.popular}`}>
               <span className={style.popularBadge}>Популярный</span>
               <h4>Стандарт</h4>
               <div className={style.price}>5 000 ₽</div>
-              <Link to="/gift-cards/choose" className={`${style.planBtn} ${style.primary}`}>Выбрать</Link>
             </div>
             <div className={style.planCard}>
               <h4>Оптимальный</h4>
               <div className={style.price}>10 000 ₽</div>
-              <Link to="/gift-cards/choose" className={style.planBtn}>Выбрать</Link>
             </div>
             <div className={style.planCard}>
               <h4>Премиум</h4>
               <div className={style.price}>15 000 ₽</div>
-              <Link to="/gift-cards/choose" className={style.planBtn}>Выбрать</Link>
             </div>
           </div>
         </div>

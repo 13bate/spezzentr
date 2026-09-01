@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router'
 import style from './SafetyTrainigOverview.module.scss'
 import { safetyTrainingContent } from './model'
-import contentImg from '../../assets/spezzenter/man_with_pistol.avif'
+
 
 const CheckIcon = () => (
 	<svg width="12" height="9" viewBox="0 0 12 9" fill="none">
@@ -72,15 +72,7 @@ export const SafetyTrainingOverview: React.FC<Props> = ({ className }) => {
 					</Link>
 				</div>
 
-				{/* Right: image with effects */}
-				<div className={style.imageWrapper}>
-					<img src={contentImg} alt="Обучение на гражданское оружие" className={style.image} />
-					<div className={style.overlay} />
-					<div className={style.glow} />
-					<div className={style.grid} />
 
-
-				</div>
 			</div>
 		</section>
 	)

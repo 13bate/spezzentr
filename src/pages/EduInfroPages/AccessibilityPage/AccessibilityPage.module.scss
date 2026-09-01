@@ -1,4 +1,4 @@
-@use '../../../shared/styles/variables' as *; 
+@use '../../../shared/styles/variables' as *;
 
 .accessibilityPage {
   width: 100%;
@@ -75,6 +75,7 @@
   }
 }
 
+// ─── Информационное сообщение ────────────────────────────────
 .infoMessage {
   display: flex;
   gap: 25px;
@@ -115,6 +116,7 @@
   }
 }
 
+// ─── Контактная карточка ─────────────────────────────────────
 .contactCard {
   background: $color-bg-light-card;
   border-radius: 20px;
@@ -182,6 +184,7 @@
   }
 }
 
+// ─── Карточка с примечанием ──────────────────────────────────
 .noteCard {
   background: $color-glass-primary-alpha;
   border-radius: $radius-card-medium;
@@ -199,12 +202,12 @@
   }
 }
 
+// ─── Анимация ────────────────────────────────────────────────
 @keyframes fadeInUp {
   from {
     opacity: 0;
     transform: translateY(20px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
