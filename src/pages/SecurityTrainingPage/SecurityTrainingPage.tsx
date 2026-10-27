@@ -149,7 +149,7 @@ export const SecurityTrainingPage: React.FC = () => {
           </div>
 
           <div className={style.accordionList}>
-            <AccordionItem title="Шаг 1. Медицинское освидетельствование" defaultOpen>
+            <AccordionItem title="Шаг 1. Медицинское освидетельствование" >
               <p>
                 Прохождение медицинского освидетельствования об отсутствии медицинских
                 противопоказаний к исполнению обязанностей частного охранника.

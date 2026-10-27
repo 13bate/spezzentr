@@ -1,7 +1,6 @@
 import type { FC } from "react";
 import style from "./TestBlock.module.scss"
 import clsx from "clsx";
-import { Button } from "../Button";
 import { useMediaQuery } from "@uidotdev/usehooks"
 
 interface Props {
@@ -17,10 +16,6 @@ export const TestBlock: FC<Props> = ({ className, title, description, buttonText
 
 
 
-  const buttonTestHandler = () => {
-    window.location.href = testUrl;
-  }
-
   const isMobile = useMediaQuery('(max-width: 800px)');
 
 
@@ -34,7 +29,14 @@ export const TestBlock: FC<Props> = ({ className, title, description, buttonText
         <h2 className={style.title}>{title}</h2>
         <div className={style.cardFooter}>
           <p className={style.description}>{description}</p>
-          <Button className={style.button} size={isMobile ? "xxs" : "sm"} variant="primary" onClick={() => buttonTestHandler()}>{buttonText}</Button>
+          <a
+            href={testUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={clsx(style.button, style[`button_${isMobile ? "xxs" : "sm"}`], style.button_primary)}
+          >
+            {buttonText}
+          </a>
         </div>
       </div>
     </div>

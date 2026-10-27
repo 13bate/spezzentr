@@ -16,7 +16,7 @@ export const shootingRangeCardsData = [
 	{
 		id: 't3',
 		label: 'Программы для детей и подростков',
-		href: '/shooting/youth',
+		href: '/contacts',
 		description:
 			'Безопасное знакомство с оружием под контролем инструктора. С 14 лет.',
 	},

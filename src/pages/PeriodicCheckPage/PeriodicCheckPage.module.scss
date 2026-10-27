@@ -1,5 +1,4 @@
 @use '../../shared/styles/variables.scss' as *;
-@use 'sass:color';
 
 // ─── Page ──────────────────────────────────────────────────────
 .periodicCheckPage {
@@ -11,7 +10,7 @@
   }
 }
 
-// ─── Shared (общие элементы) ──────────────────────────────────
+// ─── Shared ─────────────────────────────────────────────────────
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -33,30 +32,38 @@
 }
 
 .sectionTitle {
-  font-family: 'Oswald', sans-serif;
-  font-size: 28px;
-  font-weight: 600;
-  color: $color-text-light-main;
-  margin: 0 0 30px;
+  font-family: 'Oswald', 'Inter', sans-serif;
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 700;
+  color: $color-text-dark-main;
+  margin: 0 0 20px;
+  letter-spacing: -0.02em;
 
   @media (max-width: 768px) {
-    font-size: 24px;
+    font-size: 22px;
   }
 }
 
-// ─── Hero Section (светлая, как на странице оружия) ───────────
+.sectionDescription {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 15px;
+  color: $color-text-dark-muted;
+  margin: 0 0 20px;
+  line-height: 1.6;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+}
+
+// ─── Hero Section ─────────────────────────────────────────────
 .heroSection {
   position: relative;
   padding: 40px 30px 48px;
   margin-bottom: 20px;
   border-radius: 32px;
   overflow: hidden;
-  background: linear-gradient(
-    175deg,
-    rgba($color-bg-light-card, 0.5) 0%,
-    rgba($color-bg-light-card, 0.3) 60%,
-    rgba($color-bg-light-card, 0.4) 100%
-  );
+  background: linear-gradient(175deg, #f7f8fc 0%, #f2f5fb 60%, #f6f7fb 100%);
 
   @media (max-width: 768px) {
     padding: 28px 16px 32px;
@@ -86,8 +93,8 @@
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(to right, rgba($color-text-dark-main, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba($color-text-dark-main, 0.04) 1px, transparent 1px);
+    linear-gradient(to right, rgba(11, 18, 32, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(11, 18, 32, 0.04) 1px, transparent 1px);
   background-size: 48px 48px;
   mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
   -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 20%, transparent 100%);
@@ -110,7 +117,7 @@
   left: -120px;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba($color-brand-primary, 0.06), transparent 65%);
+  background: radial-gradient(circle, rgba($color-brand-primary, 0.05), transparent 65%);
   filter: blur(40px);
   animation: floatBlob2 14s ease-in-out infinite;
 }
@@ -165,224 +172,165 @@
   }
 }
 
-// ==========================================================================
-// ─── SCHEDULE ─────────────────────────────────────────────────────────────
-// ==========================================================================
+// ─── Schedule Section (светлый) ──────────────────────────────
 .scheduleSection {
-  margin: 50px 0;
-  background: linear-gradient(135deg, $color-bg-dark-card-from 0%, $color-bg-dark-card-to 100%);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: $radius-card-large;
-  padding: 35px;
-  box-shadow: 0 15px 35px $color-shadow-black-medium;
-}
-
-.scheduleList {
-  display: grid;
-  gap: 15px;
-}
-
-.scheduleItem {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 15px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  border-radius: 10px;
+  margin: 32px 0;
+  background: $color-bg-light-card;
+  border: 1px solid $color-border-dark-alpha;
+  border-radius: 24px;
+  padding: 28px 32px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
   transition: all 0.3s ease;
 
   &:hover {
-    transform: translateX(5px);
-    background: $color-glass-primary-alpha;
-    border-color: $color-border-primary-alpha;
-    box-shadow: 0 5px 15px $color-shadow-primary-light;
+    border-color: rgba($color-brand-primary, 0.12);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
   }
 
-  .dateIcon {
-    font-size: 24px;
-    color: $color-brand-primary;
-  }
-
-  .dateText {
-    font-family: 'PT Sans', sans-serif;
-    font-size: 18px;
-    color: $color-text-pure-white;
-
-    @media (max-width: 768px) {
-      font-size: 16px;
-    }
+  @media (max-width: 768px) {
+    padding: 20px 18px;
+    border-radius: 18px;
+    margin: 24px 0;
   }
 }
 
-// ==========================================================================
-// ─── DOCUMENTS ────────────────────────────────────────────────────────────
-// ==========================================================================
+// ─── Documents Section (светлый) ────────────────────────────
 .documentsSection {
-  margin: 50px 0;
-  background: linear-gradient(135deg, $color-bg-dark-card-from 0%, $color-bg-dark-card-to 100%);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: $radius-card-large;
-  padding: 35px;
-  box-shadow: 0 15px 35px $color-shadow-black-medium;
+  margin: 32px 0;
+  background: $color-bg-light-card;
+  border: 1px solid $color-border-dark-alpha;
+  border-radius: 24px;
+  padding: 28px 32px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: rgba($color-brand-primary, 0.12);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  }
+
+  @media (max-width: 768px) {
+    padding: 20px 18px;
+    border-radius: 18px;
+    margin: 24px 0;
+  }
 }
 
 .documentsList {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 
   li {
     display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 15px;
-    padding: 12px;
-    background: rgba(255, 255, 255, 0.02);
-    border: 1px solid rgba(255, 255, 255, 0.04);
-    border-radius: 8px;
+    gap: 14px;
+    padding: 14px 18px;
+    background: $color-bg-light-footer;
+    border: 1px solid $color-border-dark-alpha;
+    border-radius: 12px;
     font-family: 'PT Sans', sans-serif;
-    font-size: 18px;
-    color: $color-text-light-main;
+    font-size: 15px;
+    color: $color-text-dark-main;
+    transition: all 0.25s ease;
+
+    &:hover {
+      border-color: rgba($color-brand-primary, 0.12);
+      transform: translateX(4px);
+    }
 
     @media (max-width: 768px) {
-      font-size: 16px;
+      font-size: 14px;
+      padding: 12px 14px;
     }
 
     .docIcon {
-      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba($color-brand-primary, 0.06);
       color: $color-brand-primary;
+      font-size: 14px;
+      flex-shrink: 0;
     }
   }
 }
 
-// ==========================================================================
-// ─── PDF ──────────────────────────────────────────────────────────────────
-// ==========================================================================
-.pdfSection {
-  margin: 50px 0;
-
-  .pdfDescription {
-    font-family: 'PT Sans', sans-serif;
-    font-size: 18px;
-    color: $color-text-dark-dimmed;
-    margin-bottom: 30px;
-  }
-}
-
-.pdfCard {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-  background: linear-gradient(135deg, $color-bg-dark-card-from 0%, $color-bg-dark-card-to 100%);
-  border-radius: $radius-card-large;
-  padding: 30px;
-  border: 1px solid $color-border-primary-alpha;
-  box-shadow: 0 20px 40px $color-shadow-black-hard;
-  backdrop-filter: blur(10px);
+// ─── Document Section (обёртка для DocumentViewer) ──────────
+.documentSection {
+  margin: 32px 0;
+  padding: 0;
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    text-align: center;
-    padding: 25px;
-  }
-
-  .pdfIcon {
-    font-size: 64px;
-    color: $color-brand-primary;
-    filter: drop-shadow(0 4px 10px $color-shadow-primary-deep);
-
-    @media (max-width: 768px) {
-      font-size: 48px;
-    }
-  }
-
-  .pdfContent {
-    flex: 1;
-
-    h3 {
-      font-family: 'Oswald', sans-serif;
-      font-size: 24px;
-      font-weight: 600;
-      color: $color-text-pure-white;
-      margin-bottom: 8px;
-    }
-
-    p {
-      font-family: 'PT Sans', sans-serif;
-      font-size: 16px;
-      color: $color-text-dark-dimmed;
-    }
+    margin: 24px 0;
   }
 }
 
-.downloadButton {
-  background: linear-gradient(135deg, $color-brand-primary 0%, $color-brand-primary-hover 100%);
-  color: $color-text-pure-white;
-  border: none;
-  padding: 15px 30px;
-  border-radius: 10px;
-  font-family: 'Oswald', sans-serif;
-  font-weight: 600;
-  font-size: 16px;
-  cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  white-space: nowrap;
-  box-shadow: 0 4px 15px $color-shadow-primary-deep;
-
-  &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px $color-shadow-primary-pulse;
-  }
-
-  @media (max-width: 768px) {
-    width: 100%;
-    padding: 12px 20px;
-  }
-}
-
-// ==========================================================================
-// ─── INFO CARDS ──────────────────────────────────────────────────────────
-// ==========================================================================
+// ─── Info Section ───────────────────────────────────────────
 .infoSection {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 25px;
-  margin: 50px 0;
+  gap: 20px;
+  margin: 32px 0;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 16px;
+    margin: 24px 0;
   }
 }
 
 .infoCard {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.005) 100%);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: $radius-card-medium;
-  padding: 25px;
-  box-shadow: 0 10px 30px $color-shadow-black-medium;
-  backdrop-filter: blur(10px);
+  background: $color-bg-light-card;
+  border: 1px solid $color-border-dark-alpha;
+  border-radius: 20px;
+  padding: 24px 28px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: rgba($color-brand-primary, 0.12);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    padding: 20px 18px;
+    border-radius: 16px;
+  }
 
   h3 {
-    font-family: 'Oswald', sans-serif;
-    font-size: 20px;
+    font-family: 'Oswald', 'Inter', sans-serif;
+    font-size: 18px;
     font-weight: 600;
     color: $color-brand-primary;
-    margin-bottom: 15px;
-    text-shadow: 0 0 15px $color-shadow-primary-light;
+    margin: 0 0 10px;
+
+    @media (max-width: 768px) {
+      font-size: 16px;
+    }
   }
 
   p {
     font-family: 'PT Sans', sans-serif;
-    font-size: 16px;
-    color: $color-text-dark-dimmed;
+    font-size: 15px;
+    color: $color-text-dark-muted;
     line-height: 1.6;
+    margin: 0;
+
+    @media (max-width: 768px) {
+      font-size: 13px;
+    }
   }
 }
 
 // ─── Page Navigation ─────────────────────────────────────────
-
 .pageNavigation {
   margin-bottom: 20px;
   padding: 0 20px;
@@ -392,52 +340,76 @@
   }
 }
 
-// ─── Schedule Section ────────────────────────────────────────
+// ─── Dark Theme ──────────────────────────────────────────────
+.dark {
+  .scheduleSection,
+  .documentsSection,
+  .infoCard {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.06);
 
-.scheduleSection {
-  padding: 0 20px;
-  margin-bottom: 40px;
+    &:hover {
+      border-color: rgba($color-brand-primary, 0.2);
+    }
+  }
 
-  @media (max-width: 768px) {
-    padding: 0 16px;
-    margin-bottom: 28px;
+  .sectionTitle {
+    color: $color-text-light-main;
+  }
+
+  .sectionDescription {
+    color: $color-text-light-muted;
+  }
+
+  .documentsList li {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.06);
+    color: $color-text-light-main;
+
+    &:hover {
+      border-color: rgba($color-brand-primary, 0.2);
+    }
+  }
+
+  .infoCard {
+    h3 {
+      color: $color-brand-primary;
+    }
+
+    p {
+      color: $color-text-light-muted;
+    }
+  }
+
+  .heroSection {
+    background: linear-gradient(175deg, #0a0b0e 0%, #121316 40%, #18191c 100%);
+  }
+
+  .heroNote {
+    background: rgba($color-brand-primary, 0.06);
+
+    div {
+      color: $color-text-light-muted;
+
+      strong {
+        color: $color-text-light-main;
+      }
+    }
   }
 }
 
-// ─── Document Section ────────────────────────────────────────
-
-.documentSection {
-  padding: 0 20px;
-  margin-bottom: 40px;
-
-  @media (max-width: 768px) {
-    padding: 0 16px;
-    margin-bottom: 28px;
+// ─── Reduced Motion ──────────────────────────────────────────
+@media (prefers-reduced-motion: reduce) {
+  .heroBlob1,
+  .heroBlob2 {
+    animation: none !important;
   }
-}
 
-.sectionDescription {
-  font-family: 'PT Sans', sans-serif;
-  font-size: 15px;
-  color: $color-text-dark-muted;
-  margin: 4px 0 20px;
-  line-height: 1.6;
-
-  @media (max-width: 768px) {
-    font-size: 14px;
-  }
-}
-
-// ─── Section Title ────────────────────────────────────────────
-
-.sectionTitle {
-  font-family: 'Oswald', sans-serif;
-  font-size: 24px;
-  font-weight: 600;
-  color: $color-text-dark-main;
-  margin: 0 0 4px;
-
-  @media (max-width: 768px) {
-    font-size: 20px;
+  .scheduleSection,
+  .documentsSection,
+  .infoCard,
+  .documentsList li {
+    transform: none !important;
+    transition: none !important;
   }
 }

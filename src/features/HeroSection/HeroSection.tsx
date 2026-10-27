@@ -77,21 +77,21 @@ export const HeroSection: React.FC = () => {
 
 					<div className={styles.stats}>
 						<div className={styles.statitem}>
-							<span className={styles.statnumber}>X+</span>
+							<span className={styles.statnumber}>20+</span>
 							<span className={styles.statlabel}>программ обучения</span>
 						</div>
 						<div className={styles.statitem}>
-							<span className={styles.statnumber}>15+</span>
-							<span className={styles.statlabel}>...</span>
+							<span className={styles.statnumber}>20+</span>
+							<span className={styles.statlabel}>клубных соревнований в год</span>
 						</div>
-						<div className={styles.statitem}>
-							<span className={styles.statnumber}>40+</span>
-							<span className={styles.statlabel}>соревнований в год</span>
-						</div>
-						<div className={styles.statitem}>
-							<span className={styles.statnumber}>10+</span>
-							<span className={styles.statlabel}>лет опыта и безупречной репутации</span>
-						</div>
+						{/* <div className={styles.statitem}> */}
+						{/* 	<span className={styles.statnumber}>40+</span> */}
+						{/* 	<span className={styles.statlabel}>соревнований в год</span> */}
+						{/* </div> */}
+						{/* <div className={styles.statitem}> */}
+						{/* 	<span className={styles.statnumber}>10+</span> */}
+						{/* 	<span className={styles.statlabel}>лет опыта и безупречной репутации</span> */}
+						{/* </div> */}
 					</div>
 
 					<div className={styles.btmoreContainer}>

@@ -10,7 +10,7 @@ interface Props {
 export const Provider: React.FC<Props> = ({ children }) => {
 	return (
 		<div className={styles.container}>
-			<RouterProvider router={router} />
+			<RouterProvider router={router} />;
 			<Container>
 				{children}
 			</Container>

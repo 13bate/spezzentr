@@ -1,0 +1,171 @@
+@use '../../../shared/styles/variables' as *; // Укажите правильный путь
+
+.section {
+  padding: 40px 0 60px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header {
+  margin-bottom: 32px;
+}
+
+.title {
+  font-family: 'Oswald', 'Inter', sans-serif;
+  font-size: clamp(28px, 3.5vw, 36px);
+  font-weight: 700;
+  color: $color-text-dark-main; // Темный заголовок
+  margin: 0 0 12px;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 16px;
+  color: $color-text-dark-muted; // Серый подзаголовок
+  margin: 0;
+  line-height: 1.5;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+}
+
+.cardsList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.card {
+  display: flex;
+  align-items: stretch;
+  gap: 40px;
+  background: $color-bg-light-card; // Белый фон (переменная)
+  border-radius: $radius-card-large; // 22px (переменная)
+  padding: 40px;
+  border: 1px solid $color-border-dark-alpha; // Легкая рамка
+  box-shadow: 0 4px 20px $color-shadow-light; // Мягкая тень
+  
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    padding: 32px 24px;
+    gap: 32px;
+  }
+}
+
+.cardContent {
+  flex: 1;
+  max-width: 50%;
+
+  @media (max-width: 900px) {
+    max-width: 100%;
+  }
+}
+
+.cardTitle {
+  font-family: 'Oswald', 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: $color-text-dark-main; // Темный заголовок
+  margin: 0 0 20px;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+}
+
+.cardText {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: $color-text-dark-muted; // Серый текст
+  margin: 0;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
+}
+
+.steps {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+  max-width: 50%;
+
+  @media (max-width: 900px) {
+    max-width: 100%;
+    margin-top: 8px;
+  }
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  position: relative;
+  padding-bottom: 24px;
+
+  // Линия, соединяющая шаги (в светлой теме делаем её едва заметной)
+  &::before {
+    content: '';
+    position: absolute;
+    top: 32px;
+    left: 15px;
+    bottom: 0;
+    width: 1px;
+    background: $color-border-dark-alpha;
+  }
+
+  // Убираем линию у последнего элемента
+  &:last-child {
+    padding-bottom: 0;
+    
+    &::before {
+      display: none;
+    }
+  }
+}
+
+.stepIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  color: $color-brand-primary; // Красный цвет иконок
+  position: relative;
+  z-index: 1; // Чтобы иконка перекрывала линию
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.stepText {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: $color-text-dark-main; // Темный текст шагов
+  padding-top: 5px; // Выравнивание текста по центру иконки
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
+}

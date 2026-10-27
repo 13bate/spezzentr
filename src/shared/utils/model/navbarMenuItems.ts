@@ -3,15 +3,16 @@ export const trainingCenter = [
 		label: 'Обучение на гражданское оружие',
 		href: '/training/safety',
 	},
+	{ label: 'Обучение руководителей ЧОП', href: '/training/psc-managers' },
 	{ label: 'Обучение частных охранников', href: '/training/security-guards' },
 	{
 		label: 'Периодическая проверка охранников 4–6 разрядов',
 		href: '/training/periodic-checks',
 	},
-	{ label: 'Центр беспилотной авиации', href: '/training/drones' },
-	{ label: 'Охрана труда', href: '/training/labor-safety' },
-	{ label: 'Обучение рабочим специальностям', href: '/training/professions' },
-	{ label: 'Обучение руководителей ЧОП', href: '/training/psc-managers' },
+	// { label: 'Центр беспилотной авиации', href: '/training/drones' },
+	// { label: 'Охрана труда', href: '/training/labor-safety' },
+	// { label: 'Обучение рабочим специальностям', href: '/training/professions' },
+
 ]
 
 export const shootingRange = [
@@ -87,5 +88,5 @@ export const trainingCenterShort = [
 		label: 'Периодическая проверка',
 		href: '/training/periodic-checks',
 	},
-	{ label: 'Центр беспилотной авиации', href: '/training/drones' },
+	// { label: 'Центр беспилотной авиации', href: '/training/drones' },
 ]

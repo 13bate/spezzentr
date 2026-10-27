@@ -21,7 +21,7 @@ export const AdminLogin = () => {
     if (result.success) {
       console.log('✅ Успешный вход, редирект на /admin');
       // Принудительный редирект
-      window.location.href = '/spezzentr/admin';
+      window.location.href = '/spezzentr/#/admin';
     } else {
       setError(result.error || 'Неверный логин или пароль');
       setLoading(false);

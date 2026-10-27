@@ -1,23 +1,23 @@
 import pistol from '../../../assets/Glock17Gen.5.png';
 import rifle from '../../../assets/АК103.png';
 import shotgun from '../../../assets/Помпа.png';
-import { weaponsData } from '../../../shared/model';
+
 
 
 export const weapons = [
   {
     title: 'Пистолеты',
-    count: weaponsData.pistols.length,
+    count: 12,
     image: pistol,
   },
   {
     title: 'Ружья',
-    count: weaponsData.shotguns.length,
+    count: 4,
     image: shotgun,
   },
   {
     title: 'Карабины',
-    count: weaponsData.rifles.length,
+    count: 9,
     image: rifle,
   },
 ];

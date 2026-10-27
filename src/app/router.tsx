@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router'
+import { createHashRouter } from 'react-router' // ← HashRouter
 import { Home } from '../pages/Home'
 import { HomeLayout } from './HomeLayout'
 import { InfoPagesLayout } from './InfoPagesLayout/InfoPagesLayout'
@@ -6,7 +6,6 @@ import { WeaponSafety } from '../pages/WeaponSafety'
 import { EducationInfoHubPage } from '../pages/EducationInfo'
 import { SecurityTrainingPage } from '../pages/SecurityTrainingPage'
 import { PeriodicCheckPage } from '../pages/PeriodicCheckPage'
-import { DroneTrainingPage } from '../pages/DroneTrainingPage'
 import { IntroShootingPage } from '../pages/IntroShootingPage'
 import { PracticalShootingPage } from '../pages/PracticalShootingPage'
 import { GiftCardsPage } from '../pages/GiftCardsPage'
@@ -25,12 +24,10 @@ import { TeachersPage } from '../pages/EduInfroPages/TeachersPage'
 import { AccessibilityPage } from '../pages/EduInfroPages/AccessibilityPage'
 import { InternationalPage } from '../pages/EduInfroPages/InternationalPage'
 import { LaborSafety } from '../pages/LaborSafety'
-import { WorkingProfessions } from '../pages/WorkingProfessions'
 import { NotFoundPage } from '../pages/NotFoundPage'
 import { PscManagersTraining } from '../pages/PscManagersTraining'
 import { CompetitionPage } from '../pages/Competitions'
 import { ShootingProgramsPage } from '../pages/ShootingProgramsPage'
-import { TacticalMedicinePage } from '../pages/TacticalMedicinePage'
 import { ContactsPage } from '../pages/ContactsPage'
 import { AdminLayout } from '../features/Admin/AdminLayout'
 import { PrivateRoute } from '../features/auth/ui/PrivateRoute'
@@ -40,7 +37,6 @@ import { AdminDocumentsPage } from '../pages/admin/ui/AdminDocumentsPage'
 import { AdminLogin } from '../features/auth'
 import { AdminPage } from '../pages/admin'
 
-// Массив для навигации (можно использовать где угодно)
 export const eduOrgInfo = [
 	{ label: "Сведения об образовательной организации", href: "/education" },
 	{ label: 'Основные сведения', href: '/education/basic-info' },
@@ -62,13 +58,12 @@ export const eduOrgInfo = [
 	},
 ]
 
-export const router = createBrowserRouter([
+export const router = createHashRouter([
 	{
 		path: "*",
 		element: <NotFoundPage />,
 	},
 	{
-
 		path: '/',
 		element: <HomeLayout />,
 		children: [
@@ -78,7 +73,6 @@ export const router = createBrowserRouter([
 			},
 		],
 	},
-
 	{
 		path: '/admin/login',
 		element: <AdminLogin />,
@@ -97,129 +91,40 @@ export const router = createBrowserRouter([
 			{ path: 'documents', element: <AdminDocumentsPage /> },
 		],
 	},
-
 	{
 		path: "/",
 		element: <InfoPagesLayout />,
 		children: [
-			{
-				path: "/contacts",
-				element: <ContactsPage />
-			},
-			{
-				path: "/training/safety",
-				element: <WeaponSafety />
-			},
-			{
-				path: "/training/security-guards",
-				element: <SecurityTrainingPage />
-			},
-			{
-				path: "/training/periodic-checks",
-				element: <PeriodicCheckPage />
-			},
-			{
-				path: "training/drones",
-				element: <DroneTrainingPage />
-			},
-			{
-				path: "/training/labor-safety",
-				element: <LaborSafety />
-			},
-			{
-				path: '/training/professions',
-				element: <WorkingProfessions />
-			},
-			{
-				path: "/training/tac-med",
-				element: <TacticalMedicinePage />
-			},
-			{
-				path: "training/psc-managers",
-				element: <PscManagersTraining />
-			},
-			{
-				path: "shooting/intro",
-				element: <IntroShootingPage />
-			},
-			{
-				path: "shooting/practical",
-				element: <PracticalShootingPage />
-			},
-			{
-				path: "shooting/gift-cards",
-				element: <GiftCardsPage />
-			},
-			{
-				path: "shooting/competitions",
-				element: <CompetitionPage />
-			},
-			{
-				path: "shooting/programs",
-				element: <ShootingProgramsPage />,
-			},
-			// Главная страница раздела
-			{
-				path: "education",
-				element: <EducationInfoHubPage />
-			},
-			// Отдельные страницы для каждого подраздела (если нужны)
-			{
-				path: "education/teachers",
-				element: <TeachersPage />
-			},
-			{
-				path: "education/basic-info",
-				element: <BasicInfoPage />
-			},
-			{
-				path: "education/structure",
-				element: <StructurePage />
-			},
-			{
-				path: "education/documents",
-				element: <DocumentsPage />
-			},
-			{
-				path: "education/education",
-				element: <EducationPage />
-			},
-			{
-				path: "education/standards",
-				element: <StandardsPage />
-			},
-			{
-				path: "education/management",
-				element: <ManagementPage />
-			},
-			{
-				path: "education/facilities",
-				element: <FacilitiesPage />
-			},
-			{
-				path: "education/paidServices",
-				element: <PaidServicesPage />
-			},
-			{
-				path: "education/finance",
-				element: <FinancePage />
-			},
-			{
-				path: "education/vacancies",
-				element: <VacanciesPage />
-			},
-			{
-				path: "education/scholarships",
-				element: <ScholarshipsPage />
-			},
-			{
-				path: "education/accessibility",
-				element: <AccessibilityPage />
-			},
-			{
-				path: '/education/international',
-				element: <InternationalPage />
-			},
+			{ path: "/contacts", element: <ContactsPage /> },
+			{ path: "/training/safety", element: <WeaponSafety /> },
+			{ path: "/training/security-guards", element: <SecurityTrainingPage /> },
+			{ path: "/training/periodic-checks", element: <PeriodicCheckPage /> },
+			// { path: "training/drones", element: <DroneTrainingPage /> },
+			{ path: "/training/labor-safety", element: <LaborSafety /> },
+			// { path: '/training/professions', element: <WorkingProfessions /> },
+			// { path: "/training/tac-med", element: <TacticalMedicinePage /> },
+			{ path: "training/psc-managers", element: <PscManagersTraining /> },
+			{ path: "shooting/intro", element: <IntroShootingPage /> },
+			{ path: "shooting/practical", element: <PracticalShootingPage /> },
+			{ path: "shooting/gift-cards", element: <GiftCardsPage /> },
+			{ path: "shooting/competitions", element: <CompetitionPage /> },
+			{ path: "shooting/programs", element: <ShootingProgramsPage /> },
+			{ path: "education", element: <EducationInfoHubPage /> },
+			{ path: "education/teachers", element: <TeachersPage /> },
+			{ path: "education/basic-info", element: <BasicInfoPage /> },
+			{ path: "education/structure", element: <StructurePage /> },
+			{ path: "education/documents", element: <DocumentsPage /> },
+			{ path: "education/education", element: <EducationPage /> },
+			{ path: "education/standards", element: <StandardsPage /> },
+			{ path: "education/management", element: <ManagementPage /> },
+			{ path: "education/facilities", element: <FacilitiesPage /> },
+			{ path: "education/paidServices", element: <PaidServicesPage /> },
+			{ path: "education/finance", element: <FinancePage /> },
+			{ path: "education/vacancies", element: <VacanciesPage /> },
+			{ path: "education/scholarships", element: <ScholarshipsPage /> },
+			{ path: "education/accessibility", element: <AccessibilityPage /> },
+			{ path: 'education/international', element: <InternationalPage /> },
 		],
 	},
-], { basename: '/spezzentr' })
+])
+

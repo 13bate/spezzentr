@@ -1,11 +1,22 @@
 import { PageTitle } from '../../shared/ui/PageTitle';
-import { BackButton } from '../../shared/ui/BackButton';
 import style from './PeriodicCheckPage.module.scss';
 import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle';
 import { ReachUs } from '../../shared/ui/ReachUs';
 import { TestBlock } from '../../shared/ui/TestBlock';
 import { ScheduleViewer } from '../../features/ScheduleViewer';
 import { DocumentViewer } from '../../features/DocumentViewer/ui/DocumentViewer';
+import { InfoCardWithModal } from '../../shared/ui/InfoCardWithModal';
+import { PeriodicCheckDocumentContent } from '../../entities/document/ui';
+
+
+const ShieldIcon = () => (
+  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#e63946" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+    <path d="M9 12l2 2 4-4" />
+  </svg>
+);
+
+
 
 export const PeriodicCheckPage: React.FC = () => {
   const pageData = {
@@ -14,8 +25,6 @@ export const PeriodicCheckPage: React.FC = () => {
 
     documents: [
       'паспорт',
-      'удостоверение частного охранника',
-      'личная карточка'
     ],
   };
 
@@ -24,9 +33,7 @@ export const PeriodicCheckPage: React.FC = () => {
       <PageTitle title="Периодическая проверка | СПЕЦЦЕНТР" />
 
       <main className={style.periodicCheckPage}>
-        <div className={style.pageNavigation}>
-          <BackButton />
-        </div>
+
 
         {/* ─── HERO ────────────────────────────────────────── */}
         <section className={style.heroSection}>
@@ -86,6 +93,17 @@ export const PeriodicCheckPage: React.FC = () => {
             ))}
           </ul>
         </section>
+
+        <InfoCardWithModal
+          title="Периодические проверки"
+          description="Полный текст Приказа Росгвардии № 178. Правила, упражнения и нормативы для частных охранников."
+          icon={<ShieldIcon />}
+          buttonText="Читать приказ"
+          modalEyebrow="Приказ Росгвардии"
+          modalTitle="Периодические проверки"
+          modalSubtitle="Приказ от 19 мая 2026 г. N 178"
+          modalContent={<PeriodicCheckDocumentContent />} // <-- Передаем текст
+        />
 
         {/* ─── Информация ────────────────────────────────────── */}
         <section className={style.infoSection}>

@@ -144,35 +144,35 @@ export const NavBar: React.FC<Props> = ({ className, onItemClick }) => {
 					<li className={style.divider} aria-hidden='true' />
 
 					{/* Direct links */}
-					<li
-						className={clsx(
-							style.listItem,
-							isActive('/trainning/drones') && style.active,
-						)}
-					>
-						<Link
-							to='/training/drones'
-							className={style.plainLink}
-							onClick={handleLinkClick}
-						>
-							<span className={style.itemInner}>Центр беспилотной авиации</span>
-						</Link>
-					</li>
-
-					<li
-						className={clsx(
-							style.listItem,
-							isActive('/trainning/tac-med') && style.active,
-						)}
-					>
-						<Link
-							to='/training/tac-med/'
-							className={style.plainLink}
-							onClick={handleLinkClick}
-						>
-							<span className={style.itemInner}>Тактическая медицина</span>
-						</Link>
-					</li>
+					{/* <li */}
+					{/* 	className={clsx( */}
+					{/* 		style.listItem, */}
+					{/* 		isActive('/trainning/drones') && style.active, */}
+					{/* 	)} */}
+					{/* > */}
+					{/* 	<Link */}
+					{/* 		to='/training/drones' */}
+					{/* 		className={style.plainLink} */}
+					{/* 		onClick={handleLinkClick} */}
+					{/* 	> */}
+					{/* 		<span className={style.itemInner}>Центр беспилотной авиации</span> */}
+					{/* 	</Link> */}
+					{/* </li> */}
+					{/**/}
+					{/* <li */}
+					{/* 	className={clsx( */}
+					{/* 		style.listItem, */}
+					{/* 		isActive('/trainning/tac-med') && style.active, */}
+					{/* 	)} */}
+					{/* > */}
+					{/* 	<Link */}
+					{/* 		to='/training/tac-med/' */}
+					{/* 		className={style.plainLink} */}
+					{/* 		onClick={handleLinkClick} */}
+					{/* 	> */}
+					{/* 		<span className={style.itemInner}>Тактическая медицина</span> */}
+					{/* 	</Link> */}
+					{/* </li> */}
 
 					<li
 						className={clsx(

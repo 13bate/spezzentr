@@ -1,29 +1,29 @@
 // src/pages/IntroShooting/data/weaponsData.ts
 
 // Импорты для пистолетов
-import pmImg from '../../assets/weapons/ПММ.jpg'; // Пистолет Макарова
-import yaryginImg from '../../assets/weapons/Викинг.jpg'; // Пистолет Ярыгина (Викинг)
-import glock17Gen4Img from '../../assets/weapons/Glock17Gen.4.jpg'; // GLOСK 17
+import pmImg from '../../assets/weapons/ПММ.webp'; // Пистолет Макарова
+import yaryginImg from '../../assets/weapons/Викинг.webp'; // Пистолет Ярыгина (Викинг)
+import glock17Gen4Img from '../../assets/weapons/Glock17Gen.4.webp'; // GLOСK 17
 
-import cz85Img from '../../assets/weapons/CZ85.jpg'; // CZ 85B
-import revolverImg from '../../assets/weapons/Револьвер.jpg'; // Револьвер ARMSCOR M200
-import sigP226Img from '../../assets/weapons/Sig Sauer P226.jpg'; // SIG SAUER P226
-import colt1911Img from '../../assets/weapons/Colt1911.jpg'; // COLT 1911
-import ttImg from '../../assets/weapons/TT.jpg'; // TT
+import cz85Img from '../../assets/weapons/CZ85.webp'; // CZ 85B
+import revolverImg from '../../assets/weapons/Револьвер.webp'; // Револьвер ARMSCOR M200
+import sigP226Img from '../../assets/weapons/Sig Sauer P226.webp'; // SIG SAUER P226
+import colt1911Img from '../../assets/weapons/Colt1911.webp'; // COLT 1911
+import ttImg from '../../assets/weapons/TT.webp'; // TT
 
 // Импорты для карабинов
-import vityazImg from '../../assets/weapons/Сайга9.jpg'; // ПП ВИТЯЗЬ
-import ppshImg from '../../assets/weapons/ППШ.jpg'; // ППШ
-import ak103Img from '../../assets/weapons/АК103.jpg'; // АК-103
-import rossiImg from '../../assets/weapons/Rossi.jpg'; // ROSSI 92
-import ar15Img from '../../assets/weapons/ar15.jpeg'; // AR-15
-import mosinImg from '../../assets/weapons/Мосинка.jpg'; // ВИНТОВКА МОСИНА
-import svdImg from '../../assets/weapons/СВД.jpg'; // СВД
+import vityazImg from '../../assets/weapons/Сайга9.webp'; // ПП ВИТЯЗЬ
+import ppshImg from '../../assets/weapons/ППШ.webp'; // ППШ
+import ak103Img from '../../assets/weapons/АК103.webp'; // АК-103
+import rossiImg from '../../assets/weapons/Rossi.webp'; // ROSSI 92
+import ar15Img from '../../assets/weapons/ar15.webp'; // AR-15
+import mosinImg from '../../assets/weapons/Мосинка.webp'; // ВИНТОВКА МОСИНА
+import svdImg from '../../assets/weapons/СВД.webp'; // СВД
 // СВТ - нет фото, используем Сайга9 как временную или убираем
 
 // Импорты для ружей
-import shotgunImg from '../../assets/weapons/Помпа.jpg'; // ПОМПОВОЕ РУЖЬЁ
-import TGImg from "../../assets/weapons/TG.jpg"
+import shotgunImg from '../../assets/weapons/Помпа.webp'; // ПОМПОВОЕ РУЖЬЁ
+import TGImg from "../../assets/weapons/TG.webp"
 
 export const weaponsData = {
   pistols: [

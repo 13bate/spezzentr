@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import style from './WeaponSafety.module.scss';
-import { safetyTrainingData } from './safetyTrainingData';
+import { REQUIRED_DOCUMENTS, safetyTrainingData } from './safetyTrainingData';
 import { PageTitle } from '../../shared/ui/PageTitle';
 import { ReachUs } from '../../shared/ui/ReachUs';
 import { TestBlock } from '../../shared/ui/TestBlock';
 import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle';
 import { ScheduleViewer } from '../../features/ScheduleViewer';
 import { DocumentViewer } from '../../features/DocumentViewer/ui/DocumentViewer';
+import { InfoCardWithModal } from '../../shared/ui/InfoCardWithModal';
+import { MedicalDocumentContent } from '../../entities/document/ui';
+import { RequiredDocuments } from '../../shared/ui/RequiredDocuments';
 
 // ─── Icons ──────────────────────────────────────────────────
 const ChevronDown = () => (
@@ -21,7 +24,22 @@ const ChevronUp = () => (
   </svg>
 );
 
-
+const MedicalIcon = () => (
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="#e63946"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+    <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+    <path d="M12 11v4M10 13h4"></path>
+  </svg>
+);
 
 // ─── Accordion Component ────────────────────────────────────
 const AccordionItem: React.FC<{
@@ -44,8 +62,12 @@ const AccordionItem: React.FC<{
   );
 };
 
+
+
 // ─── Page ────────────────────────────────────────────────────
 export const WeaponSafety: React.FC = () => {
+
+
   return (
     <main className={style.safetyTrainingPage}>
       <PageTitle
@@ -102,42 +124,12 @@ export const WeaponSafety: React.FC = () => {
       </section>
 
       {/* ─── НЕОБХОДИМЫЕ ДОКУМЕНТЫ ───────────────────────────── */}
-      <section className={style.documentsSection}>
-        <div className={style.documentsSectionInner}>
-          <span className={style.eyebrow}>
-            <span className={style.eyebrowLine} />
-            Документы
-          </span>
-          <h2 className={style.documentsTitle}>Необходимые документы</h2>
-          <div className={style.documentsGrid}>
-            <div className={style.documentsItem}>
-              <span className={style.documentsNumber}>01</span>
-              <div className={style.documentsContent}>
-                <h4>Паспорт гражданина РФ</h4>
-                <p>и его копия (основной разворот с фото и прописка)</p>
-              </div>
-            </div>
-            <div className={style.documentsItem}>
-              <span className={style.documentsNumber}>02</span>
-              <div className={style.documentsContent}>
-                <h4>Фотографии 3 × 4</h4>
-                <p>матовые, без уголка – 3 шт.</p>
-              </div>
-            </div>
-            <div className={style.documentsItem}>
-              <span className={style.documentsNumber}>03</span>
-              <div className={style.documentsContent}>
-                <h4>Выписка о результатах медицинского освидетельствования</h4>
-                <p>
-                  и ее копия на наличие медицинских противопоказаний к владению оружием,
-                  выданная медицинской организацией государственной или муниципальной
-                  системы здравоохранения по месту жительства (пребывания) гражданина РФ
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
+      <RequiredDocuments
+        title="Необходимые документы"
+        items={REQUIRED_DOCUMENTS}
+        eyebrow="Документы"
+      />
 
       {/* ─── Порядок получения лицензии ────────────────────── */}
       <section className={style.section}>
@@ -151,7 +143,7 @@ export const WeaponSafety: React.FC = () => {
 
         <div className={style.accordionList}>
           {/* Шаг 1 */}
-          <AccordionItem title="Шаг 1. Медицинское освидетельствование" defaultOpen>
+          <AccordionItem title="Шаг 1. Медицинское освидетельствование">
             <p>
               Медицинское освидетельствование на наличие медицинских противопоказаний к владению
               оружием проводится медицинскими организациями государственной или муниципальной
@@ -355,29 +347,10 @@ export const WeaponSafety: React.FC = () => {
               </span>
             </div>
           </AccordionItem>
-
-          {/* Шаг 9 */}
-          <AccordionItem title="Шаг 9. Стоимость лицензии и разрешения">
-            <div className={style.priceTable}>
-              <div className={style.priceRow}>
-                <span className={style.priceRowLabel}>КБК 180 1 08 07441 01 0020 110</span>
-                <span className={style.priceRowValue}>2 000 ₽</span>
-              </div>
-              <div className={style.priceRow}>
-                <span className={style.priceRowLabel}>КБК 180 1 08 07442 01 0020 110</span>
-                <span className={style.priceRowValue}>500 ₽</span>
-              </div>
-              <div className={style.priceRow}>
-                <span className={style.priceRowLabel}>КБК 180 1 08 07444 01 0020 110</span>
-                <span className={style.priceRowValue}>250 ₽</span>
-              </div>
-            </div>
-            <p style={{ fontSize: '13px', color: '#888', marginTop: '12px' }}>
-              * Государственные пошлины за выдачу, продление и переоформление лицензий и разрешений.
-            </p>
-          </AccordionItem>
         </div>
       </section>
+
+
 
       {/* ─── Первоначальное обучение и Периодическая проверка ── */}
       <div className={style.grid2}>
@@ -434,6 +407,17 @@ export const WeaponSafety: React.FC = () => {
         </div>
       </div>
 
+      <InfoCardWithModal
+        title="Медицинское освидетельствование"
+        description="Полный текст Федерального закона «О частной охранной деятельности» (Статья 12). Порядок прохождения ежегодной проверки здоровья."
+        icon={<MedicalIcon />}
+        buttonText="Читать документ"
+        modalEyebrow="Правовая база"
+        modalTitle="Медицинское освидетельствование"
+        modalSubtitle="Статья 12. Частный охранник"
+        modalContent={<MedicalDocumentContent />} // <-- Передаем текст
+      />
+
       {/* ─── Дополнительные услуги ──────────────────────────── */}
       <section className={style.section}>
         <div className={style.sectionHead}>
@@ -453,16 +437,13 @@ export const WeaponSafety: React.FC = () => {
         </div>
       </section>
 
-      {/* ─── Расписание ──────────────────────────────────────── */}
-
-
+      {/* ─── Расписание и документ ──────────────────────────── */}
       <ScheduleViewer scheduleId="weapon-safety-schedule" />
 
       <DocumentViewer
         category='security'
         documentId="weapon-safety-questions"
       />
-
 
       {/* ─── Результат ────────────────────────────────────────── */}
       <section className={style.resultBlock}>
@@ -472,6 +453,8 @@ export const WeaponSafety: React.FC = () => {
 
       {/* ─── Контакты ────────────────────────────────────────── */}
       <ReachUs />
+
+
     </main>
   );
 };

@@ -1,188 +1,135 @@
-@use '../../shared/styles/variables' as *;
+@use '../../shared/styles/variables.scss' as *; // Укажите правильный путь
 
-// ─── Colors ──────────────────────────────────────────────
-$bg-light: #f8f9fa;
-$bg-white: #ffffff;
-$text-dark: #1a1a1a;
-$text-muted: #6a6f78;
-$text-dim: #a0a5ad;
-$red: #c81524;
-$red-light: rgba(200, 21, 36, 0.06);
-$red-light-hover: rgba(200, 21, 36, 0.1);
-$border-light: rgba(0, 0, 0, 0.06);
-$shadow-light: 0 4px 20px rgba(0, 0, 0, 0.04);
-$shadow-medium: 0 8px 32px rgba(0, 0, 0, 0.06);
-
-// ─── Font ──────────────────────────────────────────────
-$font-gothic: 'century gothic', 'centurygothic', 'apple gothic', 'gill sans', sans-serif;
-
-// ─── Section ─────────────────────────────────────────────────
 .section {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 60px 20px;
   position: relative;
+  padding: 80px 0;
   overflow: hidden;
-  background: $bg-light;
+  background-color: #fcfcfc; // Очень светлый фон, чтобы выделить секцию
 
   @media (max-width: 768px) {
-    padding: 40px 16px;
+    padding: 60px 0;
   }
 }
 
-// ─── Background ──────────────────────────────────────────────
+// ─── Background Elements ──────────────────────────────────────
 .bg {
   position: absolute;
   inset: 0;
-  pointer-events: none;
   z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
 }
 
 .bgGrid {
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    linear-gradient(to right, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
   background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 20%, transparent 100%);
-  -webkit-mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 20%, transparent 100%);
+  mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black 20%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, black 20%, transparent 100%);
 }
 
 .b1 {
   position: absolute;
-  top: -120px;
-  right: -80px;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba($red, 0.06) 0%, transparent 65%);
+  top: -100px;
+  right: 10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba($color-brand-primary, 0.08), transparent 65%);
+  filter: blur(60px);
   border-radius: 50%;
-  animation: floatBlob1 14s ease-in-out infinite;
 }
 
 .b2 {
   position: absolute;
   bottom: -100px;
-  left: -60px;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba($red, 0.04) 0%, transparent 65%);
+  left: 5%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba($color-brand-primary, 0.05), transparent 65%);
+  filter: blur(60px);
   border-radius: 50%;
-  animation: floatBlob2 17s ease-in-out infinite;
 }
 
-@keyframes floatBlob1 {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(-20px, 20px); }
-}
-
-@keyframes floatBlob2 {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(20px, -20px); }
-}
-
-// ─── Layout ──────────────────────────────────────────────────
+// ─── Layout ───────────────────────────────────────────────────
 .inner {
   position: relative;
   z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  @media (max-width: 1024px) {
-    flex-direction: column;
-    gap: 48px;
-    text-align: center;
-  }
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-// ─── Content ─────────────────────────────────────────────────
 .content {
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  max-width: 680px;
-  width: 100%;
-
-  @media (max-width: 1024px) {
-    align-items: center;
-    max-width: 100%;
-  }
+  align-items: flex-start;
+  max-width: 760px; // Ограничиваем ширину для удобного чтения
 }
 
+// ─── Typography ───────────────────────────────────────────────
 .eyebrow {
   display: inline-flex;
   align-items: center;
   gap: 12px;
+  font-family: 'PT Sans', sans-serif;
   font-size: 12px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  color: $red;
-
-  @media (max-width: 768px) {
-    font-size: 11px;
-  }
+  color: $color-brand-primary;
+  margin-bottom: 20px;
 }
 
 .eyebrowLine {
   width: 28px;
   height: 2px;
-  background: $red;
+  background: $color-brand-primary;
   border-radius: 2px;
   flex-shrink: 0;
 }
 
 .title {
-  font-family: $font-gothic;
+  font-family: 'Oswald', 'Inter', sans-serif;
+  font-size: clamp(32px, 4.5vw, 48px);
   font-weight: 700;
-  font-size: clamp(32px, 4vw, 48px);
   line-height: 1.1;
-  color: $text-dark;
-  margin: 0;
+  letter-spacing: -0.02em;
+  color: $color-text-dark-main;
+  margin: 0 0 32px;
 
   span {
-    color: $red;
-    background: linear-gradient(135deg, $color-brand-primary );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: $color-brand-primary;
   }
 
   @media (max-width: 768px) {
-    font-size: clamp(24px, 5vw, 34px);
-    br {
-      display: none;
-    }
+    font-size: clamp(28px, 6vw, 36px);
+    margin-bottom: 24px;
   }
 }
 
+// ─── List ─────────────────────────────────────────────────────
 .list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 4px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  max-width: 520px;
-
-  @media (max-width: 1024px) {
-    max-width: 100%;
-    align-items: center;
-  }
+  gap: 16px;
+  margin: 0 0 40px;
+  padding: 0;
+  list-style: none;
 
   li {
     display: flex;
-    align-items: center;
-    gap: 12px;
-    font-family: $font-gothic;
-    font-size: 15px;
-    color: $text-muted;
+    align-items: flex-start;
+    gap: 14px;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 16px;
     line-height: 1.5;
+    color: $color-text-dark-muted;
 
     @media (max-width: 768px) {
-      font-size: 13px;
+      font-size: 15px;
     }
   }
 }
@@ -196,364 +143,107 @@ $font-gothic: 'century gothic', 'centurygothic', 'apple gothic', 'gill sans', sa
   border-radius: 50%;
   background: $color-brand-primary;
   flex-shrink: 0;
-  box-shadow: 0 4px 16px rgba($color-brand-primary, 0.25);
-
-  svg {
-    width: 12px;
-    height: 9px;
-  }
+  margin-top: 2px;
+  box-shadow: 0 2px 8px rgba($color-brand-primary, 0.3);
 }
 
-// ─── Meta ────────────────────────────────────────────────────
+// ─── Meta (Info Card) ─────────────────────────────────────────
 .meta {
   display: flex;
-  border: 1px solid $border-light;
-  border-radius: 12px;
-  overflow: hidden;
-  width: fit-content;
-  background: $bg-white;
-  box-shadow: $shadow-light;
+  align-items: center;
+  gap: 32px;
+  padding: 24px 32px;
+  background: $color-bg-light-card;
+  border-radius: $radius-card-medium;
+  border: 1px solid $color-border-dark-alpha;
+  box-shadow: 0 4px 20px $color-shadow-light;
+  margin-bottom: 40px;
 
-  @media (max-width: 1024px) {
-    width: 100%;
-    justify-content: center;
-  }
-
-  @media (max-width: 480px) {
+  @media (max-width: 768px) {
     flex-direction: column;
-    border-radius: 10px;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 24px;
+    width: 100%;
   }
 }
 
 .metaItem {
-  padding: 14px 24px;
   display: flex;
   flex-direction: column;
-  gap: 2px;
-
-  @media (max-width: 480px) {
-    padding: 12px 16px;
-    align-items: center;
-    border-bottom: 1px solid $border-light;
-
-    &:last-child {
-      border-bottom: none;
-    }
-  }
-}
-
-.metaDivider {
-  width: 1px;
-  background: $border-light;
-
-  @media (max-width: 480px) {
-    display: none;
-  }
+  gap: 6px;
 }
 
 .metaLabel {
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 12px;
+  color: $color-text-dark-muted;
   text-transform: uppercase;
-  color: $text-dim;
+  letter-spacing: 0.05em;
 }
 
 .metaValue {
-  font-family: $font-gothic;
-  font-size: 18px;
+  font-family: 'Oswald', 'Inter', sans-serif;
+  font-size: 20px;
   font-weight: 600;
-  color: $text-dark;
-
-  @media (max-width: 768px) {
-    font-size: 16px;
-  }
+  color: $color-text-dark-main;
 }
 
 .metaValueAccent {
   color: $color-brand-primary;
+  font-size: 24px;
 }
 
-// ─── Button ──────────────────────────────────────────────────
+.metaDivider {
+  width: 1px;
+  height: 40px;
+  background: $color-border-dark-alpha;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 1px;
+  }
+}
+
+// ─── Button ───────────────────────────────────────────────────
 .btn {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 14px 32px;
+  gap: 12px;
+  padding: 16px 36px;
   background: $color-brand-primary;
   color: #fff;
-  font-family: $font-gothic;
+  border-radius: 100px;
+  font-family: 'Oswald', 'Inter', sans-serif;
+  font-size: 16px;
   font-weight: 600;
-  font-size: 14px;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   text-decoration: none;
-  border-radius: 8px;
-  border: none;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 24px rgba($color-brand-primary, 0.25);
-  width: fit-content;
-
-  @media (max-width: 1024px) {
-    align-self: center;
-  }
-
-  @media (max-width: 480px) {
-    width: 100%;
-    justify-content: center;
-    padding: 14px 20px;
-  }
+  box-shadow: 0 4px 16px rgba($color-brand-primary, 0.3);
 
   &:hover {
-    background: darken($color-brand-primary, 8%);
+    background: $color-brand-primary-hover;
     transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba($color-brand-primary, 0.35);
-  }
+    box-shadow: 0 8px 24px rgba($color-brand-primary, 0.4);
 
-  .btnArrow {
-    transition: transform 0.25s ease;
-  }
-
-  &:hover .btnArrow {
-    transform: translateX(4px);
-  }
-}
-
-// ─── Image ──────────────────────────────────────────────────
-.imageWrapper {
-  position: relative;
-  width: 100%;
-  max-width: 560px;
-  margin-left: auto;
-  border-radius: 24px;
-  overflow: hidden;
-  background: $bg-white;
-  border: 1px solid $border-light;
-  box-shadow: $shadow-medium;
-  aspect-ratio: 4 / 5;
-
-  @media (max-width: 1024px) {
-    margin: 0 auto;
-    max-width: 480px;
-  }
-
-  @media (max-width: 768px) {
-    max-width: 100%;
-    aspect-ratio: 4 / 5;
-  }
-}
-
-.image {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-// ─── Overlay ──────────────────────────────────────────────────
-.overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(255, 255, 255, 0.6) 0%,
-    transparent 35%
-  );
-  pointer-events: none;
-}
-
-// ─── Glow ──────────────────────────────────────────────────
-.glow {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  right: -120px;
-  top: -120px;
-  background: rgba($color-brand-primary, 0.08);
-  filter: blur(120px);
-  pointer-events: none;
-}
-
-// ─── Grid ──────────────────────────────────────────────────
-.grid {
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
-  background-size: 40px 40px;
-  opacity: 0.3;
-  mask-image: radial-gradient(circle, black 45%, transparent 90%);
-  pointer-events: none;
-}
-
-// ─── Info Card ──────────────────────────────────────────────
-.infoCard {
-  position: absolute;
-  bottom: 24px;
-  left: 24px;
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 14px 20px;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 16px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
-
-  @media (max-width: 480px) {
-    bottom: 16px;
-    left: 16px;
-    padding: 12px 16px;
-    gap: 10px;
-  }
-}
-
-.infoCardIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: $color-brand-primary;
-  color: #fff;
-  font-weight: 700;
-  font-size: 18px;
-  flex-shrink: 0;
-  box-shadow: 0 4px 16px rgba($red, 0.25);
-
-  @media (max-width: 480px) {
-    width: 28px;
-    height: 28px;
-    font-size: 14px;
-  }
-}
-
-.infoCardTitle {
-  display: block;
-  font-family: $font-gothic;
-  font-weight: 700;
-  font-size: 16px;
-  color: $text-dark;
-  line-height: 1.2;
-
-  @media (max-width: 480px) {
-    font-size: 14px;
-  }
-}
-
-.infoCardSub {
-  display: block;
-  font-family: $font-gothic;
-  font-weight: 400;
-  font-size: 12px;
-  color: $text-muted;
-  line-height: 1.3;
-
-  @media (max-width: 480px) {
-    font-size: 11px;
-  }
-}
-
-// ─── Responsive tweaks ──────────────────────────────────
-@media (max-width: 480px) {
-  .meta {
-    flex-direction: column;
-    border-radius: 10px;
-  }
-
-  .metaDivider {
-    display: none;
-  }
-
-  .metaItem {
-    padding: 12px 16px;
-    align-items: center;
-    border-bottom: 1px solid $border-light;
-
-    &:last-child {
-      border-bottom: none;
+    .btnArrow {
+      transform: translateX(4px);
     }
   }
 
-  .btn {
+  @media (max-width: 768px) {
     width: 100%;
     justify-content: center;
-    padding: 14px 20px;
+    padding: 16px 24px;
   }
 }
 
-// ─── Dark Theme ──────────────────────────────────────────────
-.dark {
-  .section {
-    background: $color-bg-dark-section-2;
-  }
-
-  .title {
-    color: $color-text-light-main;
-  }
-
-  .eyebrow {
-    color: $red;
-  }
-
-  .list li {
-    color: $color-text-light-muted;
-  }
-
-  .meta {
-    background: rgba(255, 255, 255, 0.04);
-    border-color: rgba(255, 255, 255, 0.06);
-  }
-
-  .metaValue {
-    color: $color-text-light-main;
-  }
-
-  .metaLabel {
-    color: $color-text-light-muted;
-  }
-
-  .metaDivider {
-    background: rgba(255, 255, 255, 0.06);
-  }
-
-  .infoCard {
-    background: rgba(22, 28, 35, 0.85);
-    border-color: rgba(255, 255, 255, 0.06);
-  }
-
-  .infoCardTitle {
-    color: $color-text-light-main;
-  }
-
-  .infoCardSub {
-    color: $color-text-light-muted;
-  }
-
-  .imageWrapper {
-    background: $color-bg-dark-card-from;
-    border-color: rgba(255, 255, 255, 0.06);
-  }
-
-  .overlay {
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.6) 0%,
-      transparent 35%
-    );
-  }
-
-  .glow {
-    background: rgba($red, 0.12);
-  }
-
-  .grid {
-    background-image:
-      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  }
+.btnArrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+  font-size: 20px;
+  line-height: 1;
+  margin-top: -2px; // Легкая коррекция для визуального выравнивания
 }

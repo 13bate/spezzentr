@@ -2,7 +2,7 @@
 
 .footer {
   background: linear-gradient(135deg, $color-bg-dark-card-to, $color-bg-dark-card-from);
-  padding: 60px 0 30px;
+  padding: 60px 0 0; // Убрал нижний паддинг, так как снизу теперь светлый блок
   position: relative;
   overflow: hidden;
   
@@ -19,7 +19,7 @@
   &::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: 100px; // Поднял чуть выше, чтобы не перекрывать светлый блок
     right: 0;
     width: 300px;
     height: 300px;
@@ -31,7 +31,7 @@
 .contentContainer {
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 30px;
+  padding: 0 30px 60px; // Добавил нижний отступ для темной части
   display: grid;
   grid-template-columns: 1fr 2fr 1.5fr;
   gap: 40px;
@@ -42,11 +42,11 @@
     grid-template-columns: 1fr;
     gap: 30px;
     text-align: center;
+    padding-bottom: 40px;
   }
 }
 
 // ─── Logo ─────────────────────────────────────────────────────
-
 .logo {
   font-family: 'Oswald', sans-serif;
   font-size: 32px;
@@ -71,7 +71,6 @@
 }
 
 // ─── Info Area ───────────────────────────────────────────────
-
 .InfoArea {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -140,7 +139,6 @@
 }
 
 // ─── Contacts Area ────────────────────────────────────────────
-
 .contactsArea {
   ul {
     list-style: none;
@@ -170,34 +168,17 @@
   }
 }
 
-.contactsAreaPhone {
-  &::before {
-    content: '\f095';
-    font-size: 16px;
-  }
-}
+.contactsAreaPhone::before { content: '\f095'; font-size: 16px; }
+.contactsAreaAdress::before { content: '\f3c5'; font-size: 16px; }
+.email::before { content: '\f0e0'; font-size: 14px; }
 
-.contactsAreaAdress {
-  &::before {
-    content: '\f3c5';
-    font-size: 16px;
-  }
-}
-
-.email {
-  &::before {
-    content: '\f0e0';
-    font-size: 14px;
-  }
+.email a {
+  color: $color-text-light-main;
+  text-decoration: none;
+  transition: color 0.3s ease;
   
-  a {
-    color: $color-text-light-main;
-    text-decoration: none;
-    transition: color 0.3s ease;
-    
-    &:hover {
-      color: $color-brand-primary;
-    }
+  &:hover {
+    color: $color-brand-primary;
   }
 }
 
@@ -245,195 +226,32 @@
   }
 }
 
-// ─── Footer Banners ──────────────────────────────────────────
-
-.footerBanners {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 30px 20px 20px;
-  max-width: 1280px;
-  margin: 0 auto;
+// ─── Bottom Light Section ────────────────────────────────────
+.footerBottom {
   position: relative;
   z-index: 2;
-
-  @media (max-width: 768px) {
-    gap: 14px;
-    padding: 20px 16px 16px;
-  }
-
-  @media (max-width: 480px) {
-    gap: 10px;
-    padding: 16px 12px 12px;
-  }
-}
-
-.footerBannersItem {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 72px;
-  width: auto;
-  min-width: 140px;
-  max-width: 190px;
-  padding: 8px 16px;
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 12px;
-  transition: all 0.3s ease;
-  text-decoration: none;
-  overflow: hidden;
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.06) 0%,
-      transparent 50%
-    );
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  &:hover {
-    transform: translateY(-4px);
-    border-color: rgba($color-brand-primary, 0.25);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-
-    &::after {
-      opacity: 1;
-    }
-
-    img {
-      filter: brightness(1.1) contrast(1.05);
-    }
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
-
-  @media (max-width: 992px) {
-    height: 64px;
-    min-width: 120px;
-    max-width: 160px;
-    padding: 6px 14px;
-    border-radius: 10px;
-  }
-
-  @media (max-width: 768px) {
-    height: 56px;
-    min-width: 100px;
-    max-width: 140px;
-    padding: 6px 12px;
-    border-radius: 10px;
-  }
-
-  @media (max-width: 480px) {
-    height: 46px;
-    min-width: 80px;
-    max-width: 110px;
-    padding: 4px 10px;
-    border-radius: 8px;
-    gap: 8px;
-  }
-}
-
-.footerBannersItem img {
-  height: 100%;
-  width: auto;
-  max-width: 100%;
-  object-fit: contain;
-  display: block;
-  transition: all 0.3s ease;
-  filter: brightness(0.85) saturate(0.7);
-
-  @media (max-width: 768px) {
-    height: 90%;
-  }
-
-  @media (max-width: 480px) {
-    height: 85%;
-  }
-}
-
-// ─── Company Info ────────────────────────────────────────────
-
-.companyInfo {
-  max-width: 1280px;
-  margin: 30px auto 0;
-  padding: 20px 30px 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
-  font-family: 'PT Sans', sans-serif;
-  font-size: 14px;
-  color: rgba($color-text-pure-white, 0.35);
-  text-align: center;
-  position: relative;
-  z-index: 2;
-
-  @media (max-width: 768px) {
-    font-size: 12px;
-    margin-top: 20px;
-    padding: 16px 20px 0;
-  }
-}
-
-// ─── Animations ──────────────────────────────────────────────
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.InfoArea ul li,
-.contactsArea ul li {
-  animation: fadeInUp 0.5s ease forwards;
-  opacity: 0;
-  
-  @for $i from 1 through 10 {
-    &:nth-child(#{$i}) {
-      animation-delay: #{$i * 0.1}s;
-    }
-  }
+  border-top: 1px solid $color-border-dark-alpha;
 }
 
 // ─── Footer Banners ──────────────────────────────────────────
-
 .footerBanners {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
   gap: 24px;
-  padding: 28px 20px 20px;
+  padding: 32px 20px 24px;
   max-width: 1280px;
   margin: 0 auto;
-  position: relative;
-  z-index: 2;
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
 
   @media (max-width: 768px) {
     gap: 16px;
-    padding: 20px 16px 16px;
+    padding: 24px 16px 16px;
   }
 
   @media (max-width: 480px) {
     gap: 12px;
-    padding: 16px 12px 12px;
+    padding: 20px 12px 12px;
   }
 }
 
@@ -443,30 +261,31 @@
   justify-content: center;
   height: 64px;
   padding: 0 20px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 10px;
+  background: $color-bg-light-card; // Белый
+  border: 1px solid $color-border-dark-alpha; // Светлая рамка
+  border-radius: $radius-card-medium;
   transition: all 0.3s ease;
   text-decoration: none;
   position: relative;
+  box-shadow: 0 2px 8px $color-shadow-light;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.06);
-    border-color: rgba($color-brand-primary, 0.15);
+    background: #f9f9f9;
+    border-color: rgba($color-brand-primary, 0.2);
     transform: translateY(-2px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
   }
 
   @media (max-width: 768px) {
     height: 54px;
     padding: 0 14px;
-    border-radius: 8px;
+    border-radius: 10px;
   }
 
   @media (max-width: 480px) {
     height: 44px;
     padding: 0 10px;
-    border-radius: 6px;
+    border-radius: 8px;
   }
 }
 
@@ -478,8 +297,10 @@
   object-fit: contain;
   display: block;
   transition: all 0.3s ease;
+  // Если логотипы белые (для темного фона) — на белом фоне они пропадут.
+  // Если они цветные — этот фильтр не нужен. 
+  // filter: brightness(0.8) contrast(1.2); // Опционально: можно раскомментировать, если логотипы слишком бледные
 
-  // Для квадратных логотипов — делаем их меньше
   &[data-square="true"] {
     height: 50%;
     max-height: 32px;
@@ -500,6 +321,49 @@
 
     &[data-square="true"] {
       max-height: 22px;
+    }
+  }
+}
+
+// ─── Company Info ────────────────────────────────────────────
+.companyInfo {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 16px 30px 24px;
+  border-top: 1px solid $color-border-dark-alpha;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 14px;
+  color: $color-text-dark-muted; // Темно-серый текст для светлого фона
+  text-align: center;
+  position: relative;
+  z-index: 2;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+    padding: 16px 20px 20px;
+  }
+}
+
+// ─── Animations ──────────────────────────────────────────────
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.InfoArea ul li,
+.contactsArea ul li {
+  animation: fadeInUp 0.5s ease forwards;
+  opacity: 0;
+  
+  @for $i from 1 through 10 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.1}s;
     }
   }
 }

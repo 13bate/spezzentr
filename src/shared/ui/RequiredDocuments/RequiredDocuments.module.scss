@@ -1,0 +1,153 @@
+@use '../../../shared/styles/variables' as *; // поправьте путь под свою структуру
+
+.documentsSection {
+  padding: 32px 0 8px;
+  position: relative;
+}
+
+.documentsSectionInner {
+  background: linear-gradient(135deg, rgba($color-brand-primary, 0.04), rgba($color-brand-primary, 0.01));
+  border-radius: 24px;
+  padding: 32px 36px;
+  border: 1px solid rgba($color-brand-primary, 0.08);
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 40px;
+    right: 40px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, $color-brand-primary, transparent);
+    border-radius: 0 0 4px 4px;
+  }
+
+  @media (max-width: 768px) {
+    padding: 24px 18px;
+  }
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: $color-brand-primary;
+  margin-bottom: 8px;
+}
+
+.eyebrowLine {
+  width: 28px;
+  height: 2px;
+  background: $color-brand-primary;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.documentsTitle {
+  font-family: 'Oswald', 'Inter', sans-serif;
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 700;
+  color: $color-text-dark-main;
+  letter-spacing: -0.02em;
+  margin: 0 0 20px;
+
+  @media (max-width: 768px) {
+    font-size: clamp(20px, 4vw, 26px);
+  }
+}
+
+.documentsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.documentsItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px 20px;
+  background: $color-bg-light-card;
+  border-radius: 16px;
+  border: 1px solid $color-border-dark-alpha;
+  transition: all 0.3s ease;
+
+  &:hover {
+    border-color: rgba($color-brand-primary, 0.15);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 768px) {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+}
+
+.documentsNumber {
+  font-family: 'Oswald', 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: rgba($color-brand-primary, 0.15);
+  line-height: 1.2;
+  flex-shrink: 0;
+  min-width: 36px;
+
+  @media (max-width: 768px) {
+    font-size: 18px;
+    min-width: 28px;
+  }
+}
+
+.documentsContent {
+  flex: 1;
+
+  h4 {
+    font-family: 'Oswald', 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: $color-text-dark-main;
+    margin: 0 0 4px;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: $color-text-dark-muted;
+    margin: 0;
+
+    @media (max-width: 768px) {
+      font-size: 13px;
+    }
+  }
+}
+
+// ─── Dark Theme ──────────────────────────────────────────────
+.dark {
+  .documentsTitle {
+    color: $color-text-light-main;
+  }
+
+  .documentsItem {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.06);
+
+    &:hover {
+      border-color: rgba($color-brand-primary, 0.2);
+    }
+  }
+
+  .documentsContent {
+    h4 { color: $color-text-light-main; }
+    p  { color: $color-text-light-muted; }
+  }
+}

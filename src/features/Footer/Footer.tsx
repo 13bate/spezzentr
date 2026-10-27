@@ -5,8 +5,8 @@ import vkLogo from "../../assets/spezzenter/vkLogo.png";
 
 // Banner imports
 import eaisBanner from "../../assets/spezzenter/weapons_cluster.png";
-import minobrBanner from "../../assets/spezzenter/min_obr_nauki_logo.jpeg";
-import minprosvBanner from "../../assets/spezzenter/min_prosv.jpeg";
+import minobrBanner from "../../assets/spezzenter/min_obr_nauki_logo.png";
+import minprosvBanner from "../../assets/spezzenter/minprosvrf.png";
 import rosguard from "../../assets/spezzenter/rosguard.png";
 
 import { trainingCenter, shootingRange } from "../../shared/utils/model";
@@ -21,25 +21,25 @@ export const Footer: React.FC<Props> = ({ className }) => {
       src: eaisBanner,
       url: "https://eais-ok.ru/",
       alt: "ЕАИС-ОК",
-      square: false
+
     },
     {
       src: minobrBanner,
       url: "https://minobr.ru/",
       alt: "Министерство науки и образования РФ",
-      square: true
+
     },
     {
       src: minprosvBanner,
       url: "https://minprosv.ru/",
       alt: "Министерство просвещения РФ",
-      square: true
+
     },
     {
       src: rosguard,
       url: "https://rosguard.gov.ru/",
       alt: "Росгвардия",
-      square: true
+
     },
   ];
 
@@ -103,29 +103,30 @@ export const Footer: React.FC<Props> = ({ className }) => {
         </div>
       </div>
 
-      {/* Banners section — обновлённый */}
-      <div className={style.footerBanners}>
-        {banners.map((banner, index) => (
-          <a
-            key={index}
-            href={banner.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={style.footerBannersItem}
-            aria-label={banner.alt}
-          >
-            <img
-              src={banner.src}
-              alt={banner.alt}
-              loading="lazy"
-              data-square={banner.square ? "true" : "false"}
-            />
-          </a>
-        ))}
-      </div>
+      {/* ─── Светлая нижняя часть ──────────────────────────────── */}
+      <div className={style.footerBottom}>
+        <div className={style.footerBanners}>
+          {banners.map((banner, index) => (
+            <a
+              key={index}
+              href={banner.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={style.footerBannersItem}
+              aria-label={banner.alt}
+            >
+              <img
+                src={banner.src}
+                alt={banner.alt}
+                loading="lazy"
+              />
+            </a>
+          ))}
+        </div>
 
-      <div className={style.companyInfo}>
-        ЧОУ ДПО "СПЕЦЦЕНТР" ИНН 3257001611, ОГРН 1133256002670
+        <div className={style.companyInfo}>
+          ЧОУ ДПО "СПЕЦЦЕНТР" ИНН 3257001611, ОГРН 1133256002670
+        </div>
       </div>
     </footer>
   );

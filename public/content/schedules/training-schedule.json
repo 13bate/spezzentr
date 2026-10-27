@@ -1,0 +1,13 @@
+{
+  "id": "periodic-check-schedule",
+  "title": "Расписание периодической проверки",
+  "content": [
+    {
+      "date": "d",
+      "time": "d",
+      "note": "d"
+    }
+  ],
+  "updatedAt": "2026-10-27T03:32:45.183Z",
+  "isPublished": true
+}

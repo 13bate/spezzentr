@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 
 import styles from './Carousel.module.scss';
-import { Link } from 'react-router-dom';
 import { api } from '../../../api/client';
 
 interface NewsItem {
@@ -87,9 +86,6 @@ export const Carousel: React.FC = () => {
             <p className={styles.slideDescription}>
               {truncateText(currentSlide.content, 120)}
             </p>
-            <Link to={`/news/${currentSlide.id}`} className={styles.slideLink}>
-              Читать далее →
-            </Link>
           </div>
         </div>
       </div>

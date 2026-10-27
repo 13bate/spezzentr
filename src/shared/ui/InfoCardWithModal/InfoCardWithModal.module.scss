@@ -1,0 +1,396 @@
+@use '../../styles/variables' as *;
+
+// ─── Card ────────────────────────────────────────────────────
+.card {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 32px 36px;
+  background: $color-bg-light-card;
+  border-radius: 24px;
+  border: 1px solid $color-border-dark-alpha;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, $color-brand-primary, rgba($color-brand-primary, 0.2));
+  }
+
+  &:hover {
+    border-color: rgba($color-brand-primary, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 768px) {
+    padding: 24px 20px;
+    gap: 16px;
+    flex-direction: column;
+  }
+}
+
+.cardIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: rgba($color-brand-primary, 0.08);
+  color: $color-brand-primary;
+  flex-shrink: 0;
+
+  svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  @media (max-width: 768px) {
+    width: 44px;
+    height: 44px;
+
+    svg {
+      width: 22px;
+      height: 22px;
+    }
+  }
+}
+
+.cardContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.cardTitle {
+  font-family: 'Oswald', 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: $color-text-dark-main;
+  margin: 0 0 12px;
+
+  @media (max-width: 768px) {
+    font-size: 17px;
+  }
+}
+
+.cardText {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: $color-text-dark-muted;
+  margin: 0;
+
+  strong {
+    color: $color-text-dark-main;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 0 0 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
+}
+
+.cardLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  color: $color-brand-primary;
+  font-family: 'Oswald', 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+
+  svg {
+    transition: transform 0.25s ease;
+  }
+
+  &:hover {
+    gap: 14px;
+
+    svg {
+      transform: translateX(4px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    font-size: 13px;
+  }
+}
+
+// ─── Modal ──────────────────────────────────────────────────
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.25s ease;
+
+  @media (max-width: 768px) {
+    padding: 12px;
+    align-items: flex-end;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal {
+  background: $color-bg-light-card;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 780px;
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+  animation: slideUp 0.3s cubic-bezier(0.2, 1, 0.2, 1);
+  overflow: hidden;
+
+  @media (max-width: 768px) {
+    max-height: 92vh;
+    border-radius: 20px 20px 0 0;
+  }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 28px 32px 20px;
+  border-bottom: 1px solid $color-border-dark-alpha;
+  background: linear-gradient(180deg, rgba($color-brand-primary, 0.03), transparent);
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    padding: 20px 20px 16px;
+    gap: 12px;
+  }
+}
+
+.modalHeaderContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.modalEyebrow {
+  display: inline-block;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: $color-brand-primary;
+  margin-bottom: 6px;
+}
+
+.modalTitle {
+  font-family: 'Oswald', 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: $color-text-dark-main;
+  margin: 0 0 4px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+
+  @media (max-width: 768px) {
+    font-size: 19px;
+  }
+}
+
+.modalSubtitle {
+  font-family: 'PT Sans', sans-serif;
+  font-size: 13px;
+  color: $color-text-dark-muted;
+  margin: 0;
+}
+
+.modalClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid $color-border-dark-alpha;
+  background: transparent;
+  color: $color-text-dark-muted;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+
+  &:hover {
+    background: rgba($color-brand-primary, 0.08);
+    border-color: rgba($color-brand-primary, 0.2);
+    color: $color-brand-primary;
+  }
+
+  @media (max-width: 768px) {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+}
+
+.modalBody {
+  padding: 24px 32px;
+  overflow-y: auto;
+  flex: 1;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: rgba($color-brand-primary, 0.2);
+    border-radius: 4px;
+
+    &:hover {
+      background: rgba($color-brand-primary, 0.35);
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 18px 20px;
+  }
+}
+
+.modalFooter {
+  padding: 16px 32px 24px;
+  border-top: 1px solid $color-border-dark-alpha;
+  display: flex;
+  justify-content: flex-end;
+  flex-shrink: 0;
+
+  @media (max-width: 768px) {
+    padding: 14px 20px 18px;
+  }
+}
+
+.modalFooterBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 32px;
+  background: $color-brand-primary;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: 'Oswald', 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba($color-brand-primary, 0.25);
+
+  &:hover {
+    background: $color-brand-primary-hover;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba($color-brand-primary, 0.35);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+}
+
+// ─── Dark Theme ──────────────────────────────────────────────
+.dark {
+  .card {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.06);
+  }
+
+  .cardTitle {
+    color: $color-text-light-main;
+  }
+
+  .cardText {
+    color: $color-text-light-muted;
+
+    strong {
+      color: $color-text-light-main;
+    }
+  }
+
+  .modal {
+    background: $color-bg-dark-card-from;
+  }
+
+  .modalHeader {
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+    background: linear-gradient(180deg, rgba($color-brand-primary, 0.08), transparent);
+  }
+
+  .modalTitle {
+    color: $color-text-light-main;
+  }
+
+  .modalSubtitle {
+    color: $color-text-light-muted;
+  }
+
+  .modalClose {
+    border-color: rgba(255, 255, 255, 0.1);
+    color: $color-text-light-muted;
+
+    &:hover {
+      background: rgba($color-brand-primary, 0.15);
+      color: $color-brand-primary;
+    }
+  }
+
+  .modalBody {
+    color: $color-text-light-muted;
+  }
+
+  .modalFooter {
+    border-top-color: rgba(255, 255, 255, 0.06);
+  }
+}
