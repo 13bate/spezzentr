@@ -11,13 +11,16 @@ interface Props {
     lng: number;
   };
   zoom?: number;
+  /** ID организации на Яндекс.Картах. Если не указан — используется поиск по адресу. */
+  oid?: string;
 }
 
 export const ContactsMap: React.FC<Props> = ({
   className,
   address = 'г. Брянск, ул. Институтская, д. 15 корп. 3',
   coordinates = { lat: 53.304506, lng: 34.302618 },
-  zoom = 16
+  zoom = 16,
+  oid = '1874339268', // ← ID «Спеццентра» на Яндекс.Картах
 }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isInteractive, setIsInteractive] = useState(false);
@@ -33,7 +36,6 @@ export const ContactsMap: React.FC<Props> = ({
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // ✅ Используем useLayoutEffect для синхронного обновления
   useLayoutEffect(() => {
     if (isMobile) {
       setIsInteractive(false);
@@ -57,7 +59,11 @@ export const ContactsMap: React.FC<Props> = ({
     };
   }, [isMobile]);
 
-  const mapUrl = `https://yandex.ru/map-widget/v1/?ll=${coordinates.lng}%2C${coordinates.lat}&z=${zoom}&pt=${coordinates.lng}%2C${coordinates.lat},pmwtm1&l=map`;
+  // ✅ Виджет с карточкой организации
+  const mapUrl = oid
+    ? `https://yandex.ru/map-widget/v1/?ol=biz&oid=${oid}&z=${zoom}`
+    : `https://yandex.ru/map-widget/v1/?ll=${coordinates.lng}%2C${coordinates.lat}&z=${zoom}&pt=${coordinates.lng}%2C${coordinates.lat},pmwtm1&l=map`;
+
 
   const handleMapClick = () => {
     if (isMobile) return;
@@ -67,8 +73,7 @@ export const ContactsMap: React.FC<Props> = ({
   return (
     <div
       ref={mapRef}
-      className={`${style.mapContainer} ${className || ''} ${isInteractive ? style.interactive : ''
-        } ${isMobile ? style.mobile : ''}`}
+      className={`${style.mapContainer} ${className || ''} ${isInteractive ? style.interactive : ''} ${isMobile ? style.mobile : ''}`}
       onClick={handleMapClick}
     >
       {isLoading && <div className={style.mapLoader}>Загрузка карты...</div>}
@@ -96,12 +101,6 @@ export const ContactsMap: React.FC<Props> = ({
         </div>
       )}
 
-      {isMobile && (
-        <div className={style.mobileOverlay}>
-          <span>📍</span>
-          <p>Нажмите, чтобы открыть карту в приложении</p>
-        </div>
-      )}
     </div>
   );
 };

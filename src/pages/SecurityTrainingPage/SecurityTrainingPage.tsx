@@ -6,9 +6,29 @@ import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle';
 import { ReachUs } from '../../shared/ui/ReachUs';
 import { TestBlock } from '../../shared/ui/TestBlock/TestBlock.tsx';
 import { DocumentViewer } from '../../features/DocumentViewer/ui/DocumentViewer.tsx';
+import { MedicalDocumentContent } from '../../entities/document/ui/MedicalDocumentContent.tsx';
+import { InfoCardWithModal } from '../../shared/ui/InfoCardWithModal/InfoCardWithModal.tsx';
 
 
 // ─── Icons ──────────────────────────────────────────────────
+
+const MedicalIcon = () => (
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="#e63946"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+    <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+    <path d="M12 11v4M10 13h4"></path>
+  </svg>
+);
+
 const ChevronDown = () => (
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
     <path d="M5 7l5 5 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -240,7 +260,7 @@ export const SecurityTrainingPage: React.FC = () => {
               </p>
             </AccordionItem>
 
-            <AccordionItem title="Шаг 2. Повышение квалификации">
+            <AccordionItem title="Шаг 2. Обучение по программе повышение квалификации ">
               <p>
                 Обучение по программе профессионального обучения «Программа повышения
                 квалификации охранников» в ЧОУ ДПО «СПЕЦЦЕНТР».
@@ -330,37 +350,17 @@ export const SecurityTrainingPage: React.FC = () => {
           </div>
         </section>
 
-        {/* ─── ПОРЯДОК МЕДИЦИНСКОГО ОСВИДЕТЕЛЬСТВОВАНИЯ ──────── */}
-        <section className={style.section}>
-          <div className={style.sectionHead}>
-            <span className={style.eyebrow}>
-              <span className={style.eyebrowLine} />
-              Медицина
-            </span>
-            <h2 className={style.sectionTitle}>Порядок проведения медицинского освидетельствования</h2>
-          </div>
+        <InfoCardWithModal
+          title="Медицинское освидетельствование"
+          description="Полный текст Федерального закона «О частной охранной деятельности» (Статья 12). Порядок прохождения ежегодной проверки здоровья."
+          icon={<MedicalIcon />}
+          buttonText="Читать документ"
+          modalEyebrow="Правовая база"
+          modalTitle="Медицинское освидетельствование"
+          modalSubtitle="Статья 12. Частный охранник"
+          modalContent={<MedicalDocumentContent />} // <-- Передаем текст
+        />
 
-          <div className={style.medicalOrderBlock}>
-            <p>
-              Медицинское освидетельствование частного охранника проводится в соответствии
-              с действующим законодательством.
-            </p>
-            <div className={style.docNotice}>
-              <span className={style.docNoticeIcon} />
-              <span>
-                <strong>Ссылка на нормативный документ:</strong>{' '}
-                <a
-                  href="https://login.consultant.ru/link/?req=doc&base=LAW&n=534417&date=27.05.2026&dst=100017&field=134"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={style.link}
-                >
-                  consultant.ru — Порядок медицинского освидетельствования
-                </a>
-              </span>
-            </div>
-          </div>
-        </section>
 
         {/* Контакты */}
         <ReachUs />

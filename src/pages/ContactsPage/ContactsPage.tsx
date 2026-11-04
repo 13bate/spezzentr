@@ -96,7 +96,7 @@ export const ContactsPage: React.FC = () => {
                     <br />
                     <strong>Тир:</strong> 10:00 – 19:00
                     <br />
-                    <strong>Выходные:</strong> Ежедневно
+                    <strong>Выходные:</strong> Воскресенье
                   </p>
                 </div>
               </div>

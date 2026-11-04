@@ -1,8 +1,7 @@
 import React from 'react';
 import styles from './HeroSection.module.scss';
-import heroImage from '../../assets/heroShapes.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeftLong, faArrowRight, faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeftLong, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router';
 
 export const HeroSection: React.FC = () => {
@@ -10,7 +9,7 @@ export const HeroSection: React.FC = () => {
 	const scrollToSection = (id: string) => {
 		const element = document.getElementById(id);
 		if (element) {
-			const headerOffset = 80; // Высота хедера
+			const headerOffset = 80;
 			const elementPosition = element.getBoundingClientRect().top;
 			const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -23,8 +22,12 @@ export const HeroSection: React.FC = () => {
 
 	return (
 		<section className={styles.hero}>
+			{/* Background textures */}
+			<div className={styles.textureGraphy} />
+			<div className={styles.textureGrid} />
+			<div className={styles.textureDrops} />
+
 			<div className={styles.container}>
-				{/* Левая колонка — текст */}
 				<div className={styles.content}>
 					<div className={styles.labelcontainer}>
 						<FontAwesomeIcon className={styles['arrow-icon']} icon={faArrowLeftLong} />
@@ -34,7 +37,12 @@ export const HeroSection: React.FC = () => {
 					</div>
 
 					<h2 className={styles.title}>
-						<span className={styles.titleAccent}>ЧОУ ДПО</span> <br /> "СПЕЦЦЕНТР"
+						<span className={styles.titleSmall}>
+							Частное образовательное учреждение
+							<br />
+							дополнительного профессионального образования
+						</span>
+						<span className={styles.titleBig}>«СПЕЦЦЕНТР»</span>
 					</h2>
 
 					<p className={styles.description}>
@@ -43,35 +51,33 @@ export const HeroSection: React.FC = () => {
 					</p>
 
 					<div className={styles.buttons}>
-						{/* Кнопка "СТРЕЛКОВЫЙ КЛУБ" — якорь на ShootingClubSection */}
 						<Link
-							to="#shooting-club"
+							to="#ShootingClub"
 							className={styles.btnaccent}
 							onClick={(e) => {
 								e.preventDefault();
-								scrollToSection('shooting-club');
+								scrollToSection('ShootingClub');
 							}}
 						>
 							СТРЕЛКОВЫЙ КЛУБ
-							<FontAwesomeIcon icon={faArrowRight} style={{ transform: 'rotate(320deg)' }} />
+							<FontAwesomeIcon icon={faArrowRight} className={styles.btnIcon} />
 						</Link>
 
-						{/* Кнопка "УЧЕБНЫЙ ЦЕНТР" — якорь на TrainigCenterSection */}
 						<Link
-							to="#training-center"
+							to="#TrainingCenter"
 							className={styles.btnprimary}
 							onClick={(e) => {
 								e.preventDefault();
-								scrollToSection('training-center');
+								scrollToSection('TrainingCenter');
 							}}
 						>
 							УЧЕБНЫЙ ЦЕНТР
-							<FontAwesomeIcon icon={faArrowRight} style={{ color: "rgb(200, 21, 36)", transform: "rotate(320deg)" }} />
+							<FontAwesomeIcon icon={faArrowRight} className={styles.btnIconAccent} />
 						</Link>
 
 						<Link to="/contacts" className={styles.btnprimary}>
 							КОНТАКТЫ
-							<FontAwesomeIcon icon={faArrowRight} style={{ color: "rgb(200, 21, 36)", transform: "rotate(320deg)" }} />
+							<FontAwesomeIcon icon={faArrowRight} className={styles.btnIconAccent} />
 						</Link>
 					</div>
 
@@ -84,36 +90,9 @@ export const HeroSection: React.FC = () => {
 							<span className={styles.statnumber}>20+</span>
 							<span className={styles.statlabel}>клубных соревнований в год</span>
 						</div>
-						{/* <div className={styles.statitem}> */}
-						{/* 	<span className={styles.statnumber}>40+</span> */}
-						{/* 	<span className={styles.statlabel}>соревнований в год</span> */}
-						{/* </div> */}
-						{/* <div className={styles.statitem}> */}
-						{/* 	<span className={styles.statnumber}>10+</span> */}
-						{/* 	<span className={styles.statlabel}>лет опыта и безупречной репутации</span> */}
-						{/* </div> */}
 					</div>
-
-					<div className={styles.btmoreContainer}>
-						<FontAwesomeIcon className={styles['arrow-icon-muted']} icon={faChevronDown} />
-						<a href="#shooting-club" className={styles.btnmore} onClick={(e) => {
-							e.preventDefault();
-							scrollToSection('shooting-club');
-						}}>
-							ПОДРОБНЕЕ
-						</a>
-					</div>
-				</div>
-
-				{/* Правая колонка — изображение */}
-				<div className={styles.imagewrapper}>
-					<img src={heroImage} alt="Стрелковый комплекс" className={styles.heroimage} />
 				</div>
 			</div>
-
-			<div className={styles.textureGraphy} />
-			<div className={styles.textureGrid} />
-			<div className={styles.textureDrops} />
 		</section>
 	);
 };

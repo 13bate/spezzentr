@@ -10,7 +10,7 @@ export const trainingCenter = [
 		href: '/training/periodic-checks',
 	},
 	// { label: 'Центр беспилотной авиации', href: '/training/drones' },
-	// { label: 'Охрана труда', href: '/training/labor-safety' },
+	{ label: 'Охрана труда', href: '/training/labor-safety' },
 	// { label: 'Обучение рабочим специальностям', href: '/training/professions' },
 
 ]

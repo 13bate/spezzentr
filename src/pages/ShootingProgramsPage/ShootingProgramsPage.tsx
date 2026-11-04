@@ -7,6 +7,7 @@ import { ReachUs } from '../../shared/ui/ReachUs'
 import { InfoCard } from '../../shared/ui/InfoCard'
 import { programs } from './model/data'
 import type { IProgramm } from './types'
+import { VisitRulesCard } from '../../features/VisitRulesCard'
 
 interface Props {
 	className?: string
@@ -30,6 +31,8 @@ export const ShootingProgramsPage: React.FC<Props> = ({ className }) => {
 					<CrosshairDecor />
 				</div>
 			</section>
+
+			<VisitRulesCard />
 
 			{/* STATS BAR */}
 			<div className={styles.statsBar}>

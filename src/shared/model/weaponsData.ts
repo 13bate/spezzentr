@@ -12,7 +12,7 @@ import colt1911Img from '../../assets/weapons/Colt1911.webp'; // COLT 1911
 import ttImg from '../../assets/weapons/TT.webp'; // TT
 
 // Импорты для карабинов
-import vityazImg from '../../assets/weapons/Сайга9.webp'; // ПП ВИТЯЗЬ
+import vityazImg from '../../assets/weapons/Сайга9.webp'; // ПП ВИТЯЗЬ
 import ppshImg from '../../assets/weapons/ППШ.webp'; // ППШ
 import ak103Img from '../../assets/weapons/АК103.webp'; // АК-103
 import rossiImg from '../../assets/weapons/Rossi.webp'; // ROSSI 92
@@ -30,72 +30,48 @@ export const weaponsData = {
     {
       name: 'Пистолет Макарова',
       caliber: '9х18',
-      price: 80,
-      minShots: 10,
       image: pmImg,
       description: 'Легендарный пистолет, состоящий на вооружении с 1951 года.'
     },
     {
       name: 'Пистолет Ярыгина',
       caliber: '9х19',
-      price: 100,
-      minShots: 10,
       image: yaryginImg,
       description: 'Современный армейский пистолет, отличается эргономичностью.'
     },
     {
       name: 'GLOСK 17',
       caliber: '9х19',
-      price: 100,
-      minShots: 10,
       image: glock17Gen4Img,
       description: 'Австрийский пистолет, популярный во всем мире благодаря надежности.'
     },
     {
-      name: 'GLOСK 17 optic',
-      caliber: '9х19',
-      price: 100,
-      minShots: 10,
-      image: glock17Gen4Img, // Используем Gen.5 как версию с оптикой
-      description: 'Версия Glock 17 с установленной оптикой для прицеливания.'
-    },
-    {
       name: 'CZ 85B',
       caliber: '9х19',
-      price: 100,
-      minShots: 10,
       image: cz85Img,
       description: 'Чешский пистолет с отличным балансом и точностью боя.'
     },
     {
       name: 'Револьвер ARMSCOR M200',
       caliber: '.38 Spl',
-      price: 150,
-      minShots: 6,
       image: revolverImg,
       description: 'Надежный револьвер под патрон .38 Special.'
     },
     {
       name: 'SIG SAUER P226',
       caliber: '.40 S&W',
-      price: 120,
-      minShots: 10,
       image: sigP226Img,
       description: 'Пистолет, стоящий на вооружении спецподразделений по всему миру.'
     },
     {
       name: 'COLT 1911',
       caliber: '.45 ACP',
-      price: 120,
-      minShots: 10,
       image: colt1911Img,
       description: 'Легендарный американский пистолет, конструкция 1911 года.'
     },
     {
       name: 'ТТ',
       caliber: '7,62х25',
-      price: 140,
-      minShots: 10,
       image: ttImg,
       description: 'Тульский Токарева — советский самозарядный пистолет.'
     }
@@ -105,86 +81,65 @@ export const weaponsData = {
     {
       name: 'ПП ВИТЯЗЬ',
       caliber: '9х19',
-      price: 100,
-      minShots: 10,
       image: vityazImg,
       description: 'Российский пистолет-пулемет, компактный и удобный.'
     },
     {
       name: 'ППШ',
       caliber: '9х19',
-      price: 100,
-      minShots: 10,
       image: ppshImg,
       description: 'Легендарный пистолет-пулемет Шпагина.'
     },
     {
       name: 'АК-103',
       caliber: '7,62х39',
-      price: 110,
-      minShots: 10,
       image: ak103Img,
       description: 'Современный автомат Калашникова под патрон 7.62 мм.'
     },
     {
       name: 'ROSSI 92',
       caliber: '.357 Magnum / .38 Spl',
-      price: 150,
-      minShots: 5,
       image: rossiImg,
       description: 'Карабин винтовочного типа с рычажным взведением.'
     },
     {
       name: 'AR-15',
       caliber: '.223 Rem',
-      price: 115,
-      minShots: 10,
       image: ar15Img,
       description: 'Американская винтовка, одна из самых популярных в мире.'
     },
     {
       name: 'ВИНТОВКА МОСИНА',
       caliber: '7,62х54R',
-      price: 200,
-      minShots: 5,
       image: mosinImg,
       description: 'Легендарная русская трехлинейка.'
     },
     {
       name: 'СВД',
       caliber: '7,62х54R',
-      price: 200,
-      minShots: 5,
       image: svdImg,
       description: 'Снайперская винтовка Драгунова.'
     },
     {
       name: 'СВТ',
       caliber: '7,62х54R',
-      price: 200,
-      minShots: 5,
       image: null,
       description: 'Самозарядный карабин СВТ. Калибр 7,62х54R.'
     }
-
   ],
 
   shotguns: [
     {
       name: 'ПОМПОВОЕ РУЖЬЁ',
       caliber: '12',
-      price: 240,
-      minShots: 5,
       image: shotgunImg,
       description: 'Надежное помповое ружье 12 калибра.'
     },
     {
-      name: 'Ружьё гладкоствольное TG 1',
+      name: 'Ружьё гладкоствольное TG 1',
       caliber: '9х19',
-      price: 110,
-      minShots: 10,
       image: TGImg,
-      description: 'Тренировочный/газовый пистолет для отработки навыков.'
+      description: 'Тренировочный/газовый пистолет для отработки навыков.'
     }
   ]
 };
@@ -197,4 +152,3 @@ export const getAllWeapons = () => {
     ...weaponsData.shotguns.map(w => ({ ...w, category: 'shotguns' }))
   ];
 };
-

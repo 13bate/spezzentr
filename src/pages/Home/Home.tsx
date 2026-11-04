@@ -1,5 +1,4 @@
 import clsx from 'clsx'
-import { useEffect } from 'react'
 import { ContactsSection } from '../../features/contacts'
 import { GiftCardsOverview } from '../../features/GiftCardsOverview'
 import { ProgrammsSection } from '../../features/ProgrammsSection'
@@ -14,27 +13,12 @@ interface Props {
 	className?: string
 }
 export const Home: React.FC<Props> = ({ className }) => {
-	useEffect(() => {
-		if (location.hash === '#contacts') {
-			const el = document.getElementById('contacts')
 
-			if (el) {
-				const headerHeight = 80
-
-				const y = el.getBoundingClientRect().top + window.scrollY - headerHeight
-
-				window.scrollTo({
-					top: y,
-					behavior: 'smooth',
-				})
-			}
-		}
-	}, [])
 	return (
 		<div className={clsx(className, style.homeContainer)}>
 			<div className={style.contentContainer}>
       <SectionHeader
-      	id="ShootingClubSection"
+      	id="ShootingClub"
         title="Стрелковый клуб"
         align="center"
       />
@@ -43,6 +27,7 @@ export const Home: React.FC<Props> = ({ className }) => {
 				<ProgrammsSection />
 				<GiftCardsOverview />
 				<SectionHeader
+				id="TrainingCenter"
         title="Учебный центр"
         align="center"
       />

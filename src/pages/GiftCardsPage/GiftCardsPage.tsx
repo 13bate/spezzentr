@@ -2,6 +2,7 @@ import clsx from 'clsx'
 import style from './GiftCardsPage.module.scss'
 import { Link } from 'react-router'
 import { ReachUs } from '../../shared/ui/ReachUs'
+import { VisitRulesCard } from '../../features/VisitRulesCard'
 
 interface Props {
   className?: string
@@ -59,6 +60,8 @@ export const GiftCardsPage: React.FC<Props> = ({ className }) => {
             </div>
           </div>
         </div>
+
+        <VisitRulesCard />
 
         {/* ─── Why This Is a Great Gift ────────────────────── */}
         <div className={style.benefits}>
@@ -145,22 +148,22 @@ export const GiftCardsPage: React.FC<Props> = ({ className }) => {
         {/* ─── Features ──────────────────────────────────────── */}
         <div className={style.features}>
           <div className={style.featureItem}>
-            <span className={style.featureIcon}>🛡️</span>
+            <span className={style.featureIcon}></span>
             <h4>Безопасность на первом месте</h4>
             <p>Все занятия проходят под контролем опытных инструкторов.</p>
           </div>
           <div className={style.featureItem}>
-            <span className={style.featureIcon}>🔧</span>
+            <span className={style.featureIcon}></span>
             <h4>Современное оборудование</h4>
             <p>Исправное оружие и полный набор снаряжения для комфортной стрельбы.</p>
           </div>
           <div className={style.featureItem}>
-            <span className={style.featureIcon}>📍</span>
+            <span className={style.featureIcon}></span>
             <h4>Удобное расположение</h4>
             <p>Легко добраться из любого района города.</p>
           </div>
           <div className={style.featureItem}>
-            <span className={style.featureIcon}>💬</span>
+            <span className={style.featureIcon}></span>
             <h4>Есть вопросы?</h4>
             <p>Свяжитесь с нами — мы всегда на связи.</p>
           </div>

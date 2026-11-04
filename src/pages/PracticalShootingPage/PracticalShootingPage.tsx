@@ -4,6 +4,7 @@ import { practicalShootingCards } from './practicalShootingData';
 import { ReachUs } from '../../shared/ui/ReachUs';
 import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle';
 import { InfoCard } from '../../shared/ui/InfoCard';
+import { VisitRulesCard } from '../../features/VisitRulesCard';
 
 // ─── Page ─────────────────────────────────────────────────────
 export const PracticalShootingPage: React.FC = () => {
@@ -29,6 +30,7 @@ export const PracticalShootingPage: React.FC = () => {
 							<span>С 2015 года</span>
 						</div>
 					</div>
+					<VisitRulesCard />
 
 					{/* Grid с InfoCard */}
 					<div className={style.grid}>

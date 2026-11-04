@@ -1,0 +1,99 @@
+import { InfoCardWithModal } from '../../shared/ui/InfoCardWithModal/'; // Укажите правильный путь
+
+// Иконка для карточки (документ с галочкой)
+const RulesIcon = () => (
+  <svg
+    width="32"
+    height="32"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="#b32025" // Ваш фирменный красный
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+    <polyline points="14 2 14 8 20 8"></polyline>
+    <path d="M9 15l2 2 4-4"></path>
+  </svg>
+);
+
+// Контент для модального окна (Светлая тема)
+const VisitRulesContent = () => (
+  <div style={{ marginBottom: '25px', lineHeight: '1.7', fontSize: '15px', color: '#1c1d20', fontFamily: "'PT Sans', sans-serif" }}>
+    <p style={{ marginBottom: '20px' }}>
+      Чтобы мы могли безопасно и в полном соответствии с законом предоставить вам возможность
+      пострелять из оружия клуба, при посещении нужно иметь при себе <strong>два документа</strong>.
+    </p>
+
+    <h4 style={{ color: '#1c1d20', fontSize: '17px', fontWeight: 700, marginTop: '24px', marginBottom: '12px', borderLeft: '3px solid #b32025', paddingLeft: '10px', fontFamily: "'Oswald', sans-serif" }}>
+      1. Документ, удостоверяющий личность
+    </h4>
+    <ul style={{ paddingLeft: '20px', marginBottom: '20px' }}>
+      <li style={{ marginBottom: '8px' }}>
+        <strong>Паспорт гражданина РФ</strong> (оригинал).
+      </li>
+      <li style={{ marginBottom: '8px' }}>
+        Либо <strong>временное удостоверение личности</strong>, выданное МВД (если паспорт на замене).
+      </li>
+    </ul>
+
+    <h4 style={{ color: '#1c1d20', fontSize: '17px', fontWeight: 700, marginTop: '24px', marginBottom: '12px', borderLeft: '3px solid #b32025', paddingLeft: '10px', fontFamily: "'Oswald', sans-serif" }}>
+      2. Документ, подтверждающий право на обращение с оружием
+    </h4>
+    <p style={{ marginBottom: '12px' }}>Подойдёт один из следующих вариантов:</p>
+    <ul style={{ paddingLeft: '20px', marginBottom: '20px' }}>
+      <li style={{ marginBottom: '8px' }}>Разрешение на хранение оружия;</li>
+      <li style={{ marginBottom: '8px' }}>Разрешение на хранение и ношение оружия;</li>
+      <li style={{ marginBottom: '8px' }}>Разрешение на хранение и использование оружия;</li>
+      <li style={{ marginBottom: '8px' }}>Лицензия на приобретение оружия и патронов к нему;</li>
+      <li style={{ marginBottom: '8px' }}>Иной документ, подтверждающий законное право на хранение и ношение оружия.</li>
+    </ul>
+
+    <p style={{ marginBottom: '12px', fontWeight: 700 }}>
+      Если у вас нет разрешения или лицензии, подойдут документы, подтверждающие отсутствие оснований для отказа в её выдаче (согласно п. 2–4 и 9 ч. 20 ст. 13 ФЗ «Об оружии»):
+    </p>
+    <ul style={{ paddingLeft: '20px', marginBottom: '24px' }}>
+      <li style={{ marginBottom: '8px' }}><strong>Медицинское заключение</strong> (об отсутствии противопоказаний);</li>
+      <li style={{ marginBottom: '8px' }}><strong>Справка об отсутствии судимости</strong>.</li>
+    </ul>
+
+    <div style={{
+      marginTop: '24px',
+      padding: '16px',
+      backgroundColor: 'rgba(179, 32, 37, 0.05)', // Очень светлый красный фон
+      borderLeft: '4px solid #b32025',
+      borderRadius: '8px',
+      color: '#1c1d20', // Темный текст
+      marginBottom: '24px'
+    }}>
+      <strong>Важно:</strong> Эти требования обусловлены п. «ж(4)» Постановления Правительства РФ № 814. Они действуют, когда оружие и патроны передаются гражданину для учебных и тренировочных стрельб.
+    </div>
+
+    <p style={{ marginBottom: '12px' }}>
+      Мы стремимся обеспечить максимальную безопасность и строго соблюдаем нормы закона, поэтому просим отнестись с пониманием к необходимости предъявить оба документа.
+    </p>
+    <p style={{ marginBottom: '12px' }}>
+      Если у вас есть сомнения, какой именно документ подойдёт в вашем случае, пожалуйста, сообщите нам детали — мы оперативно проконсультируем.
+    </p>
+    <p style={{ marginBottom: '12px' }}>
+      Если у вас остались вопросы, позвоните нашему администратору — мы всё подробно объясним и подскажем, какой вариант подходит именно вам.
+    </p>
+  </div>
+);
+
+export const VisitRulesCard = () => {
+  return (
+    <InfoCardWithModal
+      title="Условия посещения"
+      description="Какие документы нужны, чтобы пострелять в нашем клубе. Безопасно и в полном соответствии с законом."
+      icon={<RulesIcon />}
+      buttonText="Узнать правила"
+      modalEyebrow="Правила клуба"
+      modalTitle="Условия посещения"
+      modalSubtitle="Необходимые документы для стрельбы"
+      modalCloseText="Понятно"
+      modalContent={<VisitRulesContent />}
+    />
+  );
+};

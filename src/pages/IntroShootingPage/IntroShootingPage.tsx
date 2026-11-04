@@ -1,13 +1,30 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useSearchParams } from 'react-router' // или 'react-router-dom'
 import { PageTitle } from '../../shared/ui/PageTitle'
 import style from './IntroShootingPage.module.scss'
-import type { Weapon, WeaponCategory } from './types'
+import type { WeaponCategory } from './types'
 import { getAllWeapons, weaponsData } from "../../shared/model"
-
+import { VisitRulesCard } from '../../features/VisitRulesCard'
 
 export const IntroShootingPage: React.FC = () => {
-	const [activeCategory, setActiveCategory] = useState<WeaponCategory>('all')
-	const [selectedWeapon, setSelectedWeapon] = useState<Weapon>()
+	// Используем URL для хранения состояния фильтра
+	const [searchParams, setSearchParams] = useSearchParams()
+	
+	// Получаем категорию из URL или ставим 'all' по умолчанию
+	const activeCategory = (searchParams.get('category') as WeaponCategory) || 'all'
+
+	// Функция для смены категории
+	const handleCategoryChange = (category: WeaponCategory) => {
+		if (category === 'all') {
+			searchParams.delete('category')
+		} else {
+			searchParams.set('category', category)
+		}
+		setSearchParams(searchParams)
+		
+		// Скроллим к началу сетки при смене категории (опционально)
+		window.scrollTo({ top: 0, behavior: 'smooth' })
+	}
 
 	// Получаем отображаемое оружие в зависимости от категории
 	const getDisplayWeapons = () => {
@@ -23,14 +40,6 @@ export const IntroShootingPage: React.FC = () => {
 		}
 	}
 
-	// Статистика
-	//  const allWeapons = getAllWeapons();
-	//  const stats = {
-	//    totalWeapons: allWeapons.length,
-	//    minPrice: Math.min(...allWeapons.map(w => w.price)),
-	//    maxPrice: Math.max(...allWeapons.map(w => w.price))
-	//  };
-	//
 	return (
 		<>
 			<PageTitle title='Ознакомительная стрельба | СПЕЦЦЕНТР' />
@@ -45,41 +54,42 @@ export const IntroShootingPage: React.FC = () => {
 					</p>
 				</section>
 
+<VisitRulesCard/>
+
 				{/* Фильтры */}
 				<section className={style.filters}>
 					<button
 						className={`${style.filterButton} ${activeCategory === 'all' ? style.active : ''}`}
-						onClick={() => setActiveCategory('all')}
+						onClick={() => handleCategoryChange('all')}
 					>
 						Все категории
 					</button>
 					<button
 						className={`${style.filterButton} ${activeCategory === 'pistols' ? style.active : ''}`}
-						onClick={() => setActiveCategory('pistols')}
+						onClick={() => handleCategoryChange('pistols')}
 					>
 						Пистолеты
 					</button>
 					<button
 						className={`${style.filterButton} ${activeCategory === 'rifles' ? style.active : ''}`}
-						onClick={() => setActiveCategory('rifles')}
+						onClick={() => handleCategoryChange('rifles')}
 					>
 						Карабины
 					</button>
 					<button
 						className={`${style.filterButton} ${activeCategory === 'shotguns' ? style.active : ''}`}
-						onClick={() => setActiveCategory('shotguns')}
+						onClick={() => handleCategoryChange('shotguns')}
 					>
 						Ружья
 					</button>
 				</section>
 
-				{/* Сетка оружия */}
+				{/* Сетка оружия (без изменений) */}
 				<section className={style.weaponsGrid}>
 					{getDisplayWeapons().map((weapon, index) => (
 						<div
 							key={index}
-							className={`${style.weaponCard} ${selectedWeapon === weapon ? style.selected : ''}`}
-							onClick={() => setSelectedWeapon(weapon)}
+							className={style.weaponCard}
 						>
 							<div className={style.weaponHeader}>
 								<span className={style.weaponCategory}>
@@ -91,7 +101,7 @@ export const IntroShootingPage: React.FC = () => {
 
 							<div className={style.weaponImage}>
 								{weapon.image ? (
-									<img src={weapon.image} alt={weapon.name} />
+									<img src={weapon.image} alt={weapon.name} loading="lazy" decoding="async" />
 								) : (
 									<div className={style.weaponSkeleton}>
 										<span>{weapon.name}</span>
@@ -102,20 +112,7 @@ export const IntroShootingPage: React.FC = () => {
 							<h3 className={style.weaponName}>{weapon.name}</h3>
 
 							<div className={style.weaponDetails}>
-								<div className={style.weaponCaliber}>
-									<span>Калибр:</span>
-									<strong>{weapon.caliber}</strong>
-								</div>
 
-								<div className={style.weaponPrice}>
-									<span>Цена выстрела:</span>
-									<strong>{weapon.price} ₽</strong>
-								</div>
-
-								<div className={style.weaponMinShots}>
-									<span>Мин. количество:</span>
-									<strong>{weapon.minShots}</strong>
-								</div>
 							</div>
 
 							{weapon.description && (
@@ -125,7 +122,7 @@ export const IntroShootingPage: React.FC = () => {
 					))}
 				</section>
 
-				{/* Правила и информация */}
+				{/* Правила и информация (без изменений) */}
 				<section className={style.infoSection}>
 					<div className={style.infoCard}>
 						<h3>Правила безопасности</h3>
@@ -139,10 +136,9 @@ export const IntroShootingPage: React.FC = () => {
 					</div>
 				</section>
 
-				{/* Контакты */}
+				{/* Контакты (без изменений) */}
 				<section className={style.contactsSection}>
 					<h2 className={style.sectionTitle}>Записаться на стрельбу</h2>
-
 					<div className={style.contactsGrid}>
 						<div className={style.contactCard}>
 							<div className={style.contactIcon}>📞</div>
@@ -152,7 +148,6 @@ export const IntroShootingPage: React.FC = () => {
 								<a href='tel:+74832757546'>32-75-46</a>
 							</div>
 						</div>
-
 						<div className={style.contactCard}>
 							<div className={style.contactIcon}>📍</div>
 							<div className={style.contactContent}>
@@ -160,7 +155,6 @@ export const IntroShootingPage: React.FC = () => {
 								<p>г. Брянск, ул. Институтская д. 15 к. 3 офис 232</p>
 							</div>
 						</div>
-
 						<div className={style.contactCard}>
 							<div className={style.contactIcon}>⏰</div>
 							<div className={style.contactContent}>
