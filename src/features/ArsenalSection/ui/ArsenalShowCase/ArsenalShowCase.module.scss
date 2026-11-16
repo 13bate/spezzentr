@@ -72,7 +72,8 @@
   letter-spacing: 0.12em;
   font-size: 11px;
   font-weight: 700;
-  color: #fff;
+  /* Сделали цвет более приглушенным, чтобы не бил в глаза */
+  color: rgba(255, 255, 255, 0.7); 
 
   span {
     width: 26px;
@@ -90,7 +91,8 @@
   margin: 0;
   font-size: clamp(28px, 3vw, 40px);
   line-height: 1.05;
-  color: #fff;
+  /* Вместо чистого #fff используем мягкий светлый оттенок */
+  color: #f0f1f2; 
   letter-spacing: -0.02em;
   font-weight: 700;
 
@@ -127,7 +129,8 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  color: white !important;
+  /* Убрали жесткий белый, сделали полупрозрачный светлый */
+  color: rgba(255, 255, 255, 0.8) !important; 
   border: none;
   border-radius: 10px;
   font-size: 15px;
@@ -143,8 +146,8 @@
   margin-top: 4px;
 
   &:hover {
-    color : $color-brand-primary-hover !important;
-
+    /* При наведении делаем текст чистым белым для акцента или используем фирменный */
+    color: #ffffff !important; 
   }
 
   &:active {
@@ -190,7 +193,8 @@
   gap: 10px;
   width: 100%;
   padding: 14px 24px;
-  color: #fff;
+  /* Для кнопки на красном фоне белый оставляем, но можно чуть смягчить */
+  color: #f5f6f7;
   border: none;
   border-radius: 12px;
   font-size: 15px;
@@ -204,6 +208,7 @@
     background: $color-brand-primary-hover;
     transform: translateY(-2px);
     box-shadow: 0 8px 24px $color-shadow-primary-deep;
+    color: #ffffff;
   }
 
   &:active {
@@ -218,9 +223,6 @@
     transform: translateX(4px);
   }
 }
-
-
-
 
 // ─── Dark Theme (optional) ──────────────────────────────────
 .dark {

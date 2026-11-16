@@ -96,20 +96,20 @@ export const GiftCardsPage: React.FC<Props> = ({ className }) => {
           <div className={style.pricingGrid}>
             <div className={style.planCard}>
               <h4>Базовый</h4>
-              <div className={style.price}>3 000 ₽</div>
+              <div className={style.price}>2 000 ₽</div>
             </div>
             <div className={`${style.planCard} ${style.popular}`}>
               <span className={style.popularBadge}>Популярный</span>
               <h4>Стандарт</h4>
-              <div className={style.price}>5 000 ₽</div>
+              <div className={style.price}>3 000 ₽</div>
             </div>
             <div className={style.planCard}>
               <h4>Оптимальный</h4>
-              <div className={style.price}>10 000 ₽</div>
+              <div className={style.price}>5 000 ₽</div>
             </div>
             <div className={style.planCard}>
               <h4>Премиум</h4>
-              <div className={style.price}>15 000 ₽</div>
+              <div className={style.price}>10 000 ₽</div>
             </div>
           </div>
         </div>
@@ -138,10 +138,6 @@ export const GiftCardsPage: React.FC<Props> = ({ className }) => {
               <h4>Используйте</h4>
               <p>Сертификат для записи на стрельбу</p>
             </div>
-          </div>
-          <div className={style.electronicInfo}>
-            <strong>Электронный сертификат</strong>
-            <p>Красивый дизайн, уникальный номер и надежная система защиты. Можно распечатать или отправить в электронном виде.</p>
           </div>
         </div>
 

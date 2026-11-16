@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import style from './WeaponSafety.module.scss';
 import { REQUIRED_DOCUMENTS, safetyTrainingData } from './safetyTrainingData';
 import { PageTitle } from '../../shared/ui/PageTitle';
-import { ReachUs } from '../../shared/ui/ReachUs';
 import { TestBlock } from '../../shared/ui/TestBlock';
 import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle';
 import { ScheduleViewer } from '../../features/ScheduleViewer';
 import { DocumentViewer } from '../../features/DocumentViewer/ui/DocumentViewer';
 import { RequiredDocuments } from '../../shared/ui/RequiredDocuments';
+import { ReachUsWithFeedBack } from '../../shared/ui/ReachUsWithFeadBack';
 
 // ─── Icons ──────────────────────────────────────────────────
 const ChevronDown = () => (
@@ -105,6 +105,11 @@ export const WeaponSafety: React.FC = () => {
           Тест состоит из 10 вопросов. Для успешной сдачи допускается 1 ошибка.'/>
         </div>
       </section>
+
+      {/* ─── Расписание  ──────────────────────────── */}
+      <ScheduleViewer scheduleId="weapon-safety-schedule" />
+
+
 
       {/* ─── НЕОБХОДИМЫЕ ДОКУМЕНТЫ ───────────────────────────── */}
 
@@ -411,9 +416,6 @@ export const WeaponSafety: React.FC = () => {
         </div>
       </section>
 
-      {/* ─── Расписание и документ ──────────────────────────── */}
-      <ScheduleViewer scheduleId="weapon-safety-schedule" />
-
       <DocumentViewer
         category='security'
         documentId="weapon-safety-questions"
@@ -426,7 +428,7 @@ export const WeaponSafety: React.FC = () => {
       </section>
 
       {/* ─── Контакты ────────────────────────────────────────── */}
-      <ReachUs />
+      <ReachUsWithFeedBack />
 
 
     </main>

@@ -3,11 +3,11 @@ import { PageTitle } from '../../shared/ui/PageTitle';
 import { securityTrainingData } from './model/securityTrainingData.ts';
 import style from './SecurityTrainingPage.module.scss';
 import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle';
-import { ReachUs } from '../../shared/ui/ReachUs';
 import { TestBlock } from '../../shared/ui/TestBlock/TestBlock.tsx';
 import { DocumentViewer } from '../../features/DocumentViewer/ui/DocumentViewer.tsx';
 import { MedicalDocumentContent } from '../../entities/document/ui/MedicalDocumentContent.tsx';
 import { InfoCardWithModal } from '../../shared/ui/InfoCardWithModal/InfoCardWithModal.tsx';
+import { ReachUsWithFeedBack } from '../../shared/ui/ReachUsWithFeadBack/ReachUsWithFeedBack.tsx';
 
 
 // ─── Icons ──────────────────────────────────────────────────
@@ -363,7 +363,7 @@ export const SecurityTrainingPage: React.FC = () => {
 
 
         {/* Контакты */}
-        <ReachUs />
+        <ReachUsWithFeedBack />
       </main>
     </>
   );

@@ -3,20 +3,22 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilePdf, faDownload } from '@fortawesome/free-solid-svg-icons';
 import styles from './DocumentList.module.scss';
 
-interface DocumentItem {
+export interface DocumentItem {
   id: string;
   name: string;
   fileName: string;
   path: string;
   category: string;
+  subCategory?: string; // Добавили подкатегорию
 }
 
 interface Props {
   category: string;
   className?: string;
+  subCategory?: string; // 'programs' или 'study'
 }
 
-export const DocumentList: React.FC<Props> = ({ category, className }) => {
+export const DocumentList: React.FC<Props> = ({ category, className, subCategory }) => {
   const [documents, setDocuments] = useState<DocumentItem[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -37,13 +39,18 @@ export const DocumentList: React.FC<Props> = ({ category, className }) => {
     return <div className={styles.loading}>Загрузка документов...</div>;
   }
 
-  if (documents.length === 0) {
+  // Фильтруем по подкатегории, если она передана
+  const displayedDocuments = subCategory
+    ? documents.filter(doc => doc.subCategory === subCategory)
+    : documents;
+
+  if (displayedDocuments.length === 0) {
     return <div className={styles.empty}>Документов пока нет</div>;
   }
 
   return (
     <div className={`${styles.documentList} ${className || ''}`}>
-      {documents.map((doc) => (
+      {displayedDocuments.map((doc) => (
         <a
           key={doc.id}
           href={doc.path}

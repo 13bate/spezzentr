@@ -1,15 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './HeroSection.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeftLong, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router';
 
 export const HeroSection: React.FC = () => {
 	// Функция для плавного скролла к секции
 	const scrollToSection = (id: string) => {
 		const element = document.getElementById(id);
 		if (element) {
-			const headerOffset = 80;
+			const headerOffset = 80; // Отступ под фиксированный хедер
 			const elementPosition = element.getBoundingClientRect().top;
 			const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -22,75 +20,55 @@ export const HeroSection: React.FC = () => {
 
 	return (
 		<section className={styles.hero}>
-			{/* Background textures */}
-			<div className={styles.textureGraphy} />
-			<div className={styles.textureGrid} />
-			<div className={styles.textureDrops} />
+			{/* Легкий фон: свечение и сетка */}
+			<div className={styles.bgGlow} />
+			<div className={styles.bgGrid} />
 
 			<div className={styles.container}>
-				<div className={styles.content}>
-					<div className={styles.labelcontainer}>
-						<FontAwesomeIcon className={styles['arrow-icon']} icon={faArrowLeftLong} />
-						<h1 className={styles.label}>
-							СТРЕЛКОВЫЙ КОМПЛЕКС И УЧЕБНЫЙ ЦЕНТР
-						</h1>
-					</div>
 
-					<h2 className={styles.title}>
-						<span className={styles.titleSmall}>
-							Частное образовательное учреждение
-							<br />
-							дополнительного профессионального образования
-						</span>
-						<span className={styles.titleBig}>«СПЕЦЦЕНТР»</span>
-					</h2>
+				<h1 className={styles.title}>
+					<span className={styles.titleSmall}>
+						Частное образовательное учреждение
+						<br />
+						дополнительного профессионального образования
+					</span>
+					<span className={styles.titleBig}>
+						«СПЕЦ<span>ЦЕНТР</span>»
+					</span>
+				</h1>
 
-					<p className={styles.description}>
-						Профессиональные тренировки, обучение безопасному обращению с оружием
-						и спортивная подготовка на современном стрелковом комплексе.
-					</p>
+				{/* Ссылки */}
+				<div className={styles.links}>
+					<a
+						href="#ShootingClub"
+						className={styles.link}
+						onClick={(e) => {
+							e.preventDefault();
+							scrollToSection('ShootingClub');
+						}}
+					>
+						Стрелковый клуб
+					</a>
 
-					<div className={styles.buttons}>
-						<Link
-							to="#ShootingClub"
-							className={styles.btnaccent}
-							onClick={(e) => {
-								e.preventDefault();
-								scrollToSection('ShootingClub');
-							}}
-						>
-							СТРЕЛКОВЫЙ КЛУБ
-							<FontAwesomeIcon icon={faArrowRight} className={styles.btnIcon} />
-						</Link>
+					<span className={styles.divider}>/</span>
 
-						<Link
-							to="#TrainingCenter"
-							className={styles.btnprimary}
-							onClick={(e) => {
-								e.preventDefault();
-								scrollToSection('TrainingCenter');
-							}}
-						>
-							УЧЕБНЫЙ ЦЕНТР
-							<FontAwesomeIcon icon={faArrowRight} className={styles.btnIconAccent} />
-						</Link>
+					<a
+						href="#TrainingCenter"
+						className={styles.link}
+						onClick={(e) => {
+							e.preventDefault();
+							scrollToSection('TrainingCenter');
+						}}
+					>
+						Учебный центр
+					</a>
 
-						<Link to="/contacts" className={styles.btnprimary}>
-							КОНТАКТЫ
-							<FontAwesomeIcon icon={faArrowRight} className={styles.btnIconAccent} />
-						</Link>
-					</div>
+					<span className={styles.divider}>/</span>
 
-					<div className={styles.stats}>
-						<div className={styles.statitem}>
-							<span className={styles.statnumber}>20+</span>
-							<span className={styles.statlabel}>программ обучения</span>
-						</div>
-						<div className={styles.statitem}>
-							<span className={styles.statnumber}>20+</span>
-							<span className={styles.statlabel}>клубных соревнований в год</span>
-						</div>
-					</div>
+					{/* Контакты - обычный переход на страницу */}
+					<Link to="/contacts" className={styles.link}>
+						Контакты
+					</Link>
 				</div>
 			</div>
 		</section>

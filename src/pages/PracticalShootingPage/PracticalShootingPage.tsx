@@ -1,10 +1,10 @@
 import React from 'react';
 import style from './PracticalShooting.module.scss';
 import { practicalShootingCards } from './practicalShootingData';
-import { ReachUs } from '../../shared/ui/ReachUs';
 import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle';
 import { InfoCard } from '../../shared/ui/InfoCard';
 import { VisitRulesCard } from '../../features/VisitRulesCard';
+import { ReachUsWithFeedBack } from '../../shared/ui/ReachUsWithFeadBack';
 
 // ─── Page ─────────────────────────────────────────────────────
 export const PracticalShootingPage: React.FC = () => {
@@ -24,7 +24,7 @@ export const PracticalShootingPage: React.FC = () => {
 					<div className={style.head}>
 						<InfoPagesTitle
 							title="Практическая стрельба"
-							description="Программы и тренировки по практической стрельбе IPSC. Все программы сертифицированы ОСОО «ФПСР»."
+							description="Программы и тренировки по практической стрельбе IPSC."
 						/>
 						<div className={style.headBadge}>
 							<span>С 2015 года</span>
@@ -49,7 +49,7 @@ export const PracticalShootingPage: React.FC = () => {
 					</div>
 				</div>
 			</section>
-			<ReachUs />
+			<ReachUsWithFeedBack />
 		</main>
 	);
 };

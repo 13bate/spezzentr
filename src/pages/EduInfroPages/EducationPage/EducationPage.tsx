@@ -14,33 +14,11 @@ import {
   faCogs,
   faGavel,
 } from '@fortawesome/free-solid-svg-icons';
-import { DocumentViewer } from '../../../features/DocumentViewer/ui/DocumentViewer';
+
 import style from './EducationPage.module.scss';
+import { DocumentList } from '../../../shared/ui/DocumentList';
 
 export const EducationPage: React.FC = () => {
-  // ID документов для страницы "Образование"
-  const programDocumentIds = [
-    'program-security-guard',
-    'program-pk-security-guard',
-    'program-detective-2019',
-    'program-detective',
-    'program-pk-detective-2019',
-    'program-pk-detective',
-    'program-pk-guard',
-    'program-special-comm',
-    'program-fgup-ohrana',
-    'program-pk-ruk-chop',
-    'program-ruk-chop',
-    'program-boo',
-    'program-yur-lic',
-    'study-plan',
-  ];
-
-  const additionalDocumentIds = [
-    'study-plan',
-    // 'study-schedule' - если есть отдельный документ для календарного графика
-  ];
-
   const disciplines = [
     {
       title: 'Правовая подготовка',
@@ -114,35 +92,20 @@ export const EducationPage: React.FC = () => {
           </div>
 
           <div className={style.contentContainer}>
+
             {/* ─── Образовательные программы ─────────────────── */}
             <h2 className={style.sectionSubtitle}>
               <FontAwesomeIcon icon={faBookOpen} />
               Образовательные программы
             </h2>
-            <div className={style.documentsList}>
-              {programDocumentIds.map((docId) => (
-                <DocumentViewer
-                  key={docId}
-                  documentId={docId}
-                  category="education"
-                />
-              ))}
-            </div>
+            <DocumentList category="education" subCategory="programs" />
 
             {/* ─── Учебные документы ────────────────────────── */}
             <h2 className={style.sectionSubtitle}>
               <FontAwesomeIcon icon={faScroll} />
               Учебные документы
             </h2>
-            <div className={style.documentsList}>
-              {additionalDocumentIds.map((docId) => (
-                <DocumentViewer
-                  key={docId}
-                  documentId={docId}
-                  category="education"
-                />
-              ))}
-            </div>
+            <DocumentList category="education" subCategory="study" />
 
             {/* ─── Общие сведения ───────────────────────────── */}
             <h2 className={style.sectionSubtitle}>

@@ -14,7 +14,8 @@ import {
   faGift,
   faWheelchair,
   faGlobe,
-  faStamp
+  faStamp,
+  faUtensils
 } from '@fortawesome/free-solid-svg-icons';
 
 export interface SectionData {
@@ -48,26 +49,20 @@ export const educationSectionsData: SectionData[] = [
     color: '#FE3B15'
   },
   {
-    id: 'education',
-    title: 'Образование',
-    subtitle: 'Программы обучения и учебные планы',
-    icon: faGraduationCap,
-    color: '#FE3B15'
-  },
-  {
-    id: 'standards',
-    title: 'Образовательные стандарты',
-    subtitle: 'Федеральные образовательные стандарты',
-    icon: faStamp,
-    color: '#FE3B15'
-  },
-  {
     id: 'management',
     title: 'Руководство',
     subtitle: 'Директор и заместитель',
     icon: faUsers,
     color: '#FE3B15'
   },
+  {
+    id: 'education',
+    title: 'Образование',
+    subtitle: 'Программы обучения и учебные планы',
+    icon: faGraduationCap,
+    color: '#FE3B15'
+  },
+
   {
     id: 'teachers',
     title: 'Педагогический состав',
@@ -77,7 +72,7 @@ export const educationSectionsData: SectionData[] = [
   },
   {
     id: 'facilities',
-    title: 'Материально-техническое обеспечение',
+    title: 'Материально-техническое обеспечение. Оснащенность образовательного процесса. Доступная среда',
     subtitle: 'Учебные классы и стрелковый тир',
     icon: faWrench,
     color: '#FE3B15'
@@ -97,8 +92,15 @@ export const educationSectionsData: SectionData[] = [
     color: '#FE3B15'
   },
   {
+    id: 'catering',
+    title: 'Организация питания в образовательной организации',
+    subtitle: 'Информация об условиях питания обучающихся',
+    icon: faUtensils,
+    color: '#F59E0B'
+  },
+  {
     id: 'vacancies',
-    title: 'Вакантные места для приема',
+    title: 'Вакантные места для приема обучающихся',
     subtitle: 'Информация о вакантных местах',
     icon: faBriefcase,
     color: '#FE3B15'
@@ -123,5 +125,13 @@ export const educationSectionsData: SectionData[] = [
     subtitle: 'Информация о международном сотрудничестве',
     icon: faGlobe,
     color: '#FE3B15'
-  }
+  },
+
+  {
+    id: 'standards',
+    title: 'Образовательные стандарты',
+    subtitle: 'Федеральные образовательные стандарты',
+    icon: faStamp,
+    color: '#FE3B15'
+  },
 ];

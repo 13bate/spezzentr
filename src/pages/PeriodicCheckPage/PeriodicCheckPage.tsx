@@ -1,12 +1,12 @@
 import { PageTitle } from '../../shared/ui/PageTitle';
 import style from './PeriodicCheckPage.module.scss';
 import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle';
-import { ReachUs } from '../../shared/ui/ReachUs';
 import { TestBlock } from '../../shared/ui/TestBlock';
 import { ScheduleViewer } from '../../features/ScheduleViewer';
 import { DocumentViewer } from '../../features/DocumentViewer/ui/DocumentViewer';
 import { InfoCardWithModal } from '../../shared/ui/InfoCardWithModal';
 import { PeriodicCheckDocumentContent } from '../../entities/document/ui';
+import { ReachUsWithFeedBack } from '../../shared/ui/ReachUsWithFeadBack';
 
 
 const ShieldIcon = () => (
@@ -117,7 +117,7 @@ export const PeriodicCheckPage: React.FC = () => {
           </div>
         </section>
 
-        <ReachUs />
+        <ReachUsWithFeedBack />
       </main>
     </>
   );

@@ -1,8 +1,9 @@
 import React from 'react';
 import { PageTitle } from '../../../shared/ui/PageTitle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilePdf, faDownload, faUsers, faUserTie, faUsersGear, faBuilding } from '@fortawesome/free-solid-svg-icons';
+import { faFilePdf, faUsers, faUserTie, faUsersGear, faBuilding } from '@fortawesome/free-solid-svg-icons';
 import style from './StructurePage.module.scss';
+import { DocumentList } from '../../../shared/ui/DocumentList';
 
 export const StructurePage: React.FC = () => {
   return (
@@ -41,7 +42,7 @@ export const StructurePage: React.FC = () => {
                 <span className={style.infoLabel}>Высший орган управления</span>
                 <div className={style.infoValue}>Учредитель</div>
                 <p className={style.infoDesc}>
-                  Высшим органом управления Учреждением является Учредитель.
+                  Высшим органом управления Учреждением является Единственный учредитель.
                 </p>
               </div>
 
@@ -52,7 +53,7 @@ export const StructurePage: React.FC = () => {
                 <span className={style.infoLabel}>Исполнительный орган</span>
                 <div className={style.infoValue}>Директор</div>
                 <p className={style.infoDesc}>
-                  Исполнительным органом управления Учреждением является Директор, назначаемый
+                  Единоличным исполнительным органом управления Учреждением является Директор, назначаемый
                   Учредителем сроком на 5 лет. Директор осуществляет руководство текущей
                   деятельностью Учреждения, за исключением вопросов, отнесенных к компетенции
                   Учредителя. Он также выполняет обязанности главного бухгалтера.
@@ -95,54 +96,21 @@ export const StructurePage: React.FC = () => {
               </div>
             </div>
 
+            <div className={style.directorCard}>
+              <span className={style.infoLabel}>Учредитель</span>
+              <div className={style.directorName}>
+                Першукевич Андрей Викторович
+              </div>
+            </div>
+
+
             {/* Документы */}
             <div className={style.documentsBlock}>
               <h3 className={style.documentsTitle}>
                 <FontAwesomeIcon icon={faFilePdf} />
                 Документы
               </h3>
-
-              <div className={style.documentsList}>
-                <div className={style.documentItem}>
-                  <div className={style.documentIcon}>
-                    <FontAwesomeIcon icon={faFilePdf} />
-                  </div>
-                  <div className={style.documentInfo}>
-                    <div className={style.documentName}>
-                      Положение о Педагогическом совете организации
-                    </div>
-                  </div>
-                  <a
-                    href="/eduOrgInfoPdf/положение-педсовет (1).pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={style.downloadButton}
-                  >
-                    <FontAwesomeIcon icon={faDownload} />
-                    Скачать
-                  </a>
-                </div>
-
-                <div className={style.documentItem}>
-                  <div className={style.documentIcon}>
-                    <FontAwesomeIcon icon={faFilePdf} />
-                  </div>
-                  <div className={style.documentInfo}>
-                    <div className={style.documentName}>
-                      Положение о Собрании работников
-                    </div>
-                  </div>
-                  <a
-                    href="/eduOrgInfoPdf/положение-собрание-работников.pdf"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={style.downloadButton}
-                  >
-                    <FontAwesomeIcon icon={faDownload} />
-                    Скачать
-                  </a>
-                </div>
-              </div>
+              <DocumentList category="structure" />
             </div>
           </div>
         </section>

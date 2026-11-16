@@ -3,6 +3,7 @@ import { Link } from 'react-router';
 import style from './WorkingProfessions.module.scss';
 import { PageTitle } from '../../shared/ui/PageTitle';
 import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle';
+import { ReachUsWithFeedBack } from '../../shared/ui/ReachUsWithFeadBack';
 
 // ─── Data ────────────────────────────────────────────────────
 
@@ -273,19 +274,7 @@ export const WorkingProfessions: React.FC = () => {
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section className={style.cta}>
-        <div className={style.ctaInner}>
-          <h2 className={style.ctaTitle}>Готовы начать обучение?</h2>
-          <p className={style.ctaSub}>Оставьте заявку — подберём программу и ответим в течение рабочего дня</p>
-          <Link to="/contacts" className={style.btnPrimary}>
-            Записаться
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </Link>
-        </div>
-      </section>
+      <ReachUsWithFeedBack />
     </main>
   );
 };

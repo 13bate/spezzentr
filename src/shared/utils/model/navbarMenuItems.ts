@@ -9,6 +9,9 @@ export const trainingCenter = [
 		label: 'Периодическая проверка охранников 4–6 разрядов',
 		href: '/training/periodic-checks',
 	},
+	{
+		label: "Обучение телохранителей", href: "/training/bodyguards"
+	},
 	// { label: 'Центр беспилотной авиации', href: '/training/drones' },
 	{ label: 'Охрана труда', href: '/training/labor-safety' },
 	// { label: 'Обучение рабочим специальностям', href: '/training/professions' },

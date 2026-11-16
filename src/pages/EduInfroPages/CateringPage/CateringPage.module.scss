@@ -1,0 +1,143 @@
+@use '../../../shared/styles/variables' as *;
+
+.cateringPage {
+  width: 100%;
+  margin: 100px 0 80px;
+
+  @media (max-width: 768px) {
+    margin: 80px 0 40px;
+  }
+}
+
+.section {
+  scroll-margin-top: 150px;
+  margin-left: 20px;
+  margin-right: 20px; // Добавил отступ справа для симметрии
+
+  @media (max-width: 768px) {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 30px;
+
+  .sectionTitle {
+    font-family: 'Oswald', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    color: $color-text-dark-main;
+    margin: 0;
+
+    @media (max-width: 768px) {
+      font-size: 24px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+  }
+}
+
+.contentContainer {
+  background: $color-bg-light-footer;
+  border-radius: 30px;
+  padding: 40px;
+
+  @media (max-width: 768px) {
+    padding: 25px;
+  }
+}
+
+// ─── Информационное сообщение ────────────────────────────────
+.infoMessage {
+  display: flex;
+  gap: 25px;
+  background: $color-glass-primary-alpha;
+  border-radius: 20px;
+  padding: 30px;
+  margin-bottom: 30px;
+  border-left: 6px solid $color-brand-primary;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .messageIcon {
+    font-size: 48px;
+    color: $color-brand-primary;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .messageContent {
+    flex: 1;
+
+    .messageTitle {
+      font-family: 'Oswald', sans-serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: $color-text-dark-main;
+      margin-bottom: 10px;
+      margin-top: 0;
+    }
+
+    .messageText {
+      font-family: 'PT Sans', sans-serif;
+      font-size: 16px;
+      color: $color-text-dark-muted;
+      line-height: 1.6;
+      margin: 0;
+
+      strong {
+        color: $color-text-dark-main;
+      }
+    }
+  }
+}
+
+// ─── Карточка с примечанием ──────────────────────────────────
+.noteCard {
+  background: $color-glass-primary-alpha;
+  border-radius: $radius-card-medium;
+  padding: 20px;
+  margin-top: 20px;
+
+  .noteText {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 14px;
+    color: $color-text-dark-muted;
+    line-height: 1.6;
+    margin: 0;
+    font-style: italic;
+    text-align: center;
+  }
+}
+
+// ─── Анимация ────────────────────────────────────────────────
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.infoMessage,
+.noteCard {
+  animation: fadeInUp 0.4s ease forwards;
+}

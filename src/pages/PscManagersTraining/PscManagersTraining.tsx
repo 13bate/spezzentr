@@ -2,9 +2,9 @@ import React from 'react'
 import clsx from 'clsx'
 import style from './PscManagersTraining.module.scss'
 import { InfoPagesTitle } from '../../shared/ui/InfoPagesTitle'
-import { Link } from 'react-router'
 import { RequiredDocuments } from '../../shared/ui/RequiredDocuments'
 import { PaymentMethods } from '../../shared/ui/PaymentMethod'
+import { ReachUsWithFeedBack } from '../../shared/ui/ReachUsWithFeadBack'
 
 interface Props {
   className?: string
@@ -160,18 +160,7 @@ export const PscManagersTraining: React.FC<Props> = ({ className }) => {
 
       <PaymentMethods />
 
-      <section className={style.cta}>
-        <div className={style.ctaContent}>
-          <h2>Записаться на обучение</h2>
-          <p>
-            Получите консультацию по вопросам обучения, требованиям к
-            кандидатам и порядку оформления документов.
-          </p>
-          <Link to="/contacts" className={style.btn}>
-            Оставить заявку
-          </Link>
-        </div>
-      </section>
+      <ReachUsWithFeedBack />
     </div>
   )
 }

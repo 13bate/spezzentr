@@ -40,7 +40,6 @@ export const AdminLayout = () => {
 
         <div className={styles.sidebarFooter}>
           <a href="/spezzentr/" target="_blank" rel="noopener noreferrer" className={styles.siteLink}>
-            <span className={styles.navIcon}>🌐</span>
             Перейти на сайт
           </a>
           <button onClick={handleLogout} className={styles.logoutBtn}>

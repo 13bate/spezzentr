@@ -74,6 +74,9 @@ export const ContactsPage: React.FC = () => {
                   <a href="tel:+74832327545" className={style.contactPhone}>
                     +7 (4832) 32-75-45
                   </a>
+                  <a href="tel:+79307320510" className={style.contactPhone}>
+                    +7 (930) 732-05-10
+                  </a>
                 </div>
               </div>
 

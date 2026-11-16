@@ -1,24 +1,11 @@
+import React from 'react';
 import { PageTitle } from '../../../shared/ui/PageTitle';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
-import { DocumentViewer } from '../../../features/DocumentViewer/ui/DocumentViewer';
 import style from './DocumentsPage.module.scss';
+import { DocumentList } from '../../../shared/ui/DocumentList';
 
 export const DocumentsPage: React.FC = () => {
-  // Список ID документов для страницы "Документы"
-  const documentIds = [
-    'charter',
-    'license',
-    'self-assessment',
-    'privacy-policy',
-    'attestation-regulation',
-    'relationship-order',
-    'transfer-regulation',
-    'internal-rules',
-    'study-schedule',
-    'admission-rules',
-  ];
-
   return (
     <>
       <PageTitle title="Документы | СПЕЦЦЕНТР" />
@@ -35,15 +22,7 @@ export const DocumentsPage: React.FC = () => {
           </div>
 
           <div className={style.contentContainer}>
-            <div className={style.documentsList}>
-              {documentIds.map((docId) => (
-                <DocumentViewer
-                  key={docId}
-                  documentId={docId}
-                  category="documents"
-                />
-              ))}
-            </div>
+            <DocumentList category="documents" />
           </div>
         </section>
       </main>

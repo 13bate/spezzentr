@@ -1,7 +1,8 @@
 import React from 'react';
 import { PageTitle } from '../../../shared/ui/PageTitle';
 import style from './BasicInfoPage.module.scss';
-import { DocumentViewer } from '../../../features/DocumentViewer/ui/DocumentViewer';
+import { DocumentList } from '../../../shared/ui/DocumentList';
+
 
 export const BasicInfoPage: React.FC = () => {
   return (
@@ -24,20 +25,28 @@ export const BasicInfoPage: React.FC = () => {
                 <span className={style.infoLabel}>Дата создания</span>
                 <div className={`${style.infoValue} ${style.large}`}>25 февраля 2013 года</div>
               </div>
-
               <div className={style.infoCard}>
                 <span className={style.infoLabel}>Учредитель</span>
                 <div className={style.infoValue}>Першукевич Андрей Викторович</div>
               </div>
+              <div className={style.infoCard}>
+                <span className={style.infoLabel}>Полное наименование</span>
+                <div >Частное образовательное учреждение дополнительного профессионального образования «СПЕЦЦЕНТР»</div>
+              </div>
+              <div className={style.infoCard}>
+                <span className={style.infoLabel}>Полное наименование</span>
+                <div >ЧОУ ДПО «СПЕЦЦЕНТР»</div>
+              </div>
+
 
               <div className={style.infoCard}>
-                <span className={style.infoLabel}>Юридический адрес</span>
+                <span className={style.infoLabel}>Адрес юридического лица</span>
                 <div className={style.infoValue}>241035, г. Брянск, ул. Институтская, д. 15</div>
               </div>
 
               <div className={style.infoCard}>
                 <span className={style.infoLabel}>Фактический адрес</span>
-                <div className={style.infoValue}>241035, г. Брянск, ул. Институтская, д. 15, оф. 232</div>
+                <div className={style.infoValue}>241035, г. Брянск, ул. Институтская, д. 15</div>
               </div>
 
               <div className={style.infoCard}>
@@ -63,7 +72,7 @@ export const BasicInfoPage: React.FC = () => {
               <div className={style.infoCard}>
                 <span className={style.infoLabel}>Лицензия</span>
                 <div className={style.infoValue}>
-                  <DocumentViewer category="basic-info" documentId="basic-license" />
+                  <DocumentList category="basic-info" />
                 </div>
               </div>
             </div>

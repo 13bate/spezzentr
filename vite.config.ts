@@ -7,10 +7,28 @@ import type { IncomingMessage, ServerResponse } from 'http';
 export default defineConfig({
   base: '/spezzentr/',
   server: {
-    open: true
+    open: true,
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+      },
+      // Для запросов без префикса
+      '/content': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+      },
+      // Для запросов, к которым Vite добавил base: '/spezzentr/'
+      '/spezzentr/content': {
+        target: 'http://localhost:3001',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/spezzentr/, ''),
+      },
+    },
   },
-
   plugins: [
+
+
     react(),
     // Простой API для админки
     {

@@ -1,0 +1,1 @@
+export { BodyguardTrainingPage } from "./BodyguardTrainingPage";

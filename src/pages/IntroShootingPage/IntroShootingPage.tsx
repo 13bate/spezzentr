@@ -5,7 +5,7 @@ import style from './IntroShootingPage.module.scss'
 import type { WeaponCategory } from './types'
 import { getAllWeapons, weaponsData } from "../../shared/model"
 import { VisitRulesCard } from '../../features/VisitRulesCard'
-
+import {ReachUs} from '../../shared/ui/ReachUs'
 export const IntroShootingPage: React.FC = () => {
 	// Используем URL для хранения состояния фильтра
 	const [searchParams, setSearchParams] = useSearchParams()
@@ -114,57 +114,12 @@ export const IntroShootingPage: React.FC = () => {
 							<div className={style.weaponDetails}>
 
 							</div>
-
-							{weapon.description && (
-								<p className={style.weaponDescription}>{weapon.description}</p>
-							)}
 						</div>
 					))}
 				</section>
 
-				{/* Правила и информация (без изменений) */}
-				<section className={style.infoSection}>
-					<div className={style.infoCard}>
-						<h3>Правила безопасности</h3>
-						<ul>
-							<li>Обязательный инструктаж перед стрельбой</li>
-							<li>Всегда обращайтесь с оружием как с заряженным</li>
-							<li>Пальцы на спусковом крючке только перед выстрелом</li>
-							<li>Строго соблюдайте команды инструктора</li>
-							<li>Запрещено направлять оружие в стороны</li>
-						</ul>
-					</div>
-				</section>
-
-				{/* Контакты (без изменений) */}
-				<section className={style.contactsSection}>
-					<h2 className={style.sectionTitle}>Записаться на стрельбу</h2>
-					<div className={style.contactsGrid}>
-						<div className={style.contactCard}>
-							<div className={style.contactIcon}>📞</div>
-							<div className={style.contactContent}>
-								<h4>Телефон</h4>
-								<a href='tel:+74832757545'>+7 (4832) 32-75-45</a>
-								<a href='tel:+74832757546'>32-75-46</a>
-							</div>
-						</div>
-						<div className={style.contactCard}>
-							<div className={style.contactIcon}>📍</div>
-							<div className={style.contactContent}>
-								<h4>Адрес</h4>
-								<p>г. Брянск, ул. Институтская д. 15 к. 3 офис 232</p>
-							</div>
-						</div>
-						<div className={style.contactCard}>
-							<div className={style.contactIcon}>⏰</div>
-							<div className={style.contactContent}>
-								<h4>Режим работы</h4>
-								<p>Ежедневно с 10:00 до 20:00</p>
-							</div>
-						</div>
-					</div>
-				</section>
-			</main>
+				<ReachUs/>
+						</main>
 		</>
 	)
 }

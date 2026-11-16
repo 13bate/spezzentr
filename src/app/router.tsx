@@ -36,6 +36,8 @@ import { AdminNewsPage } from '../pages/admin/ui/AdminNewsPage'
 import { AdminDocumentsPage } from '../pages/admin/ui/AdminDocumentsPage'
 import { AdminLogin } from '../features/auth'
 import { AdminPage } from '../pages/admin'
+import { CateringPage } from '../pages/EduInfroPages/CateringPage/CatetingPage'
+import { BodyguardTrainingPage } from '../pages/BodyguardTrainingPage'
 
 export const eduOrgInfo = [
 	{ label: "Сведения об образовательной организации", href: "/education" },
@@ -56,6 +58,10 @@ export const eduOrgInfo = [
 		label: 'Стипендии и иные виды материальной поддержки',
 		href: '/education/scholarships',
 	},
+	{
+		label: "Организация питаня в образовательной организации",
+		href: "/education/catering"
+	}
 ]
 
 export const router = createHashRouter([
@@ -99,6 +105,7 @@ export const router = createHashRouter([
 			{ path: "/training/safety", element: <WeaponSafety /> },
 			{ path: "/training/security-guards", element: <SecurityTrainingPage /> },
 			{ path: "/training/periodic-checks", element: <PeriodicCheckPage /> },
+			{ path: "/training/bodyguards", element: < BodyguardTrainingPage /> },
 			// { path: "training/drones", element: <DroneTrainingPage /> },
 			{ path: "/training/labor-safety", element: <LaborSafety /> },
 			// { path: '/training/professions', element: <WorkingProfessions /> },
@@ -124,6 +131,7 @@ export const router = createHashRouter([
 			{ path: "education/scholarships", element: <ScholarshipsPage /> },
 			{ path: "education/accessibility", element: <AccessibilityPage /> },
 			{ path: 'education/international', element: <InternationalPage /> },
+			{ path: "education/catering", element: <CateringPage /> }
 		],
 	},
 ])

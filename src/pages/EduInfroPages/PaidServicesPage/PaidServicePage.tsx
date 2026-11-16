@@ -5,14 +5,12 @@ import {
   faMoneyBillWave,
   faFilePdf,
 } from '@fortawesome/free-solid-svg-icons';
-import { DocumentViewer } from '../../../features/DocumentViewer/ui/DocumentViewer';
-import style from "./PaidServicePage.module.scss"
+
+import style from "./PaidServicePage.module.scss";
+import { DocumentList } from '../../../shared/ui/DocumentList';
 
 export const PaidServicesPage: React.FC = () => {
-  // ID документов для страницы "Платные услуги"
-  const documentIds = [
-    'paid-contract',
-  ];
+
 
   return (
     <>
@@ -39,13 +37,7 @@ export const PaidServicesPage: React.FC = () => {
             </h2>
 
             <div className={style.documentsList}>
-              {documentIds.map((docId) => (
-                <DocumentViewer
-                  key={docId}
-                  documentId={docId}
-                  category="paid-services"
-                />
-              ))}
+              <DocumentList category="paid-services" />
             </div>
           </div>
         </section>

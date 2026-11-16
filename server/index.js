@@ -15,38 +15,45 @@ const PORT = process.env.PORT || 3001;
 app.use(cors());
 app.use(express.json());
 
-// ─── Директории ──────────────────────────────────────────────
-const SCHEDULES_DIR = path.resolve(__dirname, '../public/content/schedules');
-const NEWS_DIR = path.resolve(__dirname, '../public/content/news');
-const NEWS_FILE = path.join(NEWS_DIR, 'news.json');
-const DOCUMENTS_DIR = path.resolve(__dirname, '../public/content/documents');
-const CAROUSEL_DIR = path.resolve(__dirname, '../public/content/carousel');
-const CAROUSEL_FILE = path.join(CAROUSEL_DIR, 'carousel.json');
+// ─── Директории и файлы ──────────────────────────────────────
+const STORAGE_DIR = path.resolve(__dirname, '../storage');
+const DOCUMENTS_DIR = path.join(STORAGE_DIR, 'documents');
+const NEWS_DIR = path.join(STORAGE_DIR, 'news');
+const CAROUSEL_DIR = path.join(STORAGE_DIR, 'carousel');
+const SCHEDULES_DIR = path.join(STORAGE_DIR, 'schedules');
 
-// Создаём папки, если их нет
+const NEWS_FILE = path.join(NEWS_DIR, 'news.json');
+const CAROUSEL_FILE = path.join(CAROUSEL_DIR, 'carousel.json');
+const DOCUMENTS_FILE = path.join(STORAGE_DIR, 'documents.json');
+
+// Создаём папки и файлы, если их нет
+if (!fs.existsSync(SCHEDULES_DIR)) fs.mkdirSync(SCHEDULES_DIR, { recursive: true });
 if (!fs.existsSync(NEWS_DIR)) fs.mkdirSync(NEWS_DIR, { recursive: true });
 if (!fs.existsSync(NEWS_FILE)) fs.writeFileSync(NEWS_FILE, JSON.stringify([], null, 2));
 if (!fs.existsSync(DOCUMENTS_DIR)) fs.mkdirSync(DOCUMENTS_DIR, { recursive: true });
 if (!fs.existsSync(CAROUSEL_DIR)) fs.mkdirSync(CAROUSEL_DIR, { recursive: true });
 if (!fs.existsSync(CAROUSEL_FILE)) fs.writeFileSync(CAROUSEL_FILE, JSON.stringify([], null, 2));
+if (!fs.existsSync(DOCUMENTS_FILE)) fs.writeFileSync(DOCUMENTS_FILE, JSON.stringify([], null, 2));
 
 console.log('📂 Schedules:', SCHEDULES_DIR);
 console.log('📂 Documents:', DOCUMENTS_DIR);
 console.log('📂 Carousel:', CAROUSEL_DIR);
 
+// Раздаем файлы из storage
+app.use('/content', express.static(STORAGE_DIR));
+
 // ─── Multer для PDF ──────────────────────────────────────────
 const pdfStorage = multer.diskStorage({
   destination: function(req, file, cb) {
-    const category = req.body.category || 'documents';
-    const dir = path.join(DOCUMENTS_DIR, category);
+    // Сохраняем во временную папку
+    const dir = path.join(STORAGE_DIR, 'temp');
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
     cb(null, dir);
   },
   filename: function(req, file, cb) {
-    const customName = req.body.name;
     const ext = '.pdf';
-    const finalName = customName ? `${customName}${ext}` : file.originalname;
-    cb(null, finalName);
+    const uniqueName = `${Date.now()}-${Math.round(Math.random() * 1E9)}${ext}`;
+    cb(null, uniqueName);
   }
 });
 
@@ -56,10 +63,10 @@ const uploadPDF = multer({
     if (file.mimetype === 'application/pdf') cb(null, true);
     else cb(new Error('Только PDF'));
   },
-  limits: { fileSize: 10 * 1024 * 1024 }
+  limits: { fileSize: 15 * 1024 * 1024 }
 });
 
-// ─── Multer для изображений ──────────────────────────────────
+// ─── Multer для изображений (Новости) ────────────────────────
 const imageStorage = multer.diskStorage({
   destination: function(req, file, cb) {
     const dir = path.join(NEWS_DIR, 'images');
@@ -77,11 +84,8 @@ const uploadImage = multer({
   storage: imageStorage,
   fileFilter: (req, file, cb) => {
     const allowed = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
-    if (allowed.includes(file.mimetype)) {
-      cb(null, true);
-    } else {
-      cb(new Error('Только изображения (JPEG, PNG, WEBP, GIF)'));
-    }
+    if (allowed.includes(file.mimetype)) cb(null, true);
+    else cb(new Error('Только изображения'));
   },
   limits: { fileSize: 5 * 1024 * 1024 }
 });
@@ -104,11 +108,8 @@ const uploadCarousel = multer({
   storage: carouselStorage,
   fileFilter: (req, file, cb) => {
     const allowed = ['image/jpeg', 'image/png', 'image/webp'];
-    if (allowed.includes(file.mimetype)) {
-      cb(null, true);
-    } else {
-      cb(new Error('Только изображения (JPEG, PNG, WEBP)'));
-    }
+    if (allowed.includes(file.mimetype)) cb(null, true);
+    else cb(new Error('Только изображения (JPEG, PNG, WEBP)'));
   },
   limits: { fileSize: 10 * 1024 * 1024 }
 });
@@ -116,7 +117,6 @@ const uploadCarousel = multer({
 // ─────────────────────────────────────────────────────────────
 // SCHEDULES API
 // ─────────────────────────────────────────────────────────────
-
 app.get('/api/schedules/:id', (req, res) => {
   const filePath = path.join(SCHEDULES_DIR, `${req.params.id}.json`);
   try {
@@ -128,8 +128,7 @@ app.get('/api/schedules/:id', (req, res) => {
 app.post('/api/schedules/:id', (req, res) => {
   const filePath = path.join(SCHEDULES_DIR, `${req.params.id}.json`);
   try {
-    const dir = path.dirname(filePath);
-    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    if (!fs.existsSync(SCHEDULES_DIR)) fs.mkdirSync(SCHEDULES_DIR, { recursive: true });
     fs.writeFileSync(filePath, JSON.stringify(req.body, null, 2), 'utf-8');
     res.json({ success: true });
   } catch { res.status(500).json({ error: 'Ошибка' }); }
@@ -158,7 +157,6 @@ app.delete('/api/schedules/:id', (req, res) => {
 // ─────────────────────────────────────────────────────────────
 // NEWS API
 // ─────────────────────────────────────────────────────────────
-
 app.get('/api/news', (req, res) => {
   try { res.json(JSON.parse(fs.readFileSync(NEWS_FILE, 'utf-8'))); }
   catch { res.status(500).json({ error: 'Ошибка' }); }
@@ -198,15 +196,11 @@ app.put('/api/news/:id', uploadImage.single('image'), (req, res) => {
   try {
     const data = JSON.parse(fs.readFileSync(NEWS_FILE, 'utf-8'));
     const index = data.findIndex((item) => item.id === id);
-    if (index === -1) {
-      return res.status(404).json({ error: 'Новость не найдена' });
-    }
+    if (index === -1) return res.status(404).json({ error: 'Новость не найдена' });
 
     if (req.file && data[index].imageFile) {
       const oldImagePath = path.join(NEWS_DIR, 'images', data[index].imageFile);
-      if (fs.existsSync(oldImagePath)) {
-        fs.unlinkSync(oldImagePath);
-      }
+      if (fs.existsSync(oldImagePath)) fs.unlinkSync(oldImagePath);
     }
 
     data[index] = {
@@ -227,6 +221,13 @@ app.put('/api/news/:id', uploadImage.single('image'), (req, res) => {
 app.delete('/api/news/:id', (req, res) => {
   try {
     const data = JSON.parse(fs.readFileSync(NEWS_FILE, 'utf-8'));
+    const item = data.find(i => i.id === req.params.id);
+
+    if (item && item.imageFile) {
+      const imgPath = path.join(NEWS_DIR, 'images', item.imageFile);
+      if (fs.existsSync(imgPath)) fs.unlinkSync(imgPath);
+    }
+
     const filtered = data.filter(item => item.id !== req.params.id);
     fs.writeFileSync(NEWS_FILE, JSON.stringify(filtered, null, 2));
     res.json({ success: true });
@@ -237,73 +238,102 @@ app.delete('/api/news/:id', (req, res) => {
 // DOCUMENTS API
 // ─────────────────────────────────────────────────────────────
 
+// Получить документы по категории
 app.get('/api/documents/:category', (req, res) => {
-  const categoryDir = path.join(DOCUMENTS_DIR, req.params.category);
   try {
-    if (!fs.existsSync(categoryDir)) return res.json([]);
-    const files = fs.readdirSync(categoryDir).filter(f => f.endsWith('.pdf'));
-    const documents = files.map((file, i) => ({
-      id: `${req.params.category}-${i}`,
-      name: file.replace('.pdf', '').replace(/-/g, ' '),
-      fileName: file,
-      path: `/content/documents/${req.params.category}/${encodeURIComponent(file)}`,
-      category: req.params.category,
-    }));
-    res.json(documents);
+    const data = JSON.parse(fs.readFileSync(DOCUMENTS_FILE, 'utf-8'));
+    const docs = data.filter(d => d.category === req.params.category);
+    docs.sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true, sensitivity: 'base' }));
+    res.json(docs);
   } catch { res.status(500).json({ error: 'Ошибка' }); }
 });
 
+// Получить ВСЕ документы (для админки)
 app.get('/api/documents', (req, res) => {
   try {
-    const result = [];
-    const categories = fs.readdirSync(DOCUMENTS_DIR);
-    for (const category of categories) {
-      const categoryDir = path.join(DOCUMENTS_DIR, category);
-      if (fs.statSync(categoryDir).isDirectory()) {
-        const files = fs.readdirSync(categoryDir).filter(f => f.endsWith('.pdf'));
-        for (const file of files) {
-          result.push({
-            id: `${category}-${Date.now()}-${Math.random()}`,
-            name: file.replace('.pdf', '').replace(/-/g, ' '),
-            fileName: file,
-            path: `/content/documents/${category}/${encodeURIComponent(file)}`,
-            category,
-          });
-        }
-      }
-    }
-    res.json(result);
+    const data = JSON.parse(fs.readFileSync(DOCUMENTS_FILE, 'utf-8'));
+    res.json(data);
   } catch { res.status(500).json({ error: 'Ошибка' }); }
 });
 
+// Загрузить новый документ
 app.post('/api/documents/upload', uploadPDF.single('file'), (req, res) => {
   try {
-    const { category, name } = req.body;
+    const { category, displayName, subCategory } = req.body;
     const file = req.file;
     if (!file) return res.status(400).json({ error: 'Нет файла' });
-    if (file.mimetype !== 'application/pdf') return res.status(400).json({ error: 'Только PDF' });
 
     const finalCategory = category || 'documents';
-    const fileName = name ? `${name}.pdf` : file.originalname;
-    const dir = path.join(DOCUMENTS_DIR, finalCategory);
-    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-    const filePath = path.join(dir, fileName);
 
-    fs.renameSync(file.path, filePath);
-    console.log(`✅ Загружен: ${finalCategory}/${fileName}`);
+    // 1. Создаем папку нужной категории, если её нет
+    const targetDir = path.join(DOCUMENTS_DIR, finalCategory);
+    if (!fs.existsSync(targetDir)) {
+      fs.mkdirSync(targetDir, { recursive: true });
+    }
 
-    res.json({ success: true, fileName, category: finalCategory, path: `/content/documents/${finalCategory}/${fileName}` });
+    // 2. Переносим файл из временной папки (temp) в папку категории
+    const oldPath = file.path;
+    const newPath = path.join(targetDir, file.filename);
+    fs.renameSync(oldPath, newPath);
+
+    // 3. Записываем метаданные в базу (documents.json)
+    const data = JSON.parse(fs.readFileSync(DOCUMENTS_FILE, 'utf-8'));
+
+    const newDoc = {
+      id: Date.now().toString(),
+      name: displayName || file.originalname.replace('.pdf', ''),
+      fileName: file.filename,
+      path: `/content/documents/${finalCategory}/${file.filename}`, // Правильный путь
+      category: finalCategory,
+      subCategory: subCategory || '',
+      createdAt: new Date().toISOString()
+    };
+
+    data.push(newDoc);
+    fs.writeFileSync(DOCUMENTS_FILE, JSON.stringify(data, null, 2));
+
+    console.log(`✅ Загружен: ${newDoc.name} в папку ${finalCategory}`);
+    res.json(newDoc);
   } catch (error) {
     console.error('❌ Upload error:', error);
-    res.status(500).json({ error: 'Ошибка' });
+    res.status(500).json({ error: 'Ошибка загрузки' });
   }
 });
 
-app.delete('/api/documents/:category/:fileName', (req, res) => {
-  const filePath = path.join(DOCUMENTS_DIR, req.params.category, decodeURIComponent(req.params.fileName));
+// Обновить метаданные (имя или подкатегорию)
+app.put('/api/documents/:id', (req, res) => {
   try {
+    const { displayName, subCategory } = req.body;
+    const data = JSON.parse(fs.readFileSync(DOCUMENTS_FILE, 'utf-8'));
+    const index = data.findIndex(d => d.id === req.params.id);
+
+    if (index === -1) return res.status(404).json({ error: 'Не найдено' });
+
+    if (displayName !== undefined) data[index].name = displayName;
+    if (subCategory !== undefined) data[index].subCategory = subCategory;
+
+    fs.writeFileSync(DOCUMENTS_FILE, JSON.stringify(data, null, 2));
+    res.json(data[index]);
+  } catch { res.status(500).json({ error: 'Ошибка' }); }
+});
+
+// Удалить документ
+app.delete('/api/documents/:id', (req, res) => {
+  try {
+    const data = JSON.parse(fs.readFileSync(DOCUMENTS_FILE, 'utf-8'));
+    const index = data.findIndex(d => d.id === req.params.id);
+
+    if (index === -1) return res.status(404).json({ error: 'Не найдено' });
+
+    const doc = data[index];
+    // Формируем путь для удаления файла
+    const filePath = path.join(STORAGE_DIR, doc.path.replace('/content/', ''));
+
     if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
-    console.log(`🗑️ Удалён: ${req.params.category}/${req.params.fileName}`);
+
+    data.splice(index, 1);
+    fs.writeFileSync(DOCUMENTS_FILE, JSON.stringify(data, null, 2));
+
     res.json({ success: true });
   } catch { res.status(500).json({ error: 'Ошибка' }); }
 });
@@ -311,34 +341,23 @@ app.delete('/api/documents/:category/:fileName', (req, res) => {
 // ─────────────────────────────────────────────────────────────
 // CAROUSEL API
 // ─────────────────────────────────────────────────────────────
-
-// ─── GET: все слайды карусели ──────────────────────────────
 app.get('/api/carousel', (req, res) => {
-  try {
-    const data = JSON.parse(fs.readFileSync(CAROUSEL_FILE, 'utf-8'));
-    res.json(data);
-  } catch {
-    res.status(500).json({ error: 'Ошибка чтения карусели' });
-  }
+  try { res.json(JSON.parse(fs.readFileSync(CAROUSEL_FILE, 'utf-8'))); }
+  catch { res.status(500).json({ error: 'Ошибка чтения карусели' }); }
 });
 
-// ─── GET: один слайд ────────────────────────────────────────
 app.get('/api/carousel/:id', (req, res) => {
   try {
     const data = JSON.parse(fs.readFileSync(CAROUSEL_FILE, 'utf-8'));
     const slide = data.find(item => item.id === req.params.id);
     if (!slide) return res.status(404).json({ error: 'Слайд не найден' });
     res.json(slide);
-  } catch {
-    res.status(500).json({ error: 'Ошибка чтения слайда' });
-  }
+  } catch { res.status(500).json({ error: 'Ошибка' }); }
 });
 
-// ─── POST: создать слайд ────────────────────────────────────
 app.post('/api/carousel', uploadCarousel.single('image'), (req, res) => {
   try {
     const data = JSON.parse(fs.readFileSync(CAROUSEL_FILE, 'utf-8'));
-
     const newSlide = {
       id: Date.now().toString(),
       title: req.body.title || '',
@@ -351,32 +370,24 @@ app.post('/api/carousel', uploadCarousel.single('image'), (req, res) => {
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
     };
-
     data.push(newSlide);
     fs.writeFileSync(CAROUSEL_FILE, JSON.stringify(data, null, 2));
     res.json(newSlide);
   } catch (error) {
-    console.error('Create slide error:', error);
     res.status(500).json({ error: 'Ошибка создания слайда' });
   }
 });
 
-// ─── PUT: обновить слайд ────────────────────────────────────
 app.put('/api/carousel/:id', uploadCarousel.single('image'), (req, res) => {
   const { id } = req.params;
   try {
     const data = JSON.parse(fs.readFileSync(CAROUSEL_FILE, 'utf-8'));
     const index = data.findIndex(item => item.id === id);
-    if (index === -1) {
-      return res.status(404).json({ error: 'Слайд не найден' });
-    }
+    if (index === -1) return res.status(404).json({ error: 'Слайд не найден' });
 
-    // Удаляем старое изображение, если загружено новое
     if (req.file && data[index].imageFile) {
       const oldImagePath = path.join(CAROUSEL_DIR, 'images', data[index].imageFile);
-      if (fs.existsSync(oldImagePath)) {
-        fs.unlinkSync(oldImagePath);
-      }
+      if (fs.existsSync(oldImagePath)) fs.unlinkSync(oldImagePath);
     }
 
     data[index] = {
@@ -395,39 +406,30 @@ app.put('/api/carousel/:id', uploadCarousel.single('image'), (req, res) => {
     fs.writeFileSync(CAROUSEL_FILE, JSON.stringify(data, null, 2));
     res.json(data[index]);
   } catch (error) {
-    console.error('Update slide error:', error);
     res.status(500).json({ error: 'Ошибка обновления слайда' });
   }
 });
 
-// ─── DELETE: удалить слайд ──────────────────────────────────
 app.delete('/api/carousel/:id', (req, res) => {
   const { id } = req.params;
   try {
     const data = JSON.parse(fs.readFileSync(CAROUSEL_FILE, 'utf-8'));
     const index = data.findIndex(item => item.id === id);
-    if (index === -1) {
-      return res.status(404).json({ error: 'Слайд не найден' });
-    }
+    if (index === -1) return res.status(404).json({ error: 'Слайд не найден' });
 
-    // Удаляем файл изображения
     if (data[index].imageFile) {
       const imagePath = path.join(CAROUSEL_DIR, 'images', data[index].imageFile);
-      if (fs.existsSync(imagePath)) {
-        fs.unlinkSync(imagePath);
-      }
+      if (fs.existsSync(imagePath)) fs.unlinkSync(imagePath);
     }
 
     data.splice(index, 1);
     fs.writeFileSync(CAROUSEL_FILE, JSON.stringify(data, null, 2));
     res.json({ success: true });
   } catch (error) {
-    console.error('Delete slide error:', error);
     res.status(500).json({ error: 'Ошибка удаления слайда' });
   }
 });
 
-// ─── PATCH: обновить порядок слайдов ────────────────────────
 app.patch('/api/carousel/reorder', (req, res) => {
   const { order } = req.body;
   try {
@@ -436,7 +438,6 @@ app.patch('/api/carousel/reorder', (req, res) => {
     fs.writeFileSync(CAROUSEL_FILE, JSON.stringify(reordered, null, 2));
     res.json({ success: true });
   } catch (error) {
-    console.error('Reorder error:', error);
     res.status(500).json({ error: 'Ошибка изменения порядка' });
   }
 });
@@ -444,181 +445,27 @@ app.patch('/api/carousel/reorder', (req, res) => {
 // ─────────────────────────────────────────────────────────────
 // AUTH API
 // ─────────────────────────────────────────────────────────────
-
 app.post('/api/auth/login', (req, res) => {
   const { username, password } = req.body;
-
-  console.log('🔐 Login attempt:', username);
-  console.log('📝 Env check:', {
-    ADMIN_USERNAME: process.env.ADMIN_USERNAME,
-    ADMIN_PASSWORD: process.env.ADMIN_PASSWORD ? '***' : 'not set'
-  });
-
   const validUsername = process.env.ADMIN_USERNAME || 'admin';
   const validPassword = process.env.ADMIN_PASSWORD || 'spezzentr2024';
 
-  console.log('🔑 Valid credentials:', { validUsername, validPassword: '***' });
-
   if (username === validUsername && password === validPassword) {
     const token = Buffer.from(`${username}:${Date.now()}`).toString('base64');
-    console.log('✅ Login success:', username);
-    res.json({
-      success: true,
-      token,
-      user: { username }
-    });
+    res.json({ success: true, token, user: { username } });
   } else {
-    console.log('❌ Login failed:', username);
-    res.status(401).json({
-      success: false,
-      error: 'Неверный логин или пароль'
-    });
+    res.status(401).json({ success: false, error: 'Неверный логин или пароль' });
   }
 });
 
 app.get('/api/auth/check', (req, res) => {
   const token = req.headers.authorization?.split(' ')[1];
-
-  console.log('🔍 Check token:', token ? 'present' : 'missing');
-
-  if (!token) {
-    return res.status(401).json({ success: false, error: 'Не авторизован' });
-  }
-
+  if (!token) return res.status(401).json({ success: false, error: 'Не авторизован' });
   res.json({ success: true });
 });
 
 app.post('/api/auth/logout', (req, res) => {
   res.json({ success: true });
-});
-
-// ─── CAROUSEL API ─────────────────────────────────────────────
-
-// ─── GET: все слайды карусели ──────────────────────────────
-app.get('/api/carousel', (req, res) => {
-  try {
-    const data = JSON.parse(fs.readFileSync(CAROUSEL_FILE, 'utf-8'));
-    res.json(data);
-  } catch {
-    res.status(500).json({ error: 'Ошибка чтения карусели' });
-  }
-});
-
-// ─── GET: один слайд ────────────────────────────────────────
-app.get('/api/carousel/:id', (req, res) => {
-  try {
-    const data = JSON.parse(fs.readFileSync(CAROUSEL_FILE, 'utf-8'));
-    const slide = data.find(item => item.id === req.params.id);
-    if (!slide) return res.status(404).json({ error: 'Слайд не найден' });
-    res.json(slide);
-  } catch {
-    res.status(500).json({ error: 'Ошибка чтения слайда' });
-  }
-});
-
-// ─── POST: создать слайд ────────────────────────────────────
-app.post('/api/carousel', uploadCarousel.single('image'), (req, res) => {
-  try {
-    const data = JSON.parse(fs.readFileSync(CAROUSEL_FILE, 'utf-8'));
-
-    const newSlide = {
-      id: Date.now().toString(),
-      title: req.body.title || '',
-      description: req.body.description || '',
-      link: req.body.link || '',
-      image: req.file ? `/content/carousel/images/${req.file.filename}` : null,
-      imageFile: req.file ? req.file.filename : null,
-      isPublished: req.body.isPublished === 'true' || req.body.isPublished === true,
-      order: data.length,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    };
-
-    data.push(newSlide);
-    fs.writeFileSync(CAROUSEL_FILE, JSON.stringify(data, null, 2));
-    res.json(newSlide);
-  } catch (error) {
-    console.error('Create slide error:', error);
-    res.status(500).json({ error: 'Ошибка создания слайда' });
-  }
-});
-
-// ─── PUT: обновить слайд ────────────────────────────────────
-app.put('/api/carousel/:id', uploadCarousel.single('image'), (req, res) => {
-  const { id } = req.params;
-  try {
-    const data = JSON.parse(fs.readFileSync(CAROUSEL_FILE, 'utf-8'));
-    const index = data.findIndex(item => item.id === id);
-    if (index === -1) {
-      return res.status(404).json({ error: 'Слайд не найден' });
-    }
-
-    if (req.file && data[index].imageFile) {
-      const oldImagePath = path.join(CAROUSEL_DIR, 'images', data[index].imageFile);
-      if (fs.existsSync(oldImagePath)) {
-        fs.unlinkSync(oldImagePath);
-      }
-    }
-
-    data[index] = {
-      ...data[index],
-      title: req.body.title !== undefined ? req.body.title : data[index].title,
-      description: req.body.description !== undefined ? req.body.description : data[index].description,
-      link: req.body.link !== undefined ? req.body.link : data[index].link,
-      image: req.file ? `/content/carousel/images/${req.file.filename}` : data[index].image,
-      imageFile: req.file ? req.file.filename : data[index].imageFile,
-      isPublished: req.body.isPublished !== undefined
-        ? (req.body.isPublished === 'true' || req.body.isPublished === true)
-        : data[index].isPublished,
-      updatedAt: new Date().toISOString(),
-    };
-
-    fs.writeFileSync(CAROUSEL_FILE, JSON.stringify(data, null, 2));
-    res.json(data[index]);
-  } catch (error) {
-    console.error('Update slide error:', error);
-    res.status(500).json({ error: 'Ошибка обновления слайда' });
-  }
-});
-
-// ─── DELETE: удалить слайд ──────────────────────────────────
-app.delete('/api/carousel/:id', (req, res) => {
-  const { id } = req.params;
-  try {
-    const data = JSON.parse(fs.readFileSync(CAROUSEL_FILE, 'utf-8'));
-    const index = data.findIndex(item => item.id === id);
-    if (index === -1) {
-      return res.status(404).json({ error: 'Слайд не найден' });
-    }
-
-    if (data[index].imageFile) {
-      const imagePath = path.join(CAROUSEL_DIR, 'images', data[index].imageFile);
-      if (fs.existsSync(imagePath)) {
-        fs.unlinkSync(imagePath);
-      }
-    }
-
-    data.splice(index, 1);
-    fs.writeFileSync(CAROUSEL_FILE, JSON.stringify(data, null, 2));
-    res.json({ success: true });
-  } catch (error) {
-    console.error('Delete slide error:', error);
-    res.status(500).json({ error: 'Ошибка удаления слайда' });
-  }
-});
-
-// ─── PATCH: обновить порядок слайдов ────────────────────────
-app.patch('/api/carousel/reorder', (req, res) => {
-  const { order } = req.body;
-  try {
-    const data = JSON.parse(fs.readFileSync(CAROUSEL_FILE, 'utf-8'));
-    const reordered = order.map(id => data.find(item => item.id === id)).filter(Boolean);
-    fs.writeFileSync(CAROUSEL_FILE, JSON.stringify(reordered, null, 2));
-    res.json({ success: true });
-  } catch (error) {
-    console.error('Reorder error:', error);
-    res.status(500).json({ error: 'Ошибка изменения порядка' });
-  }
 });
 
 // ─── ЗАПУСК СЕРВЕРА ─────────────────────────────────────────

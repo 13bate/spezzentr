@@ -37,19 +37,19 @@ export const securityTrainingData = {
     {
       level: '4 разряд',
       hours: '20 часов',
-      price: '3 500',
+      price: '3 000',
       description: 'Повышение квалификации 4 разряда'
     },
     {
       level: '5 разряд',
       hours: '24 часа',
-      price: '4 000',
+      price: '3 500',
       description: 'Повышение квалификации 5 разряда'
     },
     {
       level: '6 разряд',
       hours: '30 часов',
-      price: '5 000',
+      price: '4 500',
       description: 'Повышение квалификации 6 разряда'
     }
   ],

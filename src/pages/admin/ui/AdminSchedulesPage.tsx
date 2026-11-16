@@ -35,7 +35,7 @@ export const AdminSchedulesPage = () => {
 
   return (
     <div className={styles.page}>
-      <h1 className={styles.title}>📅 Управление расписаниями</h1>
+      <h1 className={styles.title}> Управление расписаниями</h1>
 
       <div className={styles.list}>
         {schedules.map((schedule) => (

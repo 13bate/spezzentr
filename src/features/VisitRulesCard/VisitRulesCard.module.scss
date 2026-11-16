@@ -1,0 +1,76 @@
+@use '../../shared/styles/variables' as *; // Укажи правильный путь к переменным
+
+// ─── Темная карточка (для выделения на белом фоне) ─────────
+.cardWrapper {
+  background: linear-gradient(135deg, #1c1d20 0%, #2a2b2e 100%) !important;
+  border: 1px solid rgba($color-brand-primary, 0.3) !important;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15) !important;
+  transform: translateY(0);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba($color-brand-primary, 0.2) !important;
+    border-color: $color-brand-primary !important;
+  }
+
+  // Переопределяем цвета текста для темной карточки
+  h4, h3 {
+    color: #f5f6f7 !important;
+  }
+  p, span {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+  
+  // Делаем иконку на темном фоне более заметной
+  svg {
+    stroke: $color-brand-primary !important;
+  }
+}
+
+// ─── Стили для контента внутри модалки (Светлая тема) ─────────
+.modalContent {
+  margin-bottom: 25px;
+  line-height: 1.7;
+  font-size: 15px;
+  color: #1c1d20;
+  font-family: 'PT Sans', sans-serif;
+
+  p {
+    margin-bottom: 20px;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+}
+
+.modalHeading {
+  color: #1c1d20;
+  font-size: 17px;
+  font-weight: 700;
+  margin-top: 24px;
+  margin-bottom: 12px;
+  border-left: 3px solid $color-brand-primary;
+  padding-left: 10px;
+  font-family: 'Oswald', sans-serif;
+}
+
+.modalList {
+  padding-left: 20px;
+  margin-bottom: 20px;
+
+  li {
+    margin-bottom: 8px;
+  }
+}
+
+.modalWarning {
+  margin-top: 24px;
+  padding: 16px;
+  background-color: rgba($color-brand-primary, 0.05); // Очень светлый красный
+  border-left: 4px solid $color-brand-primary;
+  border-radius: 8px;
+  color: #1c1d20;
+  margin-bottom: 24px;
+}

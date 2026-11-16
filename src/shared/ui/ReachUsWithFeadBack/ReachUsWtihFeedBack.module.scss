@@ -1,0 +1,143 @@
+@use '../../styles/variables' as *;
+
+.ctaSection {
+  /* Мягкий розовато-бежевый градиент, как на скрине */
+  background: linear-gradient(135deg, #fdfbfb 0%, #f8f0f1 100%);
+  border: 1px solid rgba(179, 32, 37, 0.08); /* Едва заметная розовая рамка */
+  border-radius: 32px;
+  padding: 60px 40px;
+  margin: 50px 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.02);
+
+  @media (max-width: 768px) {
+    padding: 40px 20px;
+    border-radius: 24px;
+  }
+}
+
+.title {
+  font-family: 'Oswald', sans-serif;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  color: #1c1d20;
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+
+  @media (max-width: 768px) {
+    font-size: 28px;
+  }
+}
+
+.subtitle {
+  font-family: 'PT Sans', sans-serif;
+  font-size: clamp(16px, 1.5vw, 18px);
+  line-height: 1.6;
+  color: #5f646b;
+  max-width: 650px;
+  margin: 0 0 32px;
+
+  @media (max-width: 768px) {
+    font-size: 15px;
+    margin-bottom: 24px;
+  }
+}
+
+/* Блок с контактами */
+.contactDetails {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-bottom: 40px;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 12px 24px;
+  border-radius: 100px;
+  border: 1px solid rgba(0, 0, 0, 0.04);
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 12px;
+    border-radius: 20px;
+    padding: 16px;
+    width: 100%;
+  }
+}
+
+.phone {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1c1d20;
+  text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover {
+    color: $color-brand-primary;
+  }
+
+  .phoneIcon {
+    font-size: 16px;
+  }
+}
+
+.address {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'PT Sans', sans-serif;
+  font-size: 15px;
+  color: #5f646b;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+
+  .addressIcon {
+    font-size: 16px;
+  }
+}
+
+/* Главная кнопка (как на скриншоте) */
+.submitBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 48px;
+  background: $color-brand-primary;
+  color: #ffffff;
+  border: none;
+  border-radius: 100px; /* Идеально круглая кнопка */
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  
+  /* Та самая объемная тень */
+  box-shadow: 0 12px 32px rgba(179, 32, 37, 0.3);
+
+  &:hover {
+    background: $color-brand-primary-hover;
+    transform: translateY(-3px);
+    box-shadow: 0 16px 40px rgba(179, 32, 37, 0.4);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 8px 20px rgba(179, 32, 37, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 16px 24px;
+    font-size: 16px;
+  }
+}

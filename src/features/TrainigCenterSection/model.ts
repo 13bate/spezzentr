@@ -64,7 +64,7 @@ export const courses: CourseItem[] = [
     buttonLink: '/training/psc-managers',
   },
   {
-    id: 'bodyguard',
+    id: 'bodyguards',
     title: 'Обучение телохранителей',
     description:
       'Программа повышения квалификации по защите жизни и здоровья физических лиц. Включает правовые, тактические и психологические аспекты профессиональной деятельности телохранителя, а также навыки экстренного реагирования и оказания первой помощи.',
@@ -77,7 +77,7 @@ export const courses: CourseItem[] = [
     ],
     price: 'от 10 000 ₽',
     duration: '9 дней',
-    buttonLink: '/contacts',
+    buttonLink: '/training/bodyguards',
   },
   // {
   //   id: 'drones',

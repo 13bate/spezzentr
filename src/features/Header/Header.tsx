@@ -99,7 +99,7 @@ export const Header: React.FC<Props> = ({ className }) => {
 						className={style.mobilePhone}
 						onClick={closeMobileMenu}
 					>
-						<span className={style.mobilePhoneIcon}>📞</span>
+
 
 						<div className={style.mobilePhoneText}>
 							<span className={style.mobilePhoneLabel}>Позвоните нам</span>

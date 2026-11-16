@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
 import style from './LaborSafety.module.scss';
+import { ReachUsWithFeedBack } from '../../shared/ui/ReachUsWithFeadBack';
 
 // --- Иконки ---
 const CheckIcon = () => (
@@ -318,15 +318,7 @@ export const LaborSafety = () => {
         </div>
       </section>
 
-      {/* 7. CTA */}
-      <section className={style.cta}>
-        <div className={style.ctaContent}>
-          <h2>Записаться на обучение</h2>
-          <p>Оставьте заявку, и мы подберем подходящую программу для вас или ваших сотрудников.</p>
-          <Link to="/contacts" className={style.btn}>Оставить заявку</Link>
-        </div>
-      </section>
-
+      <ReachUsWithFeedBack />
     </main>
   );
 };

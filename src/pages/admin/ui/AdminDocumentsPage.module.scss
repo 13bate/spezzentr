@@ -164,3 +164,112 @@
   text-align: center;
   color: $color-text-dark-muted;
 }
+
+// ─── Блок добавления нового документа ───────────────────────
+.addNewSection {
+  background: #f9f9f9;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+
+  h3 {
+    margin: 0 0 16px 0;
+    font-size: 18px;
+    color: #1c1d20;
+  }
+}
+
+.addNewControls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.fileInput {
+  flex: 1;
+  padding: 10px;
+  border: 1px dashed #b32025;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.addBtn {
+  padding: 10px 24px;
+  background: #b32025;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+  }
+}
+
+.hint {
+  margin: 12px 0 0 0;
+  font-size: 13px;
+  color: #666;
+  font-style: italic;
+}
+
+.formGrid {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.textInput, .selectInput {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.textInput { flex: 1; min-width: 200px; }
+
+.editForm {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+}
+
+.saveBtn, .cancelBtn, .editBtn, .deleteBtn {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.saveBtn { background: #4caf50; color: white; }
+.cancelBtn { background: #f44336; color: white; }
+.editBtn { background: #2196f3; color: white; }
+.deleteBtn { background: #ff5252; color: white; }
+
+.badge {
+  font-size: 11px;
+  background: #eee;
+  padding: 2px 8px;
+  border-radius: 12px;
+  margin-left: 10px;
+  color: #666;
+  text-transform: uppercase;
+}

@@ -33,7 +33,7 @@ export const AdminNewsPage = () => {
     <div className={styles.page}>
       <div className={styles.headerRow}>
         <div>
-          <h1 className={styles.title}>📰 Управление новостями</h1>
+          <h1 className={styles.title}> Управление новостями</h1>
           <p className={styles.subtitle}>Добавляйте и редактируйте новости клуба</p>
         </div>
         <button className={styles.addBtn} onClick={() => setIsCreating(true)}>

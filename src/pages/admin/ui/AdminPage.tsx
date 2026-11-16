@@ -4,6 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faArrowRight,
   faClock,
+  faCalendarDays,
+  faNewspaper,
+  faFilePdf,
 } from '@fortawesome/free-solid-svg-icons';
 import styles from './AdminPage.module.scss';
 
@@ -14,6 +17,7 @@ interface AdminSection {
   link: string;
   color: string;
   stats?: string;
+  icon: any; // Можно заменить на IconDefinition, если импортировать типы
 }
 
 export const AdminPage: React.FC = () => {
@@ -23,24 +27,27 @@ export const AdminPage: React.FC = () => {
       title: 'Расписания',
       description: 'Управление расписаниями экзаменов, соревнований и тренировок',
       link: '/admin/schedules',
-      color: '#c81524',
+      color: '#c81524', // Красный
       stats: '4 раздела',
+      icon: faCalendarDays,
     },
     {
       id: 'news',
       title: 'Новости',
       description: 'Добавление и редактирование новостей клуба',
       link: '/admin/news',
-      color: '#4a8fff',
+      color: '#4a8fff', // Синий
       stats: 'Управление',
+      icon: faNewspaper,
     },
     {
       id: 'documents',
       title: 'Документы',
       description: 'Загрузка и замена PDF-документов',
       link: '/admin/documents',
-      color: '#2dc653',
+      color: '#2dc653', // Зеленый
       stats: '6 категорий',
+      icon: faFilePdf,
     },
   ];
 
@@ -65,6 +72,9 @@ export const AdminPage: React.FC = () => {
     <div className={styles.adminPage}>
       {/* Приветствие */}
       <div className={styles.welcomeSection}>
+        {/* Декоративный элемент на фоне */}
+        <div className={styles.welcomeBgDecor} />
+
         <div className={styles.welcomeContent}>
           <div className={styles.welcomeText}>
             <span className={styles.greeting}>{getCurrentTime()}!</span>
@@ -86,14 +96,21 @@ export const AdminPage: React.FC = () => {
       <div className={styles.sectionsGrid}>
         {sections.map((section) => (
           <Link to={section.link} key={section.id} className={styles.sectionCard}>
-            <div className={styles.cardIcon} style={{ background: `${section.color}15`, color: section.color }}>
+            {/* Цветная полоска сверху карточки */}
+            <div className={styles.cardAccent} style={{ background: section.color }} />
+
+            <div
+              className={styles.cardIcon}
+              style={{ background: `${section.color}15`, color: section.color }}
+            >
+              <FontAwesomeIcon icon={section.icon} />
             </div>
             <div className={styles.cardContent}>
               <h3 className={styles.cardTitle}>{section.title}</h3>
               <p className={styles.cardDescription}>{section.description}</p>
               <div className={styles.cardFooter}>
                 <span className={styles.cardStats}>{section.stats}</span>
-                <span className={styles.cardArrow}>
+                <span className={styles.cardArrow} style={{ color: section.color }}>
                   <FontAwesomeIcon icon={faArrowRight} />
                 </span>
               </div>
